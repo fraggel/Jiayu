@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Inicio extends Activity {
-	String version="Jiayu.es 0.50";
+	String version="Jiayu.es 0.55";
 	String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -215,7 +215,7 @@ public class Inicio extends Activity {
  
 			public void onClick(View arg0) {
  
-				Uri uri = Uri.parse("http://www.jiayu.es/descargas/"+modelo);
+				Uri uri = Uri.parse("http://www.jiayu.es/software.php?modelo="+modelo);
 				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 				startActivity(intent);
 			}
