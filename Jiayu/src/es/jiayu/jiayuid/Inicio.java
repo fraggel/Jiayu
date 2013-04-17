@@ -187,7 +187,6 @@ public class Inicio extends Activity {
 			}	
 		}
         if("".equals(modelo)){
-        	
         	modelo="Custom ROM o tu modelo no es JIAYU";
         }else{
         	descargas.setEnabled(true);
@@ -215,7 +214,7 @@ public class Inicio extends Activity {
  
 			public void onClick(View arg0) {
  
-				Uri uri = Uri.parse("http://www.jiayu.es/software.php?modelo="+modelo);
+				Uri uri = Uri.parse("http://www.jiayu.es/soporte/appsoft.php?jiayu="+modelo);
 				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 				startActivity(intent);
 			}
