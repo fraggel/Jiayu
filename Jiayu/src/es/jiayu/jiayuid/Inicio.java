@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Inicio extends Activity {
-	String version="Jiayu.es 0.55";
+	String version="Jiayu.es 0.60";
 	String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -213,10 +213,7 @@ public class Inicio extends Activity {
 		descargas.setOnClickListener(new View.OnClickListener() {
  
 			public void onClick(View arg0) {
- 
-				Uri uri = Uri.parse("http://www.jiayu.es/soporte/appsoft.php?jiayu="+modelo);
-				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-				startActivity(intent);
+ 				openBrowser(arg0);
 			}
  
 		});
@@ -233,15 +230,11 @@ public class Inicio extends Activity {
 		});
  
 	}
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.inicio, menu);
-        //To obtain informations about the CPU, you can read and parse this file: /proc/cpuinfo
-        //To obtain memory informations, you can read and parse this file: /proc/memory
-        return true;
-    }
-    
+    public void openBrowser(View v) {
+			Intent intent = new Intent(this, BrowserActivity.class);
+			intent.putExtra("modelo", modelo);
+			startActivity(intent);
+			
+	}
     
 }

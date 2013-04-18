@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.jiayu.jiayuid"
-    android:versionCode="3"
-    android:versionName="0.55" >
+    android:versionCode="4"
+    android:versionName="0.60" >
 
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="10" />
+     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -21,6 +22,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="es.jiayu.jiayuid.BrowserActivity"
+            android:label="@string/title_activity_browser" >
         </activity>
     </application>
 
