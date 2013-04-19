@@ -1,7 +1,5 @@
 package es.jiayu.jiayuid;
 
-import android.net.Uri;
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -10,10 +8,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
-import android.view.Menu;
+import android.net.Uri;
+import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Button;
 
 public class BrowserActivity extends Activity {
 	Resources res;
@@ -75,22 +73,29 @@ public class BrowserActivity extends Activity {
 		
 	    public boolean shouldOverrideUrlLoading(WebView view, String url) {
 	    	urlDestino=url;
-	    	AlertDialog dialog = new AlertDialog.Builder(view.getContext()).create();
-			dialog.setMessage(res.getString(R.string.msgAyudaFirefox));
-			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-					res.getString(R.string.aceptar),
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int witch) {
-							try {
-								Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlDestino));
-						    	 intent.setComponent(new ComponentName("org.mozilla.firefox", "org.mozilla.firefox.App"));
-						    	 startActivity(intent);
-							} catch (Exception e) {
+	    	if(urlDestino.lastIndexOf("www.jiayu.es")==-1){
+		    	AlertDialog dialog = new AlertDialog.Builder(view.getContext()).create();
+				dialog.setMessage(res.getString(R.string.msgAyudaFirefox));
+				dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+						res.getString(R.string.aceptar),
+						new DialogInterface.OnClickListener() {
+							public void onClick(DialogInterface dialog, int witch) {
+								try {
+									Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlDestino));
+							    	 intent.setComponent(new ComponentName("org.mozilla.firefox", "org.mozilla.firefox.App"));
+							    	 startActivity(intent);
+								} catch (Exception e) {
+								}
 							}
-						}
-					});
-			dialog.show();
-	    	 return true;
+						});
+				dialog.show();
+		    	 return true;
+		    }else{
+		    	Uri uri = Uri.parse(urlDestino);
+		    	Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+				startActivity(intent);
+		    	return true;
+		    }
 	    }
 	}
 }
