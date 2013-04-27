@@ -7,4 +7,5 @@
 	<string name="aceptar">Aceptar</string>
 	<string name="msgNoFirefox">Firefox no está instalado, para la correcta descarga desde MEGA es necesario instalar Firefox, ¿Desea instalar Firefox?</string>
 	<string name="msgAyudaFirefox">Cuando aparezca la ventana de MEGA debes pulsar en Desktop Version, en la parte inferior izquierda, para cargar MEGA como version PC y que la descarga se realice correctamente</string>
+	<string name="msgComprobarVersion">A continuación se va a intentar detectar el modelo Jiayu, para ello será necesario activar y desactivar el wifi y bluetooth, ¿Dese permitir esta operación?</string>
 </resources>

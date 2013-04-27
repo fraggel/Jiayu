@@ -1,19 +1,26 @@
 package es.jiayu.jiayuid;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
+import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
-import android.content.Intent;
-import android.view.Menu;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Inicio extends Activity {
-	String version="Jiayu.es 0.68";
+	String version="Jiayu.es 0.69";
 	String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -37,10 +44,12 @@ public class Inicio extends Activity {
     Button descargas;
     Button accesorios;
     String modelo="";
+    String model="";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         addListenerOnButton();
+        
         descargas = (Button) findViewById(R.id.button1);
         accesorios = (Button) findViewById(R.id.button2);
         descargas.setEnabled(false);
@@ -186,17 +195,222 @@ public class Inicio extends Activity {
 				modelo="G2S";
 			}	
 		}
+       
         if("".equals(modelo)){
-        	modelo="Custom ROM o tu modelo no es JIAYU";
+        	calcularTelefono();
+        	modelo=model;
         }else{
+        	recalcularTelefono();
+        	descargas.setEnabled(true);
+        	accesorios.setEnabled(true);
+        	
+        }
+        if(modelo.length()<8){
         	descargas.setEnabled(true);
         	accesorios.setEnabled(true);
         }
         t.setText("Modelo: "+modelo);
-        t2.setText("Compilación: "+compilacion);
+        t2.setText("Compilación Build.prop: "+compilacion);
     }
     
-    public void addListenerOnButton() {
+    private void recalcularTelefono() {
+		calcularTelefono();
+		/*if(modelo.equals(model)){*/
+			modelo=model;
+		/*}else{
+			modelo="Rom incorrecta para tu terminal, tu modelo real es: "+model;
+		}*/
+	}
+
+	private void calcularTelefono(){
+    	/*Resources res = this.getResources();
+    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+		dialog.setMessage(res.getString(R.string.msgComprobarVersion));
+		dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+				res.getString(R.string.cancelar),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int witch) {
+						modelo="Se ha cancelado la detección del modelo Jiayu";
+					}
+				});
+		dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+				res.getString(R.string.aceptar),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int witch) {
+						try {*/
+
+					    	int height = 0;
+					    	int width = 0;
+					    	String procesador="";
+					    	String ram="";
+					    	String chip="";
+					    	String buildprop = "";
+					    	
+					    	try {
+					        	DisplayMetrics dm = new DisplayMetrics();
+					        	getWindowManager().getDefaultDisplay().getMetrics(dm);
+					        	height = dm.heightPixels;
+					        	width = dm.widthPixels;
+					    		procesador=Build.HARDWARE;
+					    		
+					    		FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
+					        	byte[] input = new byte[fis.available()];
+					        	while (fis.read(input) != -1) {}
+					        	buildprop += new String(input);	
+							
+						    	if(buildprop.toLowerCase().lastIndexOf("mt6620")!=-1){
+						    		chip="MT6620";
+						    	}else if(buildprop.toLowerCase().lastIndexOf("mt6628")!=-1){
+						    		chip="MT6628";
+						    	}else{
+						    		chip="INDEFINIDO";
+						    	}
+						    	boolean levantadoW=LevantarWifi();
+						    	boolean levantadoB=levantarBlueTooth();
+						    	
+						    	if("MT6628".equals(chip)){
+						    		if(!levantadoW && !levantadoB){
+						    			chip="MT6620";
+						    		}
+						    		
+								}else if("MT6620".equals(chip)){
+									if(!levantadoW && !levantadoB){
+						    			chip="MT6628";
+						    		}
+								}
+						    	
+						    	ram=getTotalRAM();
+						    	int ramInt=(Integer.parseInt(ram)/1000);
+						    	if(ramInt<=290 && ramInt>=200){
+						    		ram="256MB";
+						    	}else if(ramInt<=530 && ramInt>=300){
+						    		ram="512MB";
+						    	}else if(ramInt<=1100 && ramInt>=900){
+						    		ram="1GB";
+						    	}else if(ramInt<=2100 && ramInt>=1700){
+						    		ram="2GB";
+						    	}
+						    	if(width==720){
+						    		if("mt6577".equals(procesador.toLowerCase())){
+						    			if("MT6628".equals(chip)){
+						    				model="G3DCN";
+						    			}else if("MT6620".equals(chip)){
+						    				model="G3DC";
+						    			}else{
+						    				model="";
+						    			}
+						    		}else if("mt6589".equals(procesador.toLowerCase())){
+						    			/*if("1GB".equals(ram)){
+						    				model="G4";
+						    			}else if("2GB".equals(ram)){
+						    				model="G4A";
+						    			}else{
+						    				model="";
+						    			}*/
+						    		}
+						    	}else if(width==540){
+						    		/*if("mt6577".equals(procesador.toLowerCase())){
+						    			if("MT6628".equals(chip)){
+						    				model="G2S";
+						    			}else{
+						    				model="";
+						    			}
+						    		}else{
+					    				model="";
+					    			}*/
+						    		model="G2S";
+						    	}else if(width==480){
+						    		if("mt6575".equals(procesador.toLowerCase())){
+						    			if(!"G2SC".equals(modelo) && !"G2SCN".equals(modelo)){
+						    				model="G2SC o G2SCN";
+						    			}
+						    		}else if("mt6577".equals(procesador.toLowerCase())){
+						    			//FALTA EL TD
+						    			if("512MB".equals(ram)){
+						    				if("MT6628".equals(chip)){
+						    					model="G2DCPVN";
+						    				}else if("MT6620".equals(chip)){
+						    					model="G2DCPV";
+						    				}else{
+							    				model="";
+							    			}
+						    			}else if("1GB".equals(ram)){
+						    				model="G2DC";
+						    			}else{
+						    				model="";
+						    			}
+						    		}else{
+					    				model="";
+					    			}
+						    	}else if(width==320){
+						    		if("256MB".equals(ram)){
+						    			model="G1";
+						    		}
+						    	}else{
+						    		model="Un error en la resolución evita detectar tu modelo de Jiayu";
+						    	}
+						    	
+						    	
+					    	} catch (Exception e) {
+								model="Un error evita detectar tu modelo de Jiayu";
+							}
+					    	if("".equals(model.trim())){
+					    		model="No es posible identificar tu modelo";
+					    	}
+					    	
+						/*} catch (Exception e) {
+						}
+					}
+				});
+		dialog.show();*/
+	}
+
+	private boolean levantarBlueTooth() {
+		BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		boolean total=false;
+		try {
+			if (mBluetoothAdapter == null) {
+			    total=false;
+			} else {
+				if(mBluetoothAdapter.isEnabled()){
+					  total=true;
+				  }else{  
+					  mBluetoothAdapter.enable();
+					  if(mBluetoothAdapter.isEnabled()){
+						  total=true;
+					  }else{
+						  total=false;
+					  }
+					  while(!mBluetoothAdapter.disable()){
+						  mBluetoothAdapter.disable();  
+					  }
+					  
+				  }  
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return total;
+	}
+
+	private boolean LevantarWifi() {
+		WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);  
+		boolean total=false;
+		  if(wifiManager.isWifiEnabled()){
+			  total=true;
+		  }else{  
+			  wifiManager.setWifiEnabled(true);
+			  if(wifiManager.isWifiEnabled()){
+				  total=true;
+			  }else{
+				  total=false;
+			  }
+			  wifiManager.setWifiEnabled(false);
+		  }  
+		return total;
+	}
+
+	public void addListenerOnButton() {
     	 
 		imageButton = (ImageButton) findViewById(R.id.imageButton1);
 		imageButton.setOnClickListener(new View.OnClickListener() {
@@ -236,5 +450,21 @@ public class Inicio extends Activity {
 			startActivity(intent);
 			
 	}
-    
+    public static String getTotalRAM() {
+        RandomAccessFile reader = null;
+        String load = null;
+        try {
+            reader = new RandomAccessFile("/proc/meminfo", "r");
+            load = reader.readLine();
+            load.replaceAll(" ","");
+            int indexOf = load.indexOf(":");
+            int indexOf2 = load.toLowerCase().indexOf("kb");
+            load=load.substring(indexOf+1,indexOf2);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            // Streams.close(reader);
+        }
+        return load.trim();
+    }
 }
