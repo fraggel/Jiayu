@@ -1,14 +1,23 @@
 package es.jiayu.jiayuid;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
+import java.net.URL;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -20,7 +29,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class Inicio extends Activity {
-	String version="Jiayu.es 0.69";
+	String version="Jiayu.es 0.71";
 	String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -45,11 +54,14 @@ public class Inicio extends Activity {
     Button accesorios;
     String modelo="";
     String model="";
+    String urlActualizacion="";
+    String fabricante="";
+    String compilacion="";
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         addListenerOnButton();
-        
+        comprobarVersion(version);
         descargas = (Button) findViewById(R.id.button1);
         accesorios = (Button) findViewById(R.id.button2);
         descargas.setEnabled(false);
@@ -59,9 +71,12 @@ public class Inicio extends Activity {
         TextView t=new TextView(this); 
         TextView t2=new TextView(this); 
         TextView t4=new TextView(this); 
+        TextView t5=new TextView(this);
         t4 = (TextView) findViewById(R.id.textView4);
+        t5 = (TextView) findViewById(R.id.textView5);
         t4.setText(version);
-        String compilacion=Build.DISPLAY;;
+        compilacion=Build.DISPLAY;;
+        fabricante=Build.BRAND;
         t=(TextView)findViewById(R.id.textView1);
         t2=(TextView)findViewById(R.id.textView2);
         String idd[]=Build.DISPLAY.split("-");
@@ -195,7 +210,7 @@ public class Inicio extends Activity {
 				modelo="G2S";
 			}	
 		}
-       
+        
         if("".equals(modelo)){
         	calcularTelefono();
         	modelo=model;
@@ -208,12 +223,98 @@ public class Inicio extends Activity {
         if(modelo.length()<8){
         	descargas.setEnabled(true);
         	accesorios.setEnabled(true);
+        	if(!"JIAYU".equals(fabricante.toUpperCase().trim())){
+	        	t5.setTextColor(Color.RED);
+	        	t5.setText("Identificado como "+modelo+" aunque tu build.prop no indica JIAYU como fabricante");
+        	}
         }
         t.setText("Modelo: "+modelo);
         t2.setText("Compilación Build.prop: "+compilacion);
     }
     
-    private void recalcularTelefono() {
+    private void comprobarVersion(String version2) {
+		StringBuffer result = new StringBuffer();
+		InputStreamReader isr=null;
+		BufferedReader in =null;
+	    try{
+	        URL jsonUrl = new URL("http://www.jiayu.es/jiayuapkversion.txt");
+
+	        isr  = new InputStreamReader(jsonUrl.openStream());
+
+	        in = new BufferedReader(isr);
+
+	        String inputLine;
+
+	        while ((inputLine = in.readLine()) != null){
+	            result.append(inputLine);
+	            urlActualizacion=in.readLine();
+	        }
+	        if(in!=null){
+	        	in.close();
+	        }
+	        if(isr!=null){
+	        	isr.close();
+	        }
+	    }catch(Exception ex){
+	        result = new StringBuffer("TIMEOUT");
+	        urlActualizacion="";
+	        try {
+	        	if(in!=null){
+		        	in.close();
+		        }
+		        if(isr!=null){
+		        	isr.close();
+		        }
+	        } catch (Exception e) {
+				// TODO: handle exception
+			}
+	    }
+	    if(!version2.equals(result.toString()) && !"".equals(urlActualizacion)){
+	    	Resources res = this.getResources();
+	    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+			dialog.setMessage(res.getString(R.string.msgComprobarVersion));
+			dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+					res.getString(R.string.cancelar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+						}
+					});
+			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+					res.getString(R.string.aceptar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+							try {
+								ActualizarVersion();
+							} catch (Exception e) {
+							}
+						}
+					});
+			dialog.show();
+	    }
+
+		
+	}
+    private void ActualizarVersion(){
+    	Resources res = this.getResources();
+    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+		dialog.setMessage(res.getString(R.string.msgAyudaFirefox));
+		dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+				res.getString(R.string.aceptar),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int witch) {
+						try {
+							if(!"".equals(urlActualizacion)){
+								Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlActualizacion));
+						    	 intent.setComponent(new ComponentName("org.mozilla.firefox", "org.mozilla.firefox.App"));
+						    	 startActivity(intent);
+							}
+						} catch (Exception e) {
+						}
+					}
+				});
+		dialog.show();
+    }
+	private void recalcularTelefono() {
 		calcularTelefono();
 		/*if(modelo.equals(model)){*/
 			modelo=model;
@@ -265,16 +366,16 @@ public class Inicio extends Activity {
 						    	}else{
 						    		chip="INDEFINIDO";
 						    	}
-						    	boolean levantadoW=LevantarWifi();
 						    	boolean levantadoB=levantarBlueTooth();
+						    	boolean levantadoW=LevantarWifi();
 						    	
 						    	if("MT6628".equals(chip)){
-						    		if(!levantadoW && !levantadoB){
+						    		if(!levantadoB || !levantadoW){
 						    			chip="MT6620";
 						    		}
 						    		
 								}else if("MT6620".equals(chip)){
-									if(!levantadoW && !levantadoB){
+									if(!levantadoB || !levantadoW){
 						    			chip="MT6628";
 						    		}
 								}
@@ -347,15 +448,15 @@ public class Inicio extends Activity {
 						    			model="G1";
 						    		}
 						    	}else{
-						    		model="Un error en la resolución evita detectar tu modelo de Jiayu";
+						    		model="Tu terminal no es Jiayu";
 						    	}
-						    	
-						    	
+
 					    	} catch (Exception e) {
 								model="Un error evita detectar tu modelo de Jiayu";
 							}
+					    	
 					    	if("".equals(model.trim())){
-					    		model="No es posible identificar tu modelo";
+					    		model="Tu terminal no es Jiayu";
 					    	}
 					    	
 						/*} catch (Exception e) {
@@ -376,6 +477,9 @@ public class Inicio extends Activity {
 					  total=true;
 				  }else{  
 					  mBluetoothAdapter.enable();
+					  synchronized ( mBluetoothAdapter) {
+							mBluetoothAdapter.wait(2000);
+						}
 					  if(mBluetoothAdapter.isEnabled()){
 						  total=true;
 					  }else{
@@ -388,25 +492,36 @@ public class Inicio extends Activity {
 				  }  
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return total;
 	}
-
+	
 	private boolean LevantarWifi() {
 		WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);  
 		boolean total=false;
+		try {
+			
+		
 		  if(wifiManager.isWifiEnabled()){
 			  total=true;
 		  }else{  
 			  wifiManager.setWifiEnabled(true);
+			  synchronized ( wifiManager) {
+				  wifiManager.wait(2000);
+				}
 			  if(wifiManager.isWifiEnabled()){
 				  total=true;
 			  }else{
 				  total=false;
 			  }
-			  wifiManager.setWifiEnabled(false);
+			  while(wifiManager.isWifiEnabled()){
+				  wifiManager.setWifiEnabled(false);
+			  }
 		  }  
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return total;
 	}
 
