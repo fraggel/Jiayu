@@ -338,7 +338,7 @@ public class Inicio extends Activity implements AsyncResponse{
 						    	if(!levantadoB && !levantadoW){
 						    		if("MT6628".equals(chip)){
 						    			chip="MT6620";
-						    		}else if("MT6620".equals(chip)){{
+						    		}else if("MT6620".equals(chip)){
 						    			chip="MT6628";
 						    		}
 						    	}
