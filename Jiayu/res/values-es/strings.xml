@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Jiayu</string>
-    <string name="bienvenida">Bienvenido a la aplicación de Jiayu.es, esta aplicación te mostrará el modelo exacto con la nomenclatura que podrás encontrar en nuestra web www.jiayu.es, también dispones de los botones de DESCARGAS y ACCESORIOS que te llevarán al contenido específico para tu modelo de Jiayu</string>
+    <string name="bienvenida">Bienvenido a la aplicación de Jiayu, esta aplicación te mostrará el modelo exacto con la nomenclatura que podrás encontrar en la web www.jiayu.es, dispones de los botones DESCARGAS y ACCESORIOS que te llevarán al contenido específico para tu modelo de Jiayu.</string>
     <string name="descargas">DESCARGAS</string>
     <string name="accesorios">ACCESORIOS</string>
     <string name="title_activity_browser">Descargas Jiayu</string>
     <string name="cancelar">Cancelar</string>
     <string name="aceptar">Aceptar</string>
-    <string name="msgNoFirefox">Firefox no está instalado, para la correcta descarga desde MEGA es necesario instalar Firefox, ¿Desea instalar Firefox?</string>
-    <string name="msgAyudaFirefox">Cuando aparezca la ventana de MEGA debes pulsar en Desktop Version, en la parte inferior izquierda, para cargar MEGA como version PC y que la descarga se realice correctamente</string>
+    <string name="msgNoFirefox">Firefox no está instalado, para la correcta descarga desde MEGA es necesario instalar Firefox, ¿Deseas instalar Firefox?</string>
+    <string name="msgAyudaFirefox">Cuando aparezca la ventana de MEGA debes pulsar en Desktop Version, en la parte inferior izquierda, para cargar MEGA como version PC y que la descarga se realice correctamente.</string>
     <string name="msgComprobarVersion">Existe una nueva versión de la aplicación</string>
-    <string name="msgPreguntaVersion">¿Desea descargarla?</string>
-	<string name="msgCompilacion">Compilación Build.prop: </string>
+    <string name="msgPreguntaVersion">¿Deseas descargarla?</string>
+	<string name="msgCompilacion">Compilación: </string>
 	<string name="msgModelo">Modelo: </string>
 	<string name="msgIdentificado1">Identificado como </string>
-	<string name="msgIdentificado2">, aunque tu build.prop no indica JIAYU como fabricante</string>
-	<string name="msgTerminalNoJiayu">Tu terminal no es Jiayu</string>
-	<string name="msgErrorIdentificar">Un error evita detectar tu modelo de Jiayu</string>
+	<string name="msgIdentificado2">, aunque en la información del dispositivo no se indica JIAYU como fabricante</string>
+	<string name="msgTerminalNoJiayu">El terminal no es Jiayu</string>
+	<string name="msgErrorIdentificar">Se ha producido un error,no es posible detectar el modelo Jiayu</string>
 </resources>

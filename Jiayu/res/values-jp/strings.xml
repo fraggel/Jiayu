@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ジアユ</string>
+    <string name="bienvenida">Bienvenido a la aplicación de Jiayu.es, esta aplicación te mostrará el modelo exacto con la nomenclatura que podrás encontrar en nuestra web www.jiayu.es, también dispones de los botones de DESCARGAS y ACCESORIOS que te llevarán al contenido específico para tu modelo de Jiayu</string>
+    <string name="descargas">ダウンロード</string>
+    <string name="accesorios">アクセサリー</string>
+    <string name="title_activity_browser">ジアユのダウンロード</string>
+    <string name="cancelar">キアンセル</string>
+    <string name="aceptar">アセプツ</string>
+    <string name="msgNoFirefox">Firefox no está instalado, para la correcta descarga desde MEGA es necesario instalar Firefox, ¿Desea instalar Firefox?</string>
+    <string name="msgAyudaFirefox">Cuando aparezca la ventana de MEGA debes pulsar en Desktop Version, en la parte inferior izquierda, para cargar MEGA como version PC y que la descarga se realice correctamente</string>
+    <string name="msgComprobarVersion">Existe una nueva versión de la aplicación</string>
+    <string name="msgPreguntaVersion">¿Desea descargarla?</string>
+	<string name="msgCompilacion">Compilación Build.prop: </string>
+	<string name="msgModelo">モデル: </string>
+	<string name="msgIdentificado1">Identificado como </string>
+	<string name="msgIdentificado2">, aunque tu build.prop no indica JIAYU como fabricante</string>
+	<string name="msgTerminalNoJiayu">Tu terminal no es Jiayu</string>
+	<string name="msgErrorIdentificar">Un error evita detectar tu modelo de Jiayu</string>
+</resources>
