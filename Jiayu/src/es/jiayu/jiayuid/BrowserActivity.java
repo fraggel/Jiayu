@@ -62,7 +62,7 @@ public class BrowserActivity extends Activity {
 							intent.setData(Uri
 									.parse("market://details?id=org.mozilla.firefox"));
 							startActivity(intent);
-							finish();
+							
 						} catch (Exception e) {
 						}
 					}
