@@ -8,10 +8,12 @@ import java.io.RandomAccessFile;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
@@ -337,13 +339,6 @@ public class Inicio extends Activity implements AsyncResponse{
 						    			chip="MT6628";
 						    		}
 								}
-						    	if(!levantadoB && !levantadoW){
-						    		if("MT6628".equals(chip)){
-						    			chip="MT6620";
-						    		}else if("MT6620".equals(chip)){
-						    			chip="MT6628";
-						    		}
-						    	}
 						    	
 						    	ram=getTotalRAM();
 						    	int ramInt=(Integer.parseInt(ram)/1000);
@@ -577,7 +572,14 @@ public class Inicio extends Activity implements AsyncResponse{
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog, int witch) {
 									try {
-										ActualizarVersion();
+										PackageManager pm= getPackageManager();
+										 Intent it = pm.getLaunchIntentForPackage("org.mozilla.firefox");
+										if(it==null){
+											instalarFirefoxActualizacion();
+											
+										}else{
+											ActualizarVersion();
+										}
 									} catch (Exception e) {
 									}
 								}
@@ -588,5 +590,31 @@ public class Inicio extends Activity implements AsyncResponse{
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
+	}
+	private void instalarFirefoxActualizacion() {
+		Resources res=this.getResources();
+		AlertDialog dialog = new AlertDialog.Builder(this).create();
+		dialog.setMessage(res.getString(R.string.msgNoFirefox));
+		dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+				res.getString(R.string.cancelar),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int witch) {
+					}
+				});
+		dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+				res.getString(R.string.aceptar),
+				new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int witch) {
+						try {
+							Intent intent = new Intent(Intent.ACTION_VIEW);
+							intent.setData(Uri
+									.parse("market://details?id=org.mozilla.firefox"));
+							startActivity(intent);
+							ActualizarVersion();
+						} catch (Exception e) {
+						}
+					}
+				});
+		dialog.show();
 	}
 }
