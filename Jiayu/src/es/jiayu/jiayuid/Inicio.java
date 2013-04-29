@@ -27,8 +27,9 @@ import android.widget.TextView;
 
 public class Inicio extends Activity implements AsyncResponse{
 	VersionThread asyncTask=new VersionThread();
-	String nversion="0.72";
-	String version="Jiayu.es "+nversion;
+	
+	String nversion="";
+	String version="Jiayu.es ";
 	String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -57,203 +58,217 @@ public class Inicio extends Activity implements AsyncResponse{
     String fabricante="";
     String compilacion="";
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_inicio);
-        addListenerOnButton();
-        asyncTask.delegate=this;
-        comprobarVersion(version);
-        descargas = (Button) findViewById(R.id.button1);
-        accesorios = (Button) findViewById(R.id.button2);
-        descargas.setEnabled(false);
-    	accesorios.setEnabled(false);
-        ImageButton img=new ImageButton(this);
-        img=(ImageButton)findViewById(R.id.imageButton1);
-        TextView t=new TextView(this); 
-        TextView t2=new TextView(this); 
-        TextView t4=new TextView(this); 
-        TextView t5=new TextView(this);
-        t4 = (TextView) findViewById(R.id.textView4);
-        t5 = (TextView) findViewById(R.id.textView5);
-        t4.setText(version);
-        compilacion=Build.DISPLAY;;
-        fabricante=Build.BRAND;
-        t=(TextView)findViewById(R.id.textView1);
-        t2=(TextView)findViewById(R.id.textView2);
-        String idd[]=Build.DISPLAY.split("-");
-        String id=idd[idd.length-1];
-        for (int i = 0; i < G1.length; i++) {
-			String array_element = G1[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G1 con GB";
-			}	
-		}
-        for (int i = 0; i < G2SCICS.length; i++) {
-			String array_element = G2SCICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2SC";
-			}	
-		}
-        for (int i = 0; i < G2SCJB.length; i++) {
-			String array_element = G2SCJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2SC";
-			}	
-		}
-        
-        for (int i = 0; i < G2SCNICS.length; i++) {
-			String array_element = G2SCNICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2SCN";
-			}	
-		}
-        
-        for (int i = 0; i < G2SCNJB.length; i++) {
-			String array_element = G2SCNJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2SCN";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCICS.length; i++) {
-			String array_element = G2DCICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DC";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCJB.length; i++) {
-			String array_element = G2DCJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DC";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCPVICS.length; i++) {
-			String array_element = G2DCPVICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DCPV";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCPVJB.length; i++) {
-			String array_element = G2DCPVJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DCPV";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCPVNICS.length; i++) {
-			String array_element = G2DCPVNICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DCPVN";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCPVNJB.length; i++) {
-			String array_element = G2DCPVNJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DCPVN";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCTDICS.length; i++) {
-			String array_element = G2SJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DCTD";
-			}	
-		}
-        
-        for (int i = 0; i < G2DCTDJB.length; i++) {
-			String array_element = G2DCTDJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2DCTD";
-			}	
-		}
-        
-        for (int i = 0; i < G3DCICS.length; i++) {
-			String array_element = G3DCICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G3DC";
-			}	
-		}
-        
-        for (int i = 0; i < G3DCJB.length; i++) {
-			String array_element = G3DCJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G3DC";
-			}	
-		}
-        
-        for (int i = 0; i < G3DCNICS.length; i++) {
-			String array_element = G3DCNICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G3DCN";
-			}	
-		}
-        
-        for (int i = 0; i < G3DCNJB.length; i++) {
-			String array_element = G3DCNJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G3DCN";
-			}	
-		}
-        for (int i = 0; i < G2SICS.length; i++) {
-			String array_element = G2SICS[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2S";
-			}	
-		}
-        
-        for (int i = 0; i < G2SJB.length; i++) {
-			String array_element = G2SJB[i];
-			if(array_element.indexOf(id)!=-1){
-				modelo="G2S";
-			}	
-		}
-        
-        if("".equals(modelo)){
-        	calcularTelefono();
-        	modelo=model;
-        }else{
-        	recalcularTelefono();
-        	descargas.setEnabled(true);
-        	accesorios.setEnabled(true);
-        	
-        }
-        if(modelo.length()<8){
-        	descargas.setEnabled(true);
-        	accesorios.setEnabled(true);
-        	if(!"JIAYU".equals(fabricante.toUpperCase().trim())){
-	        	t5.setTextColor(Color.RED);
-	        	t5.setText("Identificado como "+modelo+" aunque tu build.prop no indica JIAYU como fabricante");
-        	}
-        }
-        t.setText("Modelo: "+modelo);
-        t2.setText("Compilación Build.prop: "+compilacion);
+       try {
+    	    nversion=getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+    	    version=version+nversion;
+	    	super.onCreate(savedInstanceState);
+	        setContentView(R.layout.activity_inicio);
+	        addListenerOnButton();
+	        asyncTask.delegate=this;
+	        comprobarVersion(version);
+	        descargas = (Button) findViewById(R.id.button1);
+	        accesorios = (Button) findViewById(R.id.button2);
+	        descargas.setEnabled(false);
+	    	accesorios.setEnabled(false);
+	        ImageButton img=new ImageButton(this);
+	        img=(ImageButton)findViewById(R.id.imageButton1);
+	        TextView t=new TextView(this); 
+	        TextView t2=new TextView(this); 
+	        TextView t4=new TextView(this); 
+	        TextView t5=new TextView(this);
+	        t4 = (TextView) findViewById(R.id.textView4);
+	        t5 = (TextView) findViewById(R.id.textView5);
+	        t4.setText(version);
+	        compilacion=Build.DISPLAY;;
+	        fabricante=Build.BRAND;
+	        t=(TextView)findViewById(R.id.textView1);
+	        t2=(TextView)findViewById(R.id.textView2);
+	        String idd[]=Build.DISPLAY.split("-");
+	        String id=idd[idd.length-1];
+	        for (int i = 0; i < G1.length; i++) {
+				String array_element = G1[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G1 con GB";
+				}	
+			}
+	        for (int i = 0; i < G2SCICS.length; i++) {
+				String array_element = G2SCICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2SC";
+				}	
+			}
+	        for (int i = 0; i < G2SCJB.length; i++) {
+				String array_element = G2SCJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2SC";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2SCNICS.length; i++) {
+				String array_element = G2SCNICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2SCN";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2SCNJB.length; i++) {
+				String array_element = G2SCNJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2SCN";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCICS.length; i++) {
+				String array_element = G2DCICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DC";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCJB.length; i++) {
+				String array_element = G2DCJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DC";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCPVICS.length; i++) {
+				String array_element = G2DCPVICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DCPV";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCPVJB.length; i++) {
+				String array_element = G2DCPVJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DCPV";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCPVNICS.length; i++) {
+				String array_element = G2DCPVNICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DCPVN";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCPVNJB.length; i++) {
+				String array_element = G2DCPVNJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DCPVN";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCTDICS.length; i++) {
+				String array_element = G2SJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DCTD";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2DCTDJB.length; i++) {
+				String array_element = G2DCTDJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DCTD";
+				}	
+			}
+	        
+	        for (int i = 0; i < G3DCICS.length; i++) {
+				String array_element = G3DCICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G3DC";
+				}	
+			}
+	        
+	        for (int i = 0; i < G3DCJB.length; i++) {
+				String array_element = G3DCJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G3DC";
+				}	
+			}
+	        
+	        for (int i = 0; i < G3DCNICS.length; i++) {
+				String array_element = G3DCNICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G3DCN";
+				}	
+			}
+	        
+	        for (int i = 0; i < G3DCNJB.length; i++) {
+				String array_element = G3DCNJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G3DCN";
+				}	
+			}
+	        for (int i = 0; i < G2SICS.length; i++) {
+				String array_element = G2SICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2S";
+				}	
+			}
+	        
+	        for (int i = 0; i < G2SJB.length; i++) {
+				String array_element = G2SJB[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2S";
+				}	
+			}
+	        
+	        if("".equals(modelo)){
+	        	calcularTelefono();
+	        	modelo=model;
+	        }else{
+	        	recalcularTelefono();
+	        	descargas.setEnabled(true);
+	        	accesorios.setEnabled(true);
+	        	
+	        }
+	        if(modelo.length()<8){
+	        	descargas.setEnabled(true);
+	        	accesorios.setEnabled(true);
+	        	if(!"JIAYU".equals(fabricante.toUpperCase().trim())){
+		        	t5.setTextColor(Color.RED);
+		        	t5.setText("Identificado como "+modelo+" aunque tu build.prop no indica JIAYU como fabricante");
+	        	}
+	        }
+	        t.setText("Modelo: "+modelo);
+	        t2.setText("Compilación Build.prop: "+compilacion);
+       } catch (Exception e) {
+   		// TODO: handle exception
+       }
     }
     
     private void comprobarVersion(String version2) {
-    	asyncTask.execute(version2);
+    	try {
+    		asyncTask.execute(version2);	
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
     private void ActualizarVersion(){
-    	Resources res = this.getResources();
-    	AlertDialog dialog = new AlertDialog.Builder(this).create();
-		dialog.setMessage(res.getString(R.string.msgAyudaFirefox));
-		dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-				res.getString(R.string.aceptar),
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int witch) {
-						try {
-							if(!"".equals(urlActualizacion)){
-								Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlActualizacion));
-						    	 intent.setComponent(new ComponentName("org.mozilla.firefox", "org.mozilla.firefox.App"));
-						    	 startActivity(intent);
+    	try {
+	    	Resources res = this.getResources();
+	    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+			dialog.setMessage(res.getString(R.string.msgAyudaFirefox));
+			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+					res.getString(R.string.aceptar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+							try {
+								if(!"".equals(urlActualizacion)){
+									Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlActualizacion));
+							    	 intent.setComponent(new ComponentName("org.mozilla.firefox", "org.mozilla.firefox.App"));
+							    	 startActivity(intent);
+								}
+							} catch (Exception e) {
 							}
-						} catch (Exception e) {
 						}
-					}
-				});
-		dialog.show();
+					});
+			dialog.show();
+    	} catch (Exception e) {
+			// TODO: handle exception
+		}
     }
 	private void recalcularTelefono() {
 		calcularTelefono();
@@ -278,8 +293,8 @@ public class Inicio extends Activity implements AsyncResponse{
 		dialog.setButton(AlertDialog.BUTTON_POSITIVE,
 				res.getString(R.string.aceptar),
 				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int witch) {
-						try {*/
+					public void onClick(DialogInterface dialog, int witch) {*/
+						try {
 
 					    	int height = 0;
 					    	int width = 0;
@@ -400,8 +415,8 @@ public class Inicio extends Activity implements AsyncResponse{
 					    		model="Tu terminal no es Jiayu";
 					    	}
 					    	
-						/*} catch (Exception e) {
-						}
+						} catch (Exception e) {
+						}/*
 					}
 				});
 		dialog.show();*/
@@ -467,44 +482,51 @@ public class Inicio extends Activity implements AsyncResponse{
 	}
 
 	public void addListenerOnButton() {
-    	 
-		imageButton = (ImageButton) findViewById(R.id.imageButton1);
-		imageButton.setOnClickListener(new View.OnClickListener() {
- 
-			public void onClick(View arg0) {
- 
-				Uri uri = Uri.parse("http://www.jiayu.es");
-				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-				startActivity(intent);
-			}
- 
-		});
-		descargas = (Button) findViewById(R.id.button1);
-		descargas.setOnClickListener(new View.OnClickListener() {
- 
-			public void onClick(View arg0) {
- 				openBrowser(arg0);
-			}
- 
-		});
-		accesorios = (Button) findViewById(R.id.button2);
-		accesorios.setOnClickListener(new View.OnClickListener() {
- 
-			public void onClick(View arg0) {
- 
-				Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
-				Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-				startActivity(intent);
-			}
- 
-		});
+    	try {
+			
+			imageButton = (ImageButton) findViewById(R.id.imageButton1);
+			imageButton.setOnClickListener(new View.OnClickListener() {
+	 
+				public void onClick(View arg0) {
+	 
+					Uri uri = Uri.parse("http://www.jiayu.es");
+					Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+					startActivity(intent);
+				}
+	 
+			});
+			descargas = (Button) findViewById(R.id.button1);
+			descargas.setOnClickListener(new View.OnClickListener() {
+	 
+				public void onClick(View arg0) {
+	 				openBrowser(arg0);
+				}
+	 
+			});
+			accesorios = (Button) findViewById(R.id.button2);
+			accesorios.setOnClickListener(new View.OnClickListener() {
+	 
+				public void onClick(View arg0) {
+	 
+					Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
+					Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+					startActivity(intent);
+				}
+	 
+			});
+    	} catch (Exception e) {
+			// TODO: handle exception
+		} 
  
 	}
     public void openBrowser(View v) {
-			Intent intent = new Intent(this, BrowserActivity.class);
+    	try {
+    		Intent intent = new Intent(this, BrowserActivity.class);
 			intent.putExtra("modelo", modelo);
 			startActivity(intent);
-			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
     public static String getTotalRAM() {
         RandomAccessFile reader = null;
@@ -526,31 +548,36 @@ public class Inicio extends Activity implements AsyncResponse{
 
 	@Override
 	public void processFinish(String output) {
-		String[] split = output.split("----");
-		String newversion=split[0].split(" ")[1];
-		urlActualizacion=split[1];
-		if(!"".equals(urlActualizacion)){
-	    	Resources res = this.getResources();
-	    	AlertDialog dialog = new AlertDialog.Builder(this).create();
-			dialog.setMessage(res.getString(R.string.msgComprobarVersion)+" "+nversion+"->"+newversion+" "+res.getString(R.string.msgPreguntaVersion));
-			dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-					res.getString(R.string.cancelar),
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int witch) {
-						}
-					});
-			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-					res.getString(R.string.aceptar),
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int witch) {
-							try {
-								ActualizarVersion();
-							} catch (Exception e) {
-							}
-						}
-					});
-			dialog.show();
-	    }
-		
+		try {
+			if(output!=null && !"TIMEOUT".equals(output)){
+				String[] split = output.split("----");
+				String newversion=split[0].split(" ")[1];
+				urlActualizacion=split[1];
+				if(!"".equals(urlActualizacion) && !nversion.equals(newversion)){
+			    	Resources res = this.getResources();
+			    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+					dialog.setMessage(res.getString(R.string.msgComprobarVersion)+" "+nversion+"->"+newversion+" "+res.getString(R.string.msgPreguntaVersion));
+					dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+							res.getString(R.string.cancelar),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int witch) {
+								}
+							});
+					dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+							res.getString(R.string.aceptar),
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog, int witch) {
+									try {
+										ActualizarVersion();
+									} catch (Exception e) {
+									}
+								}
+							});
+					dialog.show();
+			    }
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 	}
 }
