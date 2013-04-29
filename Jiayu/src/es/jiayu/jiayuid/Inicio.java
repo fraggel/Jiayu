@@ -553,7 +553,7 @@ public class Inicio extends Activity implements AsyncResponse{
 	@Override
 	public void processFinish(String output) {
 		try {
-			if(output!=null && !"TIMEOUT".equals(output)){
+			if(output!=null && !"TIMEOUT----".equals(output)){
 				String[] split = output.split("----");
 				String newversion=split[0].split(" ")[1];
 				urlActualizacion=split[1];
