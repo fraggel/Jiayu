@@ -1,12 +1,9 @@
 package es.jiayu.jiayuid;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
-import java.net.URL;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,11 +12,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -28,8 +25,10 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-public class Inicio extends Activity {
-	String version="Jiayu.es 0.71";
+public class Inicio extends Activity implements AsyncResponse{
+	VersionThread asyncTask=new VersionThread();
+	String nversion="0.72";
+	String version="Jiayu.es "+nversion;
 	String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -61,6 +60,7 @@ public class Inicio extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         addListenerOnButton();
+        asyncTask.delegate=this;
         comprobarVersion(version);
         descargas = (Button) findViewById(R.id.button1);
         accesorios = (Button) findViewById(R.id.button2);
@@ -233,66 +233,7 @@ public class Inicio extends Activity {
     }
     
     private void comprobarVersion(String version2) {
-		StringBuffer result = new StringBuffer();
-		InputStreamReader isr=null;
-		BufferedReader in =null;
-	    try{
-	        URL jsonUrl = new URL("http://www.jiayu.es/jiayuapkversion.txt");
-
-	        isr  = new InputStreamReader(jsonUrl.openStream());
-
-	        in = new BufferedReader(isr);
-
-	        String inputLine;
-
-	        while ((inputLine = in.readLine()) != null){
-	            result.append(inputLine);
-	            urlActualizacion=in.readLine();
-	        }
-	        if(in!=null){
-	        	in.close();
-	        }
-	        if(isr!=null){
-	        	isr.close();
-	        }
-	    }catch(Exception ex){
-	        result = new StringBuffer("TIMEOUT");
-	        urlActualizacion="";
-	        try {
-	        	if(in!=null){
-		        	in.close();
-		        }
-		        if(isr!=null){
-		        	isr.close();
-		        }
-	        } catch (Exception e) {
-				// TODO: handle exception
-			}
-	    }
-	    if(!version2.equals(result.toString()) && !"".equals(urlActualizacion)){
-	    	Resources res = this.getResources();
-	    	AlertDialog dialog = new AlertDialog.Builder(this).create();
-			dialog.setMessage(res.getString(R.string.msgComprobarVersion));
-			dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-					res.getString(R.string.cancelar),
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int witch) {
-						}
-					});
-			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-					res.getString(R.string.aceptar),
-					new DialogInterface.OnClickListener() {
-						public void onClick(DialogInterface dialog, int witch) {
-							try {
-								ActualizarVersion();
-							} catch (Exception e) {
-							}
-						}
-					});
-			dialog.show();
-	    }
-
-		
+    	asyncTask.execute(version2);
 	}
     private void ActualizarVersion(){
     	Resources res = this.getResources();
@@ -582,4 +523,34 @@ public class Inicio extends Activity {
         }
         return load.trim();
     }
+
+	@Override
+	public void processFinish(String output) {
+		String[] split = output.split("----");
+		String newversion=split[0].split(" ")[1];
+		urlActualizacion=split[1];
+		if(!"".equals(urlActualizacion)){
+	    	Resources res = this.getResources();
+	    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+			dialog.setMessage(res.getString(R.string.msgComprobarVersion)+" "+nversion+"->"+newversion+" "+res.getString(R.string.msgPreguntaVersion));
+			dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+					res.getString(R.string.cancelar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+						}
+					});
+			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+					res.getString(R.string.aceptar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+							try {
+								ActualizarVersion();
+							} catch (Exception e) {
+							}
+						}
+					});
+			dialog.show();
+	    }
+		
+	}
 }

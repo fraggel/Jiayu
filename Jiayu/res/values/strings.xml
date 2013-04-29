@@ -3,9 +3,11 @@
 
     <string name="app_name">Jiayu.es</string>
     <string name="title_activity_browser">Descargas Jiayu.es</string>
-	<string name="cancelar">Cancelar</string>
-	<string name="aceptar">Aceptar</string>
-	<string name="msgNoFirefox">Firefox no está instalado, para la correcta descarga desde MEGA es necesario instalar Firefox, ¿Desea instalar Firefox?</string>
-	<string name="msgAyudaFirefox">Cuando aparezca la ventana de MEGA debes pulsar en Desktop Version, en la parte inferior izquierda, para cargar MEGA como version PC y que la descarga se realice correctamente</string>
-	<string name="msgComprobarVersion">Existe una nueva versión de la aplicación, ¿Desea descargarla?</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+    <string name="msgNoFirefox">Firefox no está instalado, para la correcta descarga desde MEGA es necesario instalar Firefox, ¿Desea instalar Firefox?</string>
+    <string name="msgAyudaFirefox">Cuando aparezca la ventana de MEGA debes pulsar en Desktop Version, en la parte inferior izquierda, para cargar MEGA como version PC y que la descarga se realice correctamente</string>
+    <string name="msgComprobarVersion">Existe una nueva versión de la aplicación</string>
+    <string name="msgPreguntaVersion">¿Desea descargarla?</string>
+
 </resources>
