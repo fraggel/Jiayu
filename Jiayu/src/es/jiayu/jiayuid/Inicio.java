@@ -335,6 +335,13 @@ public class Inicio extends Activity implements AsyncResponse{
 						    			chip="MT6628";
 						    		}
 								}
+						    	if(!levantadoB && !levantadoW){
+						    		if("MT6628".equals(chip)){
+						    			chip="MT6620";
+						    		}else if("MT6620".equals(chip)){{
+						    			chip="MT6628";
+						    		}
+						    	}
 						    	
 						    	ram=getTotalRAM();
 						    	int ramInt=(Integer.parseInt(ram)/1000);
