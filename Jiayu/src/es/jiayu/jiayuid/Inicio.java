@@ -59,6 +59,7 @@ public class Inicio extends Activity implements AsyncResponse{
     String compilacion="";
     protected void onCreate(Bundle savedInstanceState) {
        try {
+    	    Resources res = this.getResources();
     	    nversion=getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
     	    version=version+nversion;
 	    	super.onCreate(savedInstanceState);
@@ -229,11 +230,11 @@ public class Inicio extends Activity implements AsyncResponse{
 	        	accesorios.setEnabled(true);
 	        	if(!"JIAYU".equals(fabricante.toUpperCase().trim())){
 		        	t5.setTextColor(Color.RED);
-		        	t5.setText("Identificado como "+modelo+" aunque tu build.prop no indica JIAYU como fabricante");
+		        	t5.setText(res.getString(R.string.msgIdentificado1)+modelo+res.getString(R.string.msgIdentificado2));
 	        	}
 	        }
-	        t.setText("Modelo: "+modelo);
-	        t2.setText("Compilación Build.prop: "+compilacion);
+	        t.setText(res.getString(R.string.msgModelo)+modelo);
+	        t2.setText(res.getString(R.string.msgCompilacion)+compilacion);
        } catch (Exception e) {
    		// TODO: handle exception
        }
@@ -280,7 +281,8 @@ public class Inicio extends Activity implements AsyncResponse{
 	}
 
 	private void calcularTelefono(){
-    	/*Resources res = this.getResources();
+		Resources res = this.getResources();
+    	/*
     	AlertDialog dialog = new AlertDialog.Builder(this).create();
 		dialog.setMessage(res.getString(R.string.msgComprobarVersion));
 		dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
@@ -411,15 +413,15 @@ public class Inicio extends Activity implements AsyncResponse{
 						    			model="G1";
 						    		}
 						    	}else{
-						    		model="Tu terminal no es Jiayu";
+						    		model=res.getString(R.string.msgTerminalNoJiayu);
 						    	}
 
 					    	} catch (Exception e) {
-								model="Un error evita detectar tu modelo de Jiayu";
+								model=res.getString(R.string.msgErrorIdentificar);
 							}
 					    	
 					    	if("".equals(model.trim())){
-					    		model="Tu terminal no es Jiayu";
+					    		model=res.getString(R.string.msgTerminalNoJiayu);
 					    	}
 					    	
 						} catch (Exception e) {

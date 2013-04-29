@@ -33,14 +33,13 @@
 	        android:layout_height="wrap_content"
 	        android:paddingLeft="@dimen/activity_vertical_margin"
 	        android:paddingRight="@dimen/activity_horizontal_margin"
-	        android:text="Bienvenido a la aplicación de Jiayu.es, esta aplicación te mostrará el modelo exacto con la nomenclatura que podrás encontrar en nuestra web www.jiayu.es, también dispones de los botones de DESCARGAS y ACCESORIOS que te llevarán al contenido específico para tu modelo de Jiayu" />
+	        android:text="@+string/bienvenida" />
 
 	    <TextView
 	        android:id="@+id/textView1"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:paddingTop="@dimen/margin20dp"
-	        android:text="Modelo: "
 	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 	    <TextView
@@ -48,7 +47,6 @@
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:paddingBottom="@dimen/margin20dp"
-	        android:text="Compilación: "
 	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 	    <TextView
@@ -61,13 +59,13 @@
 	        android:id="@+id/button1"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:text="DESCARGAS" />
+	        android:text="@+string/descargas" />
 
 	    <Button
 	        android:id="@+id/button2"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:text="ACCESORIOS" />
+	        android:text="@+string/accesorios" />
 
 	    <TextView
 	        android:id="@+id/textView4"
