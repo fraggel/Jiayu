@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">佳域</string>
+    <string name="bienvenida">欢迎佳域实施, 这个应用程序将显示的确切型号的命名，你可以找到在网络上www.jiayu.es,你按住按钮附件下载，带你到你的模型的具体内容佳域。</string>
+    <string name="descargas">下载</string>
+    <string name="accesorios">饰品</string>
+    <string name="title_activity_browser">佳域下载</string>
+    <string name="cancelar">取消</string>
+    <string name="aceptar">接受</string>
+    <string name="msgNoFirefox"> Firefox也没有安装， MEGA下载文件您需要安装火狐, 你要安装Firefox吗？</string>
+    <string name="msgAyudaFirefox">当窗口，你必须点击桌面MEGA版，在左下角，加载MEGA PC版下载成功。</string>
+    <string name="msgComprobarVersion">有一个新版本的应用程序</string>
+    <string name="msgPreguntaVersion">你想下载呢？</string>
+    <string name="msgCompilacion">编译:</string>
+    <string name="msgModelo">模型:</string>
+    <string name="msgIdentificado1">确定为</string>
+    <string name="msgIdentificado2">,虽然该设备的信息还没有表示的生产佳域</string>
+    <string name="msgTerminalNoJiayu">该设备不是佳域</string>
+    <string name="msgErrorIdentificar">这是一个错误，不可能检测到模型佳域的.</string>
+
+</resources>

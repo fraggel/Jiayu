@@ -2,21 +2,22 @@
 <resources>
 
     <string name="app_name">Jiayu</string>
-    <string name="bienvenida">Welcome to Jiayu.es application, this application will show the exact model with the nomenclature that you can find on our website www.jiayu.es also hold the buttons ACCESSORIES and DOWNLOADS take you to the specific content for your Jiayu model</string>
-    <string name="descargas">DOWNLOADS</string>
-    <string name="accesorios">ACCESSORIES</string>
-    <string name="title_activity_browser">Downloads Jiayu</string>
+    <string name="bienvenida">Welcome to the Jiayu App. This application will show your exact model with the nomenclature you will find on www.jiayu.es . Click on Downloads and Accessories to access to specific content for your Jiayu model.</string>
+    <string name="descargas">Downloads</string>
+    <string name="accesorios">Accessories</string>
+    <string name="title_activity_browser">Jiayu Downloads</string>
     <string name="cancelar">Cancel</string>
     <string name="aceptar">Accept</string>
-    <string name="msgNoFirefox">Firefox isn´t installed, for the correct download from MEGA need to install Firefox, ¿Do you want to install Firefox?</string>
-    <string name="msgAyudaFirefox">When the window appears you must click on Desktop Version, in the bottom left, to load MEGA as PC version and download successfully the content</string>
-    <string name="msgComprobarVersion">There is a new version of the application</string>
-    <string name="msgPreguntaVersion">¿Do you want to download it?</string>
-	<string name="msgCompilacion">Build.prop compilation: </string>
-	<string name="msgModelo">Model: </string>
-	<string name="msgIdentificado1">Identified as </string>
-	<string name="msgIdentificado2">, but your build.prop as a manufacturer does not indicate JIAYU</string>
-	<string name="msgTerminalNoJiayu">Your phone is not Jiayu</string>
-	<string name="msgErrorIdentificar">An error prevents detect your Jiayu model</string>
-	
+    <string name="msgNoFirefox">Firefox is not installed. For a correct download from MEGA it is necessary, ¿Install now?</string>
+    <string name="msgAyudaFirefox">Once Mega runs, click Desktop Version on the bottom left side . Mega will then load on it´s Pc version and download will be successful. </string>
+    <string name="msgComprobarVersion">New version available</string>
+    <string name="msgPreguntaVersion">¿Download?</string>
+    <string name="msgCompilacion">Compilation: </string>
+    <string name="msgModelo">Model: </string>
+    <string name="msgIdentificado1">Identified as </string>
+    <string name="msgIdentificado2">, although on the device information Jiayu is not indicated as the manufacturer </string>
+    <string name="msgTerminalNoJiayu">This mobile phone is not Jiayu</string>
+    <string name="msgErrorIdentificar">An error has occurred. It´s not possible to detect your Jiayu model</string>
+    <string name="action_update">Check Updates</string>
+	<string name="action_about">About...</string>
 </resources>

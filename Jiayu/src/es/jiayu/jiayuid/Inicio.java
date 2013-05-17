@@ -22,6 +22,8 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -39,6 +41,7 @@ public class Inicio extends Activity implements AsyncResponse{
 	String G2SCNJB[]={"20121231-121619","20130114-095647"};
 	String G2DCICS[]={"20120823-182434","20120830-142135","20120910-132127"};
 	String G2DCJB[]={"20130118-115623"};
+	String G2DCNICS[]={"20130413-113742"};
 	String G2DCPVICS[]={"20120914-174725","20121017-121813"};
 	String G2DCPVJB[]={"20130118-102229"};
 	String G2DCPVNICS[]={"20130308-110158"};
@@ -132,6 +135,12 @@ public class Inicio extends Activity implements AsyncResponse{
 				String array_element = G2DCJB[i];
 				if(array_element.indexOf(id)!=-1){
 					modelo="G2DC";
+				}	
+			}
+	        for (int i = 0; i < G2DCNICS.length; i++) {
+				String array_element = G2DCNICS[i];
+				if(array_element.indexOf(id)!=-1){
+					modelo="G2DCN";
 				}	
 			}
 	        
@@ -326,7 +335,7 @@ public class Inicio extends Activity implements AsyncResponse{
 						    	}else{
 						    		chip="INDEFINIDO";
 						    	}
-						    	boolean levantadoB=levantarBlueTooth();
+						    	/*boolean levantadoB=levantarBlueTooth();
 						    	boolean levantadoW=LevantarWifi();
 						    	
 						    	if("MT6628".equals(chip)){
@@ -339,7 +348,7 @@ public class Inicio extends Activity implements AsyncResponse{
 						    			chip="MT6628";
 						    		}
 								}
-						    	
+						    	*/
 						    	ram=getTotalRAM();
 						    	int ramInt=(Integer.parseInt(ram)/1000);
 						    	if(ramInt<=290 && ramInt>=200){
@@ -361,13 +370,13 @@ public class Inicio extends Activity implements AsyncResponse{
 						    				model="";
 						    			}
 						    		}else if("mt6589".equals(procesador.toLowerCase())){
-						    			/*if("1GB".equals(ram)){
+						    			if("1GB".equals(ram)){
 						    				model="G4";
 						    			}else if("2GB".equals(ram)){
 						    				model="G4A";
 						    			}else{
 						    				model="";
-						    			}*/
+						    			}
 						    		}
 						    	}else if(width==540){
 						    		/*if("mt6577".equals(procesador.toLowerCase())){
@@ -396,7 +405,14 @@ public class Inicio extends Activity implements AsyncResponse{
 							    				model="";
 							    			}
 						    			}else if("1GB".equals(ram)){
-						    				model="G2DC";
+						    				if("MT6628".equals(chip)){
+						    					model="G2DCN";
+						    				}else if("MT6620".equals(chip)){
+						    					model="G2DC";
+						    				}else{
+							    				model="";
+							    			}
+						    				
 						    			}else{
 						    				model="";
 						    			}
@@ -616,5 +632,22 @@ public class Inicio extends Activity implements AsyncResponse{
 					}
 				});
 		dialog.show();
+	}
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.menu, menu);
+		return true;
+	}
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+		switch(item.getItemId()){
+		case R.id.action_update:
+			return true;
+		case R.id.action_about:
+			return true;
+		default:
+			return super.onMenuItemSelected(featureId, item);
+				
+		}
 	}
 }

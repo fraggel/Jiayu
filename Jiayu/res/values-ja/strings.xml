@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Jiayu</string>
+    <string name="bienvenida">Jiayuのアプリケーションへようこそ。このアプリケーションでは、www.jiayu.esに見つける命名にあなたの正確なモデルが表示されます。あなたのJiayuのモデルの特定のコンテンツにアクセスするためにダウンロードし、アクセサリーをクリックします。</string>
+    <string name="descargas">ダウンロード</string>
+    <string name="accesorios">アクセサリー</string>
+    <string name="title_activity_browser">ジアユのダウンロード</string>
+    <string name="cancelar">キャンセル</string>
+    <string name="aceptar">アクセプト</string>
+    <string name="msgNoFirefox">FirefoxはMEGAから正しいダウンロードにインストールされていないことは、Firefoxをインストールする必要があります, インストールしますか？</string>
+    <string name="msgAyudaFirefox">ときウィンドウあなたはPC版とダウンロードが成功したとして、MEGAをロードするために、左下に、デスクトップMEGAバージョンをクリックする必要があります。</string>
+    <string name="msgComprobarVersion">アプリケーションの新しいバージョンがあります</string>
+    <string name="msgPreguntaVersion">ダウンロードしますか？</string>
+	<string name="msgCompilacion">コンパイル： </string>
+	<string name="msgModelo">モデル: </string>
+	<string name="msgIdentificado1">Identificado como </string>
+	<string name="msgIdentificado2">, aunque tu build.prop no indica JIAYU como fabricante</string>
+	<string name="msgTerminalNoJiayu">Tu terminal no es Jiayu</string>
+	<string name="msgErrorIdentificar">Un error evita detectar tu modelo de Jiayu</string>
+</resources>
