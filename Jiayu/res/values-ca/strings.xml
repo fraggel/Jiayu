@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><resources><string name="app_name">Jiayu</string>
+<string name="bienvenida"> Benvingut a l\'aplicació de Jiayu, esta aplicació et mostrarà el model exacte amb la nomenclatura que podràs trobar en la web www.jiayu.es, disposes dels botons DESCÀRREGUES i ACCESSORIS que et portaran al contingut específic per al teu model de Jiayu.</string>
+<string name="descargas"> DESCÀRREGUES </string>
+<string name="accesorios"> ACCESSORIS </string>
+<string name="title_activity_browser">Descàrregues Jiayu</string>
+<string name="cancelar"> Cancel·lar</string>
+<string name="aceptar">Acceptar</string>
+<string name="msgNoFirefox">Firefox no està instal·lat, per a la correcta descàrrega des de MEGA és necessari instal·lar Firefox, Desitges instal·lar Firefox?</string>
+<string name="msgAyudaFirefox">Quan aparega la finestra de MEGA has de polsar en Desktop Versió, en la part inferior esquerra, per a carregar MEGA com versió PC i que la descàrrega es realitze correctament.</string>
+<string name="msgComprobarVersion"> Hi ha una nova versió de l\'aplicació </string>
+<string name="msgPreguntaVersion"> Desitges descarregar-la?</string>
+<string name="msgCompilacion">Compilació:</string>
+<string name="msgModelo">Model:</string>
+<string name="msgIdentificado1">Identificat com</string>
+<string name="msgIdentificado2">, encara que en la informació del dispositiu no s\'indica JIAYU com a fabricant</string>
+<string name="msgTerminalNoJiayu"> El terminal no és Jiayu</string>
+<string name="msgErrorIdentificar"> S\'ha produït un error,no és possible detectar el model Jiayu</string>
+</resources>

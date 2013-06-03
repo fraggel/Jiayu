@@ -8,7 +8,6 @@ import java.io.RandomAccessFile;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
-import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -18,7 +17,6 @@ import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -62,6 +60,7 @@ public class Inicio extends Activity implements AsyncResponse{
     String urlActualizacion="";
     String fabricante="";
     String compilacion="";
+    
     protected void onCreate(Bundle savedInstanceState) {
        try {
     	    Resources res = this.getResources();
@@ -371,7 +370,13 @@ public class Inicio extends Activity implements AsyncResponse{
 						    			}
 						    		}else if("mt6589".equals(procesador.toLowerCase())){
 						    			if("1GB".equals(ram)){
-						    				model="G4";
+						    				String modelo=Build.MODEL;
+						    				String disp=Build.DISPLAY;
+						    				if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1){
+						    					model="G3S";
+						    				}else{
+						    					model="G4";
+						    				}
 						    			}else if("2GB".equals(ram)){
 						    				model="G4A";
 						    			}else{
