@@ -375,7 +375,7 @@ public class Inicio extends Activity implements AsyncResponse{
 						    				if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1){
 						    					model="G3S";
 						    				}else{
-						    					model="G4";
+						    					model="G4B";
 						    				}
 						    			}else if("2GB".equals(ram)){
 						    				model="G4A";
