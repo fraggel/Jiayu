@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.jiayu.jiayuid"
-    android:versionCode="18"
-    android:versionName="0.78" >
+    android:versionCode="19"
+    android:versionName="0.79" >
 
     <uses-sdk
         android:minSdkVersion="10"
         android:targetSdkVersion="10" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <!-- <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS"/> -->
+    <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS"/>
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />-->
+    <uses-permission android:name="android.permission.CAMERA" />
+ 	<uses-feature android:name="android.hardware.camera" />
+    
 
     <application
         android:allowBackup="true"

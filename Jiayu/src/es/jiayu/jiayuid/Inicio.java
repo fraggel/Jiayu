@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.text.DecimalFormat;
+import java.util.Iterator;
+import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -15,6 +18,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.hardware.Camera.Size;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -372,7 +376,18 @@ public class Inicio extends Activity implements AsyncResponse{
 						    			if("1GB".equals(ram)){
 						    				String modelo=Build.MODEL;
 						    				String disp=Build.DISPLAY;
-						    				if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1){
+						    				android.hardware.Camera cam = android.hardware.Camera.open(1);
+						    				List<Size> supportedPictureSizes = cam.getParameters().getSupportedPictureSizes();
+						    				String result="";
+						    				for (Iterator iterator = supportedPictureSizes
+													.iterator(); iterator
+													.hasNext();) {
+												Size sizes = (Size) iterator.next();
+												result=sizes.height+"X"+sizes.width;
+												
+											}
+						    				cam.release();
+						    				if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
 						    					model="G3QC";
 						    				}else{
 						    					model="G4B";
