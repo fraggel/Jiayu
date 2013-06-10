@@ -393,7 +393,9 @@ public class Inicio extends Activity implements AsyncResponse{
 						    		}else{
 					    				model="";
 					    			}*/
-						    		model="G2S";
+						    		if("mt6577t".equals(procesador.toLowerCase())){
+						    			model="G2S";
+						    		}
 						    	}else if(width==480){
 						    		if("mt6575".equals(procesador.toLowerCase())){
 						    			if(!"G2SC".equals(modelo) && !"G2SCN".equals(modelo)){
