@@ -373,7 +373,7 @@ public class Inicio extends Activity implements AsyncResponse{
 						    				String modelo=Build.MODEL;
 						    				String disp=Build.DISPLAY;
 						    				if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1){
-						    					model="G3S";
+						    					model="G3QC";
 						    				}else{
 						    					model="G4B";
 						    				}
