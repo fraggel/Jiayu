@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.hardware.Camera.Size;
@@ -623,6 +624,11 @@ public class Inicio extends Activity implements AsyncResponse{
 								}
 							});
 					dialog.show();
+			    }else{
+			    	Resources res = this.getResources();
+			    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+					dialog.setMessage(res.getString(R.string.msgLastVersion));
+			    	dialog.show();
 			    }
 			}
 		} catch (Exception e) {
@@ -664,8 +670,18 @@ public class Inicio extends Activity implements AsyncResponse{
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		switch(item.getItemId()){
 		case R.id.action_update:
+			try {
+				nversion=getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+				version=version+nversion;
+			    comprobarVersion(version);
+			} catch (NameNotFoundException e) {
+			}
+    	   
 			return true;
 		case R.id.action_about:
+			Uri uri = Uri.parse("http://www.jiayu.es/");
+			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+			startActivity(intent);
 			return true;
 		default:
 			return super.onMenuItemSelected(featureId, item);

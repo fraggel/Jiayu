@@ -20,4 +20,5 @@
     <string name="msgErrorIdentificar">An error has occurred. It´s not possible to detect your Jiayu model</string>
     <string name="action_update">Check Updates</string>
 	<string name="action_about">About...</string>
+	<string name="msgLastVersion">You already have the latest version</string>
 </resources>

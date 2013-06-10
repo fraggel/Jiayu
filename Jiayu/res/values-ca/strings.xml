@@ -15,4 +15,5 @@
 <string name="msgIdentificado2">, encara que en la informació del dispositiu no s\'indica JIAYU com a fabricant</string>
 <string name="msgTerminalNoJiayu"> El terminal no és Jiayu</string>
 <string name="msgErrorIdentificar"> S\'ha produït un error,no és possible detectar el model Jiayu</string>
+<string name="msgLastVersion">Ja disposes de l'última versió.</string>
 </resources>

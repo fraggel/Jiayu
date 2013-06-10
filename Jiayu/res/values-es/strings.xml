@@ -19,4 +19,5 @@
 	<string name="msgErrorIdentificar">Se ha producido un error,no es posible detectar el modelo Jiayu</string>
 	<string name="action_update">Comprobar Actualizaciones</string>
 	<string name="action_about">Sobre...</string>
+	<string name="msgLastVersion">Ya dispones de la última versión.</string>
 </resources>
