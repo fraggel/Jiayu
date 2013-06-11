@@ -19,4 +19,8 @@
     <string name="msgTerminalNoJiayu">该设备不是佳域</string>
     <string name="msgErrorIdentificar">这是一个错误，不可能检测到模型佳域的.</string>
     <string name="msgLastVersion">我有最新的版本。</string>
+    <string name="action_update"> 检查更新</string>
+	<string name="action_about">关于</string>
+	<string name="action_exit">离开</string>
+
 </resources>

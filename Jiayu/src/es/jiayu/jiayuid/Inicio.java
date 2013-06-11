@@ -36,7 +36,7 @@ public class Inicio extends Activity implements AsyncResponse{
 	VersionThread asyncTask=new VersionThread();
 	
 	String nversion="";
-	String version="Jiayu.es ";
+	String version="";
 	String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -70,6 +70,7 @@ public class Inicio extends Activity implements AsyncResponse{
        try {
     	    Resources res = this.getResources();
     	    nversion=getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+    	    version="Jiayu.es ";
     	    version=version+nversion;
 	    	super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_inicio);
@@ -257,9 +258,12 @@ public class Inicio extends Activity implements AsyncResponse{
     
     private void comprobarVersion(String version2) {
     	try {
-    		asyncTask.execute(version2);	
-		} catch (Exception e) {
-			// TODO: handle exception
+    		while(!asyncTask.isCancelled()){
+    			asyncTask.cancel(true);
+    		}
+    		asyncTask.execute(version2);
+    	} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
     private void ActualizarVersion(){
@@ -379,16 +383,17 @@ public class Inicio extends Activity implements AsyncResponse{
 						    				String disp=Build.DISPLAY;
 						    				android.hardware.Camera cam = android.hardware.Camera.open(1);
 						    				List<Size> supportedPictureSizes = cam.getParameters().getSupportedPictureSizes();
-						    				String result="";
+						    				int result=-1;
 						    				for (Iterator iterator = supportedPictureSizes
 													.iterator(); iterator
 													.hasNext();) {
 												Size sizes = (Size) iterator.next();
-												result=sizes.height+"X"+sizes.width;
+												result=sizes.width;
 												
 											}
 						    				cam.release();
-						    				if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
+						    				//if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
+						    				if(result!=-1 && result<=1600){
 						    					model="G3QC";
 						    				}else{
 						    					model="G4B";
@@ -670,12 +675,7 @@ public class Inicio extends Activity implements AsyncResponse{
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		switch(item.getItemId()){
 		case R.id.action_update:
-			try {
-				nversion=getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-				version=version+nversion;
-			    comprobarVersion(version);
-			} catch (NameNotFoundException e) {
-			}
+		    comprobarVersion(version);
     	   
 			return true;
 		case R.id.action_about:
@@ -683,6 +683,8 @@ public class Inicio extends Activity implements AsyncResponse{
 			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
 			startActivity(intent);
 			return true;
+		case R.id.action_exit:
+			finish();
 		default:
 			return super.onMenuItemSelected(featureId, item);
 				

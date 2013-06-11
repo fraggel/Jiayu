@@ -14,8 +14,12 @@
     <string name="msgPreguntaVersion">ダウンロードしますか？</string>
 	<string name="msgCompilacion">コンパイル： </string>
 	<string name="msgModelo">モデル: </string>
-	<string name="msgIdentificado1">Identificado como </string>
-	<string name="msgIdentificado2">, aunque tu build.prop no indica JIAYU como fabricante</string>
-	<string name="msgTerminalNoJiayu">Tu terminal no es Jiayu</string>
-	<string name="msgErrorIdentificar">Un error evita detectar tu modelo de Jiayu</string>
+	<string name="msgIdentificado1">メーカーとしてbuild.propはJiayuのを示すものではありませんが</string>
+	<string name="msgIdentificado2"> として識別 </string>
+	<string name="msgTerminalNoJiayu">私の電話はJiayuのではない</string>
+	<string name="msgErrorIdentificar">エラーがJiayuのは、モデルを検出し防止</string>
+	<string name="action_update">更新を確認</string>
+	<string name="action_about">について...</string>
+	<string name="action_exit">去る</string>
+	<string name="msgLastVersion">最新バージョンを持っている。</string>
 </resources>
