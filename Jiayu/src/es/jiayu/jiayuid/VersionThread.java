@@ -1,6 +1,7 @@
 package es.jiayu.jiayuid;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 
@@ -34,13 +35,17 @@ public class VersionThread extends AsyncTask<String, Void, String> {
 		        	isr.close();
 		        }
 	        } catch (Exception e) {
-				// TODO: handle exception
+	        	if(isr!=null){
+		        	try {
+						isr.close();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+		        }
 			}
 	    }
 	    result=result.replaceAll("\t", "").trim();
-	    if(params[0].equals(result)){
-	    	urlActualizacion="";
-	    }
 		return result+"----"+urlActualizacion.trim();
 	}
 	@Override

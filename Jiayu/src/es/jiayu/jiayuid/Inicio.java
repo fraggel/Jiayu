@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.List;
 
@@ -16,7 +15,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.hardware.Camera.Size;
@@ -65,7 +63,7 @@ public class Inicio extends Activity implements AsyncResponse{
     String urlActualizacion="";
     String fabricante="";
     String compilacion="";
-    
+    String newversion="";
     protected void onCreate(Bundle savedInstanceState) {
        try {
     	    Resources res = this.getResources();
@@ -258,14 +256,54 @@ public class Inicio extends Activity implements AsyncResponse{
     
     private void comprobarVersion(String version2) {
     	try {
-    		while(!asyncTask.isCancelled()){
-    			asyncTask.cancel(true);
-    		}
-    		asyncTask.execute(version2);
+   			asyncTask.execute(version2);
     	} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+    private void MenuActualizacion(){
+    	
+    	if(!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", ""))<Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))){
+	    	Resources res = this.getResources();
+	    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+			dialog.setMessage(res.getString(R.string.msgComprobarVersion)+" "+nversion+"->"+newversion+" "+res.getString(R.string.msgPreguntaVersion));
+			dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+					res.getString(R.string.cancelar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+						}
+					});
+			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+					res.getString(R.string.aceptar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+							try {
+								PackageManager pm= getPackageManager();
+								 Intent it = pm.getLaunchIntentForPackage("org.mozilla.firefox");
+								if(it==null){
+									instalarFirefoxActualizacion();
+									
+								}else{
+									ActualizarVersion();
+								}
+							} catch (Exception e) {
+							}
+						}
+					});
+			dialog.show();
+	    }else{
+	    	Resources res = this.getResources();
+	    	AlertDialog dialog = new AlertDialog.Builder(this).create();
+			dialog.setMessage(res.getString(R.string.msgLastVersion));
+			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+					res.getString(R.string.aceptar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+						}
+					});
+	    	dialog.show();
+	    }
+    }
     private void ActualizarVersion(){
     	try {
 	    	Resources res = this.getResources();
@@ -343,20 +381,20 @@ public class Inicio extends Activity implements AsyncResponse{
 						    	}else{
 						    		chip="INDEFINIDO";
 						    	}
-						    	/*boolean levantadoB=levantarBlueTooth();
+						    	boolean levantadoB=levantarBlueTooth();
 						    	boolean levantadoW=LevantarWifi();
 						    	
 						    	if("MT6628".equals(chip)){
-						    		if(!levantadoB || !levantadoW){
+						    		if(!levantadoB && !levantadoW){
 						    			chip="MT6620";
 						    		}
 						    		
 								}else if("MT6620".equals(chip)){
-									if(!levantadoB || !levantadoW){
+									if(!levantadoB && !levantadoW){
 						    			chip="MT6628";
 						    		}
 								}
-						    	*/
+						    	
 						    	ram=getTotalRAM();
 						    	int ramInt=(Integer.parseInt(ram)/1000);
 						    	if(ramInt<=290 && ramInt>=200){
@@ -599,9 +637,9 @@ public class Inicio extends Activity implements AsyncResponse{
 		try {
 			if(output!=null && !"TIMEOUT----".equals(output)){
 				String[] split = output.split("----");
-				String newversion=split[0].split(" ")[1];
+				newversion=split[0].split(" ")[1];
 				urlActualizacion=split[1];
-				if(!"".equals(urlActualizacion) && !nversion.equals(newversion)){
+				if(!"".equals(urlActualizacion) && !nversion.equals(newversion)&& (Float.parseFloat(nversion.replaceAll("Jiayu.es ", ""))<Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))){
 			    	Resources res = this.getResources();
 			    	AlertDialog dialog = new AlertDialog.Builder(this).create();
 					dialog.setMessage(res.getString(R.string.msgComprobarVersion)+" "+nversion+"->"+newversion+" "+res.getString(R.string.msgPreguntaVersion));
@@ -629,11 +667,6 @@ public class Inicio extends Activity implements AsyncResponse{
 								}
 							});
 					dialog.show();
-			    }else{
-			    	Resources res = this.getResources();
-			    	AlertDialog dialog = new AlertDialog.Builder(this).create();
-					dialog.setMessage(res.getString(R.string.msgLastVersion));
-			    	dialog.show();
 			    }
 			}
 		} catch (Exception e) {
@@ -675,13 +708,57 @@ public class Inicio extends Activity implements AsyncResponse{
 	public boolean onMenuItemSelected(int featureId, MenuItem item) {
 		switch(item.getItemId()){
 		case R.id.action_update:
-		    comprobarVersion(version);
-    	   
+			MenuActualizacion();
 			return true;
 		case R.id.action_about:
-			Uri uri = Uri.parse("http://www.jiayu.es/");
-			Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-			startActivity(intent);
+			/*
+			 */
+			/*Resources res=this.getResources();
+			AlertDialog dialog = new AlertDialog.Builder(this).create();
+			dialog.setMessage(Html.fromHtml(res.getString(R.string.msgInfoJiayu)));
+			dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+					res.getString(R.string.VisitarWeb),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+							try {
+								Uri uri = Uri.parse("http://www.jiayu.es/");
+								Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+								startActivity(intent);
+							} catch (Exception e) {
+							}
+						}
+					});
+			dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+					res.getString(R.string.cancelar),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+						}
+					});
+			dialog.setButton(AlertDialog.BUTTON_NEUTRAL,
+					res.getString(R.string.msgEnviarEmail),
+					new DialogInterface.OnClickListener() {
+						public void onClick(DialogInterface dialog, int witch) {
+								Intent i = new Intent(Intent.ACTION_SEND);
+								i.setType("message/rfc822");
+								i.putExtra(Intent.EXTRA_EMAIL,
+										new String[] { "info@jiayu.es" });
+								i.putExtra(Intent.EXTRA_SUBJECT, "");
+								i.putExtra(Intent.EXTRA_TEXT, "");
+								try {
+									Resources res2=getResources();
+									startActivity(Intent.createChooser(i,
+											res2.getString(R.string.msgEnviarEmail)));
+								} catch (android.content.ActivityNotFoundException ex) {
+								}
+							}
+					});
+			dialog.show();*/
+			try {
+	    		Intent intent = new Intent(this, AboutActivity.class);
+				startActivity(intent);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 			return true;
 		case R.id.action_exit:
 			finish();
