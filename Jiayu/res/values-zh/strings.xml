@@ -5,6 +5,7 @@
     <string name="bienvenida">欢迎佳域实施, 这个应用程序将显示的确切型号的命名，你可以找到在网络上www.jiayu.es,你按住按钮附件下载，带你到你的模型的具体内容佳域。</string>
     <string name="descargas">下载</string>
     <string name="accesorios">饰品</string>
+    <string name="videos">视频教程</string>
     <string name="title_activity_browser">佳域下载</string>
     <string name="cancelar">取消</string>
     <string name="aceptar">接受</string>
@@ -34,4 +35,8 @@
 	<string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
 	<string name="about7">+34963556091</string>
 	<string name="msgSubjectInfo">Jiayu.es Info</string>
+	<string name="title_activity_video">视频教程</string>
+	<string name="activandoBTWifi">它激活BT和WiFi终端检查版本</string>
+	<string name="msgSubjectInfo">Jiayu.es Info</string>
+	<string name="title_activity_inicio">引发</string>
 </resources>

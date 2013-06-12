@@ -5,6 +5,7 @@
     <string name="bienvenida">Welcome to the Jiayu App. This application will show your exact model with the nomenclature you will find on www.jiayu.es . Click on Downloads and Accessories to access to specific content for your Jiayu model.</string>
     <string name="descargas">Downloads</string>
     <string name="accesorios">Accessories</string>
+    <string name="videos">Videotutorials</string>
     <string name="title_activity_browser">Jiayu Downloads</string>
     <string name="cancelar">Cancel</string>
     <string name="aceptar">Accept</string>
@@ -27,11 +28,16 @@
     <string name="msgEnviarEmail">Send email</string>
     <string name="title_activity_about">About</string>
     <string name="about1">Distribuidor Ofical en España:</string>
-	<string name="about2">info@jiayu.es</string>
-	<string name="about3">Horario atención telefónica:</string>
-	<string name="about4">9:00 a 14:00 L-V</string>
-	<string name="about5">Localización:</string>
-	<string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
-	<string name="about7">+34963556091</string>
-	<string name="msgSubjectInfo">Jiayu.es Info</string>
+    <string name="about2">info@jiayu.es</string>
+    <string name="about3">Horario atención telefónica:</string>
+    <string name="about4">9:00 a 14:00 L-V</string>
+    <string name="about5">Localización:</string>
+    <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
+    <string name="about7">+34963556091</string>
+    <string name="msgSubjectInfo">Jiayu.es Info</string>
+    <string name="title_activity_video">Videotutoriales</string>
+    <string name="action_settings">Settings</string>
+    <string name="activandoBTWifi">BT and WIFI is activating to indentify yout terminal</string>
+    <string name="title_activity_inicio">Inicio</string>
+
 </resources>

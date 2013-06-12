@@ -5,6 +5,7 @@
     <string name="bienvenida">Jiayuのアプリケーションへようこそ。このアプリケーションでは、www.jiayu.esに見つける命名にあなたの正確なモデルが表示されます。あなたのJiayuのモデルの特定のコンテンツにアクセスするためにダウンロードし、アクセサリーをクリックします。</string>
     <string name="descargas">ダウンロード</string>
     <string name="accesorios">アクセサリー</string>
+    <string name="videos">ビデオチュートリアル</string>
     <string name="title_activity_browser">ジアユのダウンロード</string>
     <string name="cancelar">キャンセル</string>
     <string name="aceptar">アクセプト</string>
@@ -34,4 +35,9 @@
 	<string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
 	<string name="about7">+34963556091</string>
 	<string name="msgSubjectInfo">Jiayu.es Info</string>
+	<string name="title_activity_video">ビデオチュートリアル</string>
+	<string name="activandoBTWifi">それは端末のバージョンをチェックするためにBTとWiFiを有効化され</string>
+	<string name="msgSubjectInfo">Jiayu.es Info</string>
+	<string name="title_activity_inicio">開始</string>
+	
 </resources>

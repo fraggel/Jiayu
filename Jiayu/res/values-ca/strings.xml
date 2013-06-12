@@ -5,6 +5,7 @@
     <string name="bienvenida"> Benvingut a l\'aplicació de Jiayu, esta aplicació et mostrarà el model exacte amb la nomenclatura que podràs trobar en la web www.jiayu.es, disposes dels botons DESCÀRREGUES i ACCESSORIS que et portaran al contingut específic per al teu model de Jiayu.</string>
     <string name="descargas"> DESCÀRREGUES </string>
     <string name="accesorios"> ACCESSORIS </string>
+    <string name="videos">VIDEOTUTORIALES</string>
     <string name="title_activity_browser">Descàrregues Jiayu</string>
     <string name="cancelar"> Cancel·lar</string>
     <string name="aceptar">Acceptar</string>
@@ -34,4 +35,9 @@
 	<string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
 	<string name="about7">+34963556091</string>
 	<string name="msgSubjectInfo">Jiayu.es Info</string>
+	<string name="title_activity_video">Videotutoriales</string>
+	<string name="activandoBTWifi">Se está activando el BT y WIFI para comprobar tu versión de terminal.</string>
+	<string name="msgSubjectInfo">Jiayu.es Info</string>
+	<string name="title_activity_inicio">Inicio</string>
+	
 </resources>
