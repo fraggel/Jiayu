@@ -35,7 +35,9 @@ public class Inicio extends Activity implements AsyncResponse{
 	
 	String nversion="";
 	String version="";
-	String G1[]={"20120330-212553"};
+	//G2DCPV/N,G2DC/N,G3DC/N,G3QC,G4B
+	String url[]={"http://www.jiayu.es/es/jiayu-moviles/10-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/16-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/13-jiayu-g2s.html","","http://www.jiayu.es/es/jiayu-moviles/12-jiayu-g3.html","http://www.jiayu.es/es/jiayu-moviles/17-jiayu-g4.html"};
+	/*String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
 	String G2SCNICS[]={"20120627-220001","20120720-195850","20120817-155307"};
@@ -54,7 +56,7 @@ public class Inicio extends Activity implements AsyncResponse{
 	String G3DCNICS[]={"20130223-071508"};
 	String G3DCNJB[]={""};
 	String G2SICS[]={"20130306-143807"};
-	String G2SJB[]={"20130109-104044"};
+	String G2SJB[]={"20130109-104044"};*/
     ImageButton imageButton;
     Button descargas;
     Button accesorios;
@@ -94,7 +96,7 @@ public class Inicio extends Activity implements AsyncResponse{
 	        t2=(TextView)findViewById(R.id.textView2);
 	        String idd[]=Build.DISPLAY.split("-");
 	        String id=idd[idd.length-1];
-	        for (int i = 0; i < G1.length; i++) {
+	        /*for (int i = 0; i < G1.length; i++) {
 				String array_element = G1[i];
 				if(array_element.indexOf(id)!=-1){
 					modelo="G1 con GB";
@@ -228,7 +230,7 @@ public class Inicio extends Activity implements AsyncResponse{
 				if(array_element.indexOf(id)!=-1){
 					modelo="G2S";
 				}	
-			}
+			}*/
 	        
 	        if("".equals(modelo)){
 	        	calcularTelefono();
