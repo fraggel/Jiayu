@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="es.jiayu.jiayuid"
-    android:versionCode="21"
-    android:versionName="0.81" >
+    android:versionCode="22"
+    android:versionName="0.82" >
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -24,7 +24,6 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="es.jiayu.jiayuid.Inicio"
-            android:label="@string/title_activity_inicio"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
