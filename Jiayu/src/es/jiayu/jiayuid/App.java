@@ -293,7 +293,7 @@ public class App extends Activity implements AsyncResponse{
 						    	}else if(ramInt<=2100 && ramInt>=1700){
 						    		ram="2GB";
 						    	}
-						    	if(width==720 ||(orientation==1 && height==720)){
+						    	if(width==720 ||(orientation==2 && height==720)){
 						    		if("mt6577".equals(procesador.toLowerCase())){
 						    			if("MT6628".equals(chip)){
 						    				model="G3DCN";
@@ -329,7 +329,7 @@ public class App extends Activity implements AsyncResponse{
 						    				model="";
 						    			}
 						    		}
-						    	}else if(width==540 ||(orientation==1 && height==540)){
+						    	}else if(width==540 ||(orientation==2 && height==540)){
 						    		/*if("mt6577".equals(procesador.toLowerCase())){
 						    			if("MT6628".equals(chip)){
 						    				model="G2S";
@@ -342,7 +342,7 @@ public class App extends Activity implements AsyncResponse{
 						    		if("mt6577t".equals(procesador.toLowerCase())){
 						    			model="G2S";
 						    		}
-						    	}else if(width==480 ||(orientation==1 && height==480)){
+						    	}else if(width==480 ||(orientation==2 && height==480)){
 						    		if("mt6575".equals(procesador.toLowerCase())){
 						    			if(!"G2SC".equals(modelo) && !"G2SCN".equals(modelo)){
 						    				model="G2SC o G2SCN";
@@ -372,7 +372,7 @@ public class App extends Activity implements AsyncResponse{
 						    		}else{
 					    				model="";
 					    			}
-						    	}else if(width==320 ||(orientation==1 && height==320)){
+						    	}else if(width==320 ||(orientation==2 && height==320)){
 						    		if("256MB".equals(ram)){
 						    			model="G1";
 						    		}
