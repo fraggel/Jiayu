@@ -38,5 +38,5 @@
 	<string name="activandoBTWifi">Se está activando el BT y WIFI para comprobar tu versión de terminal.</string>
 	<string name="msgSubjectInfo">Jiayu.es Info</string>
 	<string name="title_activity_inicio">Inicio</string>
-	
+	<string name="errorGenerico">Ha ocurrido un error</string>
 </resources>

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 public class AboutActivity extends Activity {
 	Button contacto=null;
@@ -70,7 +71,7 @@ public class AboutActivity extends Activity {
 	 
 			});
     	} catch (Exception e) {
-			// TODO: handle exception
+    		Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 		} 
 	}
 }

@@ -29,6 +29,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class App extends Activity implements AsyncResponse{
 	VersionThread asyncTask=new VersionThread();
@@ -84,8 +85,6 @@ public class App extends Activity implements AsyncResponse{
 	        videotutoriales = (Button) findViewById(R.id.button3);
 	        descargas.setEnabled(false);
 	    	accesorios.setEnabled(false);
-	        ImageButton img=new ImageButton(this);
-	        img=(ImageButton)findViewById(R.id.imageButton1);
 	        TextView t=new TextView(this); 
 	        TextView t2=new TextView(this); 
 	        TextView t4=new TextView(this); 
@@ -125,16 +124,25 @@ public class App extends Activity implements AsyncResponse{
     private String infoBrand() throws IOException {
 		String fabricante=Build.BRAND;
 		String buildprop="";
+		FileInputStream fis=null;
 		if(fabricante.toUpperCase().indexOf("JIAYU")==-1){
-			FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
-        	byte[] input = new byte[fis.available()];
-        	while (fis.read(input) != -1) {}
-        	buildprop += new String(input);	
-        	if(buildprop.toUpperCase().indexOf("JIAYU")!=-1){
-        		fabricante="JIAYU";
-        	}else{
-        		fabricante="TERMINAL NO JIAYU";
-        	}
+			try {
+				fis = new FileInputStream(new File("/system/build.prop"));
+	        	byte[] input = new byte[fis.available()];
+	        	while (fis.read(input) != -1) {}
+	        	buildprop += new String(input);	
+	        	if(buildprop.toUpperCase().indexOf("JIAYU")!=-1){
+	        		fabricante="JIAYU";
+	        	}else{
+	        		fabricante="TERMINAL NO JIAYU";
+	        	}
+	        	fis.close();
+			} catch (Exception e) {
+				if(fis!=null){
+					fis.close();
+				}
+			}
+			
 		}
 		return fabricante.toUpperCase();
 	}
@@ -210,7 +218,7 @@ public class App extends Activity implements AsyncResponse{
 					});
 			dialog.show();
     	} catch (Exception e) {
-			// TODO: handle exception
+    		Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 		}
     }
 	private void recalcularTelefono() {
@@ -232,7 +240,7 @@ public class App extends Activity implements AsyncResponse{
 					    	String ram="";
 					    	String chip="";
 					    	String buildprop = "";
-					    	
+					    	FileInputStream fis =null;
 					    	try {
 					        	DisplayMetrics dm = new DisplayMetrics();
 					        	getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -241,7 +249,7 @@ public class App extends Activity implements AsyncResponse{
 					    		//procesador=Build.HARDWARE;
 					        	procesador=getInfoCPU();
 					    		int orientation = getResources().getConfiguration().orientation;
-					    		FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
+					    		fis = new FileInputStream(new File("/system/build.prop"));
 					        	byte[] input = new byte[fis.available()];
 					        	while (fis.read(input) != -1) {}
 					        	buildprop += new String(input);	
@@ -290,12 +298,10 @@ public class App extends Activity implements AsyncResponse{
 						    			}
 						    		}else if("mt6589".equals(procesador.toLowerCase())){
 						    			if("1GB".equals(ram)){
-						    				String modelo=Build.MODEL;
-						    				String disp=Build.DISPLAY;
 						    				android.hardware.Camera cam = android.hardware.Camera.open(1);
 						    				List<Size> supportedPictureSizes = cam.getParameters().getSupportedPictureSizes();
 						    				int result=-1;
-						    				for (Iterator iterator = supportedPictureSizes
+						    				for (Iterator<Size> iterator = supportedPictureSizes
 													.iterator(); iterator
 													.hasNext();) {
 												Size sizes = (Size) iterator.next();
@@ -368,6 +374,7 @@ public class App extends Activity implements AsyncResponse{
 
 					    	} catch (Exception e) {
 								model=res.getString(R.string.msgErrorIdentificar);
+								fis.close();
 							}
 					    	
 					    	if("".equals(model.trim())){
@@ -435,7 +442,7 @@ public class App extends Activity implements AsyncResponse{
 			  }
 		  }  
 		} catch (Exception e) {
-			// TODO: handle exception
+			Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 		}
 		return total;
 	}
@@ -482,7 +489,7 @@ public class App extends Activity implements AsyncResponse{
 	 
 			});
     	} catch (Exception e) {
-			// TODO: handle exception
+    		Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 		} 
  
 	}
@@ -492,7 +499,7 @@ public class App extends Activity implements AsyncResponse{
 			intent.putExtra("modelo", modelo);
 			startActivity(intent);
 		} catch (Exception e) {
-			// TODO: handle exception
+			Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 		}
 	}
     public void openBrowserVideo(View v) {
@@ -501,10 +508,10 @@ public class App extends Activity implements AsyncResponse{
     		Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
     		startActivity(myIntent);
 		} catch (Exception e) {
-			// TODO: handle exception
+			Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 		}
 	}
-    public static String getTotalRAM() {
+    public static String getTotalRAM() throws Exception {
         RandomAccessFile reader = null;
         String load = null;
         try {
@@ -514,14 +521,17 @@ public class App extends Activity implements AsyncResponse{
             int indexOf = load.indexOf(":");
             int indexOf2 = load.toLowerCase().indexOf("kb");
             load=load.substring(indexOf+1,indexOf2);
+            reader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
-            // Streams.close(reader);
+        	if(reader!=null){
+        		reader.close();
+        	}
         }
         return load.trim();
     }
-    public static String getInfoCPU() {
+    public static String getInfoCPU() throws Exception{
         RandomAccessFile reader = null;
         String load = "";
         try {
@@ -536,10 +546,13 @@ public class App extends Activity implements AsyncResponse{
             int indexOf = load.indexOf(":");
             int indexOf2 = load.length();
             load=load.substring(indexOf+1,indexOf2);
+            reader.close();
         } catch (IOException ex) {
             ex.printStackTrace();
         } finally {
-            // Streams.close(reader);
+        	if(reader!=null){
+        		reader.close();
+        	}
         }
         return load.trim();
     }
@@ -582,7 +595,7 @@ public class App extends Activity implements AsyncResponse{
 			    }
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 		}
 	}
 	private void instalarFirefoxActualizacion() {
@@ -627,7 +640,7 @@ public class App extends Activity implements AsyncResponse{
 	    		Intent intent = new Intent(this, AboutActivity.class);
 				startActivity(intent);
 			} catch (Exception e) {
-				// TODO: handle exception
+				Toast.makeText(getBaseContext(), getResources().getString(R.string.errorGenerico), Toast.LENGTH_SHORT).show();
 			}
 			return true;
 		case R.id.action_exit:

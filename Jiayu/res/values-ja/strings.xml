@@ -38,5 +38,5 @@
 	<string name="activandoBTWifi">それは端末のバージョンをチェックするためにBTとWiFiを有効化され</string>
 	<string name="msgSubjectInfo">Jiayu.es Info</string>
 	<string name="title_activity_inicio">開始</string>
-	
+	<string name="errorGenerico">Error occurred</string>
 </resources>

@@ -38,4 +38,5 @@
 	<string name="activandoBTWifi">它激活BT和WiFi终端检查版本</string>
 	<string name="msgSubjectInfo">Jiayu.es Info</string>
 	<string name="title_activity_inicio">引发</string>
+	<string name="errorGenerico">Error occurred</string>
 </resources>
