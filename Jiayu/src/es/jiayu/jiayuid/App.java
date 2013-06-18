@@ -224,21 +224,7 @@ public class App extends Activity implements AsyncResponse{
 
 	private void calcularTelefono(){
 		Resources res = this.getResources();
-    	/*
-    	AlertDialog dialog = new AlertDialog.Builder(this).create();
-		dialog.setMessage(res.getString(R.string.msgComprobarVersion));
-		dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-				res.getString(R.string.cancelar),
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int witch) {
-						modelo="Se ha cancelado la detección del modelo Jiayu";
-					}
-				});
-		dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-				res.getString(R.string.aceptar),
-				new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int witch) {*/
-						try {
+    					try {
 
 					    	int height = 0;
 					    	int width = 0;
@@ -348,7 +334,7 @@ public class App extends Activity implements AsyncResponse{
 						    				model="G2SC o G2SCN";
 						    			}
 						    		}else if("mt6577".equals(procesador.toLowerCase())){
-						    			//FALTA EL TD
+						    			//FALTA EL Jiayu G2TD
 						    			if("512MB".equals(ram)){
 						    				if("MT6628".equals(chip)){
 						    					model="G2DCPVN";
