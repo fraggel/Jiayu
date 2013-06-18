@@ -29,6 +29,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class App extends Activity implements AsyncResponse{
 	VersionThread asyncTask=new VersionThread();
@@ -36,7 +37,7 @@ public class App extends Activity implements AsyncResponse{
 	String nversion="";
 	String version="";
 	//G2DCPV/N,G2DC/N,G3DC/N,G3QC,G4B
-	String url[]={"http://www.jiayu.es/es/jiayu-moviles/10-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/16-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/13-jiayu-g2s.html","","http://www.jiayu.es/es/jiayu-moviles/12-jiayu-g3.html","http://www.jiayu.es/es/jiayu-moviles/17-jiayu-g4.html"};
+	//String url[]={"http://www.jiayu.es/es/jiayu-moviles/10-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/16-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/13-jiayu-g2s.html","","http://www.jiayu.es/es/jiayu-moviles/12-jiayu-g3.html","http://www.jiayu.es/es/jiayu-moviles/17-jiayu-g4.html"};
 	/*String G1[]={"20120330-212553"};
 	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
 	String G2SCJB[]={"20121231-120925","20130109-091634"};
@@ -210,8 +211,8 @@ public class App extends Activity implements AsyncResponse{
 					});
 			dialog.show();
     	} catch (Exception e) {
-			// TODO: handle exception
-		}
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.genericError),Toast.LENGTH_SHORT);
+        }
     }
 	private void recalcularTelefono() {
 		calcularTelefono();
@@ -435,7 +436,7 @@ public class App extends Activity implements AsyncResponse{
 			  }
 		  }  
 		} catch (Exception e) {
-			// TODO: handle exception
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.genericError),Toast.LENGTH_SHORT);
 		}
 		return total;
 	}
@@ -482,7 +483,7 @@ public class App extends Activity implements AsyncResponse{
 	 
 			});
     	} catch (Exception e) {
-			// TODO: handle exception
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.genericError),Toast.LENGTH_SHORT);
 		} 
  
 	}
@@ -492,7 +493,7 @@ public class App extends Activity implements AsyncResponse{
 			intent.putExtra("modelo", modelo);
 			startActivity(intent);
 		} catch (Exception e) {
-			// TODO: handle exception
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.genericError),Toast.LENGTH_SHORT);
 		}
 	}
     public void openBrowserVideo(View v) {
@@ -501,7 +502,7 @@ public class App extends Activity implements AsyncResponse{
     		Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
     		startActivity(myIntent);
 		} catch (Exception e) {
-			// TODO: handle exception
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.genericError),Toast.LENGTH_SHORT);
 		}
 	}
     public static String getTotalRAM() {
@@ -582,7 +583,7 @@ public class App extends Activity implements AsyncResponse{
 			    }
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.genericError),Toast.LENGTH_SHORT);
 		}
 	}
 	private void instalarFirefoxActualizacion() {
@@ -627,7 +628,7 @@ public class App extends Activity implements AsyncResponse{
 	    		Intent intent = new Intent(this, AboutActivity.class);
 				startActivity(intent);
 			} catch (Exception e) {
-				// TODO: handle exception
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.genericError),Toast.LENGTH_SHORT);
 			}
 			return true;
 		case R.id.action_exit:
