@@ -9,19 +9,19 @@ import android.widget.Toast;
 
 public class Inicio extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_inicio);
-	    Handler handler = new Handler();
-	    Resources res=getResources();
-	    Toast.makeText(getApplicationContext(), res.getString(R.string.activandoBTWifi), Toast.LENGTH_SHORT).show();
-	    handler.postDelayed(new Runnable() {
-	        public void run() {
-	            finish();
-	            Intent i3 = new Intent(getApplicationContext(),App.class);
-	            startActivity(i3);
-	        }
-	    }, 500);
-	}
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_inicio);
+        Handler handler = new Handler();
+        Resources res = getResources();
+        Toast.makeText(getBaseContext(), res.getString(R.string.activandoBTWifi), Toast.LENGTH_SHORT).show();
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                finish();
+                Intent i3 = new Intent(getApplicationContext(), App.class);
+                startActivity(i3);
+            }
+        }, 500);
+    }
 }

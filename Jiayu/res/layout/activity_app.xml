@@ -1,82 +1,84 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-	    xmlns:tools="http://schemas.android.com/tools"
-	    android:layout_width="fill_parent"
-		android:layout_height="fill_parent" 
-		android:scrollbars="horizontal">
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="horizontal">
 
-	<LinearLayout
-	    android:id="@+id/LinearLayout1"
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_margin="0dp"
-	    android:layout_marginBottom="0dp"
-	    android:layout_marginLeft="0dp"
-	    android:layout_marginRight="0dp"
-	    android:layout_marginTop="0dp"
-	    android:orientation="vertical"
-	    android:paddingBottom="0dp"
-	    android:paddingLeft="0dp"
-	    android:paddingRight="0dp"
-	    android:paddingTop="0dp"
-	    tools:context=".Inicio2" >
+    <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical"
+            android:paddingBottom="0dp"
+            android:paddingLeft="0dp"
+            android:paddingRight="0dp"
+            android:paddingTop="0dp"
+            tools:context=".Inicio2">
 
-	    <ImageButton
-	        android:id="@+id/imageButton1"
-	        android:layout_width="fill_parent"
-	        android:layout_height="fill_parent"
-	        android:scaleType="fitCenter"
-	        android:src="@drawable/jiayueslogo" android:contentDescription="Jiayu.es"/>
+        <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:scaleType="fitCenter"
+                android:src="@drawable/jiayueslogo"
+                android:contentDescription="Jiayu.es"/>
 
-	    <TextView
-	        android:id="@+id/textView3"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:paddingLeft="@dimen/activity_vertical_margin"
-	        android:paddingRight="@dimen/activity_horizontal_margin"
-	        android:text="@+string/bienvenida" />
+        <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/bienvenida"/>
 
-	    <TextView
-	        android:id="@+id/textView1"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:paddingTop="@dimen/margin20dp"
-	        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/margin20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-	    <TextView
-	        android:id="@+id/textView2"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:paddingBottom="@dimen/margin20dp"
-	        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/margin20dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-	    <TextView
-	        android:id="@+id/textView5"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
 
-	    <Button
-	        android:id="@+id/button1"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:text="@+string/descargas" />
+        <Button
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/descargas"/>
 
-	    <Button
-	        android:id="@+id/button2"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:text="@+string/accesorios" />
-	    <Button
-	        android:id="@+id/button3"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:text="@+string/videos" />
+        <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/accesorios"/>
 
-	    <TextView
-	        android:id="@+id/textView4"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:textAppearance="?android:attr/textAppearanceSmall" />
-	</LinearLayout>
+        <Button
+                android:id="@+id/button3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/videos"/>
+
+        <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"/>
+    </LinearLayout>
 
 </ScrollView>

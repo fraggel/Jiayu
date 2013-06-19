@@ -2,41 +2,60 @@
 <resources>
 
     <string name="app_name">Jiayu</string>
-    <string name="bienvenida"> Benvingut a l\'aplicació de Jiayu, esta aplicació et mostrarà el model exacte amb la nomenclatura que podràs trobar en la web www.jiayu.es, disposes dels botons DESCÀRREGUES i ACCESSORIS que et portaran al contingut específic per al teu model de Jiayu.</string>
-    <string name="descargas"> DESCÀRREGUES </string>
-    <string name="accesorios"> ACCESSORIS </string>
+    <string name="bienvenida">Benvingut a l\'aplicació de Jiayu, esta aplicació et mostrarà el model
+        exacte amb la nomenclatura que podràs trobar en la web www.jiayu.es, disposes dels botons
+        DESCÀRREGUES i ACCESSORIS que et portaran al contingut específic per al teu model de Jiayu.
+    </string>
+    <string name="descargas">DESCÀRREGUES</string>
+    <string name="accesorios">ACCESSORIS</string>
     <string name="videos">VIDEOTUTORIALES</string>
     <string name="title_activity_browser">Descàrregues Jiayu</string>
-    <string name="cancelar"> Cancel·lar</string>
+    <string name="cancelar">Cancel·lar</string>
     <string name="aceptar">Acceptar</string>
-    <string name="msgNoFirefox">Firefox no està instal·lat, per a la correcta descàrrega des de MEGA és necessari instal·lar Firefox, Desitges instal·lar Firefox?</string>
-    <string name="msgAyudaFirefox">Quan aparega la finestra de MEGA has de polsar en Desktop Versió, en la part inferior esquerra, per a carregar MEGA com versió PC i que la descàrrega es realitze correctament.</string>
-    <string name="msgComprobarVersion"> Hi ha una nova versió de l\'aplicació </string>
-    <string name="msgPreguntaVersion"> Desitges descarregar-la?</string>
+    <string name="msgNoFirefox">Firefox no està instal·lat, per a la correcta descàrrega des de MEGA
+        és necessari instal·lar Firefox, Desitges instal·lar Firefox?
+    </string>
+    <string name="msgAyudaFirefox">Quan aparega la finestra de MEGA has de polsar en Desktop Versió,
+        en la part inferior esquerra, per a carregar MEGA com versió PC i que la descàrrega es
+        realitze correctament.
+    </string>
+    <string name="msgComprobarVersion">Hi ha una nova versió de l\'aplicació</string>
+    <string name="msgPreguntaVersion">Desitges descarregar-la?</string>
     <string name="msgCompilacion">Compilació:</string>
     <string name="msgModelo">Model:</string>
     <string name="msgIdentificado1">Identificat com</string>
-    <string name="msgIdentificado2">, encara que en la informació del dispositiu no s\'indica JIAYU com a fabricant</string>
-    <string name="msgTerminalNoJiayu"> El terminal no és Jiayu</string>
-    <string name="msgErrorIdentificar"> S\'ha produït un error,no és possible detectar el model Jiayu</string>
+    <string name="msgIdentificado2">, encara que en la informació del dispositiu no s\'indica JIAYU
+        com a fabricant
+    </string>
+    <string name="msgTerminalNoJiayu">El terminal no és Jiayu</string>
+    <string name="msgErrorIdentificar">S\'ha produït un error,no és possible detectar el model
+        Jiayu
+    </string>
     <string name="action_update">Comprovar Actualitzacions</string>
-	<string name="action_about">Sobre...</string>
-	<string name="action_exit">Sortir</string>
+    <string name="action_about">Sobre...</string>
+    <string name="action_exit">Sortir</string>
     <string name="msgLastVersion">Ja disposes de l\'última versió.</string>
-	<string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091</string>
-	<string name="VisitarWeb">Visitar Web</string>
-	<string name="msgEnviarEmail">Enviar email</string>
-	<string name="title_activity_about">About</string>
-	<string name="about1">Distribuidor Ofical en España:</string>
-	<string name="about2">info@jiayu.es</string>
-	<string name="about3">Horario atención telefónica:</string>
-	<string name="about4">9:00 a 14:00 L-V</string>
-	<string name="about5">Localización:</string>
-	<string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
-	<string name="about7">+34963556091</string>
-	<string name="title_activity_video">Videotutoriales</string>
-	<string name="activandoBTWifi">Se está activando el BT y WIFI para comprobar tu versión de terminal.</string>
-	<string name="msgSubjectInfo">Jiayu.es Info</string>
-	<string name="title_activity_inicio">Inicio</string>
+    <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
+        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
+        telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
+        Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
+    </string>
+    <string name="VisitarWeb">Visitar Web</string>
+    <string name="msgEnviarEmail">Enviar email</string>
+    <string name="title_activity_about">About</string>
+    <string name="about1">Distribuidor Ofical en España:</string>
+    <string name="about2">info@jiayu.es</string>
+    <string name="about3">Horario atención telefónica:</string>
+    <string name="about4">9:00 a 14:00 L-V</string>
+    <string name="about5">Localización:</string>
+    <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)
+    </string>
+    <string name="about7">+34963556091</string>
+    <string name="title_activity_video">Videotutoriales</string>
+    <string name="activandoBTWifi">Se está activando el BT y WIFI para comprobar tu versión de
+        terminal.
+    </string>
+    <string name="msgSubjectInfo">Jiayu.es Info</string>
+    <string name="title_activity_inicio">Inicio</string>
     <string name="genericError">Ha ocurrido un error</string>
 </resources>

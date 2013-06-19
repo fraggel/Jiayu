@@ -2,28 +2,43 @@
 <resources>
 
     <string name="app_name">Jiayu</string>
-    <string name="bienvenida">Welcome to the Jiayu App. This application will show your exact model with the nomenclature you will find on www.jiayu.es . Click on Downloads and Accessories to access to specific content for your Jiayu model.</string>
+    <string name="bienvenida">Welcome to the Jiayu App. This application will show your exact model
+        with the nomenclature you will find on www.jiayu.es . Click on Downloads and Accessories to
+        access to specific content for your Jiayu model.
+    </string>
     <string name="descargas">Downloads</string>
     <string name="accesorios">Accessories</string>
     <string name="videos">Videotutorials</string>
     <string name="title_activity_browser">Jiayu Downloads</string>
     <string name="cancelar">Cancel</string>
     <string name="aceptar">Accept</string>
-    <string name="msgNoFirefox">Firefox is not installed. For a correct download from MEGA it is necessary, ¿Install now?</string>
-    <string name="msgAyudaFirefox">Once Mega runs, click Desktop Version on the bottom left side . Mega will then load on it´s Pc version and download will be successful. </string>
+    <string name="msgNoFirefox">Firefox is not installed. For a correct download from MEGA it is
+        necessary, ¿Install now?
+    </string>
+    <string name="msgAyudaFirefox">Once Mega runs, click Desktop Version on the bottom left side .
+        Mega will then load on it´s Pc version and download will be successful.
+    </string>
     <string name="msgComprobarVersion">New version available</string>
     <string name="msgPreguntaVersion">¿Download?</string>
-    <string name="msgCompilacion">Compilation: </string>
-    <string name="msgModelo">Model: </string>
-    <string name="msgIdentificado1">Identified as </string>
-    <string name="msgIdentificado2">, although on the device information Jiayu is not indicated as the manufacturer </string>
+    <string name="msgCompilacion">Compilation:</string>
+    <string name="msgModelo">Model:</string>
+    <string name="msgIdentificado1">Identified as</string>
+    <string name="msgIdentificado2">, although on the device information Jiayu is not indicated as
+        the manufacturer
+    </string>
     <string name="msgTerminalNoJiayu">This mobile phone is not Jiayu</string>
-    <string name="msgErrorIdentificar">An error has occurred. It´s not possible to detect your Jiayu model</string>
+    <string name="msgErrorIdentificar">An error has occurred. It´s not possible to detect your Jiayu
+        model
+    </string>
     <string name="action_update">Check Updates</string>
     <string name="action_about">About</string>
     <string name="action_exit">Exit</string>
     <string name="msgLastVersion">You already have the latest version</string>
-    <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091</string>
+    <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
+        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
+        telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
+        Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
+    </string>
     <string name="VisitarWeb">Visit Web</string>
     <string name="msgEnviarEmail">Send email</string>
     <string name="title_activity_about">About</string>
@@ -32,7 +47,8 @@
     <string name="about3">Horario atención telefónica:</string>
     <string name="about4">9:00 a 14:00 L-V</string>
     <string name="about5">Localización:</string>
-    <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
+    <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)
+    </string>
     <string name="about7">+34963556091</string>
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="title_activity_video">Videotutoriales</string>
