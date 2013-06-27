@@ -46,4 +46,8 @@
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="title_activity_inicio">引发</string>
     <string name="genericError">失败</string>
+    <string name="foro">Forum</string>
+    <string name="mensajeTapaTalk">You can find us on TAPATALK too! Jiayu.es</string>
+    <string name="iniciandoDescarga">Download begin</string>
+    <string name="terminadaDescarga">Download completed</string>
 </resources>

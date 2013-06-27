@@ -55,4 +55,9 @@
     <string name="activandoBTWifi">BT and WIFI is activating to indentify yout terminal</string>
     <string name="title_activity_inicio">Inicio</string>
     <string name="genericError">Error occurred</string>
+    <string name="foro">Forum</string>
+    <string name="mensajeTapaTalk">You can find us on TAPATALK too! Jiayu.es</string>
+    <string name="iniciandoDescarga">Download begin</string>
+    <string name="terminadaDescarga">Download completed</string>
+
 </resources>

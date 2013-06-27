@@ -3,11 +3,9 @@ package es.jiayu.jiayuid;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.hardware.Camera.Size;
@@ -60,6 +58,7 @@ public class App extends Activity implements AsyncResponse {
 	String G2SJB[]={"20130109-104044"};*/
     ImageButton imageButton;
     Button descargas;
+    Button foro;
     Button accesorios;
     Button videotutoriales;
     String modelo = "";
@@ -84,8 +83,11 @@ public class App extends Activity implements AsyncResponse {
             descargas = (Button) findViewById(R.id.button1);
             accesorios = (Button) findViewById(R.id.button2);
             videotutoriales = (Button) findViewById(R.id.button3);
+            foro = (Button) findViewById(R.id.button4);
             descargas.setEnabled(false);
             accesorios.setEnabled(false);
+            videotutoriales.setEnabled(false);
+            foro.setEnabled(false);
             ImageButton img = new ImageButton(this);
             img = (ImageButton) findViewById(R.id.imageButton1);
             TextView t = new TextView(this);
@@ -107,11 +109,15 @@ public class App extends Activity implements AsyncResponse {
                 recalcularTelefono();
                 descargas.setEnabled(true);
                 accesorios.setEnabled(true);
+                foro.setEnabled(true);
+                videotutoriales.setEnabled(true);
 
             }
             if (modelo.length() < 8) {
                 descargas.setEnabled(true);
                 accesorios.setEnabled(true);
+                foro.setEnabled(true);
+                videotutoriales.setEnabled(true);
                 if (!"JIAYU".equals(fabricante.toUpperCase().trim())) {
                     t5.setTextColor(Color.RED);
                     t5.setText(res.getString(R.string.msgIdentificado1) + modelo + res.getString(R.string.msgIdentificado2));
@@ -167,14 +173,7 @@ public class App extends Activity implements AsyncResponse {
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int witch) {
                             try {
-                                PackageManager pm = getPackageManager();
-                                Intent it = pm.getLaunchIntentForPackage("org.mozilla.firefox");
-                                if (it == null) {
-                                    instalarFirefoxActualizacion();
-
-                                } else {
-                                    ActualizarVersion();
-                                }
+                                ActualizarVersion();
                             } catch (Exception e) {
                                 Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
                             }
@@ -206,9 +205,7 @@ public class App extends Activity implements AsyncResponse {
                         public void onClick(DialogInterface dialog, int witch) {
                             try {
                                 if (!"".equals(urlActualizacion)) {
-                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlActualizacion));
-                                    intent.setComponent(new ComponentName("org.mozilla.firefox", "org.mozilla.firefox.App"));
-                                    startActivity(intent);
+                                    //TODO Descargar con el gestor y abrir desde aquí
                                 }
                             } catch (Exception e) {
                                 Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
@@ -482,6 +479,17 @@ public class App extends Activity implements AsyncResponse {
                 }
 
             });
+            foro = (Button) findViewById(R.id.button4);
+            foro.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View arg0) {
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.mensajeTapaTalk), Toast.LENGTH_LONG).show();
+                    Uri uri = Uri.parse("http://www.foro.jiayu.es");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+
+            });
             videotutoriales = (Button) findViewById(R.id.button3);
             videotutoriales.setOnClickListener(new View.OnClickListener() {
 
@@ -584,14 +592,7 @@ public class App extends Activity implements AsyncResponse {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int witch) {
                                     try {
-                                        PackageManager pm = getPackageManager();
-                                        Intent it = pm.getLaunchIntentForPackage("org.mozilla.firefox");
-                                        if (it == null) {
-                                            instalarFirefoxActualizacion();
-
-                                        } else {
-                                            ActualizarVersion();
-                                        }
+                                        ActualizarVersion();
                                     } catch (Exception e) {
                                         Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
                                     }
@@ -603,34 +604,6 @@ public class App extends Activity implements AsyncResponse {
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
-    }
-
-    private void instalarFirefoxActualizacion() {
-        Resources res = this.getResources();
-        AlertDialog dialog = new AlertDialog.Builder(this).create();
-        dialog.setMessage(res.getString(R.string.msgNoFirefox));
-        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-                res.getString(R.string.cancelar),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int witch) {
-                    }
-                });
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                res.getString(R.string.aceptar),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int witch) {
-                        try {
-                            Intent intent = new Intent(Intent.ACTION_VIEW);
-                            intent.setData(Uri
-                                    .parse("market://details?id=org.mozilla.firefox"));
-                            startActivity(intent);
-                            ActualizarVersion();
-                        } catch (Exception e) {
-                            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-        dialog.show();
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

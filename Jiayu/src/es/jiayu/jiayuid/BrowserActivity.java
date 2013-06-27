@@ -1,18 +1,22 @@
 package es.jiayu.jiayuid;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
-import android.content.DialogInterface;
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class BrowserActivity extends Activity {
     Resources res;
@@ -24,74 +28,45 @@ public class BrowserActivity extends Activity {
         setContentView(R.layout.activity_browser);
         res = this.getResources();
         pm = this.getPackageManager();
-
-        try {
-            Intent it = pm.getLaunchIntentForPackage("org.mozilla.firefox");
-            if (it == null) {
-                instalarFirefox();
-            }
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
-        }
-
+        isDownloadManagerAvailable(getBaseContext());
         Intent intent = getIntent();
         String modelo = intent.getExtras().getString("modelo");
         WebView descargas = (WebView) findViewById(R.id.webView1);
-        descargas.setWebViewClient(new MyWebViewClient());
+        descargas.setWebViewClient(new JiayuWebViewClient());
+        descargas.setDownloadListener(new JiayuDownloadListener());
 
         descargas.loadUrl("http://www.jiayu.es/soporte/appsoft.php?jiayu=" + modelo);
-
     }
+   class JiayuDownloadListener implements DownloadListener {
 
-    private void instalarFirefox() {
-        AlertDialog dialog = new AlertDialog.Builder(this).create();
-        dialog.setMessage(res.getString(R.string.msgNoFirefox));
-        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-                res.getString(R.string.cancelar),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int witch) {
-                        finish();
-                    }
-                });
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                res.getString(R.string.aceptar),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int witch) {
-                        try {
-                            Intent intent = new Intent(Intent.ACTION_VIEW);
-                            intent.setData(Uri
-                                    .parse("market://details?id=org.mozilla.firefox"));
-                            startActivity(intent);
+       public void onDownloadStart(String s, String s2, String s3, String s4, long l) {
 
-                        } catch (Exception e) {
-                            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-        dialog.show();
-    }
+       }
 
-    class MyWebViewClient extends WebViewClient {
+   }
+   class JiayuWebViewClient extends WebViewClient {
 
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             urlDestino = url;
-            if (urlDestino.lastIndexOf("www.jiayu.es") == -1) {
-                AlertDialog dialog = new AlertDialog.Builder(view.getContext()).create();
-                dialog.setMessage(res.getString(R.string.msgAyudaFirefox));
-                dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                        res.getString(R.string.aceptar),
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int witch) {
-                                try {
-                                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(urlDestino));
-                                    intent.setComponent(new ComponentName("org.mozilla.firefox", "org.mozilla.firefox.App"));
-                                    startActivity(intent);
-                                } catch (Exception e) {
-                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        });
-                dialog.show();
+            if (urlDestino.lastIndexOf("/desarrollo/") != -1) {
+                try {
+                    String nombreFichero="";
+                    nombreFichero=urlDestino.split("/")[urlDestino.split("/").length-1];
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlDestino));
+                    request.setDescription(nombreFichero);
+                    request.setTitle(nombreFichero);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                        request.allowScanningByMediaScanner();
+                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    }
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, nombreFichero);
+
+                    DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga)+" "+nombreFichero, Toast.LENGTH_SHORT).show();
+                    manager.enqueue(request);
+                } catch (Exception e) {
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                }
                 return true;
             } else {
                 Uri uri = Uri.parse(urlDestino);
@@ -99,6 +74,21 @@ public class BrowserActivity extends Activity {
                 startActivity(intent);
                 return true;
             }
+        }
+    }
+    public static boolean isDownloadManagerAvailable(Context context) {
+        try {
+            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
+                return false;
+            }
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addCategory(Intent.CATEGORY_LAUNCHER);
+            intent.setClassName("com.android.providers.downloads.ui", "com.android.providers.downloads.ui.DownloadList");
+            List<ResolveInfo> list = context.getPackageManager().queryIntentActivities(intent,
+                    PackageManager.MATCH_DEFAULT_ONLY);
+            return list.size() > 0;
+        } catch (Exception e) {
+            return false;
         }
     }
 }
