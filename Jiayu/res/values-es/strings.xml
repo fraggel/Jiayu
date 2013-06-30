@@ -61,6 +61,6 @@
     <string name="genericError">Ha ocurrido un error</string>
     <string name="foro">FORO</string>
     <string name="mensajeTapaTalk">También puedes encontrarnos en TAPATALK! Jiayu.es</string>
-    <string name="iniciandoDescarga">Descarga Iniciada</string>
+    <string name="iniciandoDescarga">Descarga iniciada</string>
     <string name="terminadaDescarga">Descarga completada</string>
 </resources>

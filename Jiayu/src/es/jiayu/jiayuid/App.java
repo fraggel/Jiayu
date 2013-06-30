@@ -34,28 +34,6 @@ public class App extends Activity implements AsyncResponse {
 
     String nversion = "";
     String version = "";
-    //G2DCPV/N,G2DC/N,G3DC/N,G3QC,G4B
-    //String url[]={"http://www.jiayu.es/es/jiayu-moviles/10-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/16-jiayu-g2.html","http://www.jiayu.es/es/jiayu-moviles/13-jiayu-g2s.html","","http://www.jiayu.es/es/jiayu-moviles/12-jiayu-g3.html","http://www.jiayu.es/es/jiayu-moviles/17-jiayu-g4.html"};
-    /*String G1[]={"20120330-212553"};
-	String G2SCICS[]={"20120514-230501","20120527","20120629-114115","20120710-221105","20120816-201040"};
-	String G2SCJB[]={"20121231-120925","20130109-091634"};
-	String G2SCNICS[]={"20120627-220001","20120720-195850","20120817-155307"};
-	String G2SCNJB[]={"20121231-121619","20130114-095647"};
-	String G2DCICS[]={"20120823-182434","20120830-142135","20120910-132127"};
-	String G2DCJB[]={"20130118-115623"};
-	String G2DCNICS[]={"20130413-113742"};
-	String G2DCPVICS[]={"20120914-174725","20121017-121813"};
-	String G2DCPVJB[]={"20130118-102229"};
-	String G2DCPVNICS[]={"20130308-110158"};
-	String G2DCPVNJB[]={""};
-	String G2DCTDICS[]={"20121225-180316"};
-	String G2DCTDJB[]={""};
-	String G3DCICS[]={"20121025","20121115-084708","20121129-082828"};
-	String G3DCJB[]={"20130116-221844"};
-	String G3DCNICS[]={"20130223-071508"};
-	String G3DCNJB[]={""};
-	String G2SICS[]={"20130306-143807"};
-	String G2SJB[]={"20130109-104044"};*/
     ImageButton imageButton;
     Button descargas;
     Button foro;
@@ -113,6 +91,7 @@ public class App extends Activity implements AsyncResponse {
                 videotutoriales.setEnabled(true);
 
             }
+
             if (modelo.length() < 8) {
                 descargas.setEnabled(true);
                 accesorios.setEnabled(true);
@@ -126,7 +105,7 @@ public class App extends Activity implements AsyncResponse {
             t.setText(res.getString(R.string.msgModelo) + modelo);
             t2.setText(res.getString(R.string.msgCompilacion) + compilacion);
         } catch (Exception e) {
-            e.printStackTrace();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -152,7 +131,7 @@ public class App extends Activity implements AsyncResponse {
         try {
             asyncTask.execute(version2);
         } catch (Exception e) {
-            e.printStackTrace();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -335,8 +314,10 @@ public class App extends Activity implements AsyncResponse {
                     }
                 } else if (width == 480 || (orientation == 2 && height == 480)) {
                     if ("mt6575".equals(procesador.toLowerCase())) {
-                        if (!"G2SC".equals(modelo) && !"G2SCN".equals(modelo)) {
-                            model = "G2SC o G2SCN";
+                        if ((Build.DISPLAY.toUpperCase()).indexOf("G16B")!=-1) {
+                            model="G2SCN";
+                        } else{
+                            model = "G2SC";
                         }
                     } else if ("mt6577".equals(procesador.toLowerCase())) {
                         //FALTA EL Jiayu G2TD
