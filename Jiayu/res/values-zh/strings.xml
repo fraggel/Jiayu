@@ -8,11 +8,10 @@
     <string name="descargas">下载</string>
     <string name="accesorios">饰品</string>
     <string name="videos">视频教程</string>
+    <string name="herrramientas">驱动-工具</string>
     <string name="title_activity_browser">佳域下载</string>
     <string name="cancelar">取消</string>
     <string name="aceptar">接受</string>
-    <string name="msgNoFirefox">Firefox也没有安装， MEGA下载文件您需要安装火狐, 你要安装Firefox吗？</string>
-    <string name="msgAyudaFirefox">当窗口，你必须点击桌面MEGA版，在左下角，加载MEGA PC版下载成功。</string>
     <string name="msgComprobarVersion">有一个新版本的应用程序</string>
     <string name="msgPreguntaVersion">你想下载呢？</string>
     <string name="msgCompilacion">编译:</string>
@@ -45,7 +44,7 @@
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="title_activity_inicio">引发</string>
     <string name="genericError">失败</string>
-    <string name="foro">Forum</string>
+    <string name="foro">论坛</string>
     <string name="mensajeTapaTalk">你可以找到我们上TAPATALK太！ Jiayu.es</string>
     <string name="iniciandoDescarga">下载开始</string>
     <string name="terminadaDescarga">下载完成</string>

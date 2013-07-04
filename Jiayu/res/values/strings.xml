@@ -9,15 +9,10 @@
     <string name="descargas">Downloads</string>
     <string name="accesorios">Accessories</string>
     <string name="videos">Videotutorials</string>
+    <string name="herramientas">Drivers-Tools</string>
     <string name="title_activity_browser">Jiayu Downloads</string>
     <string name="cancelar">Cancel</string>
     <string name="aceptar">Accept</string>
-    <string name="msgNoFirefox">Firefox is not installed. For a correct download from MEGA it is
-        necessary, ¿Install now?
-    </string>
-    <string name="msgAyudaFirefox">Once Mega runs, click Desktop Version on the bottom left side .
-        Mega will then load on it´s Pc version and download will be successful.
-    </string>
     <string name="msgComprobarVersion">New version available</string>
     <string name="msgPreguntaVersion">¿Download?</string>
     <string name="msgCompilacion">Compilation:</string>

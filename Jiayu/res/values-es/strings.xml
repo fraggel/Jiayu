@@ -7,19 +7,13 @@
         los botones DESCARGAS y ACCESORIOS que te llevarán al contenido específico para tu modelo de
         Jiayu.
     </string>
-    <string name="descargas">DESCARGAS</string>
-    <string name="accesorios">ACCESORIOS</string>
-    <string name="videos">VIDEOTUTORIALES</string>
+    <string name="descargas">Descargas</string>
+    <string name="accesorios">Accesorios</string>
+    <string name="videos">Videotutoriales</string>
+    <string name="herrramientas">Drivers-Herramientas</string>
     <string name="title_activity_browser">Descargas Jiayu</string>
     <string name="cancelar">Cancelar</string>
     <string name="aceptar">Aceptar</string>
-    <string name="msgNoFirefox">Firefox no está instalado, para la correcta descarga desde MEGA es
-        necesario instalar Firefox, ¿Deseas instalar Firefox?
-    </string>
-    <string name="msgAyudaFirefox">Cuando aparezca la ventana de MEGA debes pulsar en Desktop
-        Version, en la parte inferior izquierda, para cargar MEGA como version PC y que la descarga
-        se realice correctamente.
-    </string>
     <string name="msgComprobarVersion">Existe una nueva versión de la aplicación</string>
     <string name="msgPreguntaVersion">¿Deseas descargarla?</string>
     <string name="msgCompilacion">Compilación:</string>
@@ -59,7 +53,7 @@
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="title_activity_inicio">Inicio</string>
     <string name="genericError">Ha ocurrido un error</string>
-    <string name="foro">FORO</string>
+    <string name="foro">Foro</string>
     <string name="mensajeTapaTalk">También puedes encontrarnos en TAPATALK! Jiayu.es</string>
     <string name="iniciandoDescarga">Descarga iniciada</string>
     <string name="terminadaDescarga">Descarga completada</string>

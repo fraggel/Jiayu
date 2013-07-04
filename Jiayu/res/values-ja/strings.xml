@@ -8,15 +8,10 @@
     <string name="descargas">ダウンロード</string>
     <string name="accesorios">アクセサリー</string>
     <string name="videos">ビデオチュートリアル</string>
+    <string name="herrramientas">ドライバ-ツール</string>
     <string name="title_activity_browser">ジアユのダウンロード</string>
     <string name="cancelar">キャンセル</string>
     <string name="aceptar">アクセプト</string>
-    <string name="msgNoFirefox">FirefoxはMEGAから正しいダウンロードにインストールされていないことは、Firefoxをインストールする必要があります,
-        インストールしますか？
-    </string>
-    <string name="msgAyudaFirefox">
-        ときウィンドウあなたはPC版とダウンロードが成功したとして、MEGAをロードするために、左下に、デスクトップMEGAバージョンをクリックする必要があります。
-    </string>
     <string name="msgComprobarVersion">アプリケーションの新しいバージョンがあります</string>
     <string name="msgPreguntaVersion">ダウンロードしますか？</string>
     <string name="msgCompilacion">コンパイル：</string>
@@ -49,7 +44,7 @@
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="title_activity_inicio">開始</string>
     <string name="genericError">失敗した</string>
-    <string name="foro">Forum</string>
+    <string name="foro">フォーラム</string>
     <string name="mensajeTapaTalk">あなたがTAPATALKであまりに私たちを見つけることができます！ Jiayu.es</string>
     <string name="iniciandoDescarga">開始のダウンロード</string>
     <string name="terminadaDescarga">完成ダウンロード</string>

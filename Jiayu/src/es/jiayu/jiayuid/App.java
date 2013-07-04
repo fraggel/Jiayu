@@ -2,6 +2,7 @@ package es.jiayu.jiayuid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -13,6 +14,7 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -30,7 +32,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class App extends Activity implements AsyncResponse {
-    VersionThread asyncTask = new VersionThread();
+
 
     String nversion = "";
     String version = "";
@@ -39,6 +41,7 @@ public class App extends Activity implements AsyncResponse {
     Button foro;
     Button accesorios;
     Button videotutoriales;
+    Button driversherramientas;
     String modelo = "";
     String model = "";
     String urlActualizacion = "";
@@ -56,15 +59,16 @@ public class App extends Activity implements AsyncResponse {
 
             setContentView(R.layout.activity_app);
             addListenerOnButton();
-            asyncTask.delegate = this;
-            comprobarVersion(version);
+            comprobarVersionInicio(version);
             descargas = (Button) findViewById(R.id.button1);
             accesorios = (Button) findViewById(R.id.button2);
             videotutoriales = (Button) findViewById(R.id.button3);
             foro = (Button) findViewById(R.id.button4);
+            driversherramientas = (Button) findViewById(R.id.button9);
             descargas.setEnabled(false);
             accesorios.setEnabled(false);
             videotutoriales.setEnabled(false);
+            driversherramientas.setEnabled(false);
             foro.setEnabled(false);
             ImageButton img = new ImageButton(this);
             img = (ImageButton) findViewById(R.id.imageButton1);
@@ -88,6 +92,7 @@ public class App extends Activity implements AsyncResponse {
                 descargas.setEnabled(true);
                 accesorios.setEnabled(true);
                 foro.setEnabled(true);
+                driversherramientas.setEnabled(true);
                 videotutoriales.setEnabled(true);
 
             }
@@ -96,6 +101,7 @@ public class App extends Activity implements AsyncResponse {
                 descargas.setEnabled(true);
                 accesorios.setEnabled(true);
                 foro.setEnabled(true);
+                driversherramientas.setEnabled(true);
                 videotutoriales.setEnabled(true);
                 if (!"JIAYU".equals(fabricante.toUpperCase().trim())) {
                     t5.setTextColor(Color.RED);
@@ -129,69 +135,44 @@ public class App extends Activity implements AsyncResponse {
 
     private void comprobarVersion(String version2) {
         try {
+            VersionThread asyncTask = new VersionThread();
+            asyncTask.delegate = this;
             asyncTask.execute(version2);
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
     }
-
-    private void MenuActualizacion() {
-
-        if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
-            Resources res = this.getResources();
-            AlertDialog dialog = new AlertDialog.Builder(this).create();
-            dialog.setMessage(res.getString(R.string.msgComprobarVersion) + " " + nversion + "->" + newversion + " " + res.getString(R.string.msgPreguntaVersion));
-            dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-                    res.getString(R.string.cancelar),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int witch) {
-                        }
-                    });
-            dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                    res.getString(R.string.aceptar),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int witch) {
-                            try {
-                                ActualizarVersion();
-                            } catch (Exception e) {
-                                Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-            dialog.show();
-        } else {
-            Resources res = this.getResources();
-            AlertDialog dialog = new AlertDialog.Builder(this).create();
-            dialog.setMessage(res.getString(R.string.msgLastVersion));
-            dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                    res.getString(R.string.aceptar),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int witch) {
-                        }
-                    });
-            dialog.show();
+    private void comprobarVersionInicio(String version2) {
+        try {
+            VersionThread asyncTask = new VersionThread();
+            asyncTask.delegate = this;
+            asyncTask.execute(version2,"inicio");
+        } catch (Exception e) {
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
     }
 
     private void ActualizarVersion() {
         try {
-            Resources res = this.getResources();
-            AlertDialog dialog = new AlertDialog.Builder(this).create();
-            dialog.setMessage(res.getString(R.string.msgAyudaFirefox));
-            dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                    res.getString(R.string.aceptar),
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int witch) {
-                            try {
-                                if (!"".equals(urlActualizacion)) {
-                                    //TODO Descargar con el gestor y abrir desde aquí
-                                }
-                            } catch (Exception e) {
-                                Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-            dialog.show();
+            String nombreFichero="";
+            nombreFichero=urlActualizacion.split("/")[urlActualizacion.split("/").length-1];
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlActualizacion));
+            request.setDescription(nombreFichero);
+            request.setTitle(nombreFichero);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                if(".apk".equals(nombreFichero.substring(nombreFichero.length()-4,nombreFichero.length()).toLowerCase())){
+                    request.setMimeType("application/vnd.android.package-archive");
+                    new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/Jiayu.apk").delete();
+                }
+
+            }
+            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, nombreFichero);
+
+            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga)+" "+nombreFichero, Toast.LENGTH_SHORT).show();
+            manager.enqueue(request);
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
@@ -445,7 +426,7 @@ public class App extends Activity implements AsyncResponse {
             descargas.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    openBrowser(arg0);
+                    openBrowser(arg0,"downloads");
                 }
 
             });
@@ -479,16 +460,25 @@ public class App extends Activity implements AsyncResponse {
                 }
 
             });
+            driversherramientas = (Button) findViewById(R.id.button9);
+            driversherramientas.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View arg0) {
+                    openBrowser(arg0,"drivers");
+                }
+
+            });
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
 
     }
 
-    public void openBrowser(View v) {
+    public void openBrowser(View v,String tipo) {
         try {
             Intent intent = new Intent(this, BrowserActivity.class);
             intent.putExtra("modelo", modelo);
+            intent.putExtra("tipo", tipo);
             startActivity(intent);
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
@@ -555,6 +545,9 @@ public class App extends Activity implements AsyncResponse {
     public void processFinish(String output) {
         try {
             if (output != null && !"TIMEOUT----".equals(output)) {
+
+                String inicio=output.split("-;-")[0];
+                output=output.split("-;-")[1];
                 String[] split = output.split("----");
                 newversion = split[0].split(" ")[1];
                 urlActualizacion = split[1];
@@ -580,6 +573,19 @@ public class App extends Activity implements AsyncResponse {
                                 }
                             });
                     dialog.show();
+                }else {
+                    if("".equals(inicio)){
+                        Resources res = this.getResources();
+                        AlertDialog dialog = new AlertDialog.Builder(this).create();
+                        dialog.setMessage(res.getString(R.string.msgLastVersion));
+                        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                                res.getString(R.string.aceptar),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int witch) {
+                                    }
+                                });
+                        dialog.show();
+                    }
                 }
             }
         } catch (Exception e) {
@@ -597,7 +603,7 @@ public class App extends Activity implements AsyncResponse {
     public boolean onMenuItemSelected(int featureId, MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_update:
-                MenuActualizacion();
+                comprobarVersion(nversion);
                 return true;
             case R.id.action_about:
                 try {

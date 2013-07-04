@@ -6,19 +6,13 @@
         exacte amb la nomenclatura que podràs trobar en la web www.jiayu.es, disposes dels botons
         DESCÀRREGUES i ACCESSORIS que et portaran al contingut específic per al teu model de Jiayu.
     </string>
-    <string name="descargas">DESCÀRREGUES</string>
-    <string name="accesorios">ACCESSORIS</string>
-    <string name="videos">VIDEOTUTORIALES</string>
+    <string name="descargas">Descàrregues</string>
+    <string name="accesorios">Accessoris</string>
+    <string name="videos">Videotutoriales</string>
+    <string name="herrramientas">Drivers-Herramientas</string>
     <string name="title_activity_browser">Descàrregues Jiayu</string>
     <string name="cancelar">Cancel·lar</string>
     <string name="aceptar">Acceptar</string>
-    <string name="msgNoFirefox">Firefox no està instal·lat, per a la correcta descàrrega des de MEGA
-        és necessari instal·lar Firefox, Desitges instal·lar Firefox?
-    </string>
-    <string name="msgAyudaFirefox">Quan aparega la finestra de MEGA has de polsar en Desktop Versió,
-        en la part inferior esquerra, per a carregar MEGA com versió PC i que la descàrrega es
-        realitze correctament.
-    </string>
     <string name="msgComprobarVersion">Hi ha una nova versió de l\'aplicació</string>
     <string name="msgPreguntaVersion">Desitges descarregar-la?</string>
     <string name="msgCompilacion">Compilació:</string>
@@ -58,7 +52,7 @@
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="title_activity_inicio">Inicio</string>
     <string name="genericError">Ha ocurrido un error</string>
-    <string name="foro">FORO</string>
+    <string name="foro">Foro</string>
     <string name="mensajeTapaTalk">También puedes encontrarnos en TAPATALK! Jiayu.es</string>
     <string name="iniciandoDescarga">Descarga iniciada</string>
     <string name="terminadaDescarga">Descarga completada</string>

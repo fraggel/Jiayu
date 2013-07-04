@@ -62,22 +62,25 @@
                 android:layout_height="wrap_content"
                 android:text="@string/descargas"/>
         <Button
-                android:id="@+id/button4"
+                android:id="@+id/button9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/foro"/>
-
-        <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/accesorios"/>
-
+                android:text="@string/herramientas"/>
         <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/videos"/>
+        <Button
+                android:id="@+id/button4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/foro"/>
+        <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/accesorios"/>
 
         <TextView
                 android:id="@+id/textView4"

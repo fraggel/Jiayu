@@ -44,8 +44,12 @@ public class VersionThread extends AsyncTask<String, Void, String> {
                 }
             }
         }
+        String inicio="";
+        if(params.length>1){
+            inicio=params[1];
+        }
         result = result.replaceAll("\t", "").trim();
-        return result + "----" + urlActualizacion.trim();
+        return inicio+"-;-"+result + "----" + urlActualizacion.trim();
     }
 
     @Override

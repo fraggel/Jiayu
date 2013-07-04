@@ -16,6 +16,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import java.io.File;
 import java.util.List;
 
 public class BrowserActivity extends Activity {
@@ -31,11 +32,17 @@ public class BrowserActivity extends Activity {
         isDownloadManagerAvailable(getBaseContext());
         Intent intent = getIntent();
         String modelo = intent.getExtras().getString("modelo");
+        String tipo = intent.getExtras().getString("tipo");
         WebView descargas = (WebView) findViewById(R.id.webView1);
         descargas.setWebViewClient(new JiayuWebViewClient());
         descargas.setDownloadListener(new JiayuDownloadListener());
 
-        descargas.loadUrl("http://www.jiayu.es/soporte/appsoft.php?jiayu=" + modelo);
+        if("drivers".equals(tipo)){
+            descargas.loadUrl("http://www.jiayu.es/soporte/apptools.php");
+        }else if("downloads".equals(tipo)){
+            descargas.loadUrl("http://www.jiayu.es/soporte/appsoft.php?jiayu=" + modelo);
+        }
+
     }
    class JiayuDownloadListener implements DownloadListener {
 
@@ -60,6 +67,14 @@ public class BrowserActivity extends Activity {
                         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                         if(".apk".equals(nombreFichero.substring(nombreFichero.length()-4,nombreFichero.length()).toLowerCase())){
                             request.setMimeType("application/vnd.android.package-archive");
+                            if(nombreFichero.indexOf("Jiayu.apk")==-1){
+                                try {
+                                    new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/Jiayu.apk").delete();
+                                }catch(Exception e){
+                                    
+                                }
+
+                            }
                         }
 
                     }
