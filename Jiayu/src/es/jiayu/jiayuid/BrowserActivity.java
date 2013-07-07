@@ -71,7 +71,7 @@ public class BrowserActivity extends Activity {
                                 try {
                                     new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/Jiayu.apk").delete();
                                 }catch(Exception e){
-                                    
+
                                 }
 
                             }
