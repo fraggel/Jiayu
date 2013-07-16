@@ -26,7 +26,8 @@
                 android:layout_height="fill_parent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/jiayueslogo"
-                android:contentDescription="Jiayu.es"/>
+                android:contentDescription="Jiayu.es"
+                android:background="@android:color/transparent"/>
 
         <TextView
                 android:id="@+id/textView1"
@@ -41,7 +42,8 @@
                 android:layout_height="wrap_content"
                 android:autoLink="email"
                 android:text="@string/about2"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingLeft="@dimen/margin20dp"/>
 
         <TextView
                 android:id="@+id/textView3"
@@ -54,7 +56,8 @@
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/about4"/>
+                android:text="@string/about4"
+                android:paddingLeft="@dimen/margin20dp"/>
 
         <TextView
                 android:id="@+id/textView5"
@@ -67,7 +70,8 @@
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/about6"/>
+                android:text="@string/about6"
+                android:paddingLeft="@dimen/margin20dp"/>
 
         <TextView
                 android:id="@+id/textView7"
@@ -76,19 +80,28 @@
                 android:autoLink="phone"
                 android:paddingBottom="25dp"
                 android:text="@string/about7"
-                android:textAppearance="?android:attr/textAppearanceLarge"/>
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingLeft="@dimen/margin20dp"/>
 
         <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/msgEnviarEmail"/>
+                android:text="@string/msgEnviarEmail"
+                />
 
         <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/VisitarWeb"/>
+
+        <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:src="@drawable/maps"
+                android:background="@android:color/transparent"/>
 
     </LinearLayout>
 </ScrollView>

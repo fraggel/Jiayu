@@ -14,7 +14,7 @@ public class AboutActivity extends Activity {
     Button contacto = null;
     Button visit = null;
     ImageButton imageButton = null;
-
+    ImageButton mapsButton=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,17 @@ public class AboutActivity extends Activity {
                 }
 
             });
+            mapsButton = (ImageButton) findViewById(R.id.imageButton);
+            mapsButton.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View arg0) {
+                    Uri uri = Uri.parse("https://maps.google.es/maps?q=Passatge+d'%C3%80ngels+i+Federic,+2,+46022+Valencia,+Comunidad+Valenciana&hl=es&ie=UTF8&geocode=FWkyWgIdztL6_w&split=0&hq=&hnear=Passatge+d'%C3%80ngels+i+Federic,+2,+46022+Valencia&ll=39.465769,-0.339031&spn=0.005069,0.00721&t=m&z=17&vpsrc=6&iwloc=A");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+
+            });
+
             visit = (Button) findViewById(R.id.button2);
             visit.setOnClickListener(new View.OnClickListener() {
 

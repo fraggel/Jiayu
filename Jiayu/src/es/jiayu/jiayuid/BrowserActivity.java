@@ -83,6 +83,7 @@ public class BrowserActivity extends Activity {
                     DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga)+" "+nombreFichero, Toast.LENGTH_SHORT).show();
                     manager.enqueue(request);
+
                 } catch (Exception e) {
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
                 }

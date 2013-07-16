@@ -66,7 +66,7 @@ public class App extends Activity implements AsyncResponse {
             foro = (Button) findViewById(R.id.button4);
             driversherramientas = (Button) findViewById(R.id.button9);
             descargas.setEnabled(false);
-            accesorios.setEnabled(false);
+            //accesorios.setEnabled(false);
             videotutoriales.setEnabled(false);
             driversherramientas.setEnabled(false);
             foro.setEnabled(false);
@@ -90,7 +90,7 @@ public class App extends Activity implements AsyncResponse {
             } else {
                 recalcularTelefono();
                 descargas.setEnabled(true);
-                accesorios.setEnabled(true);
+                //accesorios.setEnabled(true);
                 foro.setEnabled(true);
                 driversherramientas.setEnabled(true);
                 videotutoriales.setEnabled(true);
@@ -99,7 +99,7 @@ public class App extends Activity implements AsyncResponse {
 
             if (modelo.length() < 8) {
                 descargas.setEnabled(true);
-                accesorios.setEnabled(true);
+                //accesorios.setEnabled(true);
                 foro.setEnabled(true);
                 driversherramientas.setEnabled(true);
                 videotutoriales.setEnabled(true);
@@ -434,10 +434,15 @@ public class App extends Activity implements AsyncResponse {
             accesorios.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-
-                    Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
+                    try {
+                        Intent intent = new Intent(getBaseContext(), AboutActivity.class);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                    }
+                    /*Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);
+                    startActivity(intent);*/
                 }
 
             });

@@ -3,9 +3,7 @@
 
     <string name="app_name">Jiayu</string>
     <string name="bienvenida">Bienvenido a la aplicación de Jiayu, esta aplicación te mostrará el
-        modelo exacto con la nomenclatura que podrás encontrar en la web www.jiayu.es, dispones de
-        los botones DESCARGAS y ACCESORIOS que te llevarán al contenido específico para tu modelo de
-        Jiayu.
+        modelo exacto con la nomenclatura que podrás encontrar en la web www.jiayu.es.
     </string>
     <string name="descargas">Descargas</string>
     <string name="accesorios">Accesorios</string>
@@ -27,7 +25,7 @@
         Jiayu
     </string>
     <string name="action_update">Comprobar Actualizaciones</string>
-    <string name="action_about">Sobre</string>
+    <string name="action_about">Sobre Nosotros</string>
     <string name="action_exit">Salir</string>
     <string name="msgLastVersion">Ya dispones de la última versión.</string>
     <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
