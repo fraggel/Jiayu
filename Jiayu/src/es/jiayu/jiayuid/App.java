@@ -272,12 +272,20 @@ public class App extends Activity implements AsyncResponse {
                             if (result != -1 && result <= 1600) {
                                 model = "G3QC";
                             } else {
-                                model = "G4B";
+                                model = getCPUFreq();
                             }
                         } else if ("2GB".equals(ram)) {
                             model = "G4A";
                         } else {
                             model = "";
+                        }
+                    }else if ("mt6589t".equals(procesador.toLowerCase())) {
+                        if ("1GB".equals(ram)) {
+                            model="G4T";
+                        } else if ("2GB".equals(ram)) {
+                            model="G4A";
+                        }else{
+                            model="";
                         }
                     }
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
@@ -545,7 +553,27 @@ public class App extends Activity implements AsyncResponse {
         }
         return load.trim();
     }
-
+    public static String getCPUFreq() throws Exception {
+        RandomAccessFile reader = null;
+        String load = "";
+        try {
+            reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
+            load = reader.readLine();
+            int cpufreq=Integer.parseInt(load.trim());
+            if(cpufreq>1300000){
+                load="G4T";
+            }else{
+                load="G4B";
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
+        return load.trim();
+    }
     @Override
     public void processFinish(String output) {
         try {
