@@ -9,6 +9,7 @@
     <string name="accesorios">饰品</string>
     <string name="videos">视频教程</string>
     <string name="herrramientas">驱动-工具</string>
+    <string name="herramientasROM">ROM 工具</string>
     <string name="title_activity_browser">佳域下载</string>
     <string name="cancelar">取消</string>
     <string name="aceptar">接受</string>
@@ -48,4 +49,27 @@
     <string name="mensajeTapaTalk">你可以找到我们上TAPATALK太！ Jiayu.es</string>
     <string name="iniciandoDescarga">下载开始</string>
     <string name="terminadaDescarga">下载完成</string>
+    <string name="title_activity_romtool">ROM 工具</string>
+
+    <string name="recoveryTexto">Recovery Descargados</string>
+    <string name="recoveryBoton">Flashear Recovery</string>
+    <string name="romTexto">ROM Descargadas</string>
+    <string name="romBoton">Flashear ROM</string>
+    <string name="apkTexto">APKS Descargadas</string>
+    <string name="apkBoton">Instalar APK</string>
+    <string name="msgSeleccionado">Selected</string>
+    <string name="ingenieroBoton">Engineer Mode</string>
+    <string name="errorUnzip">Error while decompress </string>
+    <string name="errorRom">Error while initialize ROM Flashing</string>
+    <string name="errorRecovery">Error while writing Recovery file</string>
+    <string name="msgNoRoot">Root is necessary</string>
+    <string name="recoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
+    <string name="actualizarBtn">Refresh Combos</string>
+    <string name="rebootRecovery">Reboot Recovery</string>
+    <string name="rebootRecoveryQ">Reboot into Recovery?</string>
+    <string name="selecciona">Select</string>
+    <string name="fileExplorer">Open File Explorer</string>
+    <string name="tengoCWM">I have CWM Recovery</string>
+    <string name="textFlashZip">Downloaded Zip</string>
+    <string name="zipBtn">Flash Zip</string>
 </resources>

@@ -42,6 +42,7 @@ public class App extends Activity implements AsyncResponse {
     Button accesorios;
     Button videotutoriales;
     Button driversherramientas;
+    Button herramientasROM;
     String modelo = "";
     String model = "";
     String urlActualizacion = "";
@@ -55,6 +56,22 @@ public class App extends Activity implements AsyncResponse {
             nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             version = "Jiayu.es ";
             version = version + nversion;
+            File f1=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/APP/");
+            if(!f1.exists()){
+                f1.mkdirs();
+            }
+            File f2=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/ROMS/");
+            if(!f2.exists()){
+                f2.mkdirs();
+            }
+            File f3=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/RECOVERY/");
+            if(!f3.exists()){
+                f3.mkdirs();
+            }
+            File f4=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/DOWNLOADS/");
+            if(!f4.exists()){
+                f4.mkdirs();
+            }
             Resources res = this.getResources();
 
             setContentView(R.layout.activity_app);
@@ -65,10 +82,12 @@ public class App extends Activity implements AsyncResponse {
             videotutoriales = (Button) findViewById(R.id.button3);
             foro = (Button) findViewById(R.id.button4);
             driversherramientas = (Button) findViewById(R.id.button9);
+            herramientasROM = (Button) findViewById(R.id.button10);
             descargas.setEnabled(false);
             //accesorios.setEnabled(false);
             videotutoriales.setEnabled(false);
             driversherramientas.setEnabled(false);
+            herramientasROM.setEnabled(false);
             foro.setEnabled(false);
             ImageButton img = new ImageButton(this);
             img = (ImageButton) findViewById(R.id.imageButton1);
@@ -90,6 +109,7 @@ public class App extends Activity implements AsyncResponse {
             } else {
                 recalcularTelefono();
                 descargas.setEnabled(true);
+                herramientasROM.setEnabled(true);
                 //accesorios.setEnabled(true);
                 foro.setEnabled(true);
                 driversherramientas.setEnabled(true);
@@ -103,6 +123,7 @@ public class App extends Activity implements AsyncResponse {
                 foro.setEnabled(true);
                 driversherramientas.setEnabled(true);
                 videotutoriales.setEnabled(true);
+                herramientasROM.setEnabled(true);
                 if (!"JIAYU".equals(fabricante.toUpperCase().trim())) {
                     t5.setTextColor(Color.RED);
                     t5.setText(res.getString(R.string.msgIdentificado1) + modelo + res.getString(R.string.msgIdentificado2));
@@ -270,9 +291,9 @@ public class App extends Activity implements AsyncResponse {
                             cam.release();
                             //if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
                             if (result != -1 && result <= 1600) {
-                                model = "G3QC";
+                                model = getCPUFreqG3();
                             } else {
-                                model = getCPUFreq();
+                                model = getCPUFreqG4();
                             }
                         } else if ("2GB".equals(ram)) {
                             model = "G4A";
@@ -481,6 +502,20 @@ public class App extends Activity implements AsyncResponse {
                 }
 
             });
+            herramientasROM = (Button) findViewById(R.id.button10);
+            herramientasROM.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View arg0) {
+                    try {
+                        Intent intent = new Intent(getBaseContext(), ROMTools.class);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            });
+
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
@@ -553,7 +588,7 @@ public class App extends Activity implements AsyncResponse {
         }
         return load.trim();
     }
-    public static String getCPUFreq() throws Exception {
+    public static String getCPUFreqG4() throws Exception {
         RandomAccessFile reader = null;
         String load = "";
         try {
@@ -564,6 +599,27 @@ public class App extends Activity implements AsyncResponse {
                 load="G4T";
             }else{
                 load="G4B";
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
+        return load.trim();
+    }
+    public static String getCPUFreqG3() throws Exception {
+        RandomAccessFile reader = null;
+        String load = "";
+        try {
+            reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
+            load = reader.readLine();
+            int cpufreq=Integer.parseInt(load.trim());
+            if(cpufreq>1300000){
+                load="G3QCT";
+            }else{
+                load="G3QC";
             }
         } catch (IOException ex) {
             ex.printStackTrace();

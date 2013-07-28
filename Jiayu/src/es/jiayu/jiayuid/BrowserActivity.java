@@ -62,6 +62,22 @@ public class BrowserActivity extends Activity {
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlDestino));
                     request.setDescription(nombreFichero);
                     request.setTitle(nombreFichero);
+                    File f1=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/APP/");
+                    if(!f1.exists()){
+                        f1.mkdirs();
+                    }
+                    File f2=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/ROMS/");
+                    if(!f2.exists()){
+                        f2.mkdirs();
+                    }
+                    File f3=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/RECOVERY/");
+                    if(!f3.exists()){
+                        f3.mkdirs();
+                    }
+                    File f4=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/DOWNLOADS/");
+                    if(!f4.exists()){
+                        f4.mkdirs();
+                    }
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
                         request.allowScanningByMediaScanner();
                         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
@@ -69,7 +85,7 @@ public class BrowserActivity extends Activity {
                             request.setMimeType("application/vnd.android.package-archive");
                             if(nombreFichero.indexOf("Jiayu.apk")==-1){
                                 try {
-                                    new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/Jiayu.apk").delete();
+                                    new File(f1.getAbsolutePath() + "/Jiayu.apk").delete();
                                 }catch(Exception e){
 
                                 }
@@ -78,7 +94,17 @@ public class BrowserActivity extends Activity {
                         }
 
                     }
-                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, nombreFichero);
+                    String rutaDescarga=null;
+                    if(nombreFichero.indexOf("recovery")!=-1){
+                        rutaDescarga="/JIAYUES/RECOVERY/";
+                    }else if(nombreFichero.indexOf(".apk")!=-1){
+                        rutaDescarga="/JIAYUES/APP/";
+                    }else if(nombreFichero.indexOf("signed_")!=-1){
+                        rutaDescarga="/JIAYUES/ROMS/";
+                    }else{
+                        rutaDescarga="/JIAYUES/DOWNLOADS/";
+                    }
+                    request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
 
                     DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga)+" "+nombreFichero, Toast.LENGTH_SHORT).show();

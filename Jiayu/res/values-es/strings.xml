@@ -9,6 +9,7 @@
     <string name="accesorios">Accesorios</string>
     <string name="videos">Videotutoriales</string>
     <string name="herrramientas">Drivers-Herramientas</string>
+    <string name="herramientasROM">Herramientas ROM</string>
     <string name="title_activity_browser">Descargas Jiayu</string>
     <string name="cancelar">Cancelar</string>
     <string name="aceptar">Aceptar</string>
@@ -55,4 +56,28 @@
     <string name="mensajeTapaTalk">También puedes encontrarnos en TAPATALK! Jiayu.es</string>
     <string name="iniciandoDescarga">Descarga iniciada</string>
     <string name="terminadaDescarga">Descarga completada</string>
+    <string name="title_activity_romtool">Herramientas ROM</string>
+
+    <string name="recoveryTexto">Recovery Descargados</string>
+    <string name="recoveryBoton">Flashear Recovery</string>
+    <string name="romTexto">ROM Descargadas</string>
+    <string name="romBoton">Flashear ROM</string>
+    <string name="apkTexto">APKS Descargadas</string>
+    <string name="apkBoton">Instalar APK</string>
+    <string name="msgSeleccionado">Seleccionado </string>
+    <string name="ingenieroBoton">Modo Ingeniero</string>
+    <string name="ingenieroNoExiste">No existe la aplicación Ingeniero</string>
+    <string name="errorUnzip">Error al descomprimir </string>
+    <string name="errorRom">Error mientras se inicializaba el Flasheo ROM</string>
+    <string name="errorRecovery">Error escribiendo el Recovery</string>
+    <string name="msgNoRoot">Root es necesario</string>
+    <string name="recoveryFlasheado">Recovery Flasheado, ¿Reiniciar en Recovery?</string>
+    <string name="actualizarBtn">Actualizar Desplegables</string>
+    <string name="rebootRecovery">Reiniciar Recovery</string>
+    <string name="rebootRecoveryQ">¿Reiniciar en Recovery?</string>
+    <string name="selecciona">Selecciona</string>
+    <string name="fileExplorer">Abrir Explorador de Archivos</string>
+    <string name="tengoCWM">Tengo el CWM Recovery</string>
+    <string name="textFlashZip">Zip Descargados</string>
+    <string name="zipBtn">Flashear Zip</string>
 </resources>
