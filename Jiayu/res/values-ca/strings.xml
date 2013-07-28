@@ -26,7 +26,7 @@
         Jiayu
     </string>
     <string name="action_update">Comprovar Actualitzacions</string>
-    <string name="action_about">Sobre Nosotros</string>
+    <string name="action_about">Sobre Nosaltres</string>
     <string name="action_exit">Sortir</string>
     <string name="msgLastVersion">Ja disposes de l\'última versió.</string>
     <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
@@ -36,48 +36,47 @@
     </string>
     <string name="VisitarWeb">Visitar Web</string>
     <string name="msgEnviarEmail">Enviar email</string>
-    <string name="title_activity_about">About</string>
-    <string name="about1">Distribuidor Ofical en España:</string>
+    <string name="title_activity_about">Sobre nosaltres</string>
+    <string name="about1">Distribuïdor Oficial a Espanya:</string>
     <string name="about2">info@jiayu.es</string>
-    <string name="about3">Horario atención telefónica:</string>
+    <string name="about3">Horari atenció telefònica:</string>
     <string name="about4">9:00 a 14:00 L-V</string>
-    <string name="about5">Localización:</string>
+    <string name="about5">Localizació:</string>
     <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)
     </string>
     <string name="about7">+34963556091</string>
-    <string name="title_activity_video">Videotutoriales</string>
-    <string name="activandoBTWifi">Se está activando el BT y WIFI para comprobar tu versión de
-        terminal.
+    <string name="title_activity_video">Videotutorials</string>
+    <string name="activandoBTWifi">S'està activant el BT i WIFI per comprovar la vostra versió del terminal.
     </string>
     <string name="msgSubjectInfo">Jiayu.es Info</string>
-    <string name="title_activity_inicio">Inicio</string>
-    <string name="genericError">Ha ocurrido un error</string>
-    <string name="foro">Foro</string>
-    <string name="mensajeTapaTalk">También puedes encontrarnos en TAPATALK! Jiayu.es</string>
-    <string name="iniciandoDescarga">Descarga iniciada</string>
-    <string name="terminadaDescarga">Descarga completada</string>
-    <string name="title_activity_romtool">Herramientas ROM</string>
+    <string name="title_activity_inicio">Inici</string>
+    <string name="genericError">S'ha produït un error</string>
+    <string name="foro">Fòrum</string>
+    <string name="mensajeTapaTalk">També pots trobar-nos a TAPATALK! Jiayu.es</string>
+    <string name="iniciandoDescarga">Descàrrega iniciada</string>
+    <string name="terminadaDescarga">Descàrrega completada</string>
+    <string name="title_activity_romtool">Eines ROM</string>
 
-    <string name="recoveryTexto">Recovery Descargados</string>
-    <string name="recoveryBoton">Flashear Recovery</string>
-    <string name="romTexto">ROM Descargadas</string>
-    <string name="romBoton">Flashear ROM</string>
-    <string name="apkTexto">APKS Descargadas</string>
-    <string name="apkBoton">Instalar APK</string>
-    <string name="msgSeleccionado">Seleccionado</string>
-    <string name="ingenieroBoton">Modo Ingeniero</string>
-    <string name="ingenieroNoExiste">No existe la aplicación Ingeniero</string>
-    <string name="errorUnzip">Error al descomprimir </string>
-    <string name="errorRom">Error mientras se inicializaba el Flasheo ROM</string>
-    <string name="errorRecovery">Error escribiendo el Recovery</string>
-    <string name="msgNoRoot">Root es necesario</string>
-    <string name="recoveryFlasheado">Recovery Flasheado, ¿Reiniciar en Recovery?</string>
-    <string name="actualizarBtn">Actualizar Desplegables</string>
-    <string name="rebootRecovery">Reiniciar Recovery</string>
-    <string name="rebootRecoveryQ">¿Reiniciar en Recovery?</string>
+    <string name="recoveryTexto">Recovery descarregats</string>
+    <string name="recoveryBoton">Flashejar Recovery</string>
+    <string name="romTexto">ROM descarregats</string>
+    <string name="romBoton">Flashejar ROM</string>
+    <string name="apkTexto">APKS descarregats</string>
+    <string name="apkBoton">Installar APK</string>
+    <string name="msgSeleccionado">Seleccionat</string>
+    <string name="ingenieroBoton">Mode Enginyer</string>
+    <string name="ingenieroNoExiste">No existeix l'aplicació Enginyer</string>
+    <string name="errorUnzip">Error en descomprimir </string>
+    <string name="errorRom">Error mentre es inicializaba el Flasheo ROM</string>
+    <string name="errorRecovery">Error escrivint el Recovery</string>
+    <string name="msgNoRoot">Root cal</string>
+    <string name="recoveryFlasheado">Recovery flashejat, ¿Reinicia en Recovery?</string>
+    <string name="actualizarBtn">Actualitzar Desplegables</string>
+    <string name="rebootRecovery">Reinicia en Recovery</string>
+    <string name="rebootRecoveryQ">¿Reinicia en Recovery?</string>
     <string name="selecciona">Selecciona</string>
-    <string name="fileExplorer">Abrir Explorador de Archivos</string>
-    <string name="tengoCWM">Tengo el CWM Recovery</string>
-    <string name="textFlashZip">Zip Descargados</string>
-    <string name="zipBtn">Flashear Zip</string>
+    <string name="fileExplorer">Obrir Explorador d'arxius</string>
+    <string name="tengoCWM">Tinc el Cwm Recovery</string>
+    <string name="textFlashZip">Zip descarregats</string>
+    <string name="zipBtn">Flashejar Zip</string>
 </resources>
