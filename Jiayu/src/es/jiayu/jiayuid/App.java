@@ -28,12 +28,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
 public class App extends Activity implements AsyncResponse {
 
-
+    static long downloadREF=-1;
+    static HashMap<String,String> listaDescargas=new HashMap<String, String>();
     String nversion = "";
     String version = "";
     ImageButton imageButton;
@@ -185,15 +187,15 @@ public class App extends Activity implements AsyncResponse {
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                 if(".apk".equals(nombreFichero.substring(nombreFichero.length()-4,nombreFichero.length()).toLowerCase())){
                     request.setMimeType("application/vnd.android.package-archive");
-                    new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS) + "/Jiayu.apk").delete();
+                    new File(Environment.getExternalStorageDirectory()+"/JIAYUES/APP/Jiayu.apk").delete();
                 }
 
             }
-            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, nombreFichero);
+            request.setDestinationInExternalPublicDir("/JIAYUES/APP/", nombreFichero);
 
             DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
             Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga)+" "+nombreFichero, Toast.LENGTH_SHORT).show();
-            manager.enqueue(request);
+            downloadREF=manager.enqueue(request);
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }

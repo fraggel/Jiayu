@@ -93,6 +93,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 zipBtn.setVisibility(View.INVISIBLE);
                 findViewById(R.id.textoZip).setVisibility(View.INVISIBLE);
                 zipSpn.setVisibility(View.INVISIBLE);
+                rebootRcoveryBtn.setVisibility(View.INVISIBLE);
                 if(chkCWM.isChecked()){
                     romSpn.setVisibility(View.INVISIBLE);
                     romBtn.setVisibility(View.INVISIBLE);
@@ -119,6 +120,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             abrirExploradorBtn.setOnClickListener(this);
             chkCWM.setOnCheckedChangeListener(this);
             zipBtn.setOnClickListener(this);
+        rebootRcoveryBtn.setOnClickListener(this);
         zipBtn.setVisibility(View.INVISIBLE);
         findViewById(R.id.textoZip).setVisibility(View.INVISIBLE);
         zipSpn.setVisibility(View.INVISIBLE);
