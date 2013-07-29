@@ -26,7 +26,8 @@
     <string name="action_exit">去る</string>
     <string name="msgLastVersion">最新バージョンを持っている。</string>
     <string name="msgInfoJiayu">&lt;b&gt;スペインのディストリビューター：&lt;/b&gt;&lt;br&gt;メールアドレス：&lt;a
-        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;スケジュールコール：&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;場所：&lt;/b&gt;&lt;br&gt;Jiayu
+        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;スケジュールコール：&lt;/b&gt;&lt;br&gt;9:00
+        a 14:00 L-V&lt;br&gt;&lt;b&gt;場所：&lt;/b&gt;&lt;br&gt;Jiayu
         Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
     </string>
     <string name="VisitarWeb">ウェブにアクセスしてください</string>
@@ -60,7 +61,7 @@
     <string name="msgSeleccionado">選択</string>
     <string name="ingenieroBoton">エンジニアモード</string>
     <string name="ingenieroNoExiste">エンジニアアプリが存在しません</string>
-    <string name="errorUnzip">中にエラーが発生しました解凍 </string>
+    <string name="errorUnzip">中にエラーが発生しました解凍</string>
     <string name="errorRom">エラー初期ROMが点滅しながら</string>
     <string name="errorRecovery">エラーリカバリファイルの書き込み中に</string>
     <string name="msgNoRoot">ルートが必要です</string>

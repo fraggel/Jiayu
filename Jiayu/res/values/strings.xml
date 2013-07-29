@@ -65,7 +65,7 @@
     <string name="msgSeleccionado">Selected</string>
     <string name="ingenieroBoton">Engineer Mode</string>
     <string name="ingenieroNoExiste">Engineer App don´t exists</string>
-    <string name="errorUnzip">Error while decompress </string>
+    <string name="errorUnzip">Error while decompress</string>
     <string name="errorRom">Error while initialize ROM Flashing</string>
     <string name="errorRecovery">Error while writing Recovery file</string>
     <string name="msgNoRoot">Root is necessary</string>

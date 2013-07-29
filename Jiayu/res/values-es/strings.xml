@@ -64,10 +64,10 @@
     <string name="romBoton">Flashear ROM</string>
     <string name="apkTexto">APKS Descargadas</string>
     <string name="apkBoton">Instalar APK</string>
-    <string name="msgSeleccionado">Seleccionado </string>
+    <string name="msgSeleccionado">Seleccionado</string>
     <string name="ingenieroBoton">Modo Ingeniero</string>
     <string name="ingenieroNoExiste">No existe la aplicación Ingeniero</string>
-    <string name="errorUnzip">Error al descomprimir </string>
+    <string name="errorUnzip">Error al descomprimir</string>
     <string name="errorRom">Error mientras se inicializaba el Flasheo ROM</string>
     <string name="errorRecovery">Error escribiendo el Recovery</string>
     <string name="msgNoRoot">Root es necesario</string>

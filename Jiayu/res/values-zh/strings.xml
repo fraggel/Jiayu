@@ -26,7 +26,8 @@
     <string name="action_about">关于</string>
     <string name="action_exit">离开</string>
     <string name="msgInfoJiayu">&lt;b&gt;在西班牙的经销商：&lt;/b&gt;&lt;br&gt;电子邮箱：&lt;a
-        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;致电预约：&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;地点：&lt;/b&gt;&lt;br&gt;Jiayu
+        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;致电预约：&lt;/b&gt;&lt;br&gt;9:00
+        a 14:00 L-V&lt;br&gt;&lt;b&gt;地点：&lt;/b&gt;&lt;br&gt;Jiayu
         Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
     </string>
     <string name="VisitarWeb">访问网站</string>
@@ -59,7 +60,7 @@
     <string name="apkBoton">安装APK</string>
     <string name="msgSeleccionado">选</string>
     <string name="ingenieroBoton">工程师模式</string>
-    <string name="errorUnzip">错误，而解压缩 </string>
+    <string name="errorUnzip">错误，而解压缩</string>
     <string name="errorRom">初始化ROM闪烁时出错</string>
     <string name="errorRecovery">而写恢复文件时出错</string>
     <string name="msgNoRoot">根是必要的</string>

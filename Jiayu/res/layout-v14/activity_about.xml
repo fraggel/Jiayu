@@ -18,91 +18,90 @@
             android:paddingLeft="0dp"
             android:paddingRight="0dp"
             android:paddingTop="0dp"
-            tools:context=".Inicio2">
+            tools:context=".AboutActivity">
 
         <ImageButton
                 android:id="@+id/imageButton1"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:scaleType="fitCenter"
                 android:src="@drawable/jiayueslogo"
                 android:contentDescription="Jiayu.es"
-                android:clickable="false"
-                android:focusable="false"
-                android:adjustViewBounds="false"
-                android:background="@android:color/transparent"
-                android:layout_weight="0.11"/>
-
-        <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/activity_vertical_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="@string/bienvenida"/>
+                android:background="@android:color/transparent"/>
 
         <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/margin20dp"
+                android:text="@string/about1"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
 
         <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/margin20dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:autoLink="email"
+                android:text="@string/about2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingLeft="@dimen/margin20dp"/>
 
         <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/about3"
                 android:textAppearance="?android:attr/textAppearanceMedium"/>
-
-        <Button
-                android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/descargas"
-                />
-
-        <Button
-                android:id="@+id/button9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/herramientas"/>
-
-        <Button
-                android:id="@+id/button10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/herramientasROM"/>
-
-        <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/videos"/>
-
-        <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/foro"/>
-
-        <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/action_about"/>
 
         <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"/>
-    </LinearLayout>
+                android:text="@string/about4"
+                android:paddingLeft="@dimen/margin20dp"/>
 
+        <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about5"
+                android:textAppearance="?android:attr/textAppearanceMedium"/>
+
+        <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about6"
+                android:paddingLeft="@dimen/margin20dp"/>
+
+        <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="phone"
+                android:paddingBottom="25dp"
+                android:text="@string/about7"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:paddingLeft="@dimen/margin20dp"/>
+
+        <Button
+                android:id="@+id/button1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/msgEnviarEmail"
+                />
+
+        <Button
+                android:id="@+id/button2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/VisitarWeb"/>
+
+        <ImageButton
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton"
+                android:src="@drawable/maps"
+                android:background="@android:color/transparent"/>
+
+    </LinearLayout>
 </ScrollView>

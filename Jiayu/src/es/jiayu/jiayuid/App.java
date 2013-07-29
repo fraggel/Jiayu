@@ -34,8 +34,8 @@ import java.util.List;
 
 public class App extends Activity implements AsyncResponse {
 
-    static long downloadREF=-1;
-    static HashMap<String,String> listaDescargas=new HashMap<String, String>();
+    static long downloadREF = -1;
+    static HashMap<String, String> listaDescargas = new HashMap<String, String>();
     String nversion = "";
     String version = "";
     ImageButton imageButton;
@@ -58,20 +58,20 @@ public class App extends Activity implements AsyncResponse {
             nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             version = "Jiayu.es ";
             version = version + nversion;
-            File f1=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/APP/");
-            if(!f1.exists()){
+            File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
+            if (!f1.exists()) {
                 f1.mkdirs();
             }
-            File f2=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/ROMS/");
-            if(!f2.exists()){
+            File f2 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/ROMS/");
+            if (!f2.exists()) {
                 f2.mkdirs();
             }
-            File f3=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/RECOVERY/");
-            if(!f3.exists()){
+            File f3 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
+            if (!f3.exists()) {
                 f3.mkdirs();
             }
-            File f4=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/DOWNLOADS/");
-            if(!f4.exists()){
+            File f4 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/DOWNLOADS/");
+            if (!f4.exists()) {
                 f4.mkdirs();
             }
             Resources res = this.getResources();
@@ -165,11 +165,12 @@ public class App extends Activity implements AsyncResponse {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
     }
+
     private void comprobarVersionInicio(String version2) {
         try {
             VersionThread asyncTask = new VersionThread();
             asyncTask.delegate = this;
-            asyncTask.execute(version2,"inicio");
+            asyncTask.execute(version2, "inicio");
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
@@ -177,25 +178,25 @@ public class App extends Activity implements AsyncResponse {
 
     private void ActualizarVersion() {
         try {
-            String nombreFichero="";
-            nombreFichero=urlActualizacion.split("/")[urlActualizacion.split("/").length-1];
+            String nombreFichero = "";
+            nombreFichero = urlActualizacion.split("/")[urlActualizacion.split("/").length - 1];
             DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlActualizacion));
             request.setDescription(nombreFichero);
             request.setTitle(nombreFichero);
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            if (Build.VERSION.SDK_INT >= 11) {
                 request.allowScanningByMediaScanner();
                 request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                if(".apk".equals(nombreFichero.substring(nombreFichero.length()-4,nombreFichero.length()).toLowerCase())){
+                if (".apk".equals(nombreFichero.substring(nombreFichero.length() - 4, nombreFichero.length()).toLowerCase())) {
                     request.setMimeType("application/vnd.android.package-archive");
-                    new File(Environment.getExternalStorageDirectory()+"/JIAYUES/APP/Jiayu.apk").delete();
+                    new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/Jiayu.apk").delete();
                 }
 
             }
             request.setDestinationInExternalPublicDir("/JIAYUES/APP/", nombreFichero);
 
             DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga)+" "+nombreFichero, Toast.LENGTH_SHORT).show();
-            downloadREF=manager.enqueue(request);
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+            downloadREF = manager.enqueue(request);
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
         }
@@ -203,7 +204,7 @@ public class App extends Activity implements AsyncResponse {
 
     private void recalcularTelefono() {
         calcularTelefono();
-		/*if(modelo.equals(model)){*/
+        /*if(modelo.equals(model)){*/
         modelo = model;
 		/*}else{
 			modelo="Rom incorrecta para tu terminal, tu modelo real es: "+model;
@@ -302,13 +303,13 @@ public class App extends Activity implements AsyncResponse {
                         } else {
                             model = "";
                         }
-                    }else if ("mt6589t".equals(procesador.toLowerCase())) {
+                    } else if ("mt6589t".equals(procesador.toLowerCase())) {
                         if ("1GB".equals(ram)) {
-                            model="G4T";
+                            model = "G4T";
                         } else if ("2GB".equals(ram)) {
-                            model="G4A";
-                        }else{
-                            model="";
+                            model = "G4A";
+                        } else {
+                            model = "";
                         }
                     }
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
@@ -326,9 +327,9 @@ public class App extends Activity implements AsyncResponse {
                     }
                 } else if (width == 480 || (orientation == 2 && height == 480)) {
                     if ("mt6575".equals(procesador.toLowerCase())) {
-                        if ((Build.DISPLAY.toUpperCase()).indexOf("G16B")!=-1) {
-                            model="G2SCN";
-                        } else{
+                        if ((Build.DISPLAY.toUpperCase()).indexOf("G16B") != -1) {
+                            model = "G2SCN";
+                        } else {
                             model = "G2SC";
                         }
                     } else if ("mt6577".equals(procesador.toLowerCase())) {
@@ -457,7 +458,7 @@ public class App extends Activity implements AsyncResponse {
             descargas.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    openBrowser(arg0,"downloads");
+                    openBrowser(arg0, "downloads");
                 }
 
             });
@@ -500,7 +501,7 @@ public class App extends Activity implements AsyncResponse {
             driversherramientas.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    openBrowser(arg0,"drivers");
+                    openBrowser(arg0, "drivers");
                 }
 
             });
@@ -524,7 +525,7 @@ public class App extends Activity implements AsyncResponse {
 
     }
 
-    public void openBrowser(View v,String tipo) {
+    public void openBrowser(View v, String tipo) {
         try {
             Intent intent = new Intent(this, BrowserActivity.class);
             intent.putExtra("modelo", modelo);
@@ -590,17 +591,18 @@ public class App extends Activity implements AsyncResponse {
         }
         return load.trim();
     }
+
     public static String getCPUFreqG4() throws Exception {
         RandomAccessFile reader = null;
         String load = "";
         try {
             reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
             load = reader.readLine();
-            int cpufreq=Integer.parseInt(load.trim());
-            if(cpufreq>1300000){
-                load="G4T";
-            }else{
-                load="G4B";
+            int cpufreq = Integer.parseInt(load.trim());
+            if (cpufreq > 1300000) {
+                load = "G4T";
+            } else {
+                load = "G4B";
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -611,17 +613,18 @@ public class App extends Activity implements AsyncResponse {
         }
         return load.trim();
     }
+
     public static String getCPUFreqG3() throws Exception {
         RandomAccessFile reader = null;
         String load = "";
         try {
             reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
             load = reader.readLine();
-            int cpufreq=Integer.parseInt(load.trim());
-            if(cpufreq>1300000){
-                load="G3QCT";
-            }else{
-                load="G3QC";
+            int cpufreq = Integer.parseInt(load.trim());
+            if (cpufreq > 1300000) {
+                load = "G3QCT";
+            } else {
+                load = "G3QC";
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -632,13 +635,14 @@ public class App extends Activity implements AsyncResponse {
         }
         return load.trim();
     }
+
     @Override
     public void processFinish(String output) {
         try {
             if (output != null && !"TIMEOUT----".equals(output)) {
 
-                String inicio=output.split("-;-")[0];
-                output=output.split("-;-")[1];
+                String inicio = output.split("-;-")[0];
+                output = output.split("-;-")[1];
                 String[] split = output.split("----");
                 newversion = split[0].split(" ")[1];
                 urlActualizacion = split[1];
@@ -664,8 +668,8 @@ public class App extends Activity implements AsyncResponse {
                                 }
                             });
                     dialog.show();
-                }else {
-                    if("".equals(inicio)){
+                } else {
+                    if ("".equals(inicio)) {
                         Resources res = this.getResources();
                         AlertDialog dialog = new AlertDialog.Builder(this).create();
                         dialog.setMessage(res.getString(R.string.msgLastVersion));

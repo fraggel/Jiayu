@@ -14,7 +14,8 @@ public class AboutActivity extends Activity {
     Button contacto = null;
     Button visit = null;
     ImageButton imageButton = null;
-    ImageButton mapsButton=null;
+    ImageButton mapsButton = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

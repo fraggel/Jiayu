@@ -37,56 +37,58 @@ public class BrowserActivity extends Activity {
         descargas.setWebViewClient(new JiayuWebViewClient());
         descargas.setDownloadListener(new JiayuDownloadListener());
 
-        if("drivers".equals(tipo)){
+        if ("drivers".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/apptools.php");
-        }else if("downloads".equals(tipo)){
+        } else if ("downloads".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/appsoft.php?jiayu=" + modelo);
         }
 
     }
-   class JiayuDownloadListener implements DownloadListener {
 
-       public void onDownloadStart(String s, String s2, String s3, String s4, long l) {
+    class JiayuDownloadListener implements DownloadListener {
 
-       }
+        public void onDownloadStart(String s, String s2, String s3, String s4, long l) {
 
-   }
-   class JiayuWebViewClient extends WebViewClient {
+        }
+
+    }
+
+    class JiayuWebViewClient extends WebViewClient {
 
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
             urlDestino = url;
             if (urlDestino.lastIndexOf("/desarrollo/") != -1) {
                 try {
-                    String nombreFichero="";
-                    nombreFichero=urlDestino.split("/")[urlDestino.split("/").length-1];
+                    String nombreFichero = "";
+                    nombreFichero = urlDestino.split("/")[urlDestino.split("/").length - 1];
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlDestino));
                     request.setDescription(nombreFichero);
                     request.setTitle(nombreFichero);
-                    File f1=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/APP/");
-                    if(!f1.exists()){
+                    File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
+                    if (!f1.exists()) {
                         f1.mkdirs();
                     }
-                    File f2=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/ROMS/");
-                    if(!f2.exists()){
+                    File f2 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/ROMS/");
+                    if (!f2.exists()) {
                         f2.mkdirs();
                     }
-                    File f3=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/RECOVERY/");
-                    if(!f3.exists()){
+                    File f3 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
+                    if (!f3.exists()) {
                         f3.mkdirs();
                     }
-                    File f4=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/DOWNLOADS/");
-                    if(!f4.exists()){
+                    File f4 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/DOWNLOADS/");
+                    if (!f4.exists()) {
                         f4.mkdirs();
                     }
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+                    if (Build.VERSION.SDK_INT >= 11) {
                         request.allowScanningByMediaScanner();
                         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                        if(".apk".equals(nombreFichero.substring(nombreFichero.length()-4,nombreFichero.length()).toLowerCase())){
+                        if (".apk".equals(nombreFichero.substring(nombreFichero.length() - 4, nombreFichero.length()).toLowerCase())) {
                             request.setMimeType("application/vnd.android.package-archive");
-                            if(nombreFichero.indexOf("Jiayu.apk")==-1){
+                            if (nombreFichero.indexOf("Jiayu.apk") == -1) {
                                 try {
                                     new File(f1.getAbsolutePath() + "/Jiayu.apk").delete();
-                                }catch(Exception e){
+                                } catch (Exception e) {
 
                                 }
 
@@ -94,21 +96,21 @@ public class BrowserActivity extends Activity {
                         }
 
                     }
-                    String rutaDescarga=null;
-                    if(nombreFichero.indexOf("recovery")!=-1){
-                        rutaDescarga="/JIAYUES/RECOVERY/";
-                    }else if(nombreFichero.indexOf(".apk")!=-1){
-                        rutaDescarga="/JIAYUES/APP/";
-                    }else if(nombreFichero.indexOf("signed_")!=-1){
-                        rutaDescarga="/JIAYUES/ROMS/";
-                    }else{
-                        rutaDescarga="/JIAYUES/DOWNLOADS/";
+                    String rutaDescarga = null;
+                    if (nombreFichero.indexOf("recovery") != -1) {
+                        rutaDescarga = "/JIAYUES/RECOVERY/";
+                    } else if (nombreFichero.indexOf(".apk") != -1) {
+                        rutaDescarga = "/JIAYUES/APP/";
+                    } else if (nombreFichero.indexOf("signed_") != -1) {
+                        rutaDescarga = "/JIAYUES/ROMS/";
+                    } else {
+                        rutaDescarga = "/JIAYUES/DOWNLOADS/";
                     }
                     request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
 
                     DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga)+" "+nombreFichero, Toast.LENGTH_SHORT).show();
-                    App.listaDescargas.put(String.valueOf(manager.enqueue(request)),nombreFichero);
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+                    App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
                     //manager.enqueue(request);
 
                 } catch (Exception e) {
@@ -123,6 +125,7 @@ public class BrowserActivity extends Activity {
             }
         }
     }
+
     public static boolean isDownloadManagerAvailable(Context context) {
         try {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {

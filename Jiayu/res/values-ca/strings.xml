@@ -46,7 +46,8 @@
     </string>
     <string name="about7">+34963556091</string>
     <string name="title_activity_video">Videotutorials</string>
-    <string name="activandoBTWifi">S\'està activant el BT i WIFI per comprovar la vostra versió del terminal.
+    <string name="activandoBTWifi">S\'està activant el BT i WIFI per comprovar la vostra versió del
+        terminal.
     </string>
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="title_activity_inicio">Inici</string>
@@ -66,7 +67,7 @@
     <string name="msgSeleccionado">Seleccionat</string>
     <string name="ingenieroBoton">Mode Enginyer</string>
     <string name="ingenieroNoExiste">No existeix l\'aplicació Enginyer</string>
-    <string name="errorUnzip">Error en descomprimir </string>
+    <string name="errorUnzip">Error en descomprimir</string>
     <string name="errorRom">Error mentre es inicializaba el Flasheo ROM</string>
     <string name="errorRecovery">Error escrivint el Recovery</string>
     <string name="msgNoRoot">Root cal</string>
