@@ -70,9 +70,10 @@
     <string name="errorRecovery">Erro a escrever ficheiro de Recovery</string>
     <string name="msgNoRoot">É necessário Root</string>
     <string name="recoveryFlasheado">Recovery instalado, ¿Reiniciar em Recovery?</string>
-    <string name="actualizarBtn">Actualizar Menus</string>
+    <string name="imeiBtn">Backup Imei</string>
     <string name="rebootRecovery">Reiniciar Recovery</string>
     <string name="rebootRecoveryQ">¿Reiniciar em Recovery?</string>
+    <string name="rebootRecoveryQF">Para flashear la ROM/Zip es necesario reiniciar, ¿Quieres reiniciar ahora?</string>
     <string name="selecciona">Selecciona</string>
     <string name="fileExplorer">Abrir Explorador de Arquivos</string>
     <string name="tengoCWM">Tenho o CWM Recovery</string>

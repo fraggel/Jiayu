@@ -72,9 +72,10 @@
     <string name="errorRecovery">Error escrivint el Recovery</string>
     <string name="msgNoRoot">Root cal</string>
     <string name="recoveryFlasheado">Recovery flashejat, ¿Reinicia en Recovery?</string>
-    <string name="actualizarBtn">Actualitzar Desplegables</string>
+    <string name="imeiBtn">Backup Imei</string>
     <string name="rebootRecovery">Reinicia en Recovery</string>
     <string name="rebootRecoveryQ">¿Reinicia en Recovery?</string>
+    <string name="rebootRecoveryQF">Para flashear la ROM/Zip es necesario reiniciar, ¿Quieres reiniciar ahora?</string>
     <string name="selecciona">Selecciona</string>
     <string name="fileExplorer">Obrir Explorador d\'arxius</string>
     <string name="tengoCWM">Tinc el Cwm Recovery</string>

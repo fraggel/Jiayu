@@ -70,9 +70,11 @@
     <string name="errorRecovery">Error while writing Recovery file</string>
     <string name="msgNoRoot">Root is necessary</string>
     <string name="recoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
-    <string name="actualizarBtn">Refresh Combos</string>
+    <string name="imeiBtn">Backup Imei</string>
     <string name="rebootRecovery">Reboot Recovery</string>
+    <string name="rebootRecoveryQF">To flash the ROM/Zip you need to restart now, want to restart now?</string>
     <string name="rebootRecoveryQ">Reboot into Recovery?</string>
+
     <string name="selecciona">Select</string>
     <string name="fileExplorer">Open File Explorer</string>
     <string name="tengoCWM">I have CWM Recovery</string>

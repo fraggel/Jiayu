@@ -10,6 +10,7 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.PowerManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -39,9 +40,9 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     Spinner zipSpn = null;
     Button apkBtn = null;
     Button recoveryBtn = null;
+    Button imeiBtn = null;
     Button romBtn = null;
     Button ingenieroBtn = null;
-    Button refreshBtn = null;
     Button abrirExploradorBtn = null;
     Button zipBtn = null;
     Button rebootRcoveryBtn = null;
@@ -61,6 +62,16 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     boolean isRoot = false;
     String path = "";
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        apkSpn = (Spinner) findViewById(R.id.apkSpn);
+        recoverySpn = (Spinner) findViewById(R.id.recoverySpn);
+        romSpn = (Spinner) findViewById(R.id.romSpn);
+        zipSpn = (Spinner) findViewById(R.id.zipSpn);
+        refreshCombos();
+    }
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_romtools);
@@ -78,9 +89,9 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
 
         recoveryBtn = (Button) findViewById(R.id.recoveryBoton);
         romBtn = (Button) findViewById(R.id.romBoton);
+        imeiBtn = (Button) findViewById(R.id.imeiBoton);
         apkBtn = (Button) findViewById(R.id.apkBoton);
         ingenieroBtn = (Button) findViewById(R.id.ingenieroBoton);
-        refreshBtn = (Button) findViewById(R.id.refreshBtn);
         rebootRcoveryBtn = (Button) findViewById(R.id.recoverybtn);
         abrirExploradorBtn = (Button) findViewById(R.id.filesBtn);
         chkCWM = (CheckBox) findViewById(R.id.cwmChk);
@@ -98,6 +109,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             if (chkCWM.isChecked()) {
                 romSpn.setVisibility(View.INVISIBLE);
                 romBtn.setVisibility(View.INVISIBLE);
+                imeiBtn.setVisibility(View.INVISIBLE);
                 findViewById(R.id.romTexto).setVisibility(View.INVISIBLE);
             }
         }
@@ -115,8 +127,8 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         apkBtn.setOnClickListener(this);
         recoveryBtn.setOnClickListener(this);
         romBtn.setOnClickListener(this);
+        imeiBtn.setOnClickListener(this);
         ingenieroBtn.setOnClickListener(this);
-        refreshBtn.setOnClickListener(this);
 
         abrirExploradorBtn.setOnClickListener(this);
         chkCWM.setOnCheckedChangeListener(this);
@@ -251,10 +263,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             romBtn.setEnabled(false);
             apkBtn.setEnabled(false);
         } else if (button.getId() == R.id.recoveryBoton) {
-            //TODO
-            //Descomprimir el fichero y hacer el dd if=
-            //su dd if=/data/local/tmp/recovery.img of=/dev/recovery bs=6291456c count=1
-            //tras descomprimir comprobar que no existe ya el recovery.img
             boolean descomprimido = false;
             try {
                 unZip(this.recoveryseleccionado);
@@ -301,6 +309,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                                         bos.write(("reboot recovery\n").getBytes());
                                         bos.flush();
                                         bos.close();
+                                        //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                                     } catch (Exception e) {
                                         Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
                                     }
@@ -317,9 +326,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             romBtn.setEnabled(false);
             apkBtn.setEnabled(false);
         } else if (button.getId() == R.id.romBoton) {
-            //TODO
-            //Flasheo de rom por recovery
-            //Al mover con el nombre update.zip ver que no exista ya uno, en caso de existir preguntar, intentando abrir y buscar el build.prop y coger el compilation
             try {
                 CheckBox chkCWM = (CheckBox) findViewById(R.id.cwmChk);
                 if (chkCWM.isChecked()) {
@@ -337,7 +343,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                         bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
                         bos.flush();
                         bos.close();
-                        rebootRecoveryQuestion();
+                        rebootRecoveryQuestionFlashear();
                     }
                 } else {
                     File f = new File(this.romseleccionada);
@@ -409,8 +415,8 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             } catch (ActivityNotFoundException e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError) + application_name, Toast.LENGTH_SHORT).show();
             }
-        } else if (button.getId() == R.id.refreshBtn) {
-            refreshCombos();
+        } else if (button.getId() == R.id.imeiBoton) {
+            backupImeis();
         } else if (button.getId() == R.id.recoverybtn) {
             {
                 try {
@@ -462,7 +468,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
                 bos.flush();
                 bos.close();
-                rebootRecoveryQuestion();
+                rebootRecoveryQuestionFlashear();
             } catch (Exception e) {
 
             }
@@ -471,6 +477,36 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         refreshCombos();
     }
 
+    private void rebootRecoveryQuestionFlashear() {
+        AlertDialog dialog = new AlertDialog.Builder(this).create();
+        dialog.setMessage(getResources().getString(R.string.rebootRecoveryQF));
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                getResources().getString(R.string.cancelar),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witch) {
+
+                    }
+                });
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                getResources().getString(R.string.aceptar),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witch) {
+                        try {
+                            Runtime rt = Runtime.getRuntime();
+                            java.lang.Process p = rt.exec("su");
+                            BufferedOutputStream bos = new BufferedOutputStream(
+                                    p.getOutputStream());
+                            bos.write(("reboot recovery\n").getBytes());
+                            bos.flush();
+                            bos.close();
+                            //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                        } catch (Exception e) {
+
+                        }
+                    }
+                });
+        dialog.show();
+    }
     private void rebootRecoveryQuestion() {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setMessage(getResources().getString(R.string.rebootRecoveryQ));
@@ -744,4 +780,5 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             zipSpn.setVisibility(View.INVISIBLE);
         }
     }
+    public void backupImeis(){}
 }

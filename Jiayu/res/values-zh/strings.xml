@@ -65,9 +65,10 @@
     <string name="errorRecovery">而写恢复文件时出错</string>
     <string name="msgNoRoot">根是必要的</string>
     <string name="recoveryFlasheado">恢复一闪而过，重新进入复苏？</string>
-    <string name="actualizarBtn">刷新组合</string>
+    <string name="imeiBtn">Backup Imei</string>
     <string name="rebootRecovery">重新启动恢复</string>
     <string name="rebootRecoveryQ">重启进入恢复？</string>
+    <string name="rebootRecoveryQF">Para flashear la ROM/Zip es necesario reiniciar, ¿Quieres reiniciar ahora?</string>
     <string name="selecciona">选择</string>
     <string name="fileExplorer">打开档案总管</string>
     <string name="tengoCWM">我有CWM恢复</string>

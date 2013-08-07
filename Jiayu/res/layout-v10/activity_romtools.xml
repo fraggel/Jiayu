@@ -11,8 +11,8 @@
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/actualizarBtn"
-                android:id="@+id/refreshBtn"
+                android:text="@string/imeiBtn"
+                android:id="@+id/imeiBoton"
                 android:layout_gravity="left|center_vertical"/>
 
         <Button
