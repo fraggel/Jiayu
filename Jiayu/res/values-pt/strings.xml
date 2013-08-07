@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Jiayu</string>
+    <string name="bienvenida">Bemvindo à aplicação Jiayu. Esta aplicação mostrará o
+        modelo exacto com a nomenclatura que poderá encontrar em www.jiayu.es.
+    </string>
+    <string name="descargas">Descargas</string>
+    <string name="accesorios">Acessórios</string>
+    <string name="videos">VídeoTutoriais</string>
+    <string name="herrramientas">Drivers-Ferramentas</string>
+    <string name="herramientasROM">Ferramentas ROM</string>
+    <string name="title_activity_browser">Descargas Jiayu</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="aceptar">Aceitar</string>
+    <string name="msgComprobarVersion">Existe uma nova versão da aplicacão</string>
+    <string name="msgPreguntaVersion">¿Deseja descarregá-la?</string>
+    <string name="msgCompilacion">Compilação:</string>
+    <string name="msgModelo">Modelo:</string>
+    <string name="msgIdentificado1">Identificado como</string>
+    <string name="msgIdentificado2">, apesar de na informação do dispositivo a Jiayu não ser indicada
+        como fabricante
+    </string>
+    <string name="msgTerminalNoJiayu">Este terminal não é Jiayu</string>
+    <string name="msgErrorIdentificar">Ocorreu um erro. Não é possível detectar o modelo
+        Jiayu
+    </string>
+    <string name="action_update">Verificar actualizações</string>
+    <string name="action_about">Sobre nós</string>
+    <string name="action_exit">Sair</string>
+    <string name="msgLastVersion">Já dispõe da última versão.</string>
+    <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
+        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
+        telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
+        Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
+    </string>
+    <string name="VisitarWeb">Visitar Web</string>
+    <string name="msgEnviarEmail">Enviar email</string>
+    <string name="title_activity_about">Sobre</string>
+    <string name="about1">Distribuidor Oficial en España:</string>
+    <string name="about2">info@jiayu.es</string>
+    <string name="about3">Horario atención telefónica:</string>
+    <string name="about4">9:00 a 14:00 L-V</string>
+    <string name="about5">Localización:</string>
+    <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)
+    </string>
+    <string name="about7">+34963556091</string>
+    <string name="title_activity_video">Videotutoriales</string>
+    <string name="activandoBTWifi">A activar BT e WIFI para identificar o terminal.</string>
+    <string name="msgSubjectInfo">Jiayu.es Info</string>
+    <string name="title_activity_inicio">Início</string>
+    <string name="genericError">Ocorreu um erro</string>
+    <string name="foro">Forum</string>
+    <string name="mensajeTapaTalk">Também pode encontrar-nos no TAPATALK! Jiayu.es</string>
+    <string name="iniciandoDescarga">Descarga iniciada</string>
+    <string name="terminadaDescarga">Descarga completa</string>
+    <string name="title_activity_romtool">Ferramentas ROM</string>
+
+    <string name="recoveryTexto">Recovery Descarregadas</string>
+    <string name="recoveryBoton">Flash de Recovery</string>
+    <string name="romTexto">ROM Descarregadas</string>
+    <string name="romBoton">Flash de ROM</string>
+    <string name="apkTexto">APKS Descarregadas</string>
+    <string name="apkBoton">Instalar APK</string>
+    <string name="msgSeleccionado">Seleccionado</string>
+    <string name="ingenieroBoton">Modo Engenheiro</string>
+    <string name="ingenieroNoExiste">Não existe aplicação Engenheiro</string>
+    <string name="errorUnzip">Erro a descomprimir</string>
+    <string name="errorRom">Erro na inicialização do Flash da ROM</string>
+    <string name="errorRecovery">Erro a escrever ficheiro de Recovery</string>
+    <string name="msgNoRoot">É necessário Root</string>
+    <string name="recoveryFlasheado">Recovery instalado, ¿Reiniciar em Recovery?</string>
+    <string name="actualizarBtn">Actualizar Menus</string>
+    <string name="rebootRecovery">Reiniciar Recovery</string>
+    <string name="rebootRecoveryQ">¿Reiniciar em Recovery?</string>
+    <string name="selecciona">Selecciona</string>
+    <string name="fileExplorer">Abrir Explorador de Arquivos</string>
+    <string name="tengoCWM">Tenho o CWM Recovery</string>
+    <string name="textFlashZip">Zip Descarregados</string>
+    <string name="zipBtn">Flash de Zip</string>
+</resources>
