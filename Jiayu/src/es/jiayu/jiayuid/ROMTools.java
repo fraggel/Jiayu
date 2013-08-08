@@ -69,6 +69,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         recoverySpn = (Spinner) findViewById(R.id.recoverySpn);
         romSpn = (Spinner) findViewById(R.id.romSpn);
         zipSpn = (Spinner) findViewById(R.id.zipSpn);
+
         refreshCombos();
     }
 
@@ -669,15 +670,18 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         listaReco.clear();
         listaRo.clear();
         listaZip.clear();
+
         listaAppsUrl.clear();
         listaRecoUrl.clear();
         listaRomsUrl.clear();
         listaZipsUrl.clear();
 
+
         listaApps.add(getResources().getString(R.string.selecciona));
         listaReco.add(getResources().getString(R.string.selecciona));
         listaRo.add(getResources().getString(R.string.selecciona));
         listaZip.add(getResources().getString(R.string.selecciona));
+
 
         listaAppsUrl.add("");
         listaRecoUrl.add("");
@@ -689,6 +693,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         File f2 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
         File f3 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/ROMS/");
         File f4 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/DOWNLOADS/");
+        File f5 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/");
         if (f1.exists()) {
             if (f1.listFiles().length > 0) {
                 for (int x = 0; x < f1.listFiles().length; x++) {
@@ -750,6 +755,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         ArrayAdapter<String> dataAdapter4 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listaZip);
         dataAdapter4.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         zipSpn.setAdapter(dataAdapter4);
+
     }
 
     @Override
@@ -780,5 +786,38 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             zipSpn.setVisibility(View.INVISIBLE);
         }
     }
-    public void backupImeis(){}
+    public void backupImeis(){
+        try {
+            Runtime rt = Runtime.getRuntime();
+            java.lang.Process p = rt.exec("su");
+            BufferedOutputStream bos = new BufferedOutputStream(
+                    p.getOutputStream());
+            //TODO
+            //Calcular Md5 del original,
+            bos.write(("cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI.bak\n").getBytes());
+            //calcular md5 de la copia, comparar y si es correcto mostrar aviso de ok, en caso contrario decir que no OK y eliminar el IMEI.bak
+            //Poner md5 en la cabecera del fichero si se puede
+            bos.flush();
+            bos.close();
+        } catch (Exception e) {
+
+        }
+    }
+    public void restoreImeis(){
+        try {
+            Runtime rt = Runtime.getRuntime();
+            java.lang.Process p = rt.exec("su");
+            BufferedOutputStream bos = new BufferedOutputStream(
+                    p.getOutputStream());
+            //TODO
+            //calcular Md5, comparar con el de la cabecera del fichero si es correcto copiar
+            //Si no lo es no copiar....
+            bos.write(("cp "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI.bak /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001\n").getBytes());
+
+            bos.flush();
+            bos.close();
+        } catch (Exception e) {
+
+        }
+    }
 }

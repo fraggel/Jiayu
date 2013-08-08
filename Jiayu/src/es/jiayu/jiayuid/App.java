@@ -74,6 +74,10 @@ public class App extends Activity implements AsyncResponse {
             if (!f4.exists()) {
                 f4.mkdirs();
             }
+            File f5 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/");
+            if (!f5.exists()) {
+                f5.mkdirs();
+            }
             Resources res = this.getResources();
 
             setContentView(R.layout.activity_app);

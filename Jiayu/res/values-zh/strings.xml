@@ -66,6 +66,7 @@
     <string name="msgNoRoot">根是必要的</string>
     <string name="recoveryFlasheado">恢复一闪而过，重新进入复苏？</string>
     <string name="imeiBtn">Backup Imei</string>
+    <string name="imeiRBtn">Restore Imei</string>
     <string name="rebootRecovery">重新启动恢复</string>
     <string name="rebootRecoveryQ">重启进入恢复？</string>
     <string name="rebootRecoveryQF">Para flashear la ROM/Zip es necesario reiniciar, ¿Quieres reiniciar ahora?</string>

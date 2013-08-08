@@ -14,6 +14,12 @@
                 android:text="@string/imeiBtn"
                 android:id="@+id/imeiBoton"
                 android:layout_gravity="left|center_vertical"/>
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/imeiRBtn"
+                android:id="@+id/imeiRBtn"
+                android:layout_gravity="left|center_vertical"/>
 
         <Button
                 android:layout_width="wrap_content"

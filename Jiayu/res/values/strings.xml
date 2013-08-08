@@ -71,6 +71,7 @@
     <string name="msgNoRoot">Root is necessary</string>
     <string name="recoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
     <string name="imeiBtn">Backup Imei</string>
+    <string name="imeiRBtn">Restore Imei</string>
     <string name="rebootRecovery">Reboot Recovery</string>
     <string name="rebootRecoveryQF">To flash the ROM/Zip you need to restart now, want to restart now?</string>
     <string name="rebootRecoveryQ">Reboot into Recovery?</string>

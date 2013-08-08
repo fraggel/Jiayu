@@ -68,6 +68,7 @@
     <string name="recoveryFlasheado">回復が光った、回復に再起動します？</string>
     <string name="rebootRecoveryQF">Para flashear la ROM/Zip es necesario reiniciar, ¿Quieres reiniciar ahora?</string>
     <string name="imeiBtn">Backup Imei</string>
+    <string name="imeiRBtn">Restore Imei</string>
     <string name="rebootRecovery">再起動による回復</string>
     <string name="rebootRecoveryQ">回復に再起動します？</string>
     <string name="selecciona">セレクト</string>

@@ -71,6 +71,7 @@
     <string name="msgNoRoot">É necessário Root</string>
     <string name="recoveryFlasheado">Recovery instalado, ¿Reiniciar em Recovery?</string>
     <string name="imeiBtn">Backup Imei</string>
+    <string name="imeiRBtn">Restore Imei</string>
     <string name="rebootRecovery">Reiniciar Recovery</string>
     <string name="rebootRecoveryQ">¿Reiniciar em Recovery?</string>
     <string name="rebootRecoveryQF">Para flashear la ROM/Zip es necesario reiniciar, ¿Quieres reiniciar ahora?</string>
