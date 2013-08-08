@@ -15,7 +15,7 @@ public class Inicio extends Activity {
         setContentView(R.layout.activity_inicio);
         Handler handler = new Handler();
         Resources res = getResources();
-        Toast.makeText(getBaseContext(), res.getString(R.string.activandoBTWifi), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getBaseContext(), res.getString(R.string.msgActivandoBTWifi), Toast.LENGTH_SHORT).show();
         handler.postDelayed(new Runnable() {
             public void run() {
                 finish();

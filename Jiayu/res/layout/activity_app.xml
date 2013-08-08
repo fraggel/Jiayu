@@ -8,16 +8,7 @@
             android:id="@+id/LinearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
             android:orientation="vertical"
-            android:paddingBottom="0dp"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:paddingTop="0dp"
             tools:context=".Inicio2">
 
         <ImageButton
@@ -65,38 +56,43 @@
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/descargas"
+                android:text="@string/descargasBtn"
                 />
 
         <Button
                 android:id="@+id/button9"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/herramientas"/>
+                android:text="@string/herramientasBtn"/>
 
         <Button
                 android:id="@+id/button10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/herramientasROM"/>
+                android:text="@string/herramientasROMBtn"/>
 
         <Button
                 android:id="@+id/button3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/videos"/>
+                android:text="@string/videosBtn"/>
 
         <Button
                 android:id="@+id/button4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/foro"/>
+                android:text="@string/foroBtn"/>
 
         <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/action_about"/>
+                android:text="@string/aboutBtn"/>
+        <Button
+                android:id="@+id/button11"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/salirBtn"/>
 
         <TextView
                 android:id="@+id/textView4"

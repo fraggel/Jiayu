@@ -9,130 +9,65 @@
                   android:layout_height="wrap_content">
 
         <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/imeiBtn"
-                android:id="@+id/imeiBoton"
+                android:id="@+id/imeiBtn"
                 android:layout_gravity="left|center_vertical"/>
 
         <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/imeiRBtn"
-                android:id="@+id/imeiRBtn"
-                android:layout_gravity="left|center_vertical"/>
-
-        <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/filesBtn"
                 android:layout_gravity="left|center_vertical"
-                android:text="@string/fileExplorer"/>
+                android:text="@string/fileExplorerBtn"/>
 
         <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/rebootRecovery"
-                android:id="@+id/recoverybtn"
+                android:text="@string/ingenieroBtn"
+                android:id="@+id/ingenieroBtn"
+                android:layout_gravity="left|center_vertical"/>
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/flashRomBtn"
+                android:id="@+id/romBtn"
                 android:layout_gravity="left|center_vertical"/>
 
         <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/ingenieroBoton"
-                android:id="@+id/ingenieroBoton"
+                android:text="@string/flashRecoveryBtn"
+                android:id="@+id/recoveryBtn"
                 android:layout_gravity="left|center_vertical"/>
-
-        <CheckBox
-                android:layout_width="fill_parent"
+        <Button
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tengoCWM"
-                android:id="@+id/cwmChk"
-                android:checked="false"/>
+                android:text="@string/rebootRecoveryBtn"
+                android:id="@+id/rebootRecoveryBtn"
+                android:layout_gravity="left|center_vertical"/>
 
         <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/apkTexto"
+                android:text="@string/downloadedAPKTxt"
                 android:id="@+id/apkTexto"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                android:paddingTop="20dp"/>
 
         <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/apkSpn"
                 android:layout_gravity="left|center_vertical"/>
 
         <Button
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/apkBoton"
-                android:id="@+id/apkBoton"
+                android:text="@string/installApkBtn"
+                android:id="@+id/apkBtn"
                 android:layout_gravity="left|center_vertical"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/romTexto"
-                android:id="@+id/romTexto"
-                android:layout_gravity="left|center_vertical"/>
-
-        <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/romSpn"
-                android:layout_gravity="left|center_vertical"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/romBoton"
-                android:id="@+id/romBoton"
-                android:layout_gravity="left|center_vertical"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/recoveryTexto"
-                android:id="@+id/recoveryTexto"
-                android:layout_gravity="left|center_vertical"/>
-
-        <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/recoverySpn"
-                android:layout_gravity="left|center_vertical"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/recoveryBoton"
-                android:id="@+id/recoveryBoton"
-                android:layout_gravity="left|center_vertical"/>
-
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/textFlashZip"
-                android:id="@+id/textoZip"
-                android:layout_gravity="left|center_vertical"/>
-
-        <Spinner
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/zipSpn"
-                android:layout_gravity="left|center_vertical"/>
-
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/zipBtn"
-                android:id="@+id/zipBtn"
-                android:layout_gravity="left|center_vertical"/>
-
     </LinearLayout>
 </ScrollView>

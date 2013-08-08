@@ -109,12 +109,12 @@ public class BrowserActivity extends Activity {
                     request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
 
                     DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
                     App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
                     //manager.enqueue(request);
 
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                 }
                 return true;
             } else {

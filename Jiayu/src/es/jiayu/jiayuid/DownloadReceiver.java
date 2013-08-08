@@ -20,7 +20,7 @@ public class DownloadReceiver extends BroadcastReceiver {
                     boolean b = App.listaDescargas.containsKey(String.valueOf(referenceId));
                     if (b) {
                         String nombre = App.listaDescargas.get(String.valueOf(referenceId));
-                        Toast.makeText(context, nombre + " " + context.getResources().getString(R.string.terminadaDescarga), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, nombre + " " + context.getResources().getString(R.string.msgTerminadaDescarga), Toast.LENGTH_SHORT).show();
                     }
                     if (App.downloadREF == referenceId) {
                         if (new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/Jiayu.apk") != null) {
@@ -40,7 +40,7 @@ public class DownloadReceiver extends BroadcastReceiver {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(context, context.getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 }

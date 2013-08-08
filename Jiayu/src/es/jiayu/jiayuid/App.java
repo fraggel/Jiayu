@@ -41,10 +41,11 @@ public class App extends Activity implements AsyncResponse {
     ImageButton imageButton;
     Button descargas;
     Button foro;
-    Button accesorios;
+    Button about;
     Button videotutoriales;
     Button driversherramientas;
     Button herramientasROM;
+    Button salir;
     String modelo = "";
     String model = "";
     String urlActualizacion = "";
@@ -84,7 +85,8 @@ public class App extends Activity implements AsyncResponse {
             addListenerOnButton();
             comprobarVersionInicio(version);
             descargas = (Button) findViewById(R.id.button1);
-            accesorios = (Button) findViewById(R.id.button2);
+            about = (Button) findViewById(R.id.button2);
+            salir = (Button) findViewById(R.id.button11);
             videotutoriales = (Button) findViewById(R.id.button3);
             foro = (Button) findViewById(R.id.button4);
             driversherramientas = (Button) findViewById(R.id.button9);
@@ -138,7 +140,7 @@ public class App extends Activity implements AsyncResponse {
             t.setText(res.getString(R.string.msgModelo) + modelo);
             t2.setText(res.getString(R.string.msgCompilacion) + compilacion);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -166,7 +168,7 @@ public class App extends Activity implements AsyncResponse {
             asyncTask.delegate = this;
             asyncTask.execute(version2);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -176,7 +178,7 @@ public class App extends Activity implements AsyncResponse {
             asyncTask.delegate = this;
             asyncTask.execute(version2, "inicio");
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -199,10 +201,10 @@ public class App extends Activity implements AsyncResponse {
             request.setDestinationInExternalPublicDir("/JIAYUES/APP/", nombreFichero);
 
             DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.iniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
             downloadREF = manager.enqueue(request);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -378,7 +380,7 @@ public class App extends Activity implements AsyncResponse {
             }
 
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }/*
 					}
 				});
@@ -439,7 +441,7 @@ public class App extends Activity implements AsyncResponse {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
         return total;
     }
@@ -466,15 +468,30 @@ public class App extends Activity implements AsyncResponse {
                 }
 
             });
-            accesorios = (Button) findViewById(R.id.button2);
-            accesorios.setOnClickListener(new View.OnClickListener() {
+            about = (Button) findViewById(R.id.button2);
+            about.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
                     try {
                         Intent intent = new Intent(getBaseContext(), AboutActivity.class);
                         startActivity(intent);
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                    }
+                    /*Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);*/
+                }
+
+            });
+            salir = (Button) findViewById(R.id.button11);
+            salir.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View arg0) {
+                    try {
+                        finish();
+                    } catch (Exception e) {
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                     }
                     /*Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -486,7 +503,7 @@ public class App extends Activity implements AsyncResponse {
             foro.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.mensajeTapaTalk), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgTapaTalk), Toast.LENGTH_LONG).show();
                     Uri uri = Uri.parse("http://www.foro.jiayu.es");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
@@ -517,14 +534,14 @@ public class App extends Activity implements AsyncResponse {
                         Intent intent = new Intent(getBaseContext(), ROMTools.class);
                         startActivity(intent);
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                     }
                 }
 
             });
 
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -536,7 +553,7 @@ public class App extends Activity implements AsyncResponse {
             intent.putExtra("tipo", tipo);
             startActivity(intent);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -546,7 +563,7 @@ public class App extends Activity implements AsyncResponse {
             Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
             startActivity(myIntent);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -655,19 +672,19 @@ public class App extends Activity implements AsyncResponse {
                     AlertDialog dialog = new AlertDialog.Builder(this).create();
                     dialog.setMessage(res.getString(R.string.msgComprobarVersion) + " " + nversion + "->" + newversion + " " + res.getString(R.string.msgPreguntaVersion));
                     dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-                            res.getString(R.string.cancelar),
+                            res.getString(R.string.cancelarBtn),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int witch) {
                                 }
                             });
                     dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                            res.getString(R.string.aceptar),
+                            res.getString(R.string.aceptarBtn),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int witch) {
                                     try {
                                         ActualizarVersion();
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -678,7 +695,7 @@ public class App extends Activity implements AsyncResponse {
                         AlertDialog dialog = new AlertDialog.Builder(this).create();
                         dialog.setMessage(res.getString(R.string.msgLastVersion));
                         dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                                res.getString(R.string.aceptar),
+                                res.getString(R.string.aceptarBtn),
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int witch) {
                                     }
@@ -688,7 +705,7 @@ public class App extends Activity implements AsyncResponse {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -709,7 +726,7 @@ public class App extends Activity implements AsyncResponse {
                     Intent intent = new Intent(this, AboutActivity.class);
                     startActivity(intent);
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                 }
                 return true;
             case R.id.action_exit:

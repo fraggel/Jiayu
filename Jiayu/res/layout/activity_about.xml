@@ -87,14 +87,14 @@
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/msgEnviarEmail"
+                android:text="@string/enviarEmailBtn"
                 />
 
         <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/VisitarWeb"/>
+                android:text="@string/visitarWebBtn"/>
 
         <ImageButton
                 android:layout_width="fill_parent"

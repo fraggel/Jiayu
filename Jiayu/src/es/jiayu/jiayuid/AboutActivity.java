@@ -59,7 +59,7 @@ public class AboutActivity extends Activity {
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -78,9 +78,9 @@ public class AboutActivity extends Activity {
                     try {
 
                         startActivity(Intent.createChooser(i,
-                                res2.getString(R.string.msgEnviarEmail)));
+                                res2.getString(R.string.enviarEmailBtn)));
                     } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.genericError), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                     }
                 }
 

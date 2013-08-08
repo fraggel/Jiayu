@@ -1,0 +1,64 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="horizontal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+       <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cwmChk"
+                android:id="@+id/cwmChk"
+                android:checked="false"
+               />
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/downloadedRomTxt"
+                android:id="@+id/romTxt"
+                android:layout_gravity="left|center_vertical"/>
+
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/romSpn"
+                android:layout_gravity="left|center_vertical"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/flashRomBtn"
+                android:id="@+id/romBtn"
+                android:layout_gravity="left|center_vertical"
+                />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/downloadedFlashZipTxt"
+                android:id="@+id/zipTxt"
+                android:layout_gravity="left|center_vertical"/>
+
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/zipSpn"
+                android:layout_gravity="left|center_vertical"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/flashZipBtn"
+                android:id="@+id/zipBtn"
+                android:layout_gravity="left|center_vertical"/>
+
+    </LinearLayout>
+</ScrollView>
