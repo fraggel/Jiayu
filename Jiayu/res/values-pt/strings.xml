@@ -6,13 +6,13 @@
 
     <!--Activity Titulos-->
     <string name="title_activity_browser">Descargas Jiayu.es</string>
-    <string name="title_activity_about">Sobre nosotros...</string>
-    <string name="title_activity_romtool">Herramientas ROMs</string>
+    <string name="title_activity_about">Sobre nós...</string>
+    <string name="title_activity_romtool">Ferramentas ROMs</string>
     <string name="title_activity_inicio">Início</string>
     <string name="title_activity_video">VídeoTutoriais</string>
-    <string name="title_activity_romscreen">Operaciones ROM</string>
-    <string name="title_activity_recoveryscreen">Operaciones Recovery</string>
-    <string name="title_activity_imeiscreen">Operaciones IMEI</string>
+    <string name="title_activity_romscreen">Operações ROM</string>
+    <string name="title_activity_recoveryscreen">Operações Recovery</string>
+    <string name="title_activity_imeiscreen">Operações IMEI</string>
     <!--Menu-->
     <string name="updateMnu">Verificar actualizações</string>
     <string name="aboutMnu">Sobre nós...</string>
@@ -39,10 +39,10 @@
     <string name="msgRecoveryFlasheado">Recovery instalado, ¿Reiniciar em Recovery?</string>
     <string name="msgRebootRecoveryQF">Para instalar da ROM/Zip é necessário reiniciar, ¿Quer reiniciar agora?</string>
     <string name="msgRebootRecoveryQ">¿Reiniciar em Recovery?</string>
-    <string name="msgImeiExiste">Ya existe una copia de seguridad de tu IMEI, esta operación sobreescribirá la ya existente, ¿Quieres continuar?</string>
-    <string name="msgImeihecho">IMEI.bak creado</string>
+    <string name="msgImeiExiste">Já existe uma copia de segurança do IMEI. Esta operação substituirá a existente, ¿Quer continuar?</string>
+    <string name="msgImeihecho">IMEI.bak criado</string>
     <string name="msgImeirestored">IMEI.bak restaurado</string>
-    <string name="msgImeiRestoreQ">¿Quieres restaurar tu IMEI con el fichero IMEI.bak encontrado?</string>
+    <string name="msgImeiRestoreQ">¿Quer restaurar o IMEI a partir do fichero IMEI.bak encontrado?</string>
     <string name="msgTerminadaDescarga">Descarga terminada</string>
     <string name="msgIniciandoDescarga">Descarga iniciada</string>
     <string name="msgTapaTalk">Também pode encontrar-nos no TAPATALK! Jiayu.es</string>
@@ -83,17 +83,17 @@
     <string name="flashRomBtn">Instalar ROM</string>
     <string name="installApkBtn">Instalar APK</string>
     <string name="ingenieroBtn">Aplicação Modo Engenheiro</string>
-    <string name="imeiBtn">Copia/Restauración IMEI</string>
+    <string name="imeiBtn">Copia/Restaurar IMEI</string>
     <string name="imeiBBtn">Copiar IMEI</string>
     <string name="imeiRBtn">Restaurar IMEI</string>
-    <string name="rebootRecoveryBtn">Reiniciar en Recovery</string>
+    <string name="rebootRecoveryBtn">Reiniciar em Recovery</string>
     <string name="cancelarBtn">Cancelar</string>
     <string name="aceptarBtn">Aceitar</string>
     <string name="fileExplorerBtn">Abrir Explorador de Arquivos</string>
     <string name="visitarWebBtn">Visitar Web</string>
     <string name="enviarEmailBtn">Enviar email</string>
     <string name="foroBtn">Forum</string>
-    <string name="aboutBtn">Sobre nosotros...</string>
+    <string name="aboutBtn">Sobre nós...</string>
     <string name="cwmChk">Tenho o CWM Recovery instalado</string>
     <string name="salirBtn">Sair</string>
 </resources>
