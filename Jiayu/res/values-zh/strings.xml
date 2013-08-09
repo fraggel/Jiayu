@@ -1,62 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Jiayu</string>
-    <string name="bienvenida">Welcome to the Jiayu App. This application will show your exact model
-        with the nomenclature you will find on www.jiayu.es.
+    <string name="app_name">嘉裕</string>
+    <string name="bienvenida">欢迎嘉鱼应用。此应用程序将显示您的确切型号与名目，你会发现www.jiayu.es的。</string>
+
+
+    <string name="title_activity_browser">嘉裕下载</string>
+    <string name="title_activity_about">关于</string>
+    <string name="title_activity_romtool">ROM工具</string>
+    <string name="title_activity_inicio">指数</string>
+    <string name="title_activity_video">Videotutorials</string>
+    <string name="title_activity_romscreen">ROM的操作</string>
+    <string name="title_activity_recoveryscreen">恢复操作</string>
+    <string name="title_activity_imeiscreen">IMEI业务</string>
+
+    <string name="updateMnu">检查更新</string>
+    <string name="aboutMnu">关于我们</string>
+    <string name="exitMnu">出口</string>
+
+    <string name="seleccionaValue">选择</string>
+
+
+    <string name="msgComprobarVersion">新版本</string>
+    <string name="msgPreguntaVersion">¿下载？</string>
+    <string name="msgCompilacion">编译：</string>
+    <string name="msgModelo">型号：</string>
+    <string name="msgIdentificado1">确定为</string>
+    <string name="msgIdentificado2">，虽然的设备信息嘉玉的没有指明是制造商，</string>
+    <string name="msgTerminalNoJiayu">这款手机是不是嘉裕</string>
+    <string name="msgErrorIdentificar">错误已经发生。这是不可能检测到您的嘉裕模型</string>
+    <string name="msgSeleccionado">选</string>
+    <string name="msgIngenieroNoExiste">应用程序不存在</string>
+    <string name="msgErrorUnzip">错误，而解压缩</string>
+    <string name="msgErrorRom">初始化ROM闪烁时出错</string>
+    <string name="msgErrorRecovery">而写恢复文件时出错</string>
+    <string name="msgNoRoot">根是必要的</string>
+    <string name="msgRecoveryFlasheado">恢复一闪而过，重新进入复苏？</string>
+    <string name="msgRebootRecoveryQF">闪烁ROM /邮编，您现在需要重新启动，现在要重新启动吗？</string>
+    <string name="msgRebootRecoveryQ">重启进入恢复？</string>
+    <string name="msgImeiExiste">以前IMEI.bak的存在，这将覆盖它，要继续吗？</string>
+    <string name="msgImeihecho">IMEI.bak创造</string>
+    <string name="msgImeirestored">IMEI.bak恢复</string>
+    <string name="msgImeiRestoreQ">你确定要恢复IMEI.bak？</string>
+    <string name="msgTerminadaDescarga">下载完成</string>
+    <string name="msgIniciandoDescarga">下载开始</string>
+    <string name="msgTapaTalk">你可以找到我们上TAPATALK太！ Jiayu.es</string>
+    <string name="msgLastVersion">你已经有了最新版本</string>
+    <string name="msgInfoJiayu"><b>Distribuïdor Ofical a Espanya:</b><br/>email: <a
+            href = "info@jiayu.es">info@jiayu.es</a><br/><b>Horari atenció
+        telefònica:</b><br/>9:00-14:00 L-V <br/><b>Localització:</b><br/>Jiayu
+        Ivardis, Passatge Angels i Federic, 2. 46022, València (Spain) <br/>Tel 963556091
     </string>
-
-    <!--Activity Titulos-->
-    <string name="title_activity_browser">Jiayu Downloads</string>
-    <string name="title_activity_about">About</string>
-    <string name="title_activity_romtool">ROM Tools</string>
-    <string name="title_activity_inicio">Inicio</string>
-    <string name="title_activity_video">Videotutoriales</string>
-    <string name="title_activity_romscreen">Operaciones ROMs</string>
-    <string name="title_activity_recoveryscreen">Operaciones Recoverys</string>
-    <string name="title_activity_imeiscreen">Operaciones IMEI</string>
-    <!--Menu-->
-    <string name="updateMnu">Check Updates</string>
-    <string name="aboutMnu">About Us</string>
-    <string name="exitMnu">Exit</string>
-
-    <!--Values-->
-    <string name="seleccionaValue">Select</string>
-
-    <!--Mensajes-->
-    <string name="msgComprobarVersion">New version available</string>
-    <string name="msgPreguntaVersion">¿Download?</string>
-    <string name="msgCompilacion">Compilation:</string>
-    <string name="msgModelo">Model:</string>
-    <string name="msgIdentificado1">Identified as</string>
-    <string name="msgIdentificado2">, although on the device information Jiayu is not indicated as manufacturer</string>
-    <string name="msgTerminalNoJiayu">This mobile phone is not Jiayu</string>
-    <string name="msgErrorIdentificar">An error has occurred. It´s not possible to detect your Jiayu model</string>
-    <string name="msgSeleccionado">Selected</string>
-    <string name="msgIngenieroNoExiste">App don´t exists</string>
-    <string name="msgErrorUnzip">Error while decompress</string>
-    <string name="msgErrorRom">Error while initialize ROM Flashing</string>
-    <string name="msgErrorRecovery">Error while writing Recovery file</string>
-    <string name="msgNoRoot">Root is necessary</string>
-    <string name="msgRecoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
-    <string name="msgRebootRecoveryQF">To flash the ROM/Zip you need to restart now, want to restart now?</string>
-    <string name="msgRebootRecoveryQ">Reboot into Recovery?</string>
-    <string name="msgImeiExiste">A previous IMEI.bak exists, this will overwrite it, Want to continue?</string>
-    <string name="msgImeihecho">IMEI.bak created</string>
-    <string name="msgImeirestored">IMEI.bak restored</string>
-    <string name="msgImeiRestoreQ">Are you sure you want to restore the IMEI.bak?</string>
-    <string name="msgTerminadaDescarga">Download completed</string>
-    <string name="msgIniciandoDescarga">Download begin</string>
-    <string name="msgTapaTalk">You can find us on TAPATALK too! Jiayu.es</string>
-    <string name="msgLastVersion">You already have the latest version</string>
-    <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
-        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
-        telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
-        Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
-    </string>
-    <string name="msgGenericError">Error occurred</string>
-    <string name="msgSubjectInfo">Jiayu.es Info</string>
-    <string name="msgActivandoBTWifi">BT and WIFI is activating to indentify yout terminal</string>
+    <string name="msgGenericError">发生错误</string>
+    <string name="msgSubjectInfo">Jiayu.es信息</string>
+    <string name="msgActivandoBTWifi">BT和WIFI激活中，区别YOUT终端</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -67,35 +64,109 @@
     </string>
     <string name="about7">+34963556091</string>
 
-    <!--Labels-->
-    <string name="downloadedFlashZipTxt">Downloaded Zip</string>
-    <string name="downloadedRecoveryTxt">Downloaded Recovery</string>
-    <string name="downloadedRomTxt">Downloaded ROM</string>
-    <string name="downloadedAPKTxt">Downloaded APKS</string>
+    <string name="downloadedFlashZipTxt">下载的zip</string>
+    <string name="downloadedRecoveryTxt">下载的恢复</string>
+    <string name="downloadedRomTxt">下载ROM</string>
+    <string name="downloadedAPKTxt">下载的APKs的</string>
 
 
-    <!--Botones-->
-    <string name="descargasBtn">Downloads</string>
-    <string name="accesoriosBtn">Accessories</string>
+
+    <string name="descargasBtn">下载</string>
+    <string name="accesoriosBtn">饰品</string>
     <string name="videosBtn">Videotutorials</string>
-    <string name="herramientasBtn">Drivers-Tools</string>
-    <string name="herramientasROMBtn">ROM Tools</string>
-    <string name="flashRecoveryBtn">Flash Recovery</string>
-    <string name="flashZipBtn">Flash Zip</string>
-    <string name="flashRomBtn">Flash ROM</string>
-    <string name="installApkBtn">Install APK</string>
-    <string name="ingenieroBtn">Engineer Mode</string>
-    <string name="imeiBtn">Bakcup/Restore Imei</string>
-    <string name="imeiBBtn">Backup Imei</string>
-    <string name="imeiRBtn">Restore Imei</string>
-    <string name="rebootRecoveryBtn">Reboot Recovery</string>
-    <string name="cancelarBtn">Cancel</string>
-    <string name="aceptarBtn">Accept</string>
-    <string name="fileExplorerBtn">Open File Explorer</string>
-    <string name="visitarWebBtn">Visit Web</string>
-    <string name="enviarEmailBtn">Send email</string>
-    <string name="foroBtn">Forum</string>
-    <string name="aboutBtn">About Us</string>
-    <string name="cwmChk">I have CWM Recovery</string>
-    <string name="salirBtn">Exit</string>
+    <string name="herramientasBtn">驱动工具</string>
+    <string name="herramientasROMBtn">ROM工具</string>
+    <string name="flashRecoveryBtn">快速恢复</string>
+    <string name="flashZipBtn">闪存邮编</string>
+    <string name="flashRomBtn">快闪记忆体（Flash ROM）</string>
+    <string name="installApkBtn">安装APK</string>
+    <string name="ingenieroBtn">工程师模式</string>
+    <string name="imeiBtn">备份/还原IMEI</string>
+    <string name="imeiBBtn">备份维明</string>
+    <string name="imeiRBtn">还原维明</string>
+    <string name="rebootRecoveryBtn">重新启动恢复</string>
+    <string name="cancelarBtn">取消</string>
+    <string name="aceptarBtn">接受</string>
+    <string name="fileExplorerBtn">打开档案总管</string>
+    <string name="visitarWebBtn">访问网站</string>
+    <string name="enviarEmailBtn">发送电​​子邮件</string>
+    <string name="foroBtn">论坛</string>
+    <string name="aboutBtn">关于我们</string>
+    <string name="cwmChk">我有CWM恢复</string>
+    <string name="salirBtn">出口</string>
 </resources>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
