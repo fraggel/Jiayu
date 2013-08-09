@@ -38,7 +38,7 @@
     <string name="msgNoRoot">Es necesario ser Root</string>
     <string name="msgRecoveryFlasheado">Recovery instalado, ¿Reiniciar en Recovery?</string>
     <string name="msgRebootRecoveryQF">Para instalar la ROM/Zip se necesita reiniciar el dispositivo, ¿Quieres reiniciar ahora?</string>
-    <string name="msgRebootRecoveryQ">Reiniciar en Recovery?</string>
+    <string name="msgRebootRecoveryQ">¿Reiniciar en Recovery?</string>
     <string name="msgImeiExiste">Ya existe una copia de seguridad de tu IMEI, esta operación sobreescribirá la ya existente, ¿Quieres continuar?</string>
     <string name="msgImeihecho">IMEI.bak creado</string>
     <string name="msgImeirestored">IMEI.bak restaurado</string>
@@ -52,7 +52,7 @@
         telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
         Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
     </string>
-    <string name="msgGenericError">HA ocurrido un error</string>
+    <string name="msgGenericError">Ha ocurrido un error</string>
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="msgActivandoBTWifi">Activando Bluetooth y WiFi, necesario para poder identificar el modelo de dispositivo</string>
 
