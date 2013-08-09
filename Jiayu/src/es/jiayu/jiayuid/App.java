@@ -15,6 +15,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -110,7 +111,6 @@ public class App extends Activity implements AsyncResponse {
             fabricante = infoBrand();
             t = (TextView) findViewById(R.id.textView1);
             t2 = (TextView) findViewById(R.id.textView2);
-
             if ("".equals(modelo)) {
                 calcularTelefono();
                 modelo = model;
@@ -124,7 +124,6 @@ public class App extends Activity implements AsyncResponse {
                 videotutoriales.setEnabled(true);
 
             }
-
             if (modelo.length() < 8) {
                 descargas.setEnabled(true);
                 //accesorios.setEnabled(true);
@@ -134,7 +133,9 @@ public class App extends Activity implements AsyncResponse {
                 herramientasROM.setEnabled(true);
                 if (!"JIAYU".equals(fabricante.toUpperCase().trim())) {
                     t5.setTextColor(Color.RED);
-                    t5.setText(res.getString(R.string.msgIdentificado1) + modelo + res.getString(R.string.msgIdentificado2));
+                    t5.setText(res.getString(R.string.msgIdentificado1) +" "+ modelo + res.getString(R.string.msgIdentificado2));
+                }else{
+                    t5.setVisibility(View.INVISIBLE);
                 }
             }
             t.setText(res.getString(R.string.msgModelo) + modelo);

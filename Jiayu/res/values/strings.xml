@@ -28,7 +28,7 @@
     <string name="msgPreguntaVersion">¿Download?</string>
     <string name="msgCompilacion">Compilation:</string>
     <string name="msgModelo">Model:</string>
-    <string name="msgIdentificado1">Identified as</string>
+    <string name="msgIdentificado1">Identified as </string>
     <string name="msgIdentificado2">, although on the device information Jiayu is not indicated as manufacturer</string>
     <string name="msgTerminalNoJiayu">This mobile phone is not Jiayu</string>
     <string name="msgErrorIdentificar">An error has occurred. It´s not possible to detect your Jiayu model</string>
@@ -98,4 +98,5 @@
     <string name="aboutBtn">About Us</string>
     <string name="cwmChk">I have CWM Recovery</string>
     <string name="salirBtn">Exit</string>
+
 </resources>

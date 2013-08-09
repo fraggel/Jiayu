@@ -26,7 +26,7 @@
         <string name="msgPreguntaVersion">¿Descarregar?</string>
         <string name="msgCompilacion">Compilació:</string>
         <string name="msgModelo">Model:</string>
-        <string name="msgIdentificado1">Identificat com</string>
+        <string name="msgIdentificado1">Identificat com </string>
         <string name="msgIdentificado2">, encara que en la informació de la ROM no s\'indica Jiayu com a fabricant</string>
         <string name="msgTerminalNoJiayu">teu dispositiu no és Jiayu</string>
         <string name="msgErrorIdentificar">Ha ocorregut un error que impedeix detectar el teu model de dispositiu</string>

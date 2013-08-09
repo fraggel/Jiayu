@@ -8,100 +8,108 @@
             android:id="@+id/LinearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="0dp"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="0dp"
             android:orientation="vertical"
-            android:paddingBottom="0dp"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:paddingTop="0dp"
             tools:context=".AboutActivity">
 
         <ImageButton
                 android:id="@+id/imageButton1"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
+                android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
                 android:src="@drawable/jiayueslogo"
                 android:contentDescription="Jiayu.es"
-                android:background="@android:color/transparent"/>
+                android:clickable="false"
+                android:focusable="false"
+                android:adjustViewBounds="false"
+                android:background="@android:color/transparent"
+                android:layout_weight="0.11"/>
 
         <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/about1"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/LabelTextBlack"/>
 
         <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autoLink="email"
                 android:text="@string/about2"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:paddingLeft="@dimen/margin20dp"/>
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"
+                android:autoLink="email"/>
 
         <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/about3"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/LabelTextBlackMain"
+                android:background="@drawable/btn_white_border"/>
 
         <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/about4"
-                android:paddingLeft="@dimen/margin20dp"/>
+                android:background="@drawable/btn_white_border"
+                style="@style/LabelTextBlackSub"/>
 
         <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/about5"
-                android:textAppearance="?android:attr/textAppearanceMedium"/>
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/LabelTextBlackMain"
+                android:background="@drawable/btn_white_border"/>
 
         <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/about6"
-                android:paddingLeft="@dimen/margin20dp"/>
+                android:background="@drawable/btn_white_border"
+                style="@style/LabelTextBlackSub"/>
 
         <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autoLink="phone"
-                android:paddingBottom="25dp"
                 android:text="@string/about7"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:paddingLeft="@dimen/margin20dp"/>
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"
+                android:password="false"
+                android:autoLink="phone"
+                android:singleLine="false"/>
 
         <Button
                 android:id="@+id/button1"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/enviarEmailBtn"
-                />
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
 
         <Button
                 android:id="@+id/button2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/visitarWebBtn"/>
+                android:text="@string/visitarWebBtn"
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"/>
 
         <ImageButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/imageButton"
                 android:src="@drawable/maps"
-                android:background="@android:color/transparent"/>
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"
+                android:adjustViewBounds="true"/>
 
     </LinearLayout>
 </ScrollView>

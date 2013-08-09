@@ -14,13 +14,16 @@
                 android:text="@string/imeiBBtn"
                 android:id="@+id/imeiBBtn"
                 android:layout_gravity="left|center_vertical"
-                />
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/imeiRBtn"
                 android:id="@+id/imeiRBtn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"/>
 
     </LinearLayout>
 </ScrollView>

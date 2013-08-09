@@ -13,61 +13,78 @@
                 android:layout_height="wrap_content"
                 android:text="@string/imeiBtn"
                 android:id="@+id/imeiBtn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
 
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/filesBtn"
                 android:layout_gravity="left|center_vertical"
-                android:text="@string/fileExplorerBtn"/>
+                android:text="@string/fileExplorerBtn"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
 
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ingenieroBtn"
                 android:id="@+id/ingenieroBtn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/flashRomBtn"
                 android:id="@+id/romBtn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
 
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/flashRecoveryBtn"
                 android:id="@+id/recoveryBtn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/rebootRecoveryBtn"
                 android:id="@+id/rebootRecoveryBtn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
 
         <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/downloadedAPKTxt"
                 android:id="@+id/apkTexto"
                 android:layout_gravity="left|center_vertical"
-                android:paddingTop="20dp"/>
+                android:paddingTop="20dp"
+                style="@style/LabelTextBlack"/>
 
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/apkSpn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/btn_green"
+                />
 
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/installApkBtn"
                 android:id="@+id/apkBtn"
-                android:layout_gravity="left|center_vertical"/>
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
     </LinearLayout>
 </ScrollView>
