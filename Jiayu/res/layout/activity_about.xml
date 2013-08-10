@@ -8,7 +8,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
         <ImageButton
-                android:id="@+id/imageButton2"
+                android:id="@+id/imageButton1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
@@ -103,11 +103,12 @@
         <ImageButton
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageButton"
+                android:id="@+id/imageButton2"
                 android:src="@drawable/maps"
                 android:background="@drawable/btn_green"
                 style="@style/ButtonTextGreen"
-                android:adjustViewBounds="true"/>
+                android:adjustViewBounds="false"
+                android:scaleType="fitStart"/>
 
     </LinearLayout>
 </ScrollView>

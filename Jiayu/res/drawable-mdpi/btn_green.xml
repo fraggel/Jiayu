@@ -2,6 +2,8 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_pressed="true" >
         <shape>
+            <!--70c656-->
+            <!--dcd40b-->
             <solid
                     android:color="#197e3e" />
             <stroke
@@ -10,7 +12,7 @@
             <corners
                     android:radius="3dp" />
             <padding
-                    android:left="10dp"
+                    android:left="20dp"
                     android:top="10dp"
                     android:right="10dp"
                     android:bottom="10dp" />
@@ -33,7 +35,12 @@
                     android:bottom="10dp" />
         </shape>
     </item>
+    <!-- android:startColor="#70c656"
+                        android:endColor="#53933f"
+                        android:startColor="#b1bb1c"
+                    android:endColor="#6ea12c"
 
+                        -->
     <item>
         <shape>
             <gradient

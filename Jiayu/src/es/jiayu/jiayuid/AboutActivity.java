@@ -39,7 +39,7 @@ public class AboutActivity extends Activity {
                 }
 
             });
-            mapsButton = (ImageButton) findViewById(R.id.imageButton);
+            mapsButton = (ImageButton) findViewById(R.id.imageButton2);
             mapsButton.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {

@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -39,7 +40,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
     boolean isRoot = false;
     String modelo=null;
     String path = "";
-
+    ImageButton imageButton;
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imeiscreen);
@@ -52,7 +53,17 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                 //instalarBusyBox();
             }
         }
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
 
+            public void onClick(View arg0) {
+
+                Uri uri = Uri.parse("http://www.jiayu.es");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+
+        });
         imeiBBtn = (Button) findViewById(R.id.imeiBBtn);
         imeiRBtn = (Button) findViewById(R.id.imeiRBtn);
 

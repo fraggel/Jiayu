@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ import java.util.zip.ZipFile;
 public class ROMTools extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     Spinner apkSpn = null;
     Button apkBtn = null;
-
+    ImageButton imageButton = null;
     Button recoveryBtn = null;
     Button imeiBtn = null;
     Button romBtn = null;
@@ -66,6 +67,17 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 //instalarBusyBox();
             }
         }
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View arg0) {
+
+                Uri uri = Uri.parse("http://www.jiayu.es");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+
+        });
         apkSpn = (Spinner) findViewById(R.id.apkSpn);
         apkBtn = (Button) findViewById(R.id.apkBtn);
         recoveryBtn = (Button) findViewById(R.id.recoveryBtn);

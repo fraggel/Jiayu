@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
     Spinner recoverySpn = null;
 
     Button recoveryBtn = null;
-
+    ImageButton imageButton = null;
     Button rebootRcoveryBtn = null;
     public static String recoveryseleccionado = null;
     public static boolean descomprimido = false;
@@ -66,7 +67,17 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 //instalarBusyBox();
             }
         }
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
 
+            public void onClick(View arg0) {
+
+                Uri uri = Uri.parse("http://www.jiayu.es");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+
+        });
         recoverySpn = (Spinner) findViewById(R.id.recoverySpn);
 
         recoveryBtn = (Button) findViewById(R.id.recoveryBtn);

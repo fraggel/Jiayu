@@ -17,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     Spinner romSpn = null;
     Button romBtn = null;
     Spinner zipSpn=null;
+    ImageButton imageButton = null;
     Button zipBtn=null;
     String zipseleccionada=null;
     String romseleccionada = null;
@@ -69,7 +71,17 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 //instalarBusyBox();
             }
         }
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        imageButton.setOnClickListener(new View.OnClickListener() {
 
+            public void onClick(View arg0) {
+
+                Uri uri = Uri.parse("http://www.jiayu.es");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+
+        });
 
         romSpn = (Spinner) findViewById(R.id.romSpn);
         romBtn = (Button) findViewById(R.id.romBtn);
@@ -111,40 +123,40 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 if (!"".equals(romselec.trim())) {
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.msgSeleccionado) + " " + new File(romselec).getName(), Toast.LENGTH_SHORT).show();
                     romBtn.setEnabled(true);
-                    zipBtn.setEnabled(false);
                     this.romseleccionada = romselec;
-                } else {
-                    romBtn.setEnabled(false);
+                    zipSpn.setSelection(0);
                     zipBtn.setEnabled(false);
+                    this.zipseleccionada="";
+                } else {
+                    romSpn.setSelection(0);
+                    romBtn.setEnabled(false);
                     this.romseleccionada = "";
                 }
-                String apkselec = null;
+
+
             }
         }else if(spinner.getId() == R.id.zipSpn){
             if(listaZipsUrl!=null && listaZipsUrl.size()>0){
-                String recoveryselec=null;
+
                 String zipselec=listaZipsUrl.get(i);
                 if(!"".equals(zipselec.trim())){
                     Toast.makeText(getBaseContext(),getResources().getString(R.string.msgSeleccionado)+" "+new File(zipselec).getName(),Toast.LENGTH_SHORT).show();
-                    romBtn.setEnabled(false);
                     zipBtn.setEnabled(true);
                     this.zipseleccionada=zipselec;
-                }else{
                     romBtn.setEnabled(false);
+                    romSpn.setSelection(0);
+                    this.romseleccionada="";
+                }else{
+                    zipSpn.setSelection(0);
                     zipBtn.setEnabled(false);
                     this.zipseleccionada="";
                 }
-                String apkselec=null;
             }
         }
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-        Spinner spinner = (Spinner) adapterView;
-      if (spinner.getId() == R.id.romSpn) {
-            this.romseleccionada = null;
-        }
     }
 
     @Override

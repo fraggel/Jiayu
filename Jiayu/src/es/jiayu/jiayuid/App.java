@@ -78,7 +78,9 @@ public class App extends Activity implements AsyncResponse {
             tmpFecha=ajustes.getString("fechaUltimoAccesoDescargas", "");
             if("".equals(tmpFecha)){
                 editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
+                editorAjustes.commit();
             }
+
             Calendar calc = Calendar.getInstance();
             calc.add(Calendar.SECOND,20);
             Intent intent2 = new Intent(getBaseContext(), NotifyService.class);
