@@ -22,7 +22,9 @@
                 android:focusable="false"
                 android:adjustViewBounds="false"
                 android:background="@android:color/transparent"
-                android:layout_weight="0.11"/>
+                android:layout_weight="0.11"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"/>
 
         <TextView
                 android:id="@+id/textView3"
@@ -33,7 +35,8 @@
                 android:text="@string/bienvenida"
                 style="@style/LabelTextWhite"
                 android:background="@drawable/btn_black"
-                android:visibility="visible"/>
+                android:visibility="visible"
+                android:password="false"/>
 
         <TextView
                 android:id="@+id/textView1"

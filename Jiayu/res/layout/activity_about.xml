@@ -19,7 +19,8 @@
                 android:adjustViewBounds="false"
                 android:background="@android:color/transparent"
                 android:layout_weight="0.11"
-                />
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"/>
 
         <TextView
                 android:id="@+id/textView1"
