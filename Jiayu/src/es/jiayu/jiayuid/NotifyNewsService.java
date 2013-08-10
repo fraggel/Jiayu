@@ -159,7 +159,7 @@ public class NotifyNewsService extends Service implements AsyncResponse {
                 }
             }
         } catch (Exception e) {
-           
+
         }
     }
     private int[] descomponerFecha(String fechaPasada) {
