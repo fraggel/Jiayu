@@ -25,4 +25,19 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_launcher"/>
 
+    <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/jiayueslogo"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"/>
+
 </RelativeLayout>

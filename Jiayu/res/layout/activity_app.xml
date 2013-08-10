@@ -16,7 +16,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
-                android:src="@drawable/jiayueslogo"
+                android:src="@drawable/jiayulogoic"
                 android:contentDescription="Jiayu.es"
                 android:clickable="false"
                 android:focusable="false"

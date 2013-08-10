@@ -8,7 +8,21 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content">
 
-       <CheckBox
+        <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/jiayulogoic"
+                android:contentDescription="Jiayu.es"
+                android:clickable="false"
+                android:focusable="false"
+                android:adjustViewBounds="false"
+                android:background="@android:color/transparent"
+                android:layout_weight="0.11"
+                android:layout_gravity="center"/>
+
+        <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cwmChk"

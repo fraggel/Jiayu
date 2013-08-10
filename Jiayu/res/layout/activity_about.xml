@@ -1,28 +1,25 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scrollbars="horizontal">
 
-    <LinearLayout
-            android:id="@+id/LinearLayout1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".AboutActivity">
-
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
         <ImageButton
-                android:id="@+id/imageButton1"
+                android:id="@+id/imageButton2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:scaleType="fitCenter"
-                android:src="@drawable/jiayueslogo"
+                android:src="@drawable/jiayulogoic"
                 android:contentDescription="Jiayu.es"
                 android:clickable="false"
                 android:focusable="false"
                 android:adjustViewBounds="false"
                 android:background="@android:color/transparent"
-                android:layout_weight="0.11"/>
+                android:layout_weight="0.11"
+                />
 
         <TextView
                 android:id="@+id/textView1"
@@ -88,7 +85,7 @@
 
         <Button
                 android:id="@+id/button1"
-                android:layout_width="fill_parent"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/enviarEmailBtn"
                 style="@style/ButtonTextGreen"
