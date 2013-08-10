@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">嘉裕</string>
-    <string name="bienvenida">欢迎嘉鱼应用。此应用程序将显示您的确切型号与名目，你会发现www.jiayu.es的。</string>
+    <string name="app_name">佳域</string>
+    <string name="bienvenida">欢迎佳域实施, 这个应用程序将显示的确切型号的命名，你可以找到在网络上www.jiayu.es。</string>
 
 
     <string name="title_activity_browser">嘉裕下载</string>
     <string name="title_activity_about">关于</string>
     <string name="title_activity_romtool">ROM工具</string>
-    <string name="title_activity_inicio">指数</string>
+    <string name="title_activity_inicio">引发</string>
     <string name="title_activity_video">视频教程</string>
     <string name="title_activity_romscreen">ROM的操作</string>
     <string name="title_activity_recoveryscreen">恢复操作</string>
@@ -16,9 +16,9 @@
     <string name="title_activity_configscreen">组态</string>
 
     <string name="updateMnu">检查更新</string>
-    <string name="aboutMnu">关于我们</string>
+    <string name="aboutMnu">关于</string>
     <string name="configMnu">组态</string>
-    <string name="exitMnu">出口</string>
+    <string name="exitMnu">离开</string>
 
     <string name="seleccionaValue">选择</string>
 
@@ -28,9 +28,9 @@
     <string name="msgCompilacion">编译：</string>
     <string name="msgModelo">型号：</string>
     <string name="msgIdentificado1">确定为</string>
-    <string name="msgIdentificado2">，虽然的设备信息嘉玉的没有指明是制造商，</string>
-    <string name="msgTerminalNoJiayu">这款手机是不是嘉裕</string>
-    <string name="msgErrorIdentificar">错误已经发生。这是不可能检测到您的嘉裕模型</string>
+    <string name="msgIdentificado2">,虽然该设备的信息还没有表示的生产佳域</string>
+    <string name="msgTerminalNoJiayu">该设备不是佳域</string>
+    <string name="msgErrorIdentificar">这是一个错误，不可能检测到模型佳域的.</string>
     <string name="msgSeleccionado">选</string>
     <string name="msgIngenieroNoExiste">应用程序不存在</string>
     <string name="msgErrorUnzip">错误，而解压缩</string>
@@ -49,23 +49,22 @@
     <string name="msgTerminadaDescarga">下载完成</string>
     <string name="msgIniciandoDescarga">下载开始</string>
     <string name="msgTapaTalk">你可以找到我们上TAPATALK太！ Jiayu.es</string>
-    <string name="msgLastVersion">你已经有了最新版本</string>
-    <string name="msgInfoJiayu"><b>Distribuïdor Ofical a Espanya:</b><br/>email: <a
-            href = "info@jiayu.es">info@jiayu.es</a><br/><b>Horari atenció
-        telefònica:</b><br/>9:00-14:00 L-V <br/><b>Localització:</b><br/>Jiayu
+    <string name="msgLastVersion">我有最新的版本</string>
+    <string name="msgInfoJiayu"><b>在西班牙的经销商:</b><br/>电子邮箱: <a
+            href = "info@jiayu.es">info@jiayu.es</a><br/><b>致电预约:</b><br/>9:00-14:00 L-V <br/><b>地点:</b><br/>Jiayu
         Ivardis, Passatge Angels i Federic, 2. 46022, València (Spain) <br/>Tel 963556091
     </string>
-    <string name="msgGenericError">发生错误</string>
+    <string name="msgGenericError">失败</string>
     <string name="msgSubjectInfo">Jiayu.es信息</string>
-    <string name="msgActivandoBTWifi">BT和WIFI激活中，区别YOUT终端</string>
+    <string name="msgActivandoBTWifi">它激活Bluetooth和WiFi终端检查版本</string>
     <string name="msgModeloNoIgualFichero">选定的文件似乎并没有包含您的设备型号名称，可能与您的设备不兼容，你反正要安装它吗？</string>
     <string name="msgConfiguracion">组态</string>
 
-    <string name="about1">Distribuidor Ofical en España:</string>
+    <string name="about1">在西班牙的经销商:</string>
     <string name="about2">info@jiayu.es</string>
-    <string name="about3">Horario atención telefónica:</string>
+    <string name="about3">致电预约:</string>
     <string name="about4">9:00 a 14:00 L-V</string>
-    <string name="about5">Localización:</string>
+    <string name="about5">地点:</string>
     <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)
     </string>
     <string name="about7">+34963556091</string>
@@ -95,12 +94,12 @@
     <string name="aceptarBtn">接受</string>
     <string name="fileExplorerBtn">打开档案总管</string>
     <string name="visitarWebBtn">访问网站</string>
-    <string name="enviarEmailBtn">发送电​​子邮件</string>
+    <string name="enviarEmailBtn">发送电子邮件</string>
     <string name="foroBtn">论坛</string>
     <string name="aboutBtn">关于我们</string>
     <string name="cwmChk">我有CWM恢复</string>
     <string name="notificacionChk">显示通知（更新，新闻</string>
-    <string name="salirBtn">出口</string>
+    <string name="salirBtn">离开</string>
 
     <string name="ntfMinTxt">新闻JIAYU.es</string>
     <string name="ntfTituloTxt">新闻JIAYU.es内容</string>
