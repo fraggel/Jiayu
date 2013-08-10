@@ -8,7 +8,7 @@
 
     <!--Activity Titulos-->
     <string name="title_activity_browser">Jiayu Downloads</string>
-    <string name="title_activity_about">About</string>
+    <string name="title_activity_about">About us...</string>
     <string name="title_activity_romtool">ROM Tools</string>
     <string name="title_activity_inicio">Index</string>
     <string name="title_activity_video">Videotutorials</string>
@@ -18,7 +18,7 @@
     <string name="title_activity_configscreen">Configuration</string>
     <!--Menu-->
     <string name="updateMnu">Check Updates</string>
-    <string name="aboutMnu">About Us</string>
+    <string name="aboutMnu">About us...</string>
     <string name="configMnu">Configuration</string>
     <string name="exitMnu">Exit</string>
 
@@ -102,7 +102,7 @@
     <string name="visitarWebBtn">Visit Web</string>
     <string name="enviarEmailBtn">Send email</string>
     <string name="foroBtn">Forum</string>
-    <string name="aboutBtn">About Us</string>
+    <string name="aboutBtn">About us...</string>
     <string name="cwmChk">I have CWM Recovery</string>
     <string name="notificacionChk">Show Notifications (Updates, news)</string>
 
