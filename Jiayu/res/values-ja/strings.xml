@@ -5,90 +5,106 @@
         <string name="bienvenida">Jiayuのアプリへようこそ。このアプリケーションでは、www.jiayu.esに見つける命名法を使用して正確なモデルが表示されます。</string>
 
 
-         <string name="title_activity_browser">Jiayuのダウンロード</string>
-         <string name="title_activity_about">約</string>
-         <string name="title_activity_romtool">ROMツール</string>
-         <string name="title_activity_inicio">インデックス</string>
-         <string name="title_activity_video">Videotutorials</string>
-         <string name="title_activity_romscreen">ROM操作</string>
-         <string name="title_activity_recoveryscreen">回収作業</string>
-         <string name="title_activity_imeiscreen">IMEI操作</string>
+     <string name="title_activity_browser">Jiayuのダウンロード</string>
+     <string name="title_activity_about">約</string>
+     <string name="title_activity_romtool">ROMツール</string>
+     <string name="title_activity_inicio">インデックス</string>
+     <string name="title_activity_video">ビデオチュートリアル</string>
+     <string name="title_activity_romscreen">ROM操作</string>
+     <string name="title_activity_recoveryscreen">回収作業</string>
+     <string name="title_activity_imeiscreen">IMEI操作</string>
+    <string name="title_activity_configscreen">設定</string>
 
-         <string name="updateMnu">アップデートを確認する</string>
-         <string name="aboutMnu">私達について</string>
-         <string name="exitMnu">終了する</string>
+     <string name="updateMnu">アップデートを確認する</string>
+     <string name="aboutMnu">私達について</string>
+    <string name="configMnu">設定</string>
+     <string name="exitMnu">終了する</string>
 
-         <string name="seleccionaValue">選択する</string>
-
-
-         <string name="msgComprobarVersion">利用可能な新しいバージョン</string>
-         <string name="msgPreguntaVersion">¿ダウンロードしますか？</string>
-         <string name="msgCompilacion">コンパイル：</string>
-         <string name="msgModelo">モデル：</string>
-         <string name="msgIdentificado1">として識別</string>
-         <string name="msgIdentificado2">、メーカーとして示されていないデバイス情報Jiayuの上が</string>
-         <string name="msgTerminalNoJiayu">この携帯電話はJiayuのではない</string>
-         <string name="msgErrorIdentificar">エラーが発生しました。それはあなたのJiayuのモデルを検出することはできません</string>
-         <string name="msgSeleccionado">選択</string>
-         <string name="msgIngenieroNoExiste">アプリは存在しません</string>
-         <string name="msgErrorUnzip">解凍中にエラーが発生しました</string>
-         <string name="msgErrorRom">初期ROMのフラッシュ中にエラー</string>
-         <string name="msgErrorRecovery">リカバリファイルを書き込み中にエラー</string>
-         <string name="msgNoRoot">ルートが必要です</string>
-         <string name="msgRecoveryFlasheado"> 回復は、回復への再起動をフラッシュ？</string>
-         <string name="msgRebootRecoveryQF">今すぐ再起動する必要がROM /郵便番号をフラッシュするには、[今すぐ再起動したいですか？</string>
-         <string name="msgRebootRecoveryQ">回復に再起動？</string>
-         <string name="msgImeiExiste">以前IMEI.bakは、これはそれを上書きします、存在し続けたいですか？</string>
-         <string name="msgImeihecho">IMEI.bak作成</string>
-         <string name="msgImeirestored">IMEI.bak、復元</string>
-         <string name="msgImeiRestoreQ">あなたはIMEI.bakを復元してもよろしいですか？</string>
-         <string name="msgTerminadaDescarga">完成ダウンロード</string>
-         <string name="msgIniciandoDescarga"> 開始ダウンロード</string>
-         <string name="msgTapaTalk">あなたもTAPATALK上で私たちを見つけることができます！ Jiayu.es</string>
-         <string name="msgLastVersion">あなたは既に最新バージョンがインストールされている</string>
-             <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
-                 href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
-                 telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
-                 Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
-             </string>
-        <string name="msgGenericError">エラーが発生しました</string>
-        <string name="msgSubjectInfo">Jiayu.es情報</string>
-        <string name="msgActivandoBTWifi">BTとWIFIはYOUT端子indentifyするために活性化される</string>
-        <string name="about1">Distribuidor Ofical en España:</string>
-        <string name="about2">info@jiayu.es</string>
-        <string name="about3">Horario atención telefónica:</string>
-        <string name="about4">9:00 a 14:00 L-V</string>
-        <string name="about5">Localización:</string>
-        <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
-        <string name="about7">+34963556091</string>
-        <string name="downloadedFlashZipTxt"> ダウンロードしたzip</string>
-        <string name="downloadedRecoveryTxt">ダウンロード回復</string>
-        <string name="downloadedRomTxt">ダウンロードしたROM</string>
-        <string name="downloadedAPKTxt">ダウンロードのAPK</string>
+     <string name="seleccionaValue">選択する</string>
 
 
+     <string name="msgComprobarVersion">利用可能な新しいバージョン</string>
+     <string name="msgPreguntaVersion">¿ダウンロードしますか？</string>
+     <string name="msgCompilacion">コンパイル：</string>
+     <string name="msgModelo">モデル：</string>
+     <string name="msgIdentificado1">として識別</string>
+     <string name="msgIdentificado2">、メーカーとして示されていないデバイス情報Jiayuの上が</string>
+     <string name="msgTerminalNoJiayu">この携帯電話はJiayuのではない</string>
+     <string name="msgErrorIdentificar">エラーが発生しました。それはあなたのJiayuのモデルを検出することはできません</string>
+     <string name="msgSeleccionado">選択</string>
+     <string name="msgIngenieroNoExiste">アプリは存在しません</string>
+     <string name="msgErrorUnzip">解凍中にエラーが発生しました</string>
+     <string name="msgErrorRom">初期ROMのフラッシュ中にエラー</string>
+     <string name="msgErrorRecovery">リカバリファイルを書き込み中にエラー</string>
+     <string name="msgNoRoot">ルートが必要です</string>
+     <string name="msgRecoveryFlasheado"> 回復は、回復への再起動をフラッシュ？</string>
+     <string name="msgRebootRecoveryQF">今すぐ再起動する必要がROM /郵便番号をフラッシュするには、[今すぐ再起動したいですか？</string>
+     <string name="msgRebootRecoveryQ">回復に再起動？</string>
+     <string name="msgImeiExiste1">以前</string>
+     <string name="msgImeiExiste2">は、これはそれを上書きします、存在し続けたいですか？</string>
+     <string name="msgImeihecho">作成</string>
+     <string name="msgImeirestored">、復元</string>
+     <string name="msgImeiRestoreQ1">あなたは</string>
+     <string name="msgImeiRestoreQ2">を復元してもよろしいですか？</string>
+     <string name="msgTerminadaDescarga">完成ダウンロード</string>
+     <string name="msgIniciandoDescarga"> 開始ダウンロード</string>
+     <string name="msgTapaTalk">あなたもTAPATALK上で私たちを見つけることができます！ Jiayu.es</string>
+     <string name="msgLastVersion">あなたは既に最新バージョンがインストールされている</string>
+         <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Ofical en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
+             href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
+             telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
+             Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
+         </string>
+    <string name="msgGenericError">エラーが発生しました</string>
+    <string name="msgSubjectInfo">Jiayu.es情報</string>
+    <string name="msgActivandoBTWifi">BTとWIFIはYOUT端子indentifyするために活性化される</string>
+    <string name="msgModeloNoIgualFichero">選択したファイルは、デバイスのモデル名を含むように表示されない場合、お使いのデバイスと互換性がないかもしれませんが、とにかくそれをインストールしたいですか？</string>
+    <string name="msgConfiguracion">設定</string>
 
-        <string name="descargasBtn">ダウンロード</string>
-        <string name="accesoriosBtn">アクセサリー</string>
-        <string name="videosBtn">Videotutorials</string>
-        <string name="herramientasBtn">ドライバ·ツール</string>
-        <string name="herramientasROMBtn">ROMツール</string>
-        <string name="flashRecoveryBtn">フラッシュリカバリ</string>
-        <string name="flashZipBtn">フラッシュ郵便</string>
-        <string name="flashRomBtn">フラッシュROM</string>
-        <string name="installApkBtn">APKをインストール</string>
-        <string name="ingenieroBtn">エンジニアモード</string>
-        <string name="imeiBtn">バックアップ/復元IMEI</string>
-        <string name="imeiBBtn">バックアップIMEI</string>
-        <string name="imeiRBtn">IMEIを復元</string>
-        <string name="rebootRecoveryBtn">再起動による回復</string>
-        <string name="cancelarBtn">キャンセル</string>
-        <string name="aceptarBtn">受け入れる</string>
-        <string name="fileExplorerBtn">ファイルエクスプローラを開く</string>
-        <string name="visitarWebBtn"> ウェブにアクセスしてください</string>
-        <string name="enviarEmailBtn">メールを送信</string>
-        <string name="foroBtn">フォーラム</string>
-        <string name="aboutBtn">私達について</string>
-        <string name="cwmChk">私はCWMリカバリーを持って</string>
-        <string name="salirBtn">終了する</string>
+    <string name="about1">Distribuidor Ofical en España:</string>
+    <string name="about2">info@jiayu.es</string>
+    <string name="about3">Horario atención telefónica:</string>
+    <string name="about4">9:00 a 14:00 L-V</string>
+    <string name="about5">Localización:</string>
+    <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
+    <string name="about7">+34963556091</string>
+    <string name="downloadedFlashZipTxt"> ダウンロードしたzip</string>
+    <string name="downloadedRecoveryTxt">ダウンロード回復</string>
+    <string name="downloadedRomTxt">ダウンロードしたROM</string>
+    <string name="downloadedAPKTxt">ダウンロードのAPK</string>
+
+
+
+    <string name="descargasBtn">ダウンロード</string>
+    <string name="accesoriosBtn">アクセサリー</string>
+    <string name="videosBtn">Videotutorials</string>
+    <string name="herramientasBtn">ドライバ·ツール</string>
+    <string name="herramientasROMBtn">ROMツール</string>
+    <string name="flashRecoveryBtn">フラッシュリカバリ</string>
+    <string name="flashZipBtn">フラッシュ郵便</string>
+    <string name="flashRomBtn">フラッシュROM</string>
+    <string name="installApkBtn">APKをインストール</string>
+    <string name="ingenieroBtn">エンジニアモード</string>
+    <string name="imeiBtn">バックアップ/復元IMEI</string>
+    <string name="imeiBBtn">バックアップIMEI</string>
+    <string name="imeiRBtn">IMEIを復元</string>
+    <string name="rebootRecoveryBtn">再起動による回復</string>
+    <string name="cancelarBtn">キャンセル</string>
+    <string name="aceptarBtn">受け入れる</string>
+    <string name="fileExplorerBtn">ファイルエクスプローラを開く</string>
+    <string name="visitarWebBtn"> ウェブにアクセスしてください</string>
+    <string name="enviarEmailBtn">メールを送信</string>
+    <string name="foroBtn">フォーラム</string>
+    <string name="aboutBtn">私達について</string>
+    <string name="cwmChk">私はCWMリカバリーを持って</string>
+    <string name="notificacionChk">ショー通知（更新、ニュース）</string>
+    <string name="salirBtn">終了する</string>
+
+    <string name="ntfMinTxt">JIAYU.esのニュース</string>
+    <string name="ntfTituloTxt">JIAYU.esコンテンツのニュース</string>
+    <string name="ntfDetallesTxt">あなたのデバイスのためのニュース</string>
+
+    <string name="ntfNuevaVersionTxt">アップデートJIAYU.es</string>
+    <string name="ntfTituloNVTxt">アップデートJIAYU.es</string>
+    <string name="ntfDetallesNVTxt">バージョン：</string>
 </resources>

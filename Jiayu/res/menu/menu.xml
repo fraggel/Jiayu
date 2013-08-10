@@ -8,7 +8,11 @@
             android:orderInCategory="200"
             android:title="@string/aboutMnu"/>
     <item
-            android:id="@+id/action_exit"
+            android:id="@+id/action_config"
             android:orderInCategory="300"
+            android:title="@string/configMnu"/>
+    <item
+            android:id="@+id/action_exit"
+            android:orderInCategory="400"
             android:title="@string/exitMnu"/>
 </menu>

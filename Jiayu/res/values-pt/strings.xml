@@ -13,9 +13,11 @@
     <string name="title_activity_romscreen">Operações ROM</string>
     <string name="title_activity_recoveryscreen">Operações Recovery</string>
     <string name="title_activity_imeiscreen">Operações IMEI</string>
+    <string name="title_activity_configscreen">Configuration</string>
     <!--Menu-->
     <string name="updateMnu">Verificar actualizações</string>
     <string name="aboutMnu">Sobre nós...</string>
+    <string name="configMnu">Configuration</string>
     <string name="exitMnu">Sair</string>
 
     <!--Values-->
@@ -39,10 +41,12 @@
     <string name="msgRecoveryFlasheado">Recovery instalado, ¿Reiniciar em Recovery?</string>
     <string name="msgRebootRecoveryQF">Para instalar da ROM/Zip é necessário reiniciar, ¿Quer reiniciar agora?</string>
     <string name="msgRebootRecoveryQ">¿Reiniciar em Recovery?</string>
-    <string name="msgImeiExiste">Já existe uma copia de segurança do IMEI. Esta operação substituirá a existente, ¿Quer continuar?</string>
-    <string name="msgImeihecho">IMEI.bak criado</string>
-    <string name="msgImeirestored">IMEI.bak restaurado</string>
-    <string name="msgImeiRestoreQ">¿Quer restaurar o IMEI a partir do fichero IMEI.bak encontrado?</string>
+    <string name="msgImeiExiste1">Já existe uma copia de segurança do </string>
+    <string name="msgImeiExiste2">. Esta operação substituirá a existente, ¿Quer continuar?</string>
+    <string name="msgImeihecho">criado</string>
+    <string name="msgImeirestored">restaurado</string>
+    <string name="msgImeiRestoreQ1">¿Quer restaurar o IMEI a partir do fichero</string>
+    <string name="msgImeiRestoreQ2">encontrado?</string>
     <string name="msgTerminadaDescarga">Descarga terminada</string>
     <string name="msgIniciandoDescarga">Descarga iniciada</string>
     <string name="msgTapaTalk">Também pode encontrar-nos no TAPATALK! Jiayu.es</string>
@@ -55,6 +59,8 @@
     <string name="msgGenericError">Ocorreu um erro</string>
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="msgActivandoBTWifi">A activar Bluetooth e WiFi para identificar o terminal</string>
+    <string name="msgModeloNoIgualFichero">O arquivo selecionado não parece conter o nome do modelo do dispositivo, poderá não ser compatível com o seu dispositivo, você deseja instalá-lo de qualquer maneira?</string>
+    <string name="msgConfiguracion">Configuration</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -83,7 +89,7 @@
     <string name="flashRomBtn">Instalar ROM</string>
     <string name="installApkBtn">Instalar APK</string>
     <string name="ingenieroBtn">Aplicação Modo Engenheiro</string>
-    <string name="imeiBtn">Copia/Restaurar IMEI</string>
+    <string name="imeiBtn">Copiar/Restaurar IMEI</string>
     <string name="imeiBBtn">Copiar IMEI</string>
     <string name="imeiRBtn">Restaurar IMEI</string>
     <string name="rebootRecoveryBtn">Reiniciar em Recovery</string>
@@ -95,5 +101,14 @@
     <string name="foroBtn">Forum</string>
     <string name="aboutBtn">Sobre nós...</string>
     <string name="cwmChk">Tenho o CWM Recovery instalado</string>
+    <string name="notificacionChk">Show Notifications (Updates, news)</string>
     <string name="salirBtn">Sair</string>
+
+    <string name="ntfMinTxt">News on JIAYU.es</string>
+    <string name="ntfTituloTxt">News on JIAYU.es content</string>
+    <string name="ntfDetallesTxt">News for your Device</string>
+
+    <string name="ntfNuevaVersionTxt">Update JIAYU.es</string>
+    <string name="ntfTituloNVTxt">Update JIAYU.es</string>
+    <string name="ntfDetallesNVTxt">Version:</string>
 </resources>

@@ -41,9 +41,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     String romseleccionada = null;
     ArrayList<String> listaRomsUrl = new ArrayList<String>();
     ArrayList<String> listaZipsUrl=new ArrayList<String>();
+    public static boolean aceptadoNoModelo=false;
     List listaZip=new ArrayList();
     List listaRo = new ArrayList();
-
+    String modelo=null;
     CheckBox chkCWM = null;
     boolean isRoot = false;
     String path = "";
@@ -61,6 +62,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_romscreen);
+        modelo = getIntent().getExtras().getString("modelo");
         if (controlRoot()) {
             isRoot = true;
             if (!controlBusybox()) {
@@ -150,6 +152,94 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         Button button = (Button) view;
        if (button.getId() == R.id.romBtn) {
             try {
+                boolean mimodelo=false;
+                if(this.romseleccionada.indexOf(modelo)!=-1){
+                    mimodelo=true;
+                }else{
+                    mimodelo=false;
+                }
+                if(!mimodelo){
+                    AlertDialog dialog = new AlertDialog.Builder(this).create();
+                    dialog.setMessage(getResources().getString(R.string.msgModeloNoIgualFichero));
+                    dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                            getResources().getString(R.string.cancelarBtn),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int witch) {
+                                    RomScreen.aceptadoNoModelo = false;
+                                }
+                            });
+                    dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                            getResources().getString(R.string.aceptarBtn),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int witch) {
+                                    try {
+                                        RomScreen.aceptadoNoModelo = true;
+                                        flashRom();
+                                        //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                    } catch (Exception e) {
+                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                    dialog.show();
+                }else{
+                    aceptadoNoModelo=true;
+                    flashRom();
+                }
+
+            } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRom) + new File(this.romseleccionada).getName(), Toast.LENGTH_SHORT).show();
+            }
+
+
+
+        }else if(button.getId()==R.id.zipBtn){
+           try {
+               boolean mimodelo=false;
+               if(this.zipseleccionada.indexOf(modelo)!=-1){
+                   mimodelo=true;
+               }else{
+                   mimodelo=false;
+               }
+               if(!mimodelo){
+                   AlertDialog dialog = new AlertDialog.Builder(this).create();
+                   dialog.setMessage(getResources().getString(R.string.msgModeloNoIgualFichero));
+                   dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                           getResources().getString(R.string.cancelarBtn),
+                           new DialogInterface.OnClickListener() {
+                               public void onClick(DialogInterface dialog, int witch) {
+                                   RomScreen.aceptadoNoModelo = false;
+                               }
+                           });
+                   dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                           getResources().getString(R.string.aceptarBtn),
+                           new DialogInterface.OnClickListener() {
+                               public void onClick(DialogInterface dialog, int witch) {
+                                   try {
+                                       RomScreen.aceptadoNoModelo = true;
+                                       flashZip();
+                                       //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                   } catch (Exception e) {
+                                       Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                   }
+                               }
+                           });
+                   dialog.show();
+               }else{
+                   aceptadoNoModelo=true;
+                   flashZip();
+               }
+
+           }catch(Exception e){
+
+           }
+
+       }
+        refreshCombos();
+    }
+    public void flashRom(){
+        try {
+            if(aceptadoNoModelo){
                 CheckBox chkCWM = (CheckBox) findViewById(R.id.cwmChk);
                 if (chkCWM.isChecked()) {
 
@@ -162,8 +252,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                 .getBytes());
                         String fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
                         bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                        /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                        bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+                                /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
+                                bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
                         bos.flush();
                         bos.close();
                         rebootRecoveryQuestionFlashear();
@@ -201,37 +291,38 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     }
 
                 }
-            } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRom) + new File(this.romseleccionada).getName(), Toast.LENGTH_SHORT).show();
             }
-
-
-            this.romseleccionada = "";
-            this.romSpn.setSelection(0);
-            romBtn.setEnabled(false);
-        }else if(button.getId()==R.id.zipBtn){
-           try {
-               Runtime rt = Runtime.getRuntime();
-               java.lang.Process p = rt.exec("su");
-               BufferedOutputStream bos = new BufferedOutputStream(
-                       p.getOutputStream());
-               bos.write(("rm /cache/recovery/extendedcommand\n")
-                       .getBytes());
-               String fileCWM=this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard");
-               bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
-               bos.flush();
-               bos.close();
-               rebootRecoveryQuestionFlashear();
-           }catch(Exception e){
-
-           }
-
-       }
-        refreshCombos();
+        } catch (Exception e) {
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+        }
+        this.romseleccionada = "";
+        this.romSpn.setSelection(0);
+        romBtn.setEnabled(false);
     }
-
+    public void flashZip(){
+        try {
+            if(aceptadoNoModelo){
+                Runtime rt = Runtime.getRuntime();
+                java.lang.Process p = rt.exec("su");
+                BufferedOutputStream bos = new BufferedOutputStream(
+                        p.getOutputStream());
+                bos.write(("rm /cache/recovery/extendedcommand\n")
+                        .getBytes());
+                String fileCWM=this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard");
+                bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+                        /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
+                        bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+                bos.flush();
+                bos.close();
+                rebootRecoveryQuestionFlashear();
+            }
+        } catch (Exception e) {
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+        }
+        this.zipseleccionada = "";
+        this.zipSpn.setSelection(0);
+        zipBtn.setEnabled(false);
+    }
     private void rebootRecoveryQuestionFlashear() {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setMessage(getResources().getString(R.string.msgRebootRecoveryQF));

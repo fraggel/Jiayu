@@ -9,13 +9,15 @@
     <string name="title_activity_about">关于</string>
     <string name="title_activity_romtool">ROM工具</string>
     <string name="title_activity_inicio">指数</string>
-    <string name="title_activity_video">Videotutorials</string>
+    <string name="title_activity_video">视频教程</string>
     <string name="title_activity_romscreen">ROM的操作</string>
     <string name="title_activity_recoveryscreen">恢复操作</string>
     <string name="title_activity_imeiscreen">IMEI业务</string>
+    <string name="title_activity_configscreen">组态</string>
 
     <string name="updateMnu">检查更新</string>
     <string name="aboutMnu">关于我们</string>
+    <string name="configMnu">组态</string>
     <string name="exitMnu">出口</string>
 
     <string name="seleccionaValue">选择</string>
@@ -38,10 +40,12 @@
     <string name="msgRecoveryFlasheado">恢复一闪而过，重新进入复苏？</string>
     <string name="msgRebootRecoveryQF">闪烁ROM /邮编，您现在需要重新启动，现在要重新启动吗？</string>
     <string name="msgRebootRecoveryQ">重启进入恢复？</string>
-    <string name="msgImeiExiste">以前IMEI.bak的存在，这将覆盖它，要继续吗？</string>
-    <string name="msgImeihecho">IMEI.bak创造</string>
-    <string name="msgImeirestored">IMEI.bak恢复</string>
-    <string name="msgImeiRestoreQ">你确定要恢复IMEI.bak？</string>
+    <string name="msgImeiExiste1">以前</string>
+    <string name="msgImeiExiste2">的存在，这将覆盖它，要继续吗？</string>
+    <string name="msgImeihecho">创造</string>
+    <string name="msgImeirestored">恢复</string>
+    <string name="msgImeiRestoreQ1">你确定要恢复</string>
+    <string name="msgImeiRestoreQ2">？</string>
     <string name="msgTerminadaDescarga">下载完成</string>
     <string name="msgIniciandoDescarga">下载开始</string>
     <string name="msgTapaTalk">你可以找到我们上TAPATALK太！ Jiayu.es</string>
@@ -54,6 +58,8 @@
     <string name="msgGenericError">发生错误</string>
     <string name="msgSubjectInfo">Jiayu.es信息</string>
     <string name="msgActivandoBTWifi">BT和WIFI激活中，区别YOUT终端</string>
+    <string name="msgModeloNoIgualFichero">选定的文件似乎并没有包含您的设备型号名称，可能与您的设备不兼容，你反正要安装它吗？</string>
+    <string name="msgConfiguracion">组态</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -93,7 +99,16 @@
     <string name="foroBtn">论坛</string>
     <string name="aboutBtn">关于我们</string>
     <string name="cwmChk">我有CWM恢复</string>
+    <string name="notificacionChk">显示通知（更新，新闻</string>
     <string name="salirBtn">出口</string>
+
+    <string name="ntfMinTxt">新闻JIAYU.es</string>
+    <string name="ntfTituloTxt">新闻JIAYU.es内容</string>
+    <string name="ntfDetallesTxt">新闻为您的设备</string>
+
+    <string name="ntfNuevaVersionTxt">更新JIAYU.es</string>
+    <string name="ntfTituloNVTxt">更新JIAYU.es</string>
+    <string name="ntfDetallesNVTxt">版本：</string>
 </resources>
 
 

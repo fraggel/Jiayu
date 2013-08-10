@@ -15,9 +15,11 @@
     <string name="title_activity_romscreen">ROM Operations</string>
     <string name="title_activity_recoveryscreen">Recovery Operations</string>
     <string name="title_activity_imeiscreen">IMEI Operations</string>
+    <string name="title_activity_configscreen">Configuration</string>
     <!--Menu-->
     <string name="updateMnu">Check Updates</string>
     <string name="aboutMnu">About Us</string>
+    <string name="configMnu">Configuration</string>
     <string name="exitMnu">Exit</string>
 
     <!--Values-->
@@ -41,10 +43,12 @@
     <string name="msgRecoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
     <string name="msgRebootRecoveryQF">To flash the ROM/Zip you need to restart now, want to restart now?</string>
     <string name="msgRebootRecoveryQ">Reboot into Recovery?</string>
-    <string name="msgImeiExiste">A previous IMEI.bak exists, this will overwrite it, Want to continue?</string>
-    <string name="msgImeihecho">IMEI.bak created</string>
-    <string name="msgImeirestored">IMEI.bak restored</string>
-    <string name="msgImeiRestoreQ">Are you sure you want to restore the IMEI.bak?</string>
+    <string name="msgImeiExiste1">A previous</string>
+    <string name="msgImeiExiste2">backup exists, this will overwrite it, Want to continue?</string>
+    <string name="msgImeihecho">created</string>
+    <string name="msgImeirestored">restored</string>
+    <string name="msgImeiRestoreQ1">Are you sure you want to restore the </string>
+    <string name="msgImeiRestoreQ2">？</string>
     <string name="msgTerminadaDescarga">Download completed</string>
     <string name="msgIniciandoDescarga">Download begin</string>
     <string name="msgTapaTalk">You can find us on TAPATALK too! Jiayu.es</string>
@@ -57,6 +61,9 @@
     <string name="msgGenericError">Error occurred</string>
     <string name="msgSubjectInfo">Jiayu.es Info</string>
     <string name="msgActivandoBTWifi">BT and WIFI is activating to indentify yout terminal</string>
+    <string name="msgModeloNoIgualFichero">The selected file does not appear to contain your device model name, may not be compatible with your device, you want to install it anyway?</string>
+    <string name="msgConfiguracion">Configuration</string>
+
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -97,6 +104,15 @@
     <string name="foroBtn">Forum</string>
     <string name="aboutBtn">About Us</string>
     <string name="cwmChk">I have CWM Recovery</string>
+    <string name="notificacionChk">Show Notifications (Updates, news)</string>
+
     <string name="salirBtn">Exit</string>
 
+    <string name="ntfMinTxt">News on JIAYU.es</string>
+    <string name="ntfTituloTxt">News on JIAYU.es content</string>
+    <string name="ntfDetallesTxt">News for your Device</string>
+
+    <string name="ntfNuevaVersionTxt">Update JIAYU.es</string>
+    <string name="ntfTituloNVTxt">Update JIAYU.es</string>
+    <string name="ntfDetallesNVTxt">Version:</string>
 </resources>

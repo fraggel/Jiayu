@@ -43,7 +43,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     Button ingenieroBtn = null;
     Button abrirExploradorBtn = null;
     Button rebootRecoveryBtn = null;
-
+    String modelo=null;
     String apkseleccionada = null;
     ArrayList<String> listaAppsUrl = new ArrayList<String>();
     List listaApps = new ArrayList();
@@ -57,6 +57,9 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_romtools);
+        Intent intent = getIntent();
+        modelo = intent.getExtras().getString("modelo");
+
         if (controlRoot()) {
             isRoot = true;
             if (!controlBusybox()) {
@@ -132,6 +135,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         } else if (button.getId() == R.id.imeiBtn) {
             try {
                 Intent intent = new Intent(this, ImeiScreen.class);
+                intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
@@ -139,6 +143,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         } else if (button.getId() == R.id.recoveryBtn) {
             try {
                 Intent intent = new Intent(this, RecoveryScreen.class);
+                intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
@@ -186,6 +191,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         } else if (button.getId() == R.id.romBtn) {
             try {
                 Intent intent = new Intent(this, RomScreen.class);
+                intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
@@ -225,6 +231,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     private void rebootRecoveryQuestion() {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setMessage(getResources().getString(R.string.msgRebootRecoveryQ));
+
         dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
                 getResources().getString(R.string.cancelarBtn),
                 new DialogInterface.OnClickListener() {

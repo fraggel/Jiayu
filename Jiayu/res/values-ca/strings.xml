@@ -1,98 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-        <string name="app_name">Jiayu.es</string>
-        <string name="bienvenida">Benvingut a l\'aplicació Jiayu.es. Aquesta aplicació mostrarà el model exacte amb la nomenclatura que trobaràs a www.jiayu.es.</string>
+    <string name="app_name">Jiayu.es</string>
+    <string name="bienvenida">Benvingut a l\'aplicació Jiayu.es. Aquesta aplicació mostrarà el model exacte amb la nomenclatura que trobaràs a www.jiayu.es.</string>
 
-        <!-- Activity Títols-->
-        <string name="title_activity_browser">Descàrregues Jiayu.es</string>
-        <string name="title_activity_about">Quant a ...</string>
-        <string name="title_activity_romtool">Eines ROM</string>
-        <string name="title_activity_inicio">Inici</string>
-        <string name="title_activity_video">Videotutorials</string>
-        <string name="title_activity_romscreen">Operacions ROM</string>
-        <string name="title_activity_recoveryscreen">Operacions Recovery</string>
-        <string name="title_activity_imeiscreen">Operacions IMEI</string>
-        <!-- Menu -->
-        <string name="updateMnu">Comprovar actualitzacions</string>
-        <string name="aboutMnu">Quant a ...</string>
-        <string name="exitMnu">Sortir</string>
+    <!-- Activity Títols-->
+    <string name="title_activity_browser">Descàrregues Jiayu.es</string>
+    <string name="title_activity_about">Quant a ...</string>
+    <string name="title_activity_romtool">Eines ROM</string>
+    <string name="title_activity_inicio">Inici</string>
+    <string name="title_activity_video">Videotutorials</string>
+    <string name="title_activity_romscreen">Operacions ROM</string>
+    <string name="title_activity_recoveryscreen">Operacions Recovery</string>
+    <string name="title_activity_imeiscreen">Operacions IMEI</string>
+    <string name="title_activity_configscreen">Configuració</string>
+    <!-- Menu -->
+    <string name="updateMnu">Comprovar actualitzacions</string>
+    <string name="aboutMnu">Quant a ...</string>
+    <string name="configMnu">Configuració</string>
+    <string name="exitMnu">Sortir</string>
 
-        <!-- Values -->
-        <string name="seleccionaValue">Selecciona</string>
+    <!-- Values -->
+    <string name="seleccionaValue">Selecciona</string>
 
-        <!-- Missatges -->
-        <string name="msgComprobarVersion">Nova versió disponible</string>
-        <string name="msgPreguntaVersion">¿Descarregar?</string>
-        <string name="msgCompilacion">Compilació:</string>
-        <string name="msgModelo">Model:</string>
-        <string name="msgIdentificado1">Identificat com </string>
-        <string name="msgIdentificado2">, encara que en la informació de la ROM no s\'indica Jiayu com a fabricant</string>
-        <string name="msgTerminalNoJiayu">teu dispositiu no és Jiayu</string>
-        <string name="msgErrorIdentificar">Ha ocorregut un error que impedeix detectar el teu model de dispositiu</string>
-        <string name="msgSeleccionado">Seleccionat</string>
-        <string name="msgIngenieroNoExiste">L\'aplicació no existeix</string>
-        <string name="msgErrorUnzip">Error mentre es descomprimía</string>
-        <string name="msgErrorRom">Error mentre s\'iniciava la instal · lació de la ROM</string>
-        <string name="msgErrorRecovery">Error mentre s\'escrivia el Recovery</string>
-        <string name="msgNoRoot">Cal ser Root</string>
-        <string name="msgRecoveryFlasheado">Recovery instal · lat, Reinicia en Recovery?</string>
-        <string name="msgRebootRecoveryQF">Per instal · lar la ROM / Zip es necessita reiniciar el dispositiu, Vols reiniciar ara?</string>
-        <string name="msgRebootRecoveryQ">¿Reinicia en Recovery?</string>
-        <string name="msgImeiExiste">Ja hi ha una còpia de seguretat del teu IMEI, aquesta operació sobreescriurà la ja existent, Vols continuar?</string>
-        <string name="msgImeihecho">IMEI.bak creat</string>
-        <string name="msgImeirestored">IMEI.bak restaurat</string>
-        <string name="msgImeiRestoreQ">Vols restaurar la teva IMEI amb el fitxer IMEI.bak trobat?</string>
-        <string name="msgTerminadaDescarga">Descàrrega acabada</string>
-        <string name="msgIniciandoDescarga">Descàrrega iniciada</string>
-        <string name="msgTapaTalk">També pots trobar-nos a TAPATALK! Jiayu.es</string>
-        <string name="msgLastVersion">Ja disposes de l\'última versió de l\'aplicació</string>
-        <string name="msgInfoJiayu"><b>Distribuïdor Ofical a Espanya:</b><br/>email: <a
-                href = "info@jiayu.es">info@jiayu.es</a><br/><b>Horari atenció
-            telefònica:</b><br/>9:00-14:00 L-V <br/><b>Localització:</b><br/>Jiayu
-            Ivardis, Passatge Angels i Federic, 2. 46022, València (Spain) <br/>Tel 963556091
-           </string>
-        <string name="msgGenericError">S\'ha produït un error</string>
-        <string name="msgSubjectInfo">Jiayu.es Informació</string>
-        <string name="msgActivandoBTWifi">Activant Bluetooth i WiFi, necessari per poder identificar el model de dispositiu</string>
+    <!-- Missatges -->
+    <string name="msgComprobarVersion">Nova versió disponible</string>
+    <string name="msgPreguntaVersion">¿Descarregar?</string>
+    <string name="msgCompilacion">Compilació:</string>
+    <string name="msgModelo">Model:</string>
+    <string name="msgIdentificado1">Identificat com </string>
+    <string name="msgIdentificado2">, encara que en la informació de la ROM no s\'indica Jiayu com a fabricant</string>
+    <string name="msgTerminalNoJiayu">teu dispositiu no és Jiayu</string>
+    <string name="msgErrorIdentificar">Ha ocorregut un error que impedeix detectar el teu model de dispositiu</string>
+    <string name="msgSeleccionado">Seleccionat</string>
+    <string name="msgIngenieroNoExiste">L\'aplicació no existeix</string>
+    <string name="msgErrorUnzip">Error mentre es descomprimía</string>
+    <string name="msgErrorRom">Error mentre s\'iniciava la instal · lació de la ROM</string>
+    <string name="msgErrorRecovery">Error mentre s\'escrivia el Recovery</string>
+    <string name="msgNoRoot">Cal ser Root</string>
+    <string name="msgRecoveryFlasheado">Recovery instal · lat, Reinicia en Recovery?</string>
+    <string name="msgRebootRecoveryQF">Per instal · lar la ROM / Zip es necessita reiniciar el dispositiu, Vols reiniciar ara?</string>
+    <string name="msgRebootRecoveryQ">¿Reinicia en Recovery?</string>
+    <string name="msgImeiExiste1">Ja hi ha una còpia de seguretat del teu </string>
+    <string name="msgImeiExiste2">, aquesta operació sobreescriurà la ja existent, Vols continuar?</string>
+    <string name="msgImeihecho">creat</string>
+    <string name="msgImeirestored">restaurat</string>
+    <string name="msgImeiRestoreQ1">Vols restaurar la teva IMEI amb el fitxer</string>
+    <string name="msgImeiRestoreQ2">trobat?</string>
+    <string name="msgTerminadaDescarga">Descàrrega acabada</string>
+    <string name="msgIniciandoDescarga">Descàrrega iniciada</string>
+    <string name="msgTapaTalk">També pots trobar-nos a TAPATALK! Jiayu.es</string>
+    <string name="msgLastVersion">Ja disposes de l\'última versió de l\'aplicació</string>
+    <string name="msgInfoJiayu"><b>Distribuïdor Ofical a Espanya:</b><br/>email: <a
+    href = "info@jiayu.es">info@jiayu.es</a><br/><b>Horari atenció
+    telefònica:</b><br/>9:00-14:00 L-V <br/><b>Localització:</b><br/>Jiayu
+    Ivardis, Passatge Angels i Federic, 2. 46022, València (Spain) <br/>Tel 963556091
+    </string>
+    <string name="msgGenericError">S\'ha produït un error</string>
+    <string name="msgSubjectInfo">Jiayu.es Informació</string>
+    <string name="msgActivandoBTWifi">Activant Bluetooth i WiFi, necessari per poder identificar el model de dispositiu</string>
+    <string name="msgModeloNoIgualFichero">El fitxer no sembla contenir teu model de dispositiu en el nom, pot no ser compatible amb el dispositiu, ¿Desitges instal igualment?</string>
+    <string name="msgConfiguracion">Configuració</string>
 
-        <string name="about1">Distribuïdor Ofical a Espanya:</string>
-        <string name="about2">info@jiayu.es</string>
-        <string name="about3">Horari atenció telefònica:</string>
-        <string name="about4">9:00-14:00 L-V</string>
-        <string name="about5">Localització:</string>
-        <string name="about6">Jiayu &amp; Ivardis, Passatge Angels i Federic, 2. 46022, València (Spain)</string>
-        <string name="about7">+34963556091</string>
+    <string name="about1">Distribuïdor Ofical a Espanya:</string>
+    <string name="about2">info@jiayu.es</string>
+    <string name="about3">Horari atenció telefònica:</string>
+    <string name="about4">9:00-14:00 L-V</string>
+    <string name="about5">Localització:</string>
+    <string name="about6">Jiayu &amp; Ivardis, Passatge Angels i Federic, 2. 46022, València (Spain)</string>
+    <string name="about7">+34963556091</string>
 
-        <!-- Labels -->
-        <string name="downloadedFlashZipTxt">Zipser descarregats</string>
-        <string name="downloadedRecoveryTxt">Recoverys descarregats</string>
-        <string name="downloadedRomTxt">ROM descarregades</string>
-        <string name="downloadedAPKTxt">APKs descarregades</string>
+    <!-- Labels -->
+    <string name="downloadedFlashZipTxt">Zipser descarregats</string>
+    <string name="downloadedRecoveryTxt">Recoverys descarregats</string>
+    <string name="downloadedRomTxt">ROM descarregades</string>
+    <string name="downloadedAPKTxt">APKs descarregades</string>
 
 
-        <!-- Botons -->
-        <string name="descargasBtn">Descàrregues</string>
-        <string name="accesoriosBtn">Accessoris</string>
-        <string name="videosBtn">Videotutorials</string>
-        <string name="herramientasBtn">Drivers-Eines</string>
-        <string name="herramientasROMBtn">Eines JIAYU.es</string>
-        <string name="flashRecoveryBtn">Instal Recovery</string>
-        <string name="flashZipBtn">Instal Zip</string>
-        <string name="flashRomBtn">Instal ROM</string>
-        <string name="installApkBtn">Instal APK</string>
-        <string name="ingenieroBtn">Aplicació Mode Enginyer</string>
-        <string name="imeiBtn">Còpia / Restauració IMEI</string>
-        <string name="imeiBBtn">Copia IMEI</string>
-        <string name="imeiRBtn">Restaurar IMEI</string>
-        <string name="rebootRecoveryBtn">Reinicia en Recovery</string>
-        <string name="cancelarBtn">Cancel · la</string>
-        <string name="aceptarBtn">Acceptar</string>
-        <string name="fileExplorerBtn">Obrir Explorador d\'arxius</string>
-        <string name="visitarWebBtn">Visitar web</string>
-        <string name="enviarEmailBtn">Enviar email</string>
-        <string name="foroBtn">Fòrum</string>
-        <string name="aboutBtn">Quant a ...</string>
-        <string name="cwmChk">Tinc instal · lat el Cwm Recovery</string>
-        <string name="salirBtn">Sortir</string>
+    <!-- Botons -->
+    <string name="descargasBtn">Descàrregues</string>
+    <string name="accesoriosBtn">Accessoris</string>
+    <string name="videosBtn">Videotutorials</string>
+    <string name="herramientasBtn">Drivers-Eines</string>
+    <string name="herramientasROMBtn">Eines JIAYU.es</string>
+    <string name="flashRecoveryBtn">Instal Recovery</string>
+    <string name="flashZipBtn">Instal Zip</string>
+    <string name="flashRomBtn">Instal ROM</string>
+    <string name="installApkBtn">Instal APK</string>
+    <string name="ingenieroBtn">Aplicació Mode Enginyer</string>
+    <string name="imeiBtn">Copiar/Restaurar IMEI</string>
+    <string name="imeiBBtn">Copiar IMEI</string>
+    <string name="imeiRBtn">Restaurar IMEI</string>
+    <string name="rebootRecoveryBtn">Reinicia en Recovery</string>
+    <string name="cancelarBtn">Cancel · la</string>
+    <string name="aceptarBtn">Acceptar</string>
+    <string name="fileExplorerBtn">Obrir Explorador d\'arxius</string>
+    <string name="visitarWebBtn">Visitar web</string>
+    <string name="enviarEmailBtn">Enviar email</string>
+    <string name="foroBtn">Fòrum</string>
+    <string name="aboutBtn">Quant a ...</string>
+    <string name="cwmChk">Tinc instal · lat el Cwm Recovery</string>
+    <string name="notificacionChk">Mostra Notifications (Actualitzacions, novetats)</string>
+    <string name="salirBtn">Sortir</string>
+
+    <string name="ntfMinTxt">News on JIAYU.es</string>
+    <string name="ntfTituloTxt">News on JIAYU.es content</string>
+    <string name="ntfDetallesTxt">News for your Device</string>
+
+    <string name="ntfNuevaVersionTxt">Update JIAYU.es</string>
+    <string name="ntfTituloNVTxt">Update JIAYU.es</string>
+    <string name="ntfDetallesNVTxt">Version:</string>
 </resources>

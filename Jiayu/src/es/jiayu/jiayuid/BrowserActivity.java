@@ -2,8 +2,10 @@ package es.jiayu.jiayuid;
 
 import android.app.Activity;
 import android.app.DownloadManager;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
@@ -17,12 +19,19 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.Calendar;
 import java.util.List;
 
 public class BrowserActivity extends Activity {
     Resources res;
     PackageManager pm = null;
     String urlDestino = "";
+    static NotificationManager mNotificationManagerUpdate=null;
+    static NotificationManager mNotificationManagerNews=null;
+    private int SIMPLE_NOTFICATION_UPDATE=8888;
+    private int SIMPLE_NOTFICATION_NEWS=8889;
+    SharedPreferences ajustes=null;
+    SharedPreferences.Editor editorAjustes=null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +49,13 @@ public class BrowserActivity extends Activity {
         if ("drivers".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/apptools.php");
         } else if ("downloads".equals(tipo)) {
+            mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManagerNews.cancel(SIMPLE_NOTFICATION_NEWS);
+            ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+            editorAjustes = ajustes.edit();
+            editorAjustes.putString("modelo", modelo);
+            editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
+            editorAjustes.commit();
             descargas.loadUrl("http://www.jiayu.es/soporte/appsoft.php?jiayu=" + modelo);
         }
 
@@ -140,5 +156,20 @@ public class BrowserActivity extends Activity {
         } catch (Exception e) {
             return false;
         }
+    }
+    private String asignaFecha() {
+        String fecha_mod=null;
+        Calendar cal=Calendar.getInstance();
+        String day=String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+        String month=String.valueOf((cal.get(Calendar.MONTH)+1));
+        String year=String.valueOf(cal.get(Calendar.YEAR));
+        if(day.length()<2){
+            day="0"+day;
+        }
+        if(month.length()<2){
+            month="0"+month;
+        }
+        fecha_mod=(day+"/"+month+"/"+year);
+        return fecha_mod;
     }
 }

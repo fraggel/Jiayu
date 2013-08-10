@@ -39,8 +39,9 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
     Button recoveryBtn = null;
 
     Button rebootRcoveryBtn = null;
-    String recoveryseleccionado = null;
-
+    public static String recoveryseleccionado = null;
+    public static boolean descomprimido = false;
+    String modelo=null;
     ArrayList<String> listaRecoUrl = new ArrayList<String>();
 
     List listaReco = new ArrayList();
@@ -58,6 +59,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recoveryscreen);
+        modelo = getIntent().getExtras().getString("modelo");
         if (controlRoot()) {
             isRoot = true;
             if (!controlBusybox()) {
@@ -115,10 +117,42 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
     public void onClick(View view) {
         Button button = (Button) view;
         if (button.getId() == R.id.recoveryBtn) {
-            boolean descomprimido = false;
+
             try {
-                unZip(this.recoveryseleccionado);
-                descomprimido = true;
+                boolean mimodelo=false;
+                if(this.recoveryseleccionado.indexOf(modelo)!=-1){
+                    mimodelo=true;
+                }else{
+                    mimodelo=false;
+                }
+                if(!mimodelo){
+                    AlertDialog dialog = new AlertDialog.Builder(this).create();
+                    dialog.setMessage(getResources().getString(R.string.msgModeloNoIgualFichero));
+                    dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                            getResources().getString(R.string.cancelarBtn),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int witch) {
+                                    RecoveryScreen.descomprimido = false;
+                                }
+                            });
+                    dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                            getResources().getString(R.string.aceptarBtn),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int witch) {
+                                    try {
+                                        unZip(RecoveryScreen.recoveryseleccionado);
+                                        RecoveryScreen.descomprimido = true;
+                                        //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                    } catch (Exception e) {
+                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                    dialog.show();
+                }else{
+                    unZip(this.recoveryseleccionado);
+                    this.descomprimido = true;
+                }
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName(), Toast.LENGTH_SHORT).show();
             }

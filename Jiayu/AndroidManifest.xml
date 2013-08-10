@@ -15,6 +15,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!--<uses-permission android:name="android.permission.REBOOT"/>-->
 
     <uses-feature android:name="android.hardware.camera"/>
@@ -51,6 +52,7 @@
         <activity android:name="es.jiayu.jiayuid.ImeiScreen" android:label="@string/title_activity_imeiscreen"/>
         <activity android:name="es.jiayu.jiayuid.RomScreen" android:label="@string/title_activity_romscreen"/>
         <activity android:name="es.jiayu.jiayuid.RecoveryScreen" android:label="@string/title_activity_recoveryscreen"/>
+        <activity android:name="es.jiayu.jiayuid.ConfigActivity" android:label="@string/title_activity_configscreen"/>
 
         <receiver
                 android:name="es.jiayu.jiayuid.DownloadReceiver"
@@ -60,6 +62,13 @@
                 <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
             </intent-filter>
         </receiver>
+        <receiver android:name="es.jiayu.jiayuid.UpdateReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="es.jiayu.jiayuid.NotifyService"/>
+        <service android:name="es.jiayu.jiayuid.NotifyNewsService"/>
     </application>
 
 </manifest>

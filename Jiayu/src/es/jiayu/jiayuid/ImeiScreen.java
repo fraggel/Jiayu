@@ -37,11 +37,15 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
     Button imeiBBtn = null;
     Button imeiRBtn = null;
     boolean isRoot = false;
+    String modelo=null;
     String path = "";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imeiscreen);
+        Intent intent = getIntent();
+        modelo = intent.getExtras().getString("modelo");
+
         if (controlRoot()) {
             isRoot = true;
             if (!controlBusybox()) {
@@ -144,10 +148,10 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
 
     public void backupImeis(){
         try {
-            File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI.bak");
+            File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak");
             if(ff.exists()){
                 AlertDialog dialog = new AlertDialog.Builder(this).create();
-                dialog.setMessage(getResources().getString(R.string.msgImeiExiste));
+                dialog.setMessage(getResources().getString(R.string.msgImeiExiste1)+" IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeiExiste2));
                 dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
                         getResources().getString(R.string.cancelarBtn),
                         new DialogInterface.OnClickListener() {
@@ -160,7 +164,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int witch) {
                                 try {
-                                    File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI.bak");
+                                    File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak");
                                     ff.delete();
                                     Runtime rt = Runtime.getRuntime();
                                     java.lang.Process p = rt.exec("su");
@@ -168,12 +172,12 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                             p.getOutputStream());
                                     //TODO
                                     //Calcular Md5 del original,
-                                    bos.write(("cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI.bak\n").getBytes());
+                                    bos.write(("cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
                                     //calcular md5 de la copia, comparar y si es correcto mostrar aviso de ok, en caso contrario decir que no OK y eliminar el IMEI.bak
                                     //Poner md5 en la cabecera del fichero si se puede
                                     bos.flush();
                                     bos.close();
-                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getBaseContext(), "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                 } catch (Exception e) {
                                     Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                                 }
@@ -202,12 +206,12 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                                 p.getOutputStream());
                                         //TODO
                                         //Calcular Md5 del original,
-                                        bos.write(("cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI.bak\n").getBytes());
+                                        bos.write(("cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
                                         //calcular md5 de la copia, comparar y si es correcto mostrar aviso de ok, en caso contrario decir que no OK y eliminar el IMEI.bak
                                         //Poner md5 en la cabecera del fichero si se puede
                                         bos.flush();
                                         bos.close();
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
                                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                                     }
@@ -226,7 +230,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
     public void restoreImeis(){
         try {
             AlertDialog dialog = new AlertDialog.Builder(this).create();
-            dialog.setMessage(getResources().getString(R.string.msgImeiRestoreQ));
+            dialog.setMessage(getResources().getString(R.string.msgImeiRestoreQ1)+" "+"IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeiRestoreQ2));
             dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
                     getResources().getString(R.string.cancelarBtn),
                     new DialogInterface.OnClickListener() {
@@ -246,11 +250,11 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                 //TODO
                                 //calcular Md5, comparar con el de la cabecera del fichero si es correcto copiar
                                 //Si no lo es no copiar....
-                                bos.write(("cp "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI.bak /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001\n").getBytes());
+                                bos.write(("cp "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001\n").getBytes());
 
                                 bos.flush();
                                 bos.close();
-                                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getBaseContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                             } catch (Exception e) {
                                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                             }

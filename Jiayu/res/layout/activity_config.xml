@@ -1,0 +1,48 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:scrollbars="horizontal">
+
+    <LinearLayout
+            android:id="@+id/LinearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context=".Config"
+            android:baselineAligned="true">
+
+        <ImageButton
+                android:id="@+id/imageButton1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerInside"
+                android:src="@drawable/jiayueslogo"
+                android:contentDescription="Jiayu.es"
+                android:clickable="false"
+                android:focusable="false"
+                android:adjustViewBounds="false"
+                android:background="@android:color/transparent"
+                />
+
+        <TextView
+                android:id="@+id/textView3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/msgConfiguracion"
+                style="@style/LabelTextWhite"
+                android:background="@drawable/btn_black"
+                android:visibility="visible"/>
+
+        <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notificacionChk"
+                android:id="@+id/notificacionChk"
+                android:checked="false"
+                style="@style/LabelTextBlack"/>
+    </LinearLayout>
+
+</ScrollView>

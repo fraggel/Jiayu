@@ -1,12 +1,18 @@
 package es.jiayu.jiayuid;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.hardware.Camera.Size;
@@ -29,6 +35,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -53,11 +60,44 @@ public class App extends Activity implements AsyncResponse {
     String fabricante = "";
     String compilacion = "";
     String newversion = "";
-
+    static NotificationManager mNotificationManagerUpdate=null;
+    static NotificationManager mNotificationManagerNews=null;
+    private int SIMPLE_NOTFICATION_UPDATE=8888;
+    private int SIMPLE_NOTFICATION_NEWS=8889;
+    SharedPreferences ajustes=null;
+    SharedPreferences.Editor editorAjustes=null;
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
+            mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
             nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+            ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+            editorAjustes=ajustes.edit();
+            String tmpFecha="";
+            tmpFecha=ajustes.getString("fechaUltimoAccesoDescargas", "");
+            if("".equals(tmpFecha)){
+                editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
+            }
+            Calendar calc = Calendar.getInstance();
+            calc.add(Calendar.SECOND,20);
+            Intent intent2 = new Intent(getBaseContext(), NotifyService.class);
+            PendingIntent pintent = PendingIntent.getService(getBaseContext(), 0, intent2,
+                    0);
+            AlarmManager alarm = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
+
+            alarm.setRepeating(AlarmManager.RTC_WAKEUP, calc.getTimeInMillis(),20*1000, pintent);
+            getBaseContext().startService(new Intent(getBaseContext(),NotifyService.class));
+
+            Calendar calc2 = Calendar.getInstance();
+            calc2.add(Calendar.SECOND,20);
+            Intent intent3 = new Intent(getBaseContext(), NotifyNewsService.class);
+            PendingIntent pintent2 = PendingIntent.getService(getBaseContext(), 0, intent3,
+                    0);
+            AlarmManager alarm2 = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
+
+            alarm2.setRepeating(AlarmManager.RTC_WAKEUP, calc2.getTimeInMillis(),20*1000, pintent2);
+            getBaseContext().startService(new Intent(getBaseContext(),NotifyNewsService.class));
             version = "Jiayu.es ";
             version = version + nversion;
             File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
@@ -88,6 +128,7 @@ public class App extends Activity implements AsyncResponse {
             descargas = (Button) findViewById(R.id.button1);
             about = (Button) findViewById(R.id.button2);
             salir = (Button) findViewById(R.id.button11);
+
             videotutoriales = (Button) findViewById(R.id.button3);
             foro = (Button) findViewById(R.id.button4);
             driversherramientas = (Button) findViewById(R.id.button9);
@@ -125,6 +166,11 @@ public class App extends Activity implements AsyncResponse {
 
             }
             if (modelo.length() < 8) {
+                Calendar cal=Calendar.getInstance();
+                editorAjustes = ajustes.edit();
+                editorAjustes.putString("modelo", modelo);
+                editorAjustes.commit();
+
                 descargas.setEnabled(true);
                 //accesorios.setEnabled(true);
                 foro.setEnabled(true);
@@ -533,6 +579,7 @@ public class App extends Activity implements AsyncResponse {
                 public void onClick(View arg0) {
                     try {
                         Intent intent = new Intent(getBaseContext(), ROMTools.class);
+                        intent.putExtra("modelo",modelo);
                         startActivity(intent);
                     } catch (Exception e) {
                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
@@ -545,6 +592,32 @@ public class App extends Activity implements AsyncResponse {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
 
+    }
+
+    private String asignaFecha() {
+        String fecha_mod=null;
+        Calendar cal=Calendar.getInstance();
+        String day=String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
+        String month=String.valueOf((cal.get(Calendar.MONTH)+1));
+        String year=String.valueOf(cal.get(Calendar.YEAR));
+        if(day.length()<2){
+            day="0"+day;
+        }
+        if(month.length()<2){
+            month="0"+month;
+        }
+        fecha_mod=(day+"/"+month+"/"+year);
+        return fecha_mod;
+    }
+    private int[] descomponerFecha(String fechaPasada) {
+        int day=Integer.parseInt(fechaPasada.trim().split("/")[0]);
+        int month=Integer.parseInt(fechaPasada.trim().split("/")[1])-1;
+        int year=Integer.parseInt(fechaPasada.trim().split("/")[2]);
+        int fecha[]=new int[3];
+        fecha[0]=day;
+        fecha[1]=month;
+        fecha[2]=year;
+        return fecha;
     }
 
     public void openBrowser(View v, String tipo) {
@@ -703,6 +776,58 @@ public class App extends Activity implements AsyncResponse {
                                 });
                         dialog.show();
                     }
+                    if((split.length-2)>0){
+                        String fecha=null;
+                        String model=null;
+                        boolean modeloEncontrado=false;
+                        for (int x =2;x<split.length;x++){
+                            model=split[x].split("->")[0];
+                            fecha=split[x].split("->")[1];
+                            if(modelo.equals(model)){
+                                modeloEncontrado=true;
+                                break;
+                            }
+                        }
+                        if(modeloEncontrado){
+                            String fechaAcceso=ajustes.getString("fechaUltimoAccesoDescargas",fecha);
+
+                            int[] ints = descomponerFecha(fechaAcceso);
+                            Calendar calAcceso=Calendar.getInstance();
+                            calAcceso.set(Calendar.DAY_OF_MONTH,ints[0]);
+                            calAcceso.set(Calendar.MONTH,ints[1]);
+                            calAcceso.set(Calendar.YEAR,ints[2]);
+                            calAcceso.set(Calendar.HOUR,0);
+                            calAcceso.set(Calendar.MINUTE,0);
+                            calAcceso.set(Calendar.SECOND,0);
+                            calAcceso.set(Calendar.MILLISECOND,0);
+                            int[] ints1 = descomponerFecha(fecha);
+                            Calendar calModificacion=Calendar.getInstance();
+                            calModificacion.set(Calendar.DAY_OF_MONTH,ints1[0]);
+                            calModificacion.set(Calendar.MONTH,ints1[1]);
+                            calModificacion.set(Calendar.YEAR,ints1[2]);
+                            calModificacion.set(Calendar.HOUR,0);
+                            calModificacion.set(Calendar.MINUTE,0);
+                            calModificacion.set(Calendar.SECOND,0);
+                            calModificacion.set(Calendar.MILLISECOND,0);
+                            if(calModificacion.after(calAcceso)){
+                                mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                                final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getBaseContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
+                                CharSequence contentTitle = getBaseContext().getResources().getString(R.string.ntfTituloTxt);
+                                CharSequence contentText = getBaseContext().getResources().getString(R.string.ntfDetallesTxt);
+                                Intent launch_intent = new Intent();
+                                launch_intent.setComponent(new ComponentName("es.jiayu.jiayuid", "es.jiayu.jiayuid.BrowserActivity"));
+                                launch_intent.putExtra("modelo", modelo);
+                                launch_intent.putExtra("tipo", "downloads");
+                                PendingIntent intent2;
+                                intent2 = PendingIntent.getActivity(getBaseContext(), 0,
+                                        launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                notifyDetails.setLatestEventInfo(getBaseContext(), contentTitle, contentText, intent2);
+                                mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
+                            }
+
+                        }
+                    }
                 }
             }
         } catch (Exception e) {
@@ -725,6 +850,14 @@ public class App extends Activity implements AsyncResponse {
             case R.id.action_about:
                 try {
                     Intent intent = new Intent(this, AboutActivity.class);
+                    startActivity(intent);
+                } catch (Exception e) {
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            case R.id.action_config:
+                try {
+                    Intent intent = new Intent(this, ConfigActivity.class);
                     startActivity(intent);
                 } catch (Exception e) {
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();

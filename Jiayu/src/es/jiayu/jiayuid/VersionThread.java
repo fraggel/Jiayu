@@ -14,6 +14,7 @@ public class VersionThread extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         String result = "";
+        String updateContenido="";
         InputStreamReader isr = null;
         BufferedReader in = null;
         try {
@@ -21,6 +22,13 @@ public class VersionThread extends AsyncTask<String, Void, String> {
             in = new BufferedReader(new InputStreamReader(jsonUrl.openStream()));
             result = in.readLine();
             urlActualizacion = in.readLine();
+
+            String updateContenidoAux="";
+            while( (updateContenidoAux = in.readLine()) != null)
+            {
+                updateContenido=updateContenido+updateContenidoAux+"----";
+            }
+
             if (in != null) {
                 in.close();
             }
@@ -49,7 +57,7 @@ public class VersionThread extends AsyncTask<String, Void, String> {
             inicio = params[1];
         }
         result = result.replaceAll("\t", "").trim();
-        return inicio + "-;-" + result + "----" + urlActualizacion.trim();
+        return inicio + "-;-" + result + "----" + urlActualizacion.trim()+"----"+updateContenido;
     }
 
     @Override
