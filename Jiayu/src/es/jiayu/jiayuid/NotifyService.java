@@ -47,7 +47,6 @@ public class NotifyService extends Service implements AsyncResponse {
             asyncTask.execute(nversion);
 
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
         return START_STICKY;
     }
@@ -147,7 +146,7 @@ public class NotifyService extends Service implements AsyncResponse {
                 }*/
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+
         }
     }
     private int[] descomponerFecha(String fechaPasada) {
