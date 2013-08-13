@@ -128,35 +128,6 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         }
     }
 
-    private void rebootRecoveryQuestion() {
-        AlertDialog dialog = new AlertDialog.Builder(this).create();
-        dialog.setMessage(getResources().getString(R.string.msgRebootRecoveryQ));
-        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-                getResources().getString(R.string.cancelarBtn),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int witch) {
-
-                    }
-                });
-        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                getResources().getString(R.string.aceptarBtn),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int witch) {
-                        try {
-                            Runtime rt = Runtime.getRuntime();
-                            java.lang.Process p = rt.exec("su");
-                            BufferedOutputStream bos = new BufferedOutputStream(
-                                    p.getOutputStream());
-                            bos.write(("reboot recovery\n").getBytes());
-                            bos.flush();
-                            bos.close();
-                        } catch (Exception e) {
-
-                        }
-                    }
-                });
-        dialog.show();
-    }
     private void rebootQuestion() {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setMessage(getResources().getString(R.string.msgRebootQ));
@@ -174,10 +145,6 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                         try {
                             Runtime rt = Runtime.getRuntime();
                             java.lang.Process p = rt.exec("su -c 'reboot'\n");
-                            BufferedOutputStream bos = new BufferedOutputStream(
-                                    p.getOutputStream());
-                            bos.flush();
-                            bos.close();
                         } catch (Exception e) {
 
                         }
