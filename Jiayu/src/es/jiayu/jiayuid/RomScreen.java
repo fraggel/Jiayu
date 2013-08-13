@@ -247,7 +247,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
            }
 
        }
-        refreshCombos();
     }
     public void flashRom(){
         try {
@@ -307,9 +306,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
-        this.romseleccionada = "";
-        this.romSpn.setSelection(0);
-        romBtn.setEnabled(false);
+
     }
     public void flashZip(){
         try {
@@ -331,9 +328,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
-        this.zipseleccionada = "";
-        this.zipSpn.setSelection(0);
-        zipBtn.setEnabled(false);
+
     }
     private void rebootRecoveryQuestionFlashear() {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
