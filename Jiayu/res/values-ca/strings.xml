@@ -61,6 +61,7 @@
     <string name="msgActivandoBTWifi">Activant Bluetooth i WiFi, necessari per poder identificar el model de dispositiu</string>
     <string name="msgModeloNoIgualFichero">El fitxer no sembla contenir teu model de dispositiu en el nom, pot no ser compatible amb el dispositiu, ¿Desitges instal igualment?</string>
     <string name="msgConfiguracion">Configuració</string>
+    <string name="msgRebootQ">Per aplicar el nou IMEI és Cal Reiniciar, Reiniciar ¿Ara?</string>
 
     <string name="about1">Distribuïdor Ofical a Espanya:</string>
     <string name="about2">info@jiayu.es</string>
@@ -101,7 +102,7 @@
     <string name="aboutBtn">Quant a ...</string>
     <string name="cwmChk">Tinc instal · lat el Cwm Recovery</string>
     <string name="notificacionChk">Mostra Notifications (Actualitzacions, novetats)</string>
-    <string name="imeiSEBtn">Enviar Email IMEI</string>
+    <string name="imeiSEBtn">Enviar Email IMEI backup</string>
     <string name="salirBtn">Sortir</string>
 
     <string name="ntfMinTxt">News on JIAYU.es</string>

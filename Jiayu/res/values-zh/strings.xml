@@ -59,6 +59,7 @@
     <string name="msgActivandoBTWifi">它激活Bluetooth和WiFi终端检查版本</string>
     <string name="msgModeloNoIgualFichero">选定的文件似乎并没有包含您的设备型号名称，可能与您的设备不兼容，你反正要安装它吗？</string>
     <string name="msgConfiguracion">组态</string>
+    <string name="msgRebootQ">要应用新的IMEI，重启，现在重新启动？</string>
 
     <string name="about1">在西班牙的经销商:</string>
     <string name="about2">info@jiayu.es</string>

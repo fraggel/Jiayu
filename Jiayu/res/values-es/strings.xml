@@ -62,6 +62,7 @@
     <string name="msgActivandoBTWifi">Activando Bluetooth y WiFi, necesario para poder identificar el modelo de dispositivo</string>
     <string name="msgModeloNoIgualFichero">El archivo seleccionado no parece contener tu modelo de dispositivo en el nombre, puede no ser compatible con tu dispositivo, ¿Deseas instalarlo igualmente?</string>
     <string name="msgConfiguracion">Configuración</string>
+    <string name="msgRebootQ">Para aplicar el nuevo IMEI es necesario reiniciar, ¿Reiniciar ahora?</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>

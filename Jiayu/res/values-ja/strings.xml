@@ -60,6 +60,7 @@
     <string name="msgActivandoBTWifi">BTとWIFIはYOUT端子indentifyするために活性化される</string>
     <string name="msgModeloNoIgualFichero">選択したファイルは、デバイスのモデル名を含むように表示されない場合、お使いのデバイスと互換性がないかもしれませんが、とにかくそれをインストールしたいですか？</string>
     <string name="msgConfiguracion">設定</string>
+    <string name="msgRebootQ">再起動するための新たなIMEIを適用するには、[今すぐ再？</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>

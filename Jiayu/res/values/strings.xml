@@ -63,6 +63,7 @@
     <string name="msgActivandoBTWifi">BT and WIFI is activating to indentify yout terminal</string>
     <string name="msgModeloNoIgualFichero">The selected file does not appear to contain your device model name, may not be compatible with your device, you want to install it anyway?</string>
     <string name="msgConfiguracion">Configuration</string>
+    <string name="msgRebootQ">To restore IMEI must restart, Restart now?</string>
 
 
     <string name="about1">Distribuidor Ofical en España:</string>
