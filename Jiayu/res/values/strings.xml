@@ -105,7 +105,7 @@
     <string name="aboutBtn">About us...</string>
     <string name="cwmChk">I have CWM Recovery</string>
     <string name="notificacionChk">Show Notifications (Updates, news)</string>
-
+    <string name="imeiSEBtn">Send email IMEI</string>
     <string name="salirBtn">Exit</string>
 
     <string name="ntfMinTxt">News on JIAYU.es</string>

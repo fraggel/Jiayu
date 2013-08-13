@@ -7,6 +7,7 @@ import android.content.ComponentName;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -37,10 +38,12 @@ import java.util.zip.ZipFile;
 public class ImeiScreen extends Activity implements View.OnClickListener {
     Button imeiBBtn = null;
     Button imeiRBtn = null;
+    Button imeiSEBtn = null;
     boolean isRoot = false;
     String modelo=null;
     String path = "";
     ImageButton imageButton;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imeiscreen);
@@ -66,17 +69,25 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         });
         imeiBBtn = (Button) findViewById(R.id.imeiBBtn);
         imeiRBtn = (Button) findViewById(R.id.imeiRBtn);
-
+        imeiSEBtn = (Button) findViewById(R.id.imeiSEBtn);
         if (!isRoot) {
             imeiBBtn.setEnabled(false);
             imeiRBtn.setEnabled(false);
+            imeiSEBtn.setEnabled(false);
         }else{
             imeiBBtn.setEnabled(true);
             imeiRBtn.setEnabled(true);
+            File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak");
+            if(ff.exists()){
+                imeiSEBtn.setEnabled(true);
+            }else{
+                imeiSEBtn.setEnabled(false);
+            }
         }
 
         imeiBBtn.setOnClickListener(this);
         imeiRBtn.setOnClickListener(this);
+        imeiSEBtn.setOnClickListener(this);
     }
 
     @Override
@@ -86,6 +97,34 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
             backupImeis();
         } else if (button.getId() == R.id.imeiRBtn) {
            restoreImeis();
+        }
+        else if (button.getId() == R.id.imeiSEBtn) {
+            sendImei();
+        }
+    }
+    public void refresh(){
+        File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak");
+        if(ff.exists()){
+            imeiSEBtn.setEnabled(true);
+        }else{
+            imeiSEBtn.setEnabled(false);
+        }
+    }
+    private void sendImei() {
+        File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak");
+        Resources res2 = getResources();
+        Intent i = new Intent(Intent.ACTION_SEND);
+        i.setType("message/rfc822");
+        Uri uri = Uri.parse("file://" + ff);
+        i.putExtra(Intent.EXTRA_STREAM, uri);
+        i.putExtra(Intent.EXTRA_SUBJECT, "Jiayu.es IMEI"+modelo+".bak");
+        i.putExtra(Intent.EXTRA_TEXT, "");
+        try {
+
+            startActivity(Intent.createChooser(i,
+                    res2.getString(R.string.enviarEmailBtn)));
+        } catch (android.content.ActivityNotFoundException ex) {
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -195,6 +234,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                             }
                         });
                 dialog.show();
+
             }else{
                /* try {
                     AlertDialog dialog = new AlertDialog.Builder(this).create();
@@ -234,6 +274,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
 
                 }*/
             }
+            refresh();
         } catch (Exception e) {
 
         }
@@ -272,6 +313,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                         }
                     });
             dialog.show();
+            refresh();
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
 

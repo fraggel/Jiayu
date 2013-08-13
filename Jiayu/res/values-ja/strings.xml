@@ -98,6 +98,7 @@
     <string name="aboutBtn">私達について</string>
     <string name="cwmChk">私はCWMリカバリーを持って</string>
     <string name="notificacionChk">ショー通知（更新、ニュース）</string>
+    <string name="imeiSEBtn">IMEIメールを送信</string>
     <string name="salirBtn">終了する</string>
 
     <string name="ntfMinTxt">JIAYU.esのニュース</string>

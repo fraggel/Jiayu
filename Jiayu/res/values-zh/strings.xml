@@ -99,6 +99,7 @@
     <string name="aboutBtn">关于我们</string>
     <string name="cwmChk">我有CWM恢复</string>
     <string name="notificacionChk">显示通知（更新，新闻</string>
+    <string name="imeiSEBtn">IMEI发送电子邮件</string>
     <string name="salirBtn">离开</string>
 
     <string name="ntfMinTxt">新闻JIAYU.es</string>

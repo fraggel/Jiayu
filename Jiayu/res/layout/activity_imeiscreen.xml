@@ -41,5 +41,14 @@
                 android:background="@drawable/btn_green"
                 style="@style/ButtonTextGreen"/>
 
+        <Button
+                style="@style/ButtonTextGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/imeiSEBtn"
+                android:id="@+id/imeiSEBtn"
+                android:layout_gravity="center_vertical|left"
+                android:background="@drawable/btn_green"/>
+
     </LinearLayout>
 </ScrollView>

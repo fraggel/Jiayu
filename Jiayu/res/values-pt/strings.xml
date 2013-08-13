@@ -102,6 +102,7 @@
     <string name="aboutBtn">Sobre nós...</string>
     <string name="cwmChk">Tenho o CWM Recovery instalado</string>
     <string name="notificacionChk">Mostrar Notificações (Actualizações, novidades)</string>
+    <string name="imeiSEBtn">Enviar Email IMEI</string>
     <string name="salirBtn">Sair</string>
 
     <string name="ntfMinTxt">Novidades em JIAYU.es</string>

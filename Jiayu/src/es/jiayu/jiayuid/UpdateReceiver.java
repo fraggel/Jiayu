@@ -37,6 +37,7 @@ public class UpdateReceiver extends BroadcastReceiver {
         AlarmManager alarm2 = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         /*alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
                 3600 * 1000, pintent);*/
+
         alarm2.setRepeating(AlarmManager.RTC_WAKEUP, cal2.getTimeInMillis(),3600*12*1000, pintent2);
         context.startService(new Intent(context,NotifyNewsService.class));
         //stopService(new Intent(getBaseContext(), Service_class.class));

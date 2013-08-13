@@ -101,6 +101,7 @@
     <string name="aboutBtn">Quant a ...</string>
     <string name="cwmChk">Tinc instal · lat el Cwm Recovery</string>
     <string name="notificacionChk">Mostra Notifications (Actualitzacions, novetats)</string>
+    <string name="imeiSEBtn">Enviar Email IMEI</string>
     <string name="salirBtn">Sortir</string>
 
     <string name="ntfMinTxt">News on JIAYU.es</string>
