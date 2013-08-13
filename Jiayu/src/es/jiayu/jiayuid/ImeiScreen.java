@@ -173,7 +173,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                     public void onClick(DialogInterface dialog, int witch) {
                         try {
                             Runtime rt = Runtime.getRuntime();
-                            java.lang.Process p = rt.exec("reboot");
+                            java.lang.Process p = rt.exec("su -c 'reboot'\n");
                             BufferedOutputStream bos = new BufferedOutputStream(
                                     p.getOutputStream());
                             bos.flush();
@@ -290,7 +290,6 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                         bos.flush();
                                         bos.close();
                                         Toast.makeText(getBaseContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
-                                        rebootQuestion();
                                     } catch (Exception e) {
                                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                                     }
@@ -335,6 +334,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                 bos.flush();
                                 bos.close();
                                 Toast.makeText(getBaseContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeirestored), Toast.LENGTH_SHORT).show();
+                                rebootQuestion();
                             } catch (Exception e) {
                                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
                             }
