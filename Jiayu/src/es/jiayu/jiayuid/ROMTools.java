@@ -44,6 +44,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     Button ingenieroBtn = null;
     Button abrirExploradorBtn = null;
     Button rebootRecoveryBtn = null;
+    Button bootAnimationBtn=null;
     String modelo=null;
     String apkseleccionada = null;
     ArrayList<String> listaAppsUrl = new ArrayList<String>();
@@ -86,11 +87,13 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         ingenieroBtn = (Button) findViewById(R.id.ingenieroBtn);
         abrirExploradorBtn = (Button) findViewById(R.id.filesBtn);
         rebootRecoveryBtn = (Button) findViewById(R.id.rebootRecoveryBtn);
+        bootAnimationBtn=(Button) findViewById(R.id.bootAnimationBtn);
 
         if (!isRoot) {
             recoveryBtn.setVisibility(View.INVISIBLE);
             rebootRecoveryBtn.setVisibility(View.INVISIBLE);
             imeiBtn.setVisibility(View.INVISIBLE);
+            bootAnimationBtn.setVisibility(View.INVISIBLE);
         }
 
         apkBtn.setEnabled(false);
@@ -103,6 +106,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         apkBtn.setOnClickListener(this);
         abrirExploradorBtn.setOnClickListener(this);
         rebootRecoveryBtn.setOnClickListener(this);
+        bootAnimationBtn.setOnClickListener(this);
         refreshCombos();
     }
 
@@ -234,6 +238,14 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 }
             }catch (ActivityNotFoundException e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+application_name,Toast.LENGTH_SHORT).show();
+            }
+        }else if(button.getId()==R.id.bootAnimationBtn){
+            try {
+                Intent intent = new Intent(this, BootAnimation.class);
+                intent.putExtra("modelo",modelo);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
             }
         }
 

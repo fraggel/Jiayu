@@ -153,6 +153,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                                     try {
                                         unZip(RecoveryScreen.recoveryseleccionado);
                                         RecoveryScreen.descomprimido = true;
+                                        flashRecovery();
                                         //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                                     } catch (Exception e) {
                                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
@@ -163,60 +164,12 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 }else{
                     unZip(this.recoveryseleccionado);
                     this.descomprimido = true;
+                    flash
                 }
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName(), Toast.LENGTH_SHORT).show();
             }
-            if (descomprimido) {
-                try {
 
-                    Runtime rt = Runtime.getRuntime();
-                    java.lang.Process p = rt.exec("su");
-                    BufferedOutputStream bos = new BufferedOutputStream(
-                            p.getOutputStream());
-                    String ficheroRecovery = "";
-                    ficheroRecovery = this.recoveryseleccionado.substring(0, this.recoveryseleccionado.length() - 4);
-                    File fReco = new File(ficheroRecovery);
-                    File[] files = fReco.listFiles();
-                    for (int x = 0; x < files.length; x++) {
-                        if (files[x].getName().toLowerCase().lastIndexOf(".img") != -1) {
-                            ficheroRecovery = files[x].getAbsolutePath();
-                        }
-                    }
-                    bos.write(("dd if=" + ficheroRecovery + " of=/dev/recovery bs=6291456c count=1\n").getBytes());
-                    bos.flush();
-                    bos.close();
-                    AlertDialog dialog = new AlertDialog.Builder(this).create();
-                    dialog.setMessage(getResources().getString(R.string.msgRecoveryFlasheado));
-                    dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-                            getResources().getString(R.string.cancelarBtn),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int witch) {
-                                }
-                            });
-                    dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                            getResources().getString(R.string.aceptarBtn),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int witch) {
-                                    try {
-                                        Runtime rt = Runtime.getRuntime();
-                                        java.lang.Process p = rt.exec("su");
-                                        BufferedOutputStream bos = new BufferedOutputStream(
-                                                p.getOutputStream());
-                                        bos.write(("reboot recovery\n").getBytes());
-                                        bos.flush();
-                                        bos.close();
-                                        //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
-                                    } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                    dialog.show();
-                } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRecovery) + new File(this.recoveryseleccionado).getName(), Toast.LENGTH_SHORT).show();
-                }
-            }
             this.recoveryseleccionado = "";
             this.recoverySpn.setSelection(0);
             recoveryBtn.setEnabled(false);
@@ -224,7 +177,58 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
         }
         refreshCombos();
     }
+    private void flashRecovery(){
+        if (descomprimido) {
+            try {
 
+                Runtime rt = Runtime.getRuntime();
+                java.lang.Process p = rt.exec("su");
+                BufferedOutputStream bos = new BufferedOutputStream(
+                        p.getOutputStream());
+                String ficheroRecovery = "";
+                ficheroRecovery = this.recoveryseleccionado.substring(0, this.recoveryseleccionado.length() - 4);
+                File fReco = new File(ficheroRecovery);
+                File[] files = fReco.listFiles();
+                for (int x = 0; x < files.length; x++) {
+                    if (files[x].getName().toLowerCase().lastIndexOf(".img") != -1) {
+                        ficheroRecovery = files[x].getAbsolutePath();
+                    }
+                }
+                bos.write(("dd if=" + ficheroRecovery + " of=/dev/recovery bs=6291456c count=1\n").getBytes());
+                bos.flush();
+                bos.close();
+                AlertDialog dialog = new AlertDialog.Builder(this).create();
+                dialog.setMessage(getResources().getString(R.string.msgRecoveryFlasheado));
+                dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                        getResources().getString(R.string.cancelarBtn),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int witch) {
+                            }
+                        });
+                dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                        getResources().getString(R.string.aceptarBtn),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int witch) {
+                                try {
+                                    Runtime rt = Runtime.getRuntime();
+                                    java.lang.Process p = rt.exec("su");
+                                    BufferedOutputStream bos = new BufferedOutputStream(
+                                            p.getOutputStream());
+                                    bos.write(("reboot recovery\n").getBytes());
+                                    bos.flush();
+                                    bos.close();
+                                    //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                } catch (Exception e) {
+                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                dialog.show();
+            } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRecovery) + new File(this.recoveryseleccionado).getName(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
     private void rebootRecoveryQuestionFlashear() {
         AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setMessage(getResources().getString(R.string.msgRebootRecoveryQF));

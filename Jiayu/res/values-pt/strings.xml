@@ -105,6 +105,8 @@
     <string name="notificacionChk">Mostrar Notificações (Actualizações, novidades)</string>
     <string name="imeiSEBtn">Enviar Email IMEI</string>
     <string name="salirBtn">Sair</string>
+    <string name="bootanimationBtn">Alterar bootanimation</string>
+    <string name="dataCacheDalvikChk">Wipe data/cache/dalvik (Instalación limpia)</string>
 
     <string name="ntfMinTxt">Novidades em JIAYU.es</string>
     <string name="ntfTituloTxt">Novidades em JIAYU.es content</string>

@@ -102,6 +102,8 @@
     <string name="notificacionChk">显示通知（更新，新闻</string>
     <string name="imeiSEBtn">IMEI发送电子邮件</string>
     <string name="salirBtn">离开</string>
+    <string name="bootanimationBtn">更改BootAnimation</string>
+    <string name="dataCacheDalvikChk">Wipe data/cache/dalvik (Clean install)</string>
 
     <string name="ntfMinTxt">新闻JIAYU.es</string>
     <string name="ntfTituloTxt">新闻JIAYU.es内容</string>

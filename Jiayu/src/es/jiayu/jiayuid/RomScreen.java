@@ -48,6 +48,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     List listaRo = new ArrayList();
     String modelo=null;
     CheckBox chkCWM = null;
+    CheckBox dataCacheDalvikChk = null;
+
     boolean isRoot = false;
     String path = "";
 
@@ -86,6 +88,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         romSpn = (Spinner) findViewById(R.id.romSpn);
         romBtn = (Button) findViewById(R.id.romBtn);
         chkCWM = (CheckBox) findViewById(R.id.cwmChk);
+        dataCacheDalvikChk = (CheckBox) findViewById(R.id.dataCacheDalvikChk);
         zipSpn = (Spinner) findViewById(R.id.zipSpn);
         zipBtn = (Button) findViewById(R.id.zipBtn);
 
@@ -93,16 +96,18 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         if (!isRoot) {
             chkCWM.setVisibility(View.INVISIBLE);
             zipSpn.setVisibility(View.INVISIBLE);
-
+            dataCacheDalvikChk.setVisibility(View.INVISIBLE);
             if (chkCWM.isChecked()) {
                 romSpn.setVisibility(View.INVISIBLE);
                 romBtn.setVisibility(View.INVISIBLE);
                 findViewById(R.id.romTxt).setVisibility(View.INVISIBLE);
+                dataCacheDalvikChk.setVisibility(View.INVISIBLE);
             }
         }
         zipBtn.setVisibility(View.INVISIBLE);
         zipSpn.setVisibility(View.INVISIBLE);
         findViewById(R.id.zipTxt).setVisibility(View.INVISIBLE);
+        dataCacheDalvikChk.setVisibility(View.INVISIBLE);
         zipBtn.setEnabled(false);
         romBtn.setEnabled(false);
         romSpn.setOnItemSelectedListener(this);
@@ -265,6 +270,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
                                 /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
                                 bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+                        CheckBox dataCacheDalvikChk=(CheckBox) findViewById(R.id.dataCacheDalvikChk);
+                        if(dataCacheDalvikChk.isChecked()){
+                            wipe data
+                        }
                         bos.flush();
                         bos.close();
                         rebootRecoveryQuestionFlashear();
@@ -321,6 +330,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
                         /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
                         bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+                CheckBox dataCacheDalvikChk=(CheckBox) findViewById(R.id.dataCacheDalvikChk);
+                if(dataCacheDalvikChk.isChecked()){
+                    wipe data
+                }
                 bos.flush();
                 bos.close();
                 rebootRecoveryQuestionFlashear();
