@@ -61,7 +61,7 @@
     <string name="msgActivandoBTWifi">A activar Bluetooth e WiFi para identificar o terminal</string>
     <string name="msgModeloNoIgualFichero">O arquivo selecionado não parece conter o nome do modelo do dispositivo, poderá não ser compatível com o seu dispositivo, você deseja instalá-lo de qualquer maneira?</string>
     <string name="msgConfiguracion">Configuration</string>
-    <string name="msgRebootQ">Para aplicar o novo IMEI para reiniciar, reiniciar agora?</string>
+    <string name="msgRebootQ">Para aplicar o novo IMEI é necessário reiniciar, reiniciar agora?</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -106,7 +106,7 @@
     <string name="imeiSEBtn">Enviar Email IMEI</string>
     <string name="salirBtn">Sair</string>
     <string name="bootanimationBtn">Alterar bootanimation</string>
-    <string name="dataCacheDalvikChk">Wipe data/cache/dalvik (Instalación limpia)</string>
+    <string name="dataCacheDalvikChk">Wipe data/cache/dalvik (Instalação limpa)</string>
 
     <string name="ntfMinTxt">Novidades em JIAYU.es</string>
     <string name="ntfTituloTxt">Novidades em JIAYU.es content</string>
