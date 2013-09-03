@@ -16,6 +16,8 @@
     <string name="title_activity_recoveryscreen">Recovery Operations</string>
     <string name="title_activity_imeiscreen">IMEI Operations</string>
     <string name="title_activity_configscreen">Configuration</string>
+    <string name="title_activity_bootanimation">BootAnimation</string>
+
     <!--Menu-->
     <string name="updateMnu">Check Updates</string>
     <string name="aboutMnu">About us...</string>
@@ -80,6 +82,7 @@
     <string name="downloadedRecoveryTxt">Downloaded Recovery</string>
     <string name="downloadedRomTxt">Downloaded ROM</string>
     <string name="downloadedAPKTxt">Downloaded APKS</string>
+    <string name="downloadedBootTxt">Downloaded BootAnimation</string>
 
 
     <!--Botones-->
@@ -110,6 +113,8 @@
     <string name="salirBtn">Exit</string>
     <string name="bootanimationBtn">Change BootAnimation</string>
     <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
+    <string name="installBootBtn">Install BootAnimation</string>
+    <string name="bootDescargaBtn">Download BootAnimation</string>
 
     <string name="ntfMinTxt">News on JIAYU.es</string>
     <string name="ntfTituloTxt">News on JIAYU.es content</string>

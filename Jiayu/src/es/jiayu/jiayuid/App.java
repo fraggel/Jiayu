@@ -122,6 +122,10 @@ public class App extends Activity implements AsyncResponse {
             if (!f5.exists()) {
                 f5.mkdirs();
             }
+            File f6 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/BOOTANIMATION/");
+            if (!f6.exists()) {
+                f6.mkdirs();
+            }
             Resources res = this.getResources();
 
             setContentView(R.layout.activity_app);

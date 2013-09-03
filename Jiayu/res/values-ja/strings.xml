@@ -14,6 +14,7 @@
      <string name="title_activity_recoveryscreen">回収作業</string>
      <string name="title_activity_imeiscreen">IMEI操作</string>
     <string name="title_activity_configscreen">設定</string>
+    <string name="title_activity_bootanimation">BootAnimation</string>
 
      <string name="updateMnu">アップデートを確認する</string>
      <string name="aboutMnu">私達について</string>
@@ -69,11 +70,11 @@
     <string name="about5">Localización:</string>
     <string name="about6">Jiayu &amp; Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
     <string name="about7">+34963556091</string>
-    <string name="downloadedFlashZipTxt"> ダウンロードしたzip</string>
+    <string name="downloadedFlashZipTxt"> ダウンロードしたZIP</string>
     <string name="downloadedRecoveryTxt">ダウンロード回復</string>
     <string name="downloadedRomTxt">ダウンロードしたROM</string>
     <string name="downloadedAPKTxt">ダウンロードのAPK</string>
-
+    <string name="downloadedBootTxt">ダウンロードのBootAnimation</string>
 
 
     <string name="descargasBtn">ダウンロード</string>
@@ -103,6 +104,8 @@
     <string name="salirBtn">終了する</string>
     <string name="bootanimationBtn">変更BootAnimation</string>
     <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
+    <string name="installBootBtn">Install BootAnimation</string>
+    <string name="bootDescargaBtn">Download BootAnimation</string>
 
     <string name="ntfMinTxt">JIAYU.esのニュース</string>
     <string name="ntfTituloTxt">JIAYU.esコンテンツのニュース</string>

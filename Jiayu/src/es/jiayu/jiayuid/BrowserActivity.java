@@ -48,7 +48,9 @@ public class BrowserActivity extends Activity {
 
         if ("drivers".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/apptools.php");
-        } else if ("downloads".equals(tipo)) {
+        } else if ("bootanimation".equals(tipo)) {
+            descargas.loadUrl("http://www.jiayu.es/soporte/bootanimation.php");
+        }else if ("downloads".equals(tipo)) {
             mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerNews.cancel(SIMPLE_NOTFICATION_NEWS);
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
@@ -96,6 +98,14 @@ public class BrowserActivity extends Activity {
                     if (!f4.exists()) {
                         f4.mkdirs();
                     }
+                    File f5 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/");
+                    if (!f5.exists()) {
+                        f5.mkdirs();
+                    }
+                    File f6 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/BOOTANIMATION/");
+                    if (!f6.exists()) {
+                        f6.mkdirs();
+                    }
                     if (Build.VERSION.SDK_INT >= 11) {
                         request.allowScanningByMediaScanner();
                         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
@@ -119,7 +129,9 @@ public class BrowserActivity extends Activity {
                         rutaDescarga = "/JIAYUES/APP/";
                     } else if (nombreFichero.indexOf("signed_") != -1) {
                         rutaDescarga = "/JIAYUES/ROMS/";
-                    } else {
+                    } else if (nombreFichero.indexOf("bootanimation") != -1) {
+                        rutaDescarga = "/JIAYUES/BOOTANIMATION/";
+                    }else{
                         rutaDescarga = "/JIAYUES/DOWNLOADS/";
                     }
                     request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);

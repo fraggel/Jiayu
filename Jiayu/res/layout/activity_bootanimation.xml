@@ -1,23 +1,63 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scrollbars="horizontal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+        <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitCenter"
+                android:src="@drawable/jiayulogoic"
+                android:contentDescription="Jiayu.es"
+                android:clickable="false"
+                android:focusable="false"
+                android:adjustViewBounds="false"
+                android:background="@android:color/transparent"
+                android:layout_weight="0.11"
+                android:layout_gravity="center"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"/>
+
+        <Button
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingBottom="@dimen/activity_vertical_margin"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".BrowserActivity">
+                android:layout_height="wrap_content"
+                android:text="@string/bootDescargaBtn"
+                android:id="@+id/bootDescarga"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"/>
 
-    <WebView
-            android:id="@+id/webView1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_margin="0dp"
-            android:padding="0dp"
-            android:paddingLeft="0dp"
-            android:paddingRight="0dp"
-            android:paddingTop="0dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/downloadedBootTxt"
+                android:id="@+id/romTxt"
+                android:layout_gravity="left|center_vertical"
+                style="@style/LabelTextBlack"/>
 
-</RelativeLayout>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/bootSpn"
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/installBootBtn"
+                android:id="@+id/bootBtn"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -53,7 +53,7 @@
         <activity android:name="es.jiayu.jiayuid.RomScreen" android:label="@string/title_activity_romscreen"/>
         <activity android:name="es.jiayu.jiayuid.RecoveryScreen" android:label="@string/title_activity_recoveryscreen"/>
         <activity android:name="es.jiayu.jiayuid.ConfigActivity" android:label="@string/title_activity_configscreen"/>
-        <activity android:name=".BootAnimation"/>
+        <activity android:name="es.jiayu.jiayuid.BootAnimation" android:label="@string/title_activity_bootanimation"/>
 
         <receiver
                 android:name="es.jiayu.jiayuid.DownloadReceiver"

@@ -74,6 +74,7 @@
     <string name="downloadedRecoveryTxt">下载的恢复</string>
     <string name="downloadedRomTxt">下载ROM</string>
     <string name="downloadedAPKTxt">下载的APKs的</string>
+    <string name="downloadedBootTxt">下载的BootAnimation的</string>
 
 
 
@@ -104,6 +105,7 @@
     <string name="salirBtn">离开</string>
     <string name="bootanimationBtn">更改BootAnimation</string>
     <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
+    <string name="installBootBtn">Install BootAnimation</string>
 
     <string name="ntfMinTxt">新闻JIAYU.es</string>
     <string name="ntfTituloTxt">新闻JIAYU.es内容</string>

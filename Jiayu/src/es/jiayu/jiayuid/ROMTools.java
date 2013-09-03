@@ -264,6 +264,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             try {
                 Intent intent = new Intent(this, BootAnimation.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("tipo","bootanimation");
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
