@@ -41,7 +41,7 @@
     <string name="msgErrorRecovery">Error while writing Recovery file</string>
     <string name="msgNoRoot">Root is necessary</string>
     <string name="msgRecoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
-    <string name="msgRebootRecoveryQF">To flash the ROM/Zip you need to restart now, want to restart now?</string>
+    <string name="msgRebootRecoveryQF">To flash the ROM/Wipe/Zip you need to restart now, want to restart now?</string>
     <string name="msgRebootRecoveryQ">Reboot into Recovery?</string>
     <string name="msgImeiExiste1">A previous</string>
     <string name="msgImeiExiste2">backup exists, this will overwrite it, Want to continue?</string>
@@ -109,7 +109,7 @@
     <string name="imeiSEBtn">Send email IMEI</string>
     <string name="salirBtn">Exit</string>
     <string name="bootanimationBtn">Change BootAnimation</string>
-    <string name="dataCacheDalvikChk">Wipe data/cache/dalvik (Clean Install)</string>
+    <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
 
     <string name="ntfMinTxt">News on JIAYU.es</string>
     <string name="ntfTituloTxt">News on JIAYU.es content</string>

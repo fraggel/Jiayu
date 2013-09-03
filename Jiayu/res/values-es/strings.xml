@@ -39,7 +39,7 @@
     <string name="msgErrorRecovery">Error mientras se escribía el Recovery</string>
     <string name="msgNoRoot">Es necesario ser Root</string>
     <string name="msgRecoveryFlasheado">Recovery instalado, ¿Reiniciar en Recovery?</string>
-    <string name="msgRebootRecoveryQF">Para instalar la ROM/Zip se necesita reiniciar el dispositivo, ¿Quieres reiniciar ahora?</string>
+    <string name="msgRebootRecoveryQF">Para instalar la ROM/Wipe/Zip se necesita reiniciar el dispositivo, ¿Quieres reiniciar ahora?</string>
     <string name="msgRebootRecoveryQ">¿Reiniciar en Recovery?</string>
     <string name="msgImeiExiste1">Ya existe una copia de seguridad de tu </string>
     <string name="msgImeiExiste2">Y, esta operación sobreescribirá la ya existente, ¿Quieres continuar?</string>
@@ -85,7 +85,7 @@
     <string name="accesoriosBtn">Accesorios</string>
     <string name="videosBtn">Videotutoriales</string>
     <string name="herramientasBtn">Drivers-Herramientas</string>
-    <string name="herramientasROMBtn">Herramientas JIAYU.es</string>
+    <string name="herramientasROMBtn">Herramientas ROMs</string>
     <string name="flashRecoveryBtn">Instalar Recovery</string>
     <string name="flashZipBtn">Instalar Zip</string>
     <string name="flashRomBtn">Instalar ROM</string>
@@ -107,7 +107,7 @@
     <string name="imeiSEBtn">Enviar Email IMEI</string>
     <string name="salirBtn">Salir</string>
     <string name="bootanimationBtn">Cambiar BootAnimation</string>
-    <string name="dataCacheDalvikChk">Wipe data/cache/dalvik (Instalación limpia)</string>
+    <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
 
     <string name="ntfMinTxt">Novedades en JIAYU.es</string>
     <string name="ntfTituloTxt">Novedades en JIAYU.es</string>

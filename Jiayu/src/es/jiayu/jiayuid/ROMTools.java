@@ -61,7 +61,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         setContentView(R.layout.activity_romtools);
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
-
+        deleteDirectories();
         if (controlRoot()) {
             isRoot = true;
             if (!controlBusybox()) {
@@ -109,6 +109,27 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         bootAnimationBtn.setOnClickListener(this);
         refreshCombos();
     }
+
+    private void deleteDirectories() {
+        try {
+            File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
+            File[] files = f1.listFiles();
+            for (int x=0;x<files.length;x++){
+                if(((File)files[x]).isDirectory()){
+                    File[] files2 = ((File)files[x]).listFiles();
+                    for (int y=0;y<files2.length;y++){
+                        ((File)files2[y]).delete();
+                    }
+                    ((File)files[x]).delete();
+                }
+
+            }
+        }catch(Exception e ){
+
+        }
+
+    }
+
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {

@@ -38,7 +38,7 @@
      <string name="msgErrorRecovery">リカバリファイルを書き込み中にエラー</string>
      <string name="msgNoRoot">ルートが必要です</string>
      <string name="msgRecoveryFlasheado"> 回復は、回復への再起動をフラッシュ？</string>
-     <string name="msgRebootRecoveryQF">今すぐ再起動する必要がROM /郵便番号をフラッシュするには、[今すぐ再起動したいですか？</string>
+     <string name="msgRebootRecoveryQF">今すぐ再起動する必要がROM /Wipe /郵便番号をフラッシュするには、[今すぐ再起動したいですか？</string>
      <string name="msgRebootRecoveryQ">回復に再起動？</string>
      <string name="msgImeiExiste1">以前</string>
      <string name="msgImeiExiste2">は、これはそれを上書きします、存在し続けたいですか？</string>
@@ -102,7 +102,7 @@
     <string name="imeiSEBtn">IMEIメールを送信</string>
     <string name="salirBtn">終了する</string>
     <string name="bootanimationBtn">変更BootAnimation</string>
-    <string name="dataCacheDalvikChk">Wipe data/cache/dalvik (Clean install)</string>
+    <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
 
     <string name="ntfMinTxt">JIAYU.esのニュース</string>
     <string name="ntfTituloTxt">JIAYU.esコンテンツのニュース</string>

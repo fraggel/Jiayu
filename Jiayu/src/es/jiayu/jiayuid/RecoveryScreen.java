@@ -164,18 +164,12 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 }else{
                     unZip(this.recoveryseleccionado);
                     this.descomprimido = true;
-                    flash
+                    flashRecovery();
                 }
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName(), Toast.LENGTH_SHORT).show();
             }
-
-            this.recoveryseleccionado = "";
-            this.recoverySpn.setSelection(0);
-            recoveryBtn.setEnabled(false);
-
         }
-        refreshCombos();
     }
     private void flashRecovery(){
         if (descomprimido) {

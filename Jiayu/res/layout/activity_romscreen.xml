@@ -31,13 +31,14 @@
                 android:id="@+id/cwmChk"
                 android:checked="false"
                 style="@style/LabelTextBlack"/>
-        <CheckBox
+        <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/dataCacheDalvikChk"
-                android:id="@+id/dataCacheDalvikChk"
-                android:checked="false"
-                style="@style/LabelTextBlack"/>
+                android:text="@string/dataCacheDalvikBtn"
+                android:id="@+id/dataCacheDalvikBtn"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/btn_green"
+                style="@style/ButtonTextGreen"/>
 
         <TextView
                 android:layout_width="wrap_content"
