@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/bootDescargaBtn"
-                android:id="@+id/bootDescarga"
+                android:id="@+id/bootDescargaBtn"
                 android:layout_gravity="left|center_vertical"
                 android:background="@drawable/btn_green"
                 style="@style/ButtonTextGreen"/>
@@ -49,15 +49,35 @@
                 android:layout_gravity="left|center_vertical"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
-
+        <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ajustaBootChk"
+                android:id="@+id/ajustaBootChk"
+                android:checked="false"
+                style="@style/LabelTextBlack"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/installBootBtn"
-                android:id="@+id/bootBtn"
+                android:id="@+id/bootInstallBtn"
                 android:layout_gravity="left|center_vertical"
                 android:background="@drawable/btn_green"
                 style="@style/ButtonTextGreen"/>
-
+        <ImageView
+                android:id="@+id/gifAnimadoImg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        <!--<WebView
+                        android:id="@+id/gifAnimadoImg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_margin="0dp"
+                        android:padding="0dp"
+                        android:paddingLeft="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingTop="0dp"/>-->
     </LinearLayout>
 </ScrollView>

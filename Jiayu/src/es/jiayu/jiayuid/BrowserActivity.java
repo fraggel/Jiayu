@@ -139,6 +139,10 @@ public class BrowserActivity extends Activity {
                     DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
                     App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
+                    if (nombreFichero.indexOf("bootanimation") != -1) {
+                        request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero.substring(0,nombreFichero.length()-4)+".gif");
+                        App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero.substring(0,nombreFichero.length()-4)+".gif");
+                    }
                     //manager.enqueue(request);
 
                 } catch (Exception e) {

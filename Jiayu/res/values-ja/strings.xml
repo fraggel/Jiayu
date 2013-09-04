@@ -62,6 +62,7 @@
     <string name="msgModeloNoIgualFichero">選択したファイルは、デバイスのモデル名を含むように表示されない場合、お使いのデバイスと互換性がないかもしれませんが、とにかくそれをインストールしたいですか？</string>
     <string name="msgConfiguracion">設定</string>
     <string name="msgRebootQ">再起動するための新たなIMEIを適用するには、[今すぐ再？</string>
+    <string name="msgInstallBootC">BootAnimation changed</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -100,6 +101,7 @@
     <string name="aboutBtn">私達について</string>
     <string name="cwmChk">私はCWMリカバリーを持って</string>
     <string name="notificacionChk">ショー通知（更新、ニュース）</string>
+    <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
     <string name="imeiSEBtn">IMEIメールを送信</string>
     <string name="salirBtn">終了する</string>
     <string name="bootanimationBtn">変更BootAnimation</string>

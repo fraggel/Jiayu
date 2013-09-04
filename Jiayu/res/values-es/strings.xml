@@ -48,6 +48,7 @@
     <string name="msgImeirestored">restaurado</string>
     <string name="msgImeiRestoreQ1">¿Quieres restaurar tu IMEI con el fichero </string>
     <string name="msgImeiRestoreQ2">encontrado?</string>
+    <string name="msgInstallBootC">BootAnimation cambiado</string>
 
     <string name="msgTerminadaDescarga">Descarga terminada</string>
     <string name="msgIniciandoDescarga">Descarga iniciada</string>
@@ -106,6 +107,7 @@
     <string name="aboutBtn">Sobre nosotros...</string>
     <string name="cwmChk">Tengo instalado el CWM Recovery</string>
     <string name="notificacionChk">Mostrar Notifications (Actualizaciones, novedades)</string>
+    <string name="ajustaBootChk">Intentar reescalar bootAnimation para la resolución de pantalla</string>
     <string name="imeiSEBtn">Enviar Email IMEI</string>
     <string name="salirBtn">Salir</string>
     <string name="bootanimationBtn">Cambiar BootAnimation</string>

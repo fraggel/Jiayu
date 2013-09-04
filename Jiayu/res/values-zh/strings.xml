@@ -60,6 +60,7 @@
     <string name="msgModeloNoIgualFichero">选定的文件似乎并没有包含您的设备型号名称，可能与您的设备不兼容，你反正要安装它吗？</string>
     <string name="msgConfiguracion">组态</string>
     <string name="msgRebootQ">要应用新的IMEI，重启，现在重新启动？</string>
+    <string name="msgInstallBootC">BootAnimation changed</string>
 
     <string name="about1">在西班牙的经销商:</string>
     <string name="about2">info@jiayu.es</string>
@@ -100,7 +101,8 @@
     <string name="foroBtn">论坛</string>
     <string name="aboutBtn">关于我们</string>
     <string name="cwmChk">我有CWM恢复</string>
-    <string name="notificacionChk">显示通知（更新，新闻</string>
+    <string name="notificacionChk">显示通知（更新，新闻)</string>
+    <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
     <string name="imeiSEBtn">IMEI发送电子邮件</string>
     <string name="salirBtn">离开</string>
     <string name="bootanimationBtn">更改BootAnimation</string>

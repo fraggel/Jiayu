@@ -63,6 +63,7 @@
     <string name="msgModeloNoIgualFichero">O arquivo selecionado não parece conter o nome do modelo do dispositivo, poderá não ser compatível com o seu dispositivo, você deseja instalá-lo de qualquer maneira?</string>
     <string name="msgConfiguracion">Configuration</string>
     <string name="msgRebootQ">Para aplicar o novo IMEI é necessário reiniciar, reiniciar agora?</string>
+    <string name="msgInstallBootC">BootAnimation changed</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -106,6 +107,7 @@
     <string name="aboutBtn">Sobre nós...</string>
     <string name="cwmChk">Tenho o CWM Recovery instalado</string>
     <string name="notificacionChk">Mostrar Notificações (Actualizações, novidades)</string>
+    <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
     <string name="imeiSEBtn">Enviar Email IMEI</string>
     <string name="salirBtn">Sair</string>
     <string name="bootanimationBtn">Alterar bootanimation</string>
