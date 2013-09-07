@@ -80,7 +80,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
         });
         CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
-        //chk.setVisibility(View.INVISIBLE);
+        chk.setVisibility(View.INVISIBLE);
         bootDescargaBtn=(Button) findViewById(R.id.bootDescargaBtn);
         bootBtn=(Button) findViewById(R.id.bootInstallBtn);
         bootSpn = (Spinner) findViewById(R.id.bootSpn);
@@ -212,6 +212,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             int width = dm.widthPixels;
             f.renameTo(f2);
             BufferedInputStream bis=new BufferedInputStream(new FileInputStream(f2));
+
             byte[] b= new byte[(int)f2.length()];
             bis.read(b);
             BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream(f));
@@ -236,18 +237,20 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                         bootBtn.setEnabled(true);
                         this.bootSeleccionada = bootselect;
                         unZip(bootSeleccionada);
-                        /*ImageView showedImage = (ImageView) findViewById(R.id.gifAnimadoImg);
+                        ImageView showedImage = (ImageView) findViewById(R.id.gifAnimadoImg);
                         showedImage.setBackgroundResource(R.drawable.ic_launcher);
-                        frameAnimation = (AnimationDrawable) showedImage.getBackground();
-                        addPicturesOnExternalStorageIfExist();*/
-                        WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
+                        frameAnimation=new AnimationDrawable();
+                        //frameAnimation = (AnimationDrawable) showedImage.getBackground();
+                        addPicturesOnExternalStorageIfExist();
+                        frameAnimation.start();
+                        /*WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
                         myWebView.setVisibility(View.VISIBLE);
-                        myWebView.loadUrl("file:///"+bootselect.substring(0,bootselect.length()-4)+".gif");
+                        myWebView.loadUrl("file:///"+bootselect.substring(0,bootselect.length()-4)+".gif");*/
                     } else {
                         bootBtn.setEnabled(false);
                         this.bootSeleccionada = "";
-                        WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
-                        myWebView.setVisibility(View.INVISIBLE);
+                        /*WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
+                        myWebView.setVisibility(View.INVISIBLE);*/
                     }
                 }
             }
@@ -396,13 +399,5 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         }
 
         return;
-    }
-
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-        if(frameAnimation!=null){
-            frameAnimation.start();
-        }
     }
 }
