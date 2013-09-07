@@ -80,7 +80,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
         });
         CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
-        chk.setVisibility(View.INVISIBLE);
+        //chk.setVisibility(View.INVISIBLE);
         bootDescargaBtn=(Button) findViewById(R.id.bootDescargaBtn);
         bootBtn=(Button) findViewById(R.id.bootInstallBtn);
         bootSpn = (Spinner) findViewById(R.id.bootSpn);
@@ -212,7 +212,6 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             int width = dm.widthPixels;
             f.renameTo(f2);
             BufferedInputStream bis=new BufferedInputStream(new FileInputStream(f2));
-
             byte[] b= new byte[(int)f2.length()];
             bis.read(b);
             BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream(f));
@@ -237,20 +236,18 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                         bootBtn.setEnabled(true);
                         this.bootSeleccionada = bootselect;
                         unZip(bootSeleccionada);
-                        ImageView showedImage = (ImageView) findViewById(R.id.gifAnimadoImg);
+                        /*ImageView showedImage = (ImageView) findViewById(R.id.gifAnimadoImg);
                         showedImage.setBackgroundResource(R.drawable.ic_launcher);
-                        frameAnimation=new AnimationDrawable();
-                        //frameAnimation = (AnimationDrawable) showedImage.getBackground();
-                        addPicturesOnExternalStorageIfExist();
-                        frameAnimation.start();
-                        /*WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
+                        frameAnimation = (AnimationDrawable) showedImage.getBackground();
+                        addPicturesOnExternalStorageIfExist();*/
+                        WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
                         myWebView.setVisibility(View.VISIBLE);
-                        myWebView.loadUrl("file:///"+bootselect.substring(0,bootselect.length()-4)+".gif");*/
+                        myWebView.loadUrl("file:///"+bootselect.substring(0,bootselect.length()-4)+".gif");
                     } else {
                         bootBtn.setEnabled(false);
                         this.bootSeleccionada = "";
-                        /*WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
-                        myWebView.setVisibility(View.INVISIBLE);*/
+                        WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
+                        myWebView.setVisibility(View.INVISIBLE);
                     }
                 }
             }
@@ -325,44 +322,44 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
     }
     public static void zipIt(String dir2zip, ZipOutputStream zos) {
-            try {
+        try {
 
-                File zipDir = new File(dir2zip);
-                // lista del contenido del directorio
-                String[] dirList = zipDir.list();
-                // System.out.println(dirList[1]);
-                byte[] readBuffer = new byte[2156];
-                int bytesIn = 0;
+            File zipDir = new File(dir2zip);
+            // lista del contenido del directorio
+            String[] dirList = zipDir.list();
+            // System.out.println(dirList[1]);
+            byte[] readBuffer = new byte[2156];
+            int bytesIn = 0;
 
-                System.out.println(dirList.length);
-                // recorro el directorio y añado los archivos al zip
-                for (int i = 0; i < dirList.length; i++) {
-                    File f = new File(zipDir, dirList[i]);
-                    if (f.isDirectory()) {
+            System.out.println(dirList.length);
+            // recorro el directorio y añado los archivos al zip
+            for (int i = 0; i < dirList.length; i++) {
+                File f = new File(zipDir, dirList[i]);
+                if (f.isDirectory()) {
 
-                        String filePath = f.getPath();
-                        zipIt(filePath, zos);
+                    String filePath = f.getPath();
+                    zipIt(filePath, zos);
 
-                        System.out.println(filePath);
-                        continue;
-                    }
-
-                    FileInputStream fis = new FileInputStream(f);
-
-                    ZipEntry anEntry = new ZipEntry(f.getPath());
-
-                    zos.putNextEntry(anEntry);
-
-                    while ((bytesIn = fis.read(readBuffer)) != -1) {
-                        zos.write(readBuffer, 0, bytesIn);
-                    }
-                    zos.closeEntry();
-                    fis.close();
+                    System.out.println(filePath);
+                    continue;
                 }
+
+                FileInputStream fis = new FileInputStream(f);
+
+                ZipEntry anEntry = new ZipEntry(f.getPath());
+
+                zos.putNextEntry(anEntry);
+
+                while ((bytesIn = fis.read(readBuffer)) != -1) {
+                    zos.write(readBuffer, 0, bytesIn);
+                }
+                zos.closeEntry();
+                fis.close();
             }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     private void addPicturesOnExternalStorageIfExist() {
         // check if external storage
@@ -390,7 +387,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         String[] sNamelist = pictureDirectory.list(filefilter);
         if (sNamelist.length == 0) {
             return;
-    }
+        }
 
         for (String filename : sNamelist) {
             frameAnimation.addFrame(
@@ -400,4 +397,5 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
         return;
     }
+
 }
