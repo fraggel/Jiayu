@@ -64,22 +64,20 @@
                 android:layout_gravity="left|center_vertical"
                 android:background="@drawable/btn_green"
                 style="@style/ButtonTextGreen"/>
-        <!--<ImageView
+        <ImageView
                 android:id="@+id/gifAnimadoImg"
                 android:layout_width="match_parent"
-                android:layout_height="196dp"/>-->
-        <WebView
+                android:layout_height="wrap_content"/>
+        <!--<WebView
                         android:id="@+id/gifAnimadoImg"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentTop="true"
+                        android:layout_margin="0dp"
                         android:padding="0dp"
                         android:paddingLeft="0dp"
                         android:paddingRight="0dp"
-                        android:paddingTop="0dp"
-                        android:textAlignment="center"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="10dp"/>
+                        android:paddingTop="0dp"/>-->
     </LinearLayout>
 </ScrollView>
