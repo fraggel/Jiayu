@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 public class UpdateReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
-        Calendar cal = Calendar.getInstance();
+        /*Calendar cal = Calendar.getInstance();
         cal.add(Calendar.HOUR,2);
         Intent intent2 = new Intent(context, NotifyService.class);
         PendingIntent pintent = PendingIntent.getService(context, 0, intent2,
@@ -28,18 +28,16 @@ public class UpdateReceiver extends BroadcastReceiver {
         AlarmManager alarm = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),3600*2*1000, pintent);
         context.startService(new Intent(context,NotifyService.class));
-        //stopService(new Intent(getBaseContext(), Service_class.class));
+
         Calendar cal2 = Calendar.getInstance();
         cal2.add(Calendar.HOUR,12);
         Intent intent3 = new Intent(context, NotifyNewsService.class);
         PendingIntent pintent2 = PendingIntent.getService(context, 0, intent3,
                 0);
         AlarmManager alarm2 = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        /*alarm.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
-                3600 * 1000, pintent);*/
 
         alarm2.setRepeating(AlarmManager.RTC_WAKEUP, cal2.getTimeInMillis(),3600*12*1000, pintent2);
         context.startService(new Intent(context,NotifyNewsService.class));
-        //stopService(new Intent(getBaseContext(), Service_class.class));
+       */
     }
 }

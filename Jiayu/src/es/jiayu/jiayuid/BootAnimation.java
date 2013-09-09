@@ -84,7 +84,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
         });
         CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
-        chk.setVisibility(View.INVISIBLE);
+        //chk.setVisibility(View.INVISIBLE);
         bootDescargaBtn=(Button) findViewById(R.id.bootDescargaBtn);
         bootBtn=(Button) findViewById(R.id.bootInstallBtn);
         bootSpn = (Spinner) findViewById(R.id.bootSpn);

@@ -37,6 +37,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
             }
 
         });
+
         notificaciones=ajustes.getBoolean("notificaciones",true);
         notificacionesChk = (CheckBox) findViewById(R.id.notificacionChk);
         notificacionesChk.setOnCheckedChangeListener(this);
@@ -45,6 +46,8 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
         }else{
             notificacionesChk.setChecked(false);
         }
+        notificacionesChk.setChecked(false);
+        notificacionesChk.setEnabled(false);
     }
 
     @Override

@@ -60,16 +60,16 @@ public class App extends Activity implements AsyncResponse {
     String fabricante = "";
     String compilacion = "";
     String newversion = "";
-    static NotificationManager mNotificationManagerUpdate=null;
+    /*static NotificationManager mNotificationManagerUpdate=null;
     static NotificationManager mNotificationManagerNews=null;
     private int SIMPLE_NOTFICATION_UPDATE=8888;
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
-    SharedPreferences.Editor editorAjustes=null;
+    SharedPreferences.Editor editorAjustes=null;*/
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
-            mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            /*mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
             nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
@@ -99,7 +99,7 @@ public class App extends Activity implements AsyncResponse {
             AlarmManager alarm2 = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
 
             alarm2.setRepeating(AlarmManager.RTC_WAKEUP, calc2.getTimeInMillis(),20*1000, pintent2);
-            getBaseContext().startService(new Intent(getBaseContext(),NotifyNewsService.class));
+            getBaseContext().startService(new Intent(getBaseContext(),NotifyNewsService.class));*/
             version = "Jiayu.es ";
             version = version + nversion;
             File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
@@ -172,10 +172,10 @@ public class App extends Activity implements AsyncResponse {
 
             }
             if (modelo.length() < 8) {
-                Calendar cal=Calendar.getInstance();
+                /*Calendar cal=Calendar.getInstance();
                 editorAjustes = ajustes.edit();
                 editorAjustes.putString("modelo", modelo);
-                editorAjustes.commit();
+                editorAjustes.commit();*/
 
                 descargas.setEnabled(true);
                 //accesorios.setEnabled(true);
@@ -794,7 +794,7 @@ public class App extends Activity implements AsyncResponse {
                                 break;
                             }
                         }
-                        if(modeloEncontrado){
+                        /*if(modeloEncontrado){
                             String fechaAcceso=ajustes.getString("fechaUltimoAccesoDescargas",fecha);
 
                             int[] ints = descomponerFecha(fechaAcceso);
@@ -832,7 +832,7 @@ public class App extends Activity implements AsyncResponse {
                                 mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
                             }
 
-                        }
+                        }*/
                     }
                 }
             }

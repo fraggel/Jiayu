@@ -107,6 +107,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         abrirExploradorBtn.setOnClickListener(this);
         rebootRecoveryBtn.setOnClickListener(this);
         bootAnimationBtn.setOnClickListener(this);
+        bootAnimationBtn.setEnabled(false);
         refreshCombos();
     }
 

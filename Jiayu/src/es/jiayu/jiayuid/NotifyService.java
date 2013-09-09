@@ -22,7 +22,7 @@ import java.util.Calendar;
  * Created by Fraggel on 10/08/13.
  */
 public class NotifyService extends Service implements AsyncResponse {
-    String newversion="";
+    /*String newversion="";
     String urlActualizacion="";
     String nversion = "";
     static NotificationManager mNotificationManagerUpdate=null;
@@ -31,14 +31,14 @@ public class NotifyService extends Service implements AsyncResponse {
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
     String modelo=null;
-    @Override
+    @Override*/
     public IBinder onBind(Intent arg0) {
         return null;
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        try {
+       /* try {
             nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
             modelo=ajustes.getString("modelo","");
@@ -47,7 +47,7 @@ public class NotifyService extends Service implements AsyncResponse {
             asyncTask.execute(nversion);
 
         } catch (Exception e) {
-        }
+        }*/
         return START_STICKY;
     }
 
@@ -65,7 +65,7 @@ public class NotifyService extends Service implements AsyncResponse {
     }
 
     public void processFinish(String output) {
-        try {
+        /*try {
             if (output != null && !"TIMEOUT----".equals(output)) {
 
                 String inicio = output.split("-;-")[0];
@@ -90,7 +90,7 @@ public class NotifyService extends Service implements AsyncResponse {
                         notifyDetails.setLatestEventInfo(getBaseContext(), contentTitle, contentText, intent2);
                         mNotificationManagerUpdate.notify(SIMPLE_NOTFICATION_UPDATE, notifyDetails);
                     }
-                }
+                }*/
                 /*if((split.length-2)>0){
                     String fecha=null;
                     String model=null;
@@ -143,11 +143,11 @@ public class NotifyService extends Service implements AsyncResponse {
                                 }
                             }
                         }
-                }*/
+                }*//*
             }
         } catch (Exception e) {
 
-        }
+        }*/
     }
     private int[] descomponerFecha(String fechaPasada) {
         int day=Integer.parseInt(fechaPasada.trim().split("/")[0]);
