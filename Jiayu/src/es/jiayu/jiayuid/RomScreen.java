@@ -287,7 +287,12 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                 p.getOutputStream());
                         bos.write(("rm /cache/recovery/extendedcommand\n")
                                 .getBytes());
-                        String fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
+                        String fileCWM = "";
+                        if("G4A".equals(modelo) || "S1".equals(modelo)){
+                            fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                        }else{
+                            fileCWM =this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
+                        }
                         bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
                                 /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
                                 bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/

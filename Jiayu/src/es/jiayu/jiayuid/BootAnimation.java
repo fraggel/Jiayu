@@ -26,10 +26,14 @@ import android.widget.VideoView;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FilenameFilter;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -80,7 +84,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
         });
         CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
-        //chk.setVisibility(View.INVISIBLE);
+        chk.setVisibility(View.INVISIBLE);
         bootDescargaBtn=(Button) findViewById(R.id.bootDescargaBtn);
         bootBtn=(Button) findViewById(R.id.bootInstallBtn);
         bootSpn = (Spinner) findViewById(R.id.bootSpn);
@@ -169,10 +173,10 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                     bos.flush();
                     bos.close();
                 }
-                if(chk.isChecked()){
-                    File ff=new File(bootSeleccionada+"2");
+                /*if(chk.isChecked()){
+                    File ff=new File(bootSeleccionada.substring(0, bootSeleccionada.length() - 4)+"2.zip");
                     ff.delete();
-                }
+                }*/
                 bootSpn.setSelection(0);
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgInstallBootC), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
@@ -187,12 +191,12 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         try {
             unZip(bootSeleccionada);
             changeDesc(this.bootSeleccionada.substring(0, this.bootSeleccionada.length() - 4));
-            File ff=new File(bootSeleccionada+"2");
+            File ff=new File(this.bootSeleccionada.substring(0, this.bootSeleccionada.length() - 4)+"2.zip");
             ff.delete();
-            ZipOutputStream zos=new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(bootSeleccionada+"2")));
+            ZipOutputStream zos=new ZipOutputStream(new BufferedOutputStream(new FileOutputStream(bootSeleccionada.substring(0, bootSeleccionada.length() - 4)+"2.zip")));
             zos.setLevel(0);
-            zipIt(this.bootSeleccionada.substring(0, this.bootSeleccionada.length() - 4), zos);
-            selec=bootSeleccionada+"2";
+            zipIt(this.bootSeleccionada.substring(0, this.bootSeleccionada.length() - 4), zos,new File(this.bootSeleccionada.substring(0, this.bootSeleccionada.length() - 4)).getName());
+            selec=this.bootSeleccionada.substring(0, this.bootSeleccionada.length() - 4)+"2.zip";
             zos.flush();
             zos.close();
         }catch(Exception e){
@@ -211,16 +215,22 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             int height = dm.heightPixels;
             int width = dm.widthPixels;
             f.renameTo(f2);
-            BufferedInputStream bis=new BufferedInputStream(new FileInputStream(f2));
-            byte[] b= new byte[(int)f2.length()];
-            bis.read(b);
-            BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream(f));
-            bos.write(b);
+            OutputStreamWriter bos=new OutputStreamWriter(new FileOutputStream(f),"ISO-8859-1");
+            BufferedReader br=new BufferedReader(new FileReader(f2));
+            String linea=br.readLine();
+            String linea1=width + " " + height + " "+linea.split(" ")[2]+"\n";
+            bos.write(linea1);
+            linea=br.readLine();
+            while(linea!=null){
+                bos.write(linea+"\n");
+                linea=br.readLine();
+            }
+            br.close();
             bos.flush();
             bos.close();
             f2.delete();
         }catch(Exception e){
-
+            e.printStackTrace();
         }
     }
     AnimationDrawable frameAnimation=null;
@@ -321,7 +331,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         }
 
     }
-    public static void zipIt(String dir2zip, ZipOutputStream zos) {
+    public static void zipIt(String dir2zip, ZipOutputStream zos,String parent) {
         try {
 
             File zipDir = new File(dir2zip);
@@ -338,15 +348,20 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 if (f.isDirectory()) {
 
                     String filePath = f.getPath();
-                    zipIt(filePath, zos);
+                    zipIt(filePath, zos,parent);
 
                     System.out.println(filePath);
                     continue;
                 }
 
                 FileInputStream fis = new FileInputStream(f);
+                ZipEntry anEntry=null;
+                if(parent.equals(f.getParentFile().getName())){
+                    anEntry = new ZipEntry(f.getName());
+                }else{
+                    anEntry = new ZipEntry(f.getParentFile().getName()+"/"+f.getName());
+                }
 
-                ZipEntry anEntry = new ZipEntry(f.getPath());
 
                 zos.putNextEntry(anEntry);
 
@@ -369,7 +384,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             return;
         }
         // 'happyShow' is the name of directory
-        File pictureDirectory = new File(Environment.getExternalStorageDirectory()+ "/JIAYUES/BOOTANIMATION/bootanimationCirulo/part0/");
+        File pictureDirectory = new File(Environment.getExternalStorageDirectory()+ "/JIAYUES/BOOTANIMATION/bootanimationCirculo/part0/");
         if ( !pictureDirectory.exists() ) {
             return;
         }

@@ -49,7 +49,7 @@ public class BrowserActivity extends Activity {
         if ("drivers".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/apptools.php");
         } else if ("bootanimation".equals(tipo)) {
-            descargas.loadUrl("http://www.jiayu.es/soporte/bootanimation.php");
+            descargas.loadUrl("http://www.jiayu.es/soporte/bootanimation.php?jiayu=" + modelo);
         }else if ("downloads".equals(tipo)) {
             mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerNews.cancel(SIMPLE_NOTFICATION_NEWS);
