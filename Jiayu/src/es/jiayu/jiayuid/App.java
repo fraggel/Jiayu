@@ -69,9 +69,9 @@ public class App extends Activity implements AsyncResponse {
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
+            nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             /*mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
-            nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
             editorAjustes=ajustes.edit();
             String tmpFecha="";
