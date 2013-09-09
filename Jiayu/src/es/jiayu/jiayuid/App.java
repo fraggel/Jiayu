@@ -73,7 +73,7 @@ public class App extends Activity implements AsyncResponse {
             /*mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
-            editorAjustes=ajustes.edit();
+            editorAjustes=ajustes.edit();G4T
             String tmpFecha="";
             tmpFecha=ajustes.getString("fechaUltimoAccesoDescargas", "");
             if("".equals(tmpFecha)){
@@ -364,7 +364,25 @@ public class App extends Activity implements AsyncResponse {
                         }
                     } else if ("mt6589t".equals(procesador.toLowerCase())) {
                         if ("1GB".equals(ram)) {
-                            model = "G4T";
+                            String modelo = Build.MODEL;
+                            String disp = Build.DISPLAY;
+                            android.hardware.Camera cam = android.hardware.Camera.open(1);
+                            List<Size> supportedPictureSizes = cam.getParameters().getSupportedPictureSizes();
+                            int result = -1;
+                            for (Iterator iterator = supportedPictureSizes
+                                    .iterator(); iterator
+                                         .hasNext(); ) {
+                                Size sizes = (Size) iterator.next();
+                                result = sizes.width;
+
+                            }
+                            cam.release();
+                            //if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
+                            if (result != -1 && result <= 1600) {
+                                model = getCPUFreqG3();
+                            } else {
+                                model = getCPUFreqG4();
+                            }
                         } else if ("2GB".equals(ram)) {
                             model = "G4A";
                         } else {
@@ -700,7 +718,7 @@ public class App extends Activity implements AsyncResponse {
             reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
             load = reader.readLine();
             int cpufreq = Integer.parseInt(load.trim());
-            if (cpufreq > 1300000) {
+            if (cpufreq > 1400000) {
                 load = "G4T";
             } else {
                 load = "G4B";
@@ -722,7 +740,7 @@ public class App extends Activity implements AsyncResponse {
             reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
             load = reader.readLine();
             int cpufreq = Integer.parseInt(load.trim());
-            if (cpufreq > 1300000) {
+            if (cpufreq > 1400000) {
                 load = "G3QCT";
             } else {
                 load = "G3QC";
