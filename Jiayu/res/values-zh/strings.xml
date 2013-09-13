@@ -61,6 +61,7 @@
     <string name="msgConfiguracion">组态</string>
     <string name="msgRebootQ">要应用新的IMEI，重启，现在重新启动？</string>
     <string name="msgInstallBootC">BootAnimation changed</string>
+    <string name="msgNoBusybox">No busybox, download?</string>
 
     <string name="about1">在西班牙的经销商:</string>
     <string name="about2">info@jiayu.es</string>

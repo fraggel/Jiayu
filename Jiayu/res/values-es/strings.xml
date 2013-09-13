@@ -48,7 +48,6 @@
     <string name="msgImeirestored">restaurado</string>
     <string name="msgImeiRestoreQ1">¿Quieres restaurar tu IMEI con el fichero </string>
     <string name="msgImeiRestoreQ2">encontrado?</string>
-    <string name="msgInstallBootC">BootAnimation cambiado</string>
 
     <string name="msgTerminadaDescarga">Descarga terminada</string>
     <string name="msgIniciandoDescarga">Descarga iniciada</string>
@@ -65,6 +64,8 @@
     <string name="msgModeloNoIgualFichero">El archivo seleccionado no parece contener tu modelo de dispositivo en el nombre, puede no ser compatible con tu dispositivo, ¿Deseas instalarlo igualmente?</string>
     <string name="msgConfiguracion">Configuración</string>
     <string name="msgRebootQ">Para aplicar el nuevo IMEI es necesario reiniciar, ¿Reiniciar ahora?</string>
+    <string name="msgInstallBootC">BootAnimation cambiado</string>
+    <string name="msgNoBusybox">No busybox, download?</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>

@@ -25,6 +25,7 @@ import android.widget.Toast;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -53,7 +54,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         if (controlRoot()) {
             isRoot = true;
             if (!controlBusybox()) {
-                //instalarBusyBox();
+                instalarBusyBox();
             }
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
@@ -216,7 +217,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                             p.getOutputStream());
                                     //TODO
                                     //Calcular Md5 del original,
-                                    bos.write(("cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
+                                    bos.write(("busybox cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
                                     //calcular md5 de la copia, comparar y si es correcto mostrar aviso de ok, en caso contrario decir que no OK y eliminar el IMEI.bak
                                     //Poner md5 en la cabecera del fichero si se puede
                                     bos.flush();
@@ -251,7 +252,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                                 p.getOutputStream());
                                         //TODO
                                         //Calcular Md5 del original,
-                                        bos.write(("cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
+                                        bos.write(("busybox cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
                                         //calcular md5 de la copia, comparar y si es correcto mostrar aviso de ok, en caso contrario decir que no OK y eliminar el IMEI.bak
                                         //Poner md5 en la cabecera del fichero si se puede
                                         bos.flush();
@@ -296,7 +297,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                 //TODO
                                 //calcular Md5, comparar con el de la cabecera del fichero si es correcto copiar
                                 //Si no lo es no copiar....
-                                bos.write(("cp "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001\n").getBytes());
+                                bos.write(("busybox cp "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001\n").getBytes());
 
                                 bos.flush();
                                 bos.close();
@@ -313,5 +314,34 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
 
         }
+    }
+    private void instalarBusyBox() {
+        AlertDialog dialog = new AlertDialog.Builder(this).create();
+        dialog.setMessage(getResources().getString(R.string.msgNoBusybox));
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                getResources().getString(R.string.cancelarBtn),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witch) {
+                        finish();
+                    }
+                });
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                getResources().getString(R.string.aceptarBtn),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witch) {
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri
+                                    .parse("market://details?id=com.jrummy.busybox.installer"));
+                            startActivity(intent);
+                            finish();
+                        } catch (Exception e) {
+
+
+                        }
+                    }
+                });
+        dialog.show();
+
     }
 }

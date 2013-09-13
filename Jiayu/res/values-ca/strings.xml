@@ -64,6 +64,7 @@
     <string name="msgConfiguracion">Configuració</string>
     <string name="msgRebootQ">Per aplicar el nou IMEI és Cal Reiniciar, Reiniciar ¿Ara?</string>
     <string name="msgInstallBootC">BootAnimation cambiado</string>
+    <string name="msgNoBusybox">No busybox, download?</string>
 
     <string name="about1">Distribuïdor Ofical a Espanya:</string>
     <string name="about2">info@jiayu.es</string>

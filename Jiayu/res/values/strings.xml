@@ -67,6 +67,8 @@
     <string name="msgConfiguracion">Configuration</string>
     <string name="msgRebootQ">To restore IMEI must restart, Restart now?</string>
     <string name="msgInstallBootC">BootAnimation changed</string>
+    <string name="msgNoBusybox">No busybox, download?</string>
+
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
