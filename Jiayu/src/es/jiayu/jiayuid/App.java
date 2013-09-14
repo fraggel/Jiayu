@@ -183,7 +183,7 @@ public class App extends Activity implements AsyncResponse {
                 driversherramientas.setEnabled(true);
                 videotutoriales.setEnabled(true);
                 herramientasROM.setEnabled(true);
-                if (!"JIAYU".equals(fabricante.toUpperCase().trim())) {
+                if (!"JIAYU".equals(fabricante.toUpperCase().trim()) && !"PIPO".equals(fabricante.toUpperCase().trim())) {
                     t5.setTextColor(Color.RED);
                     t5.setText(res.getString(R.string.msgIdentificado1) +" "+ modelo + res.getString(R.string.msgIdentificado2));
                 }else{
@@ -192,6 +192,10 @@ public class App extends Activity implements AsyncResponse {
             }
             t.setText(res.getString(R.string.msgModelo) + modelo);
             t2.setText(res.getString(R.string.msgCompilacion) + compilacion);
+
+            if("T1".equals(modelo)){
+                herramientasROM.setEnabled(false);
+            }
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
         }
@@ -200,7 +204,7 @@ public class App extends Activity implements AsyncResponse {
     private String infoBrand() throws IOException {
         String fabricante = Build.BRAND;
         String buildprop = "";
-        if (fabricante.toUpperCase().indexOf("JIAYU") == -1) {
+        if (fabricante.toUpperCase().indexOf("JIAYU") == -1 || fabricante.toUpperCase().indexOf("PIPO") == -1) {
             FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
             byte[] input = new byte[fis.available()];
             while (fis.read(input) != -1) {
@@ -208,7 +212,9 @@ public class App extends Activity implements AsyncResponse {
             }
             if (buildprop.toUpperCase().indexOf("JIAYU") != -1) {
                 fabricante = "JIAYU";
-            } else {
+            } else if(buildprop.toUpperCase().indexOf("PIPO") != -1){
+                fabricante = "PIPO";
+            }else{
                 fabricante = "TERMINAL NO JIAYU";
             }
         }
@@ -438,8 +444,12 @@ public class App extends Activity implements AsyncResponse {
                     if ("256MB".equals(ram)) {
                         model = "G1";
                     }
-                } else {
-                    model = res.getString(R.string.msgTerminalNoJiayu);
+                } else if (width == 800 || (orientation == 2 && width == 1280)) {
+                    if ("2GB".equals(ram)) {
+                           model="T1";
+                    }
+                }else{
+                        model = res.getString(R.string.msgTerminalNoJiayu);
                 }
 
             } catch (Exception e) {
