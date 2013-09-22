@@ -69,9 +69,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         modelo = getIntent().getExtras().getString("modelo");
         if (controlRoot()) {
             isRoot = true;
-            if (!controlBusybox()) {
-                //instalarBusyBox();
-            }
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -195,7 +192,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                         flashRom();
                                         //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 150", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -206,7 +203,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 }
 
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRom) + new File(this.romseleccionada).getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRom) + new File(this.romseleccionada).getName()+" 151", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -238,7 +235,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                        flashZip();
                                        //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                                    } catch (Exception e) {
-                                       Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                       Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 152", Toast.LENGTH_SHORT).show();
                                    }
                                }
                            });
@@ -249,7 +246,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                }
 
            }catch(Exception e){
-
+               Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 153", Toast.LENGTH_SHORT).show();
            }
 
        }else if(button.getId()==R.id.dataCacheDalvikBtn){
@@ -270,7 +267,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                rebootRecoveryQuestionFlashear();
 
            }catch(Exception e){
-
+               Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 154", Toast.LENGTH_SHORT).show();
            }
        }
     }
@@ -333,13 +330,13 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                         }
                     } catch (ActivityNotFoundException e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError) + application_name, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError) + application_name+" 155", Toast.LENGTH_SHORT).show();
                     }
 
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 156", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -371,7 +368,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 rebootRecoveryQuestionFlashear();
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 157", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -399,7 +396,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             bos.close();
                             //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                         } catch (Exception e) {
-
+                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 158", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -422,26 +419,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 159", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;
-    }
-
-
-    private boolean controlBusybox() {
-        boolean busybox = true;
-        File f = new File("/system/bin/busybox");
-        if (!f.exists()) {
-            f = new File("/system/xbin/busybox");
-            if (!f.exists()) {
-                busybox = false;
-            } else {
-                busybox = true;
-            }
-        } else {
-            busybox = true;
-        }
-        return busybox;
     }
 
     public void refreshCombos() {

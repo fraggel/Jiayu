@@ -40,7 +40,7 @@ public class DownloadReceiver extends BroadcastReceiver {
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(context, context.getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, context.getResources().getString(R.string.msgGenericError)+" 135", Toast.LENGTH_SHORT).show();
         }
     }
 }

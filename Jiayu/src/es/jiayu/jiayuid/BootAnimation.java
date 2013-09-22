@@ -71,6 +71,9 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         tipo = getIntent().getExtras().getString("tipo");
         if (controlRoot()) {
             isRoot = true;
+            if (!controlBusybox()) {
+                instalarBusyBox();
+            }
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +87,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
         });
         CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
-        //chk.setVisibility(View.INVISIBLE);
+        chk.setVisibility(View.INVISIBLE);
         bootDescargaBtn=(Button) findViewById(R.id.bootDescargaBtn);
         bootBtn=(Button) findViewById(R.id.bootInstallBtn);
         bootSpn = (Spinner) findViewById(R.id.bootSpn);
@@ -109,6 +112,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 125", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;
@@ -149,7 +153,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 intent.putExtra("tipo", tipo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 126", Toast.LENGTH_SHORT).show();
             }
         }else if (button.getId() == R.id.bootInstallBtn) {
             try {
@@ -180,7 +184,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 bootSpn.setSelection(0);
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgInstallBootC), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 127", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -201,7 +205,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             zos.close();
             zos.finish();
         }catch(Exception e){
-            e.printStackTrace();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 128", Toast.LENGTH_SHORT).show();
         }
 
         return selec;
@@ -233,7 +237,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             bos.close();
             f2.delete();
         }catch(Exception e){
-            e.printStackTrace();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 129", Toast.LENGTH_SHORT).show();
         }
     }
     AnimationDrawable frameAnimation=null;
@@ -248,7 +252,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgSeleccionado) + " " + new File(bootselect).getName(), Toast.LENGTH_SHORT).show();
                         bootBtn.setEnabled(true);
                         this.bootSeleccionada = bootselect;
-                        unZip(bootSeleccionada);
+                        //unZip(bootSeleccionada);
                         /*ImageView showedImage = (ImageView) findViewById(R.id.gifAnimadoImg);
                         showedImage.setBackgroundResource(R.drawable.ic_launcher);
                         frameAnimation = (AnimationDrawable) showedImage.getBackground();
@@ -265,7 +269,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 }
             }
         }catch(Exception e){
-            e.printStackTrace();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 130", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -377,7 +381,50 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             }
         }
         catch (Exception e) {
-            e.printStackTrace();
         }
+    }
+
+    private boolean controlBusybox() {
+        boolean busybox = false;
+        File f = new File("/system/bin/busybox");
+        if (!f.exists()) {
+            f = new File("/system/xbin/busybox");
+            if (!f.exists()) {
+                busybox = false;
+            } else {
+                busybox = true;
+            }
+        } else {
+            busybox = true;
+        }
+        return busybox;
+    }
+    private void instalarBusyBox() {
+        AlertDialog dialog = new AlertDialog.Builder(this).create();
+        dialog.setMessage(getResources().getString(R.string.msgNoBusybox));
+        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                getResources().getString(R.string.cancelarBtn),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witch) {
+                        finish();
+                    }
+                });
+        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                getResources().getString(R.string.aceptarBtn),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int witch) {
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW);
+                            intent.setData(Uri
+                                    .parse("market://details?id=com.jrummy.busybox.installer"));
+                            startActivity(intent);
+                            finish();
+                        } catch (Exception e) {
+                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 144", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+        dialog.show();
+
     }
 }

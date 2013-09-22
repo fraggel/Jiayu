@@ -64,9 +64,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         deleteDirectories();
         if (controlRoot()) {
             isRoot = true;
-            if (!controlBusybox()) {
-                //instalarBusyBox();
-            }
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +123,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
 
             }
         }catch(Exception e ){
-
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 160", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -176,7 +173,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 161", Toast.LENGTH_SHORT).show();
             }
         } else if (button.getId() == R.id.recoveryBtn) {
             try {
@@ -184,14 +181,14 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 162", Toast.LENGTH_SHORT).show();
             }
         }else if (button.getId()==R.id.rebootRecoveryBtn){
             {
                 try {
                     rebootRecoveryQuestion();
                 } catch (Exception e) {
-
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 163", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -224,7 +221,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                     //Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                 }
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError) + application_name, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError) + application_name+" 164", Toast.LENGTH_SHORT).show();
             }
         } else if (button.getId() == R.id.romBtn) {
             try {
@@ -232,7 +229,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 165", Toast.LENGTH_SHORT).show();
             }
 
         }else if(button.getId()==R.id.ingenieroBtn){
@@ -259,7 +256,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIngenieroNoExiste),Toast.LENGTH_SHORT).show();
                 }
             }catch (ActivityNotFoundException e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+application_name,Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+application_name+" 166",Toast.LENGTH_SHORT).show();
             }
         }else if(button.getId()==R.id.bootAnimationBtn){
             try {
@@ -268,7 +265,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("tipo","bootanimation");
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 167", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -299,7 +296,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                             bos.flush();
                             bos.close();
                         } catch (Exception e) {
-
+                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 168", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -321,26 +318,10 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 169", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;
-    }
-
-
-    private boolean controlBusybox() {
-        boolean busybox = true;
-        File f = new File("/system/bin/busybox");
-        if (!f.exists()) {
-            f = new File("/system/xbin/busybox");
-            if (!f.exists()) {
-                busybox = false;
-            } else {
-                busybox = true;
-            }
-        } else {
-            busybox = true;
-        }
-        return busybox;
     }
 
     public void refreshCombos() {

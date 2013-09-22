@@ -63,9 +63,6 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
         modelo = getIntent().getExtras().getString("modelo");
         if (controlRoot()) {
             isRoot = true;
-            if (!controlBusybox()) {
-                //instalarBusyBox();
-            }
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -156,7 +153,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                                         flashRecovery();
                                         //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 145", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -167,7 +164,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                     flashRecovery();
                 }
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName()+" 146", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -213,13 +210,13 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                                     bos.close();
                                     //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                                 } catch (Exception e) {
-                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 146", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
                 dialog.show();
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRecovery) + new File(this.recoveryseleccionado).getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRecovery) + new File(this.recoveryseleccionado).getName()+" 147", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -247,7 +244,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                             bos.close();
                             //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                         } catch (Exception e) {
-
+                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 148", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -330,26 +327,10 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 149", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;
-    }
-
-
-    private boolean controlBusybox() {
-        boolean busybox = true;
-        File f = new File("/system/bin/busybox");
-        if (!f.exists()) {
-            f = new File("/system/xbin/busybox");
-            if (!f.exists()) {
-                busybox = false;
-            } else {
-                busybox = true;
-            }
-        } else {
-            busybox = true;
-        }
-        return busybox;
     }
 
 

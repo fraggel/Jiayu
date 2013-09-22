@@ -125,7 +125,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
             startActivity(Intent.createChooser(i,
                     res2.getString(R.string.enviarEmailBtn)));
         } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 136", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -147,7 +147,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                             Runtime rt = Runtime.getRuntime();
                             java.lang.Process p = rt.exec("su -c 'reboot'\n");
                         } catch (Exception e) {
-
+                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 137", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -169,6 +169,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 138", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;
@@ -176,7 +177,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
 
 
     private boolean controlBusybox() {
-        boolean busybox = true;
+        boolean busybox = false;
         File f = new File("/system/bin/busybox");
         if (!f.exists()) {
             f = new File("/system/xbin/busybox");
@@ -224,7 +225,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                     bos.close();
                                     Toast.makeText(getBaseContext(), "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                 } catch (Exception e) {
-                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 139", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -259,7 +260,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                         bos.close();
                                         Toast.makeText(getBaseContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 140", Toast.LENGTH_SHORT).show();
                                     }
                   /*              }
                             });
@@ -271,7 +272,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
             }
             refresh();
         } catch (Exception e) {
-
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 141", Toast.LENGTH_SHORT).show();
         }
     }
     public void restoreImeis(){
@@ -304,14 +305,14 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                 Toast.makeText(getBaseContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeirestored), Toast.LENGTH_SHORT).show();
                                 rebootQuestion();
                             } catch (Exception e) {
-                                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 142", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
             dialog.show();
             refresh();
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 143", Toast.LENGTH_SHORT).show();
 
         }
     }
@@ -336,8 +337,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                             startActivity(intent);
                             finish();
                         } catch (Exception e) {
-
-
+                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 144", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

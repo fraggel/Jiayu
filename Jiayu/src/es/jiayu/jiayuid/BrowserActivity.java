@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.DisplayMetrics;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -49,7 +50,7 @@ public class BrowserActivity extends Activity {
         if ("drivers".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/apptools.php");
         } else if ("bootanimation".equals(tipo)) {
-            descargas.loadUrl("http://www.jiayu.es/soporte/appboots.php?jiayu=" + modelo);
+            descargas.loadUrl("http://www.jiayu.es/soporte/appboots.php");
         }else if ("downloads".equals(tipo)) {
            /* mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerNews.cancel(SIMPLE_NOTFICATION_NEWS);
@@ -77,11 +78,6 @@ public class BrowserActivity extends Activity {
             urlDestino = url;
             if (urlDestino.lastIndexOf("/desarrollo/") != -1) {
                 try {
-                    String nombreFichero = "";
-                    nombreFichero = urlDestino.split("/")[urlDestino.split("/").length - 1];
-                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlDestino));
-                    request.setDescription(nombreFichero);
-                    request.setTitle(nombreFichero);
                     File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
                     if (!f1.exists()) {
                         f1.mkdirs();
@@ -106,22 +102,9 @@ public class BrowserActivity extends Activity {
                     if (!f6.exists()) {
                         f6.mkdirs();
                     }
-                    if (Build.VERSION.SDK_INT >= 11) {
-                        request.allowScanningByMediaScanner();
-                        request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                        if (".apk".equals(nombreFichero.substring(nombreFichero.length() - 4, nombreFichero.length()).toLowerCase())) {
-                            request.setMimeType("application/vnd.android.package-archive");
-                            if (nombreFichero.indexOf("Jiayu.apk") == -1) {
-                                try {
-                                    new File(f1.getAbsolutePath() + "/Jiayu.apk").delete();
-                                } catch (Exception e) {
+                    String nombreFichero = "";
+                    nombreFichero = urlDestino.split("/")[urlDestino.split("/").length - 1];
 
-                                }
-
-                            }
-                        }
-
-                    }
                     String rutaDescarga = null;
                     if (nombreFichero.indexOf("recovery") != -1) {
                         rutaDescarga = "/JIAYUES/RECOVERY/";
@@ -134,19 +117,67 @@ public class BrowserActivity extends Activity {
                     }else{
                         rutaDescarga = "/JIAYUES/DOWNLOADS/";
                     }
-                    request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
 
-                    DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
-                    App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
                     if (nombreFichero.indexOf("bootanimation") != -1) {
+                        DisplayMetrics dm = new DisplayMetrics();
+                        getWindowManager().getDefaultDisplay().getMetrics(dm);
+                        int height = dm.heightPixels;
+                        int width = dm.widthPixels;
+                        int orientation = getResources().getConfiguration().orientation;
+                        if (orientation == 2) {
+                            int wT=width;
+                            width=height;
+                            height=wT;
+                        }
+                        String newURLZIP=urlDestino;
+                        String newURLGIF=urlDestino.replace(".zip",".gif");
+                        newURLZIP=newURLZIP.replace(".zip",width+".zip");
+                        nombreFichero=nombreFichero.replace(".zip",width+".zip");
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(newURLZIP));
+                        request.setDescription(nombreFichero);
+                        request.setTitle(nombreFichero);
+                        request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
+
+                        DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+                        App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
+
+
+                        request = new DownloadManager.Request(Uri.parse(newURLGIF));
+                        request.setDescription(nombreFichero.substring(0,nombreFichero.length()-4)+".gif");
+                        request.setTitle(nombreFichero.substring(0,nombreFichero.length()-4)+".gif");
                         request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero.substring(0,nombreFichero.length()-4)+".gif");
                         App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero.substring(0,nombreFichero.length()-4)+".gif");
+                    }else{
+                        DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlDestino));
+                        request.setDescription(nombreFichero);
+                        request.setTitle(nombreFichero);
+                        if (Build.VERSION.SDK_INT >= 11) {
+                            request.allowScanningByMediaScanner();
+                            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                            if (".apk".equals(nombreFichero.substring(nombreFichero.length() - 4, nombreFichero.length()).toLowerCase())) {
+                                request.setMimeType("application/vnd.android.package-archive");
+                                if (nombreFichero.indexOf("Jiayu.apk") == -1) {
+                                    try {
+                                        new File(f1.getAbsolutePath() + "/Jiayu.apk").delete();
+                                    } catch (Exception e) {
+                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 132", Toast.LENGTH_SHORT).show();
+                                    }
+
+                                }
+                            }
+
+                        }
+                        request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
+
+                        DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+                        App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
                     }
                     //manager.enqueue(request);
 
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 133", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             } else {
@@ -170,6 +201,7 @@ public class BrowserActivity extends Activity {
                     PackageManager.MATCH_DEFAULT_ONLY);
             return list.size() > 0;
         } catch (Exception e) {
+            Toast.makeText(context, context.getResources().getString(R.string.msgGenericError)+" 134", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
