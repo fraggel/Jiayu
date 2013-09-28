@@ -45,6 +45,8 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     Button abrirExploradorBtn = null;
     Button rebootRecoveryBtn = null;
     Button bootAnimationBtn=null;
+    Button backupBtn=null;
+    Button toolsAndroidBtn=null;
     String modelo=null;
     String apkseleccionada = null;
     ArrayList<String> listaAppsUrl = new ArrayList<String>();
@@ -85,12 +87,15 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         abrirExploradorBtn = (Button) findViewById(R.id.filesBtn);
         rebootRecoveryBtn = (Button) findViewById(R.id.rebootRecoveryBtn);
         bootAnimationBtn=(Button) findViewById(R.id.bootAnimationBtn);
-
+        backupBtn=(Button) findViewById(R.id.backupBtn);
+        toolsAndroidBtn=(Button)findViewById(R.id.toolsAndroidBtn);
         if (!isRoot) {
             recoveryBtn.setVisibility(View.INVISIBLE);
             rebootRecoveryBtn.setVisibility(View.INVISIBLE);
             imeiBtn.setVisibility(View.INVISIBLE);
             bootAnimationBtn.setVisibility(View.INVISIBLE);
+            backupBtn.setVisibility(View.INVISIBLE);
+            toolsAndroidBtn.setVisibility(View.INVISIBLE);
         }
 
         apkBtn.setEnabled(false);
@@ -104,6 +109,8 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         abrirExploradorBtn.setOnClickListener(this);
         rebootRecoveryBtn.setOnClickListener(this);
         bootAnimationBtn.setOnClickListener(this);
+        backupBtn.setOnClickListener(this);
+        toolsAndroidBtn.setOnClickListener(this);
         //bootAnimationBtn.setEnabled(false);
         refreshCombos();
     }
@@ -266,6 +273,23 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 167", Toast.LENGTH_SHORT).show();
+            }
+        }else if(button.getId()==R.id.backupBtn){
+            try {
+                Intent intent = new Intent(this, BackupRestore.class);
+                intent.putExtra("modelo",modelo);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
+            }
+
+        }else if(button.getId()==R.id.toolsAndroidBtn){
+            try {
+                Intent intent = new Intent(this, ToolsAndroid.class);
+                intent.putExtra("modelo",modelo);
+                startActivity(intent);
+            } catch (Exception e) {
+                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
             }
         }
 

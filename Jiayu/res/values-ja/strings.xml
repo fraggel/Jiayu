@@ -15,6 +15,8 @@
      <string name="title_activity_imeiscreen">IMEI操作</string>
     <string name="title_activity_configscreen">設定</string>
     <string name="title_activity_bootanimation">BootAnimation</string>
+    <string name="title_activity_backup">Backup/Restore</string>
+    <string name="title_activity_tools">Tools Android</string>
 
      <string name="updateMnu">アップデートを確認する</string>
      <string name="aboutMnu">私達について</string>
@@ -40,6 +42,8 @@
      <string name="msgNoRoot">ルートが必要です</string>
      <string name="msgRecoveryFlasheado"> 回復は、回復への再起動をフラッシュ？</string>
      <string name="msgRebootRecoveryQF">今すぐ再起動する必要がROM /Wipe /郵便番号をフラッシュするには、[今すぐ再起動したいですか？</string>
+    <string name="msgRebootBackupQF">Para crear Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
+    <string name="msgRebootRestoreQF">Para restaurar Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
      <string name="msgRebootRecoveryQ">回復に再起動？</string>
      <string name="msgImeiExiste1">以前</string>
      <string name="msgImeiExiste2">は、これはそれを上書きします、存在し続けたいですか？</string>
@@ -64,6 +68,8 @@
     <string name="msgRebootQ">再起動するための新たなIMEIを適用するには、[今すぐ再？</string>
     <string name="msgInstallBootC">BootAnimation changed</string>
     <string name="msgNoBusybox">No busybox, download?</string>
+    <string name="msgExisteBackup">A backup already exists, Delete?</string>
+    <string name="msgNoExisteBackup">No backup found</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -110,6 +116,11 @@
     <string name="installBootBtn">Install BootAnimation</string>
     <string name="bootDescargaBtn">Download BootAnimation</string>
     <string name="backupBtn">Backup/Restore</string>
+    <string name="softkeysBtn">Enable/Disable Softkeys</string>
+    <string name="toolsAndroidBtn">Android Tools</string>
+
+    <string name="backupRdb">Backup</string>
+    <string name="restoreRdb">Restore</string>
 
     <string name="ntfMinTxt">JIAYU.esのニュース</string>
     <string name="ntfTituloTxt">JIAYU.esコンテンツのニュース</string>
@@ -118,4 +129,9 @@
     <string name="ntfNuevaVersionTxt">アップデートJIAYU.es</string>
     <string name="ntfTituloNVTxt">アップデートJIAYU.es</string>
     <string name="ntfDetallesNVTxt">バージョン：</string>
+
+    <string name="bcknameTxt">Escribir nombre de backup</string>
+    <string name="txtbckRdb">Seleccionar</string>
+    <string name="makebackuprestoreBtn">Ejecutar</string>
+    <string name="guardarBtn">Guardar</string>
 </resources>

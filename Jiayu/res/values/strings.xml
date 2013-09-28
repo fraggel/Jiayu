@@ -17,6 +17,9 @@
     <string name="title_activity_imeiscreen">IMEI Operations</string>
     <string name="title_activity_configscreen">Configuration</string>
     <string name="title_activity_bootanimation">BootAnimation</string>
+    <string name="title_activity_backup">Backup/Restore</string>
+    <string name="title_activity_tools">Tools Android</string>
+
 
     <!--Menu-->
     <string name="updateMnu">Check Updates</string>
@@ -44,6 +47,8 @@
     <string name="msgNoRoot">Root is necessary</string>
     <string name="msgRecoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
     <string name="msgRebootRecoveryQF">To flash the ROM/Wipe/Zip you need to restart now, want to restart now?</string>
+    <string name="msgRebootBackupQF">Para crear Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
+    <string name="msgRebootRestoreQF">Para restaurar Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
     <string name="msgRebootRecoveryQ">Reboot into Recovery?</string>
     <string name="msgImeiExiste1">A previous</string>
     <string name="msgImeiExiste2">backup exists, this will overwrite it, Want to continue?</string>
@@ -68,7 +73,8 @@
     <string name="msgRebootQ">To restore IMEI must restart, Restart now?</string>
     <string name="msgInstallBootC">BootAnimation changed</string>
     <string name="msgNoBusybox">No busybox, download?</string>
-
+    <string name="msgExisteBackup">A backup already exists, Delete?</string>
+    <string name="msgNoExisteBackup">No backup found</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -112,6 +118,7 @@
     <string name="cwmChk">I have CWM Recovery</string>
     <string name="notificacionChk">Show Notifications (Updates, news)</string>
     <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
+    <string name="softkeysBtn">Enable/Disable Softkeys</string>
 
     <string name="imeiSEBtn">Send email IMEI</string>
     <string name="salirBtn">Exit</string>
@@ -120,11 +127,21 @@
     <string name="installBootBtn">Install BootAnimation</string>
     <string name="bootDescargaBtn">Download BootAnimation</string>
     <string name="backupBtn">Backup/Restore</string>
-    <string name="ntfMinTxt">News on JIAYU.es</string>
-    <string name="ntfTituloTxt">News on JIAYU.es content</string>
-    <string name="ntfDetallesTxt">News for your Device</string>
+    <string name="toolsAndroidBtn">Android Tools</string>
+
+
+    <string name="backupRdb">Backup</string>
+    <string name="restoreRdb">Restore</string>
 
     <string name="ntfNuevaVersionTxt">Update JIAYU.es</string>
     <string name="ntfTituloNVTxt">Update JIAYU.es</string>
     <string name="ntfDetallesNVTxt">Version:</string>
+    <string name="ntfMinTxt">News on JIAYU.es</string>
+    <string name="ntfTituloTxt">News on JIAYU.es content</string>
+    <string name="ntfDetallesTxt">News for your Device</string>
+
+    <string name="bcknameTxt">Escribir nombre de backup</string>
+    <string name="txtbckRdb">Seleccionar</string>
+    <string name="makebackuprestoreBtn">Ejecutar</string>
+    <string name="guardarBtn">Guardar</string>
 </resources>

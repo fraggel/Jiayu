@@ -1,0 +1,73 @@
+﻿<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/jiayulogoic"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:layout_gravity="center"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"/>
+        <CheckBox
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cwmChk"
+            android:id="@+id/cwmChk"
+            android:checked="false"
+            style="@style/LabelTextBlack"/>
+    <RadioGroup
+    	android:id="@+id/grptipobck"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/txtbckRdb" >
+	    <RadioButton
+	        android:id="@+id/rdbbackup"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/backupRdb" />
+	
+	    <RadioButton
+	        android:id="@+id/rdbrestore"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/restoreRdb" />
+        </RadioGroup>
+	   <!-- <RadioButton
+	        android:id="@+id/advbackup"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Advanced Bakcup" />
+
+	    <RadioButton
+	        android:id="@+id/advrestore"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="Advanced Restore" />
+-->
+
+	    <Button
+	        android:id="@+id/executeBtn"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:text="@string/makebackuprestoreBtn"
+	        android:onClick="makeBackupRestore"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/btn_green"
+            style="@style/ButtonTextGreen"/>
+
+    </LinearLayout>
+</ScrollView>

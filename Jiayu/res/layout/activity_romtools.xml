@@ -58,6 +58,14 @@
                 android:layout_gravity="left|center_vertical"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
+        <Button
+            style="@style/ButtonTextGreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/backupBtn"
+            android:id="@+id/backupBtn"
+            android:layout_gravity="center_vertical|left"
+            android:background="@drawable/btn_green" />
 
         <Button
                 android:layout_width="match_parent"
@@ -76,6 +84,14 @@
                 android:layout_gravity="left|center_vertical"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/toolsAndroidBtn"
+            android:id="@+id/toolsAndroidBtn"
+            android:layout_gravity="left|center_vertical"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
 
         <Button
                 android:layout_width="fill_parent"

@@ -57,6 +57,9 @@
         <activity android:name="es.jiayu.jiayuid.RecoveryScreen" android:label="@string/title_activity_recoveryscreen" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.ConfigActivity" android:label="@string/title_activity_configscreen" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.BootAnimation" android:label="@string/title_activity_bootanimation" android:configChanges="orientation|screenSize"/>
+        <activity android:name="es.jiayu.jiayuid.BackupRestore" android:label="@string/title_activity_backup" android:configChanges="orientation|screenSize"/>
+        <activity android:name="es.jiayu.jiayuid.SelectNameBck" android:label="@string/title_activity_backup" android:configChanges="orientation|screenSize"/>
+        <activity android:name="es.jiayu.jiayuid.ToolsAndroid" android:label="@string/title_activity_tools" android:configChanges="orientation|screenSize"/>
 
         <receiver
                 android:name="es.jiayu.jiayuid.DownloadReceiver"
