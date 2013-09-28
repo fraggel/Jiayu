@@ -57,6 +57,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
 
 
     boolean isRoot = false;
+    boolean isBusy=false;
     String path = "";
     protected void onResume() {
         super.onResume();
@@ -72,6 +73,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         if (controlRoot()) {
             isRoot = true;
             if (!controlBusybox()) {
+                isBusy = false;
                 instalarBusyBox();
             }
         }
@@ -250,8 +252,13 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                     String bootselect = listaBootsUrl.get(i);
                     if (!"".equals(bootselect.trim())) {
                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgSeleccionado) + " " + new File(bootselect).getName(), Toast.LENGTH_SHORT).show();
-                        bootBtn.setEnabled(true);
-                        this.bootSeleccionada = bootselect;
+                        if(isBusy){
+                            bootBtn.setEnabled(true);
+                            this.bootSeleccionada = bootselect;
+                        }else{
+                            bootBtn.setEnabled(false);
+                            this.bootSeleccionada = null;
+                        }
                         //unZip(bootSeleccionada);
                         /*ImageView showedImage = (ImageView) findViewById(R.id.gifAnimadoImg);
                         showedImage.setBackgroundResource(R.drawable.ic_launcher);
