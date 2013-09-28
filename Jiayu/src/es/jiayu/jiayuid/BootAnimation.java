@@ -75,6 +75,8 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             if (!controlBusybox()) {
                 isBusy = false;
                 instalarBusyBox();
+            }else{
+                isBusy = true;
             }
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);

@@ -116,6 +116,7 @@
     <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
     <string name="installBootBtn">Install BootAnimation</string>
     <string name="bootDescargaBtn">Download BootAnimation</string>
+    <string name="backupBtn">Backup/Restore</string>
 
     <string name="ntfMinTxt">News on JIAYU.es</string>
     <string name="ntfTituloTxt">News on JIAYU.es content</string>

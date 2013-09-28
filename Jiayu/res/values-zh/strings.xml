@@ -109,6 +109,8 @@
     <string name="bootanimationBtn">更改BootAnimation</string>
     <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
     <string name="installBootBtn">Install BootAnimation</string>
+    <string name="bootDescargaBtn">Download BootAnimation</string>
+    <string name="backupBtn">Backup/Restore</string>
 
     <string name="ntfMinTxt">新闻JIAYU.es</string>
     <string name="ntfTituloTxt">新闻JIAYU.es内容</string>
