@@ -42,8 +42,8 @@
      <string name="msgNoRoot">ルートが必要です</string>
      <string name="msgRecoveryFlasheado"> 回復は、回復への再起動をフラッシュ？</string>
      <string name="msgRebootRecoveryQF">今すぐ再起動する必要がROM /Wipe /郵便番号をフラッシュするには、[今すぐ再起動したいですか？</string>
-    <string name="msgRebootBackupQF">Para crear Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
-    <string name="msgRebootRestoreQF">Para restaurar Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
+    <string name="msgRebootBackupQF">To create Backup must reboot, reboot now?</string>
+    <string name="msgRebootRestoreQF">To restore Backup must reboot, reboot now?</string>
      <string name="msgRebootRecoveryQ">回復に再起動？</string>
      <string name="msgImeiExiste1">以前</string>
      <string name="msgImeiExiste2">は、これはそれを上書きします、存在し続けたいですか？</string>
@@ -130,8 +130,8 @@
     <string name="ntfTituloNVTxt">アップデートJIAYU.es</string>
     <string name="ntfDetallesNVTxt">バージョン：</string>
 
-    <string name="bcknameTxt">Escribir nombre de backup</string>
-    <string name="txtbckRdb">Seleccionar</string>
-    <string name="makebackuprestoreBtn">Ejecutar</string>
-    <string name="guardarBtn">Guardar</string>
+    <string name="bcknameTxt">Write backup name</string>
+    <string name="txtbckRdb">Select</string>
+    <string name="makebackuprestoreBtn">Execute</string>
+    <string name="guardarBtn">Save</string>
 </resources>

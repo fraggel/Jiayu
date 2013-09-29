@@ -41,8 +41,8 @@
     <string name="msgNoRoot">根是必要的</string>
     <string name="msgRecoveryFlasheado">恢复一闪而过，重新进入复苏？</string>
     <string name="msgRebootRecoveryQF">闪烁ROM /Wipe/邮编，您现在需要重新启动，现在要重新启动吗？</string>
-    <string name="msgRebootBackupQF">Para crear Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
-    <string name="msgRebootRestoreQF">Para restaurar Backup é necessário reiniciar, ¿Quer reiniciar agora?</string>
+    <string name="msgRebootBackupQF">To create Backup must reboot, reboot now?</string>
+    <string name="msgRebootRestoreQF">To restore Backup must reboot, reboot now?</string>
     <string name="msgRebootRecoveryQ">重启进入恢复？</string>
     <string name="msgImeiExiste1">以前</string>
     <string name="msgImeiExiste2">的存在，这将覆盖它，要继续吗？</string>
@@ -131,10 +131,10 @@
     <string name="ntfTituloNVTxt">更新JIAYU.es</string>
     <string name="ntfDetallesNVTxt">版本：</string>
 
-    <string name="bcknameTxt">Escribir nombre de backup</string>
-    <string name="txtbckRdb">Seleccionar</string>
-    <string name="makebackuprestoreBtn">Ejecutar</string>
-    <string name="guardarBtn">Guardar</string>
+    <string name="bcknameTxt">Write backup name</string>
+    <string name="txtbckRdb">Select</string>
+    <string name="makebackuprestoreBtn">Execute</string>
+    <string name="guardarBtn">Save</string>
 </resources>
 
 
