@@ -19,7 +19,7 @@ public class AboutActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
+        setContentView(R.layout.activity_about2);
         addListenerOnButton();
         contacto = (Button) findViewById(R.id.button1);
         visit = (Button) findViewById(R.id.button2);

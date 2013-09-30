@@ -126,6 +126,18 @@
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:background="@drawable/btn_white_border"
                 style="@style/LabelTextBlack"/>
+
+        <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingTop="0dp"/>
     </LinearLayout>
 
 </ScrollView>

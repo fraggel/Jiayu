@@ -26,6 +26,7 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -60,6 +61,7 @@ public class App extends Activity implements AsyncResponse {
     String fabricante = "";
     String compilacion = "";
     String newversion = "";
+    boolean noInternet=false;
     /*static NotificationManager mNotificationManagerUpdate=null;
     static NotificationManager mNotificationManagerNews=null;
     private int SIMPLE_NOTFICATION_UPDATE=8888;
@@ -554,8 +556,14 @@ public class App extends Activity implements AsyncResponse {
 
                 public void onClick(View arg0) {
                     try {
-                        Intent intent = new Intent(getBaseContext(), AboutActivity.class);
-                        startActivity(intent);
+                        /*Intent intent = new Intent(getBaseContext(), AboutActivity.class);
+                        startActivity(intent);*/
+                        if(noInternet){
+                            Intent intent = new Intent(getBaseContext(), AboutActivity.class);
+                            startActivity(intent);
+                        }else{
+                            openBrowser(arg0, "about");
+                        }
                     } catch (Exception e) {
                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 108", Toast.LENGTH_SHORT).show();
                     }
@@ -863,8 +871,15 @@ public class App extends Activity implements AsyncResponse {
                     }
                 }
             }
+            noInternet=false;
+            WebView wv = (WebView) findViewById(R.id.webView);
+            wv.loadUrl("http://www.jiayu.es/soporte/appbanner.php");
+            wv.setVisibility(View.VISIBLE);
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 119", Toast.LENGTH_SHORT).show();
+            noInternet=true;
+            WebView wv = (WebView) findViewById(R.id.webView);
+            wv.setVisibility(View.INVISIBLE);
         }
     }
 
@@ -882,8 +897,14 @@ public class App extends Activity implements AsyncResponse {
                 return true;
             case R.id.action_about:
                 try {
-                    Intent intent = new Intent(this, AboutActivity.class);
-                    startActivity(intent);
+                    /*Intent intent = new Intent(this, AboutActivity.class);
+                    startActivity(intent);*/
+                    if(noInternet){
+                        Intent intent = new Intent(this, AboutActivity.class);
+                        startActivity(intent);
+                    }else{
+                        openBrowser(item.getActionView(), "about");
+                    }
                 } catch (Exception e) {
                     Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 120", Toast.LENGTH_SHORT).show();
                 }
