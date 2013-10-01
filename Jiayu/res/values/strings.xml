@@ -75,6 +75,7 @@
     <string name="msgNoBusybox">No busybox, download?</string>
     <string name="msgExisteBackup">A backup already exists, Delete?</string>
     <string name="msgNoExisteBackup">No backup found</string>
+    <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
 
     <string name="about1">Distribuidor Ofical en España:</string>
     <string name="about2">info@jiayu.es</string>

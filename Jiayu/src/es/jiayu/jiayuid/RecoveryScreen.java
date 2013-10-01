@@ -148,9 +148,14 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int witch) {
                                     try {
-                                        unZip(RecoveryScreen.recoveryseleccionado);
-                                        RecoveryScreen.descomprimido = true;
-                                        flashRecovery();
+                                        if(Utilidades.checkFileMD5(new File(RecoveryScreen.recoveryseleccionado))){
+                                            unZip(RecoveryScreen.recoveryseleccionado);
+                                            RecoveryScreen.descomprimido = true;
+                                            flashRecovery();
+
+                                        }else{
+                                            Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
+                                        }
                                         //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
                                     } catch (Exception e) {
                                         Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 145", Toast.LENGTH_SHORT).show();
@@ -159,9 +164,13 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                             });
                     dialog.show();
                 }else{
-                    unZip(this.recoveryseleccionado);
-                    this.descomprimido = true;
-                    flashRecovery();
+                    if(Utilidades.checkFileMD5(new File(this.recoveryseleccionado))){
+                        unZip(this.recoveryseleccionado);
+                        this.descomprimido = true;
+                        flashRecovery();
+                    }else{
+                        Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
+                    }
                 }
             } catch (Exception e) {
                 Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName()+" 146", Toast.LENGTH_SHORT).show();
