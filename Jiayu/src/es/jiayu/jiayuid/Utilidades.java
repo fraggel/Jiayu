@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.security.MessageDigest;
+import java.util.zip.Deflater;
+import java.util.zip.Inflater;
 
 /**
  * Created by Fraggel on 1/10/13.
@@ -46,8 +48,38 @@ public class Utilidades {
         try {
             String md5File=fileToMD5(filePath);
             String nombre=filePath.getName();
+            String decomp =md5File;
+            String compres=null;
+            try {
+                // Encode a String into bytes
+                String inputString = md5File;
+                byte[] input = inputString.getBytes("UTF-8");
 
-            if(nombre.toLowerCase().indexOf(md5File.toLowerCase())!=-1){
+                // Compress the bytes
+                byte[] output = new byte[100];
+                Deflater compresser = new Deflater();
+                compresser.setInput(input);
+                compresser.finish();
+                int compressedDataLength = compresser.deflate(output);
+                compresser.end();
+                compres=new String(output);
+                // Decompress the bytes
+                Inflater decompresser = new Inflater();
+                decompresser.setInput(output, 0, compressedDataLength);
+                byte[] result = new byte[100];
+                int resultLength = decompresser.inflate(result);
+                decompresser.end();
+
+                // Decode the bytes into a String
+                decomp = new String(result, 0, resultLength, "UTF-8");
+            } catch(java.io.UnsupportedEncodingException ex) {
+                // handle
+            } catch (java.util.zip.DataFormatException ex) {
+                // handle
+            }
+
+
+            if(nombre.toLowerCase().indexOf(compres.toLowerCase())!=-1){
                 iguales=true;
             }else{
                 iguales=false;
