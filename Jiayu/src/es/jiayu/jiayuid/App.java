@@ -94,23 +94,23 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             }
 
             Calendar calc = Calendar.getInstance();
-            calc.add(Calendar.SECOND,20);
+            calc.add(Calendar.HOUR,6);
             Intent intent2 = new Intent(getBaseContext(), NotifyService.class);
             PendingIntent pintent = PendingIntent.getService(getBaseContext(), 0, intent2,
                     0);
             AlarmManager alarm = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
 
-            alarm.setRepeating(AlarmManager.RTC_WAKEUP, calc.getTimeInMillis(),20*1000, pintent);
+            alarm.setRepeating(AlarmManager.RTC_WAKEUP, calc.getTimeInMillis(),21600*1000, pintent);
             getBaseContext().startService(new Intent(getBaseContext(),NotifyService.class));
 
             Calendar calc2 = Calendar.getInstance();
-            calc2.add(Calendar.SECOND,20);
+            calc2.add(Calendar.HOUR,6);
             Intent intent3 = new Intent(getBaseContext(), NotifyNewsService.class);
             PendingIntent pintent2 = PendingIntent.getService(getBaseContext(), 0, intent3,
                     0);
             AlarmManager alarm2 = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
 
-            alarm2.setRepeating(AlarmManager.RTC_WAKEUP, calc2.getTimeInMillis(),20*1000, pintent2);
+            alarm2.setRepeating(AlarmManager.RTC_WAKEUP, calc2.getTimeInMillis(),21600*1000, pintent2);
             getBaseContext().startService(new Intent(getBaseContext(),NotifyNewsService.class));
             version = "Jiayu.es ";
             version = version + nversion;
