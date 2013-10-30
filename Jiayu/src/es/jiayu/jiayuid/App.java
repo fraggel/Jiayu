@@ -13,6 +13,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.hardware.Camera.Size;
@@ -27,8 +28,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,12 +40,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
-public class App extends Activity implements AsyncResponse {
+public class App extends Activity implements AsyncResponse, AdapterView.OnItemSelectedListener {
 
     static long downloadREF = -1;
     static HashMap<String, String> listaDescargas = new HashMap<String, String>();
@@ -61,21 +67,25 @@ public class App extends Activity implements AsyncResponse {
     String fabricante = "";
     String compilacion = "";
     String newversion = "";
+    String chip = "";
+    Spinner languageSpn=null;
+    String listaIdiomas[]=null;
+
     boolean noInternet=false;
-    /*static NotificationManager mNotificationManagerUpdate=null;
+    static NotificationManager mNotificationManagerUpdate=null;
     static NotificationManager mNotificationManagerNews=null;
     private int SIMPLE_NOTFICATION_UPDATE=8888;
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
-    SharedPreferences.Editor editorAjustes=null;*/
+    SharedPreferences.Editor editorAjustes=null;
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
             nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-            /*mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
-            editorAjustes=ajustes.edit();G4T
+            editorAjustes=ajustes.edit();
             String tmpFecha="";
             tmpFecha=ajustes.getString("fechaUltimoAccesoDescargas", "");
             if("".equals(tmpFecha)){
@@ -101,7 +111,7 @@ public class App extends Activity implements AsyncResponse {
             AlarmManager alarm2 = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
 
             alarm2.setRepeating(AlarmManager.RTC_WAKEUP, calc2.getTimeInMillis(),20*1000, pintent2);
-            getBaseContext().startService(new Intent(getBaseContext(),NotifyNewsService.class));*/
+            getBaseContext().startService(new Intent(getBaseContext(),NotifyNewsService.class));
             version = "Jiayu.es ";
             version = version + nversion;
             File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
@@ -136,7 +146,7 @@ public class App extends Activity implements AsyncResponse {
             descargas = (Button) findViewById(R.id.button1);
             about = (Button) findViewById(R.id.button2);
             salir = (Button) findViewById(R.id.button11);
-
+            languageSpn= (Spinner) findViewById(R.id.languageSpn);
             videotutoriales = (Button) findViewById(R.id.button3);
             foro = (Button) findViewById(R.id.button4);
             driversherramientas = (Button) findViewById(R.id.button9);
@@ -174,10 +184,10 @@ public class App extends Activity implements AsyncResponse {
 
             }
             if (modelo.length() < 8) {
-                /*Calendar cal=Calendar.getInstance();
+                Calendar cal=Calendar.getInstance();
                 editorAjustes = ajustes.edit();
                 editorAjustes.putString("modelo", modelo);
-                editorAjustes.commit();*/
+                editorAjustes.commit();
 
                 descargas.setEnabled(true);
                 //accesorios.setEnabled(true);
@@ -195,9 +205,14 @@ public class App extends Activity implements AsyncResponse {
             t.setText(res.getString(R.string.msgModelo) + modelo);
             t2.setText(res.getString(R.string.msgCompilacion) + compilacion);
 
-            if("T1".equals(modelo)){
+            if("T1".equals(modelo) || "T2".equals(modelo)){
                 herramientasROM.setEnabled(false);
             }
+            listaIdiomas=getResources().getStringArray(R.array.languages_values);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.languages, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            languageSpn.setAdapter(adapter);
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
         }
@@ -286,8 +301,8 @@ public class App extends Activity implements AsyncResponse {
             int width = 0;
             String procesador = "";
             String ram = "";
-            String chip = "";
-            String buildprop = "";
+
+
 
             try {
                 DisplayMetrics dm = new DisplayMetrics();
@@ -297,32 +312,7 @@ public class App extends Activity implements AsyncResponse {
                 //procesador=Build.HARDWARE;
                 procesador = getInfoCPU();
                 int orientation = getResources().getConfiguration().orientation;
-                FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
-                byte[] input = new byte[fis.available()];
-                while (fis.read(input) != -1) {
-                    buildprop += new String(input);
-                }
-                if (buildprop.toLowerCase().lastIndexOf("mt6620") != -1) {
-                    chip = "MT6620";
-                } else if (buildprop.toLowerCase().lastIndexOf("mt6628") != -1) {
-                    chip = "MT6628";
-                } else {
-                    chip = "INDEFINIDO";
-                }
 
-
-                boolean levantadoB = levantarBlueTooth();
-                boolean levantadoW = LevantarWifi();
-                if ("MT6628".equals(chip)) {
-                    if (!levantadoB && !levantadoW) {
-                        chip = "MT6620";
-                    }
-
-                } else if ("MT6620".equals(chip)) {
-                    if (!levantadoB && !levantadoW) {
-                        chip = "MT6628";
-                    }
-                }
 
                 ram = getTotalRAM();
                 int ramInt = (Integer.parseInt(ram) / 1000);
@@ -337,6 +327,7 @@ public class App extends Activity implements AsyncResponse {
                 }
                 if (width == 720 || (orientation == 2 && height == 720)) {
                     if ("mt6577".equals(procesador.toLowerCase())) {
+                        comprobarMT();
                         if ("MT6628".equals(chip)) {
                             model = "G3DCN";
                         } else if ("MT6620".equals(chip)) {
@@ -386,13 +377,14 @@ public class App extends Activity implements AsyncResponse {
                             }
                             cam.release();
                             //if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
-                            if (result != -1 && result <= 1600) {
+                            /*if (result != -1 && result <= 1600) {
                                 model = getCPUFreqG3();
                             } else {
                                 model = getCPUFreqG4();
-                            }
+                            }*/
+                            model="G5B";
                         } else if ("2GB".equals(ram)) {
-                            model = "G4A";
+                            model = "G5A";
                         } else {
                             model = "";
                         }
@@ -419,6 +411,7 @@ public class App extends Activity implements AsyncResponse {
                         }
                     } else if ("mt6577".equals(procesador.toLowerCase())) {
                         //FALTA EL Jiayu G2TD
+                        comprobarMT();
                         if ("512MB".equals(ram)) {
                             if ("MT6628".equals(chip)) {
                                 model = "G2DCPVN";
@@ -449,6 +442,10 @@ public class App extends Activity implements AsyncResponse {
                 } else if (width == 800 || (orientation == 2 && width == 1280)) {
                     if ("2GB".equals(ram)) {
                            model="T1";
+                    }
+                }else if (width == 600 || (orientation == 2 && width == 1024)) {
+                    if ("1GB".equals(ram)) {
+                        model="T2";
                     }
                 }else{
                         model = res.getString(R.string.msgTerminalNoJiayu);
@@ -629,6 +626,8 @@ public class App extends Activity implements AsyncResponse {
                 }
 
             });
+            languageSpn =(Spinner) findViewById(R.id.languageSpn);
+            languageSpn.setOnItemSelectedListener(this);
 
         } catch (Exception e) {
             Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 111", Toast.LENGTH_SHORT).show();
@@ -829,7 +828,7 @@ public class App extends Activity implements AsyncResponse {
                                 break;
                             }
                         }
-                        /*if(modeloEncontrado){
+                        if(modeloEncontrado){
                             String fechaAcceso=ajustes.getString("fechaUltimoAccesoDescargas",fecha);
 
                             int[] ints = descomponerFecha(fechaAcceso);
@@ -867,7 +866,7 @@ public class App extends Activity implements AsyncResponse {
                                 mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
                             }
 
-                        }*/
+                        }
                     }
                 }
             }
@@ -923,5 +922,54 @@ public class App extends Activity implements AsyncResponse {
                 return super.onMenuItemSelected(featureId, item);
 
         }
+    }
+    public void comprobarMT() throws Exception{
+        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgActivandoBTWifi), Toast.LENGTH_SHORT).show();
+        String buildprop = "";
+        FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
+        byte[] input = new byte[fis.available()];
+        while (fis.read(input) != -1) {
+            buildprop += new String(input);
+        }
+        if (buildprop.toLowerCase().lastIndexOf("mt6620") != -1) {
+            chip = "MT6620";
+        } else if (buildprop.toLowerCase().lastIndexOf("mt6628") != -1) {
+            chip = "MT6628";
+        } else {
+            chip = "INDEFINIDO";
+        }
+
+
+        boolean levantadoB = levantarBlueTooth();
+        boolean levantadoW = LevantarWifi();
+        if ("MT6628".equals(chip)) {
+            if (!levantadoB && !levantadoW) {
+                chip = "MT6620";
+            }
+
+        } else if ("MT6620".equals(chip)) {
+            if (!levantadoB && !levantadoW) {
+                chip = "MT6628";
+            }
+        }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        Spinner spinner = (Spinner) adapterView;
+            if(!"".equals(listaIdiomas[i].trim())){
+                Locale locale = new Locale(listaIdiomas[i]);
+                Locale.setDefault(locale);
+                Configuration config = new Configuration();
+                config.locale = locale;
+                getApplicationContext().getResources().updateConfiguration(config,
+                        getBaseContext().getResources().getDisplayMetrics());
+                onCreate(null);
+            }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
     }
 }

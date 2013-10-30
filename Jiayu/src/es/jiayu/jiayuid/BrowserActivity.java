@@ -27,12 +27,12 @@ public class BrowserActivity extends Activity {
     Resources res;
     PackageManager pm = null;
     String urlDestino = "";
-    /*static NotificationManager mNotificationManagerUpdate=null;
+    static NotificationManager mNotificationManagerUpdate=null;
     static NotificationManager mNotificationManagerNews=null;
     private int SIMPLE_NOTFICATION_UPDATE=8888;
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
-    SharedPreferences.Editor editorAjustes=null;*/
+    SharedPreferences.Editor editorAjustes=null;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,13 +52,13 @@ public class BrowserActivity extends Activity {
         } else if ("bootanimation".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/appboots.php");
         }else if ("downloads".equals(tipo)) {
-           /* mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerNews.cancel(SIMPLE_NOTFICATION_NEWS);
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
             editorAjustes = ajustes.edit();
             editorAjustes.putString("modelo", modelo);
             editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
-            editorAjustes.commit();*/
+            editorAjustes.commit();
             descargas.loadUrl("http://www.jiayu.es/soporte/appsoft.php?jiayu=" + modelo);
         }else if("about".equals(tipo)){
             descargas.loadUrl("http://www.jiayu.es/soporte/appabout.php");

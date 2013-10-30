@@ -18,7 +18,7 @@ import java.util.Calendar;
  * Created by Fraggel on 10/08/13.
  */
 public class NotifyNewsService extends Service implements AsyncResponse {
-    /*String newversion="";
+    String newversion="";
     String urlActualizacion="";
     String nversion = "";
     static NotificationManager mNotificationManagerUpdate=null;
@@ -26,7 +26,7 @@ public class NotifyNewsService extends Service implements AsyncResponse {
     private int SIMPLE_NOTFICATION_UPDATE=8888;
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
-    String modelo=null;*/
+    String modelo=null;
     @Override
     public IBinder onBind(Intent arg0) {
         return null;
@@ -34,7 +34,7 @@ public class NotifyNewsService extends Service implements AsyncResponse {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        /*try {
+        try {
             nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
             modelo=ajustes.getString("modelo","");
@@ -44,7 +44,7 @@ public class NotifyNewsService extends Service implements AsyncResponse {
 
         } catch (Exception e) {
 
-        }*/
+        }
         return START_STICKY;
     }
 
@@ -62,7 +62,7 @@ public class NotifyNewsService extends Service implements AsyncResponse {
     }
 
     public void processFinish(String output) {
-        /*try {
+        try {
             if (output != null && !"TIMEOUT----".equals(output)) {
 
                 String inicio = output.split("-;-")[0];
@@ -70,8 +70,8 @@ public class NotifyNewsService extends Service implements AsyncResponse {
                 String[] split = output.split("----");
                 newversion = split[0].split(" ")[1];
                 urlActualizacion = split[1];
-                */
-                /*if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
+
+                if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
                     Resources res = this.getResources();
                     mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
                     final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getBaseContext().getResources().getString(R.string.ntfNuevaVersionTxt),System.currentTimeMillis());
@@ -85,8 +85,8 @@ public class NotifyNewsService extends Service implements AsyncResponse {
                             launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
                     notifyDetails.setLatestEventInfo(getBaseContext(), contentTitle, contentText, intent2);
                     mNotificationManagerUpdate.notify(SIMPLE_NOTFICATION_UPDATE, notifyDetails);
-                }*/
-               /* boolean notificaciones=ajustes.getBoolean("notificaciones",true);
+                }
+               boolean notificaciones=ajustes.getBoolean("notificaciones",true);
                 if(notificaciones){
                     if((split.length-2)>0){
                         String fecha=null;
@@ -161,7 +161,7 @@ public class NotifyNewsService extends Service implements AsyncResponse {
             }
         } catch (Exception e) {
 
-        }*/
+        }
     }
     private int[] descomponerFecha(String fechaPasada) {
         int day=Integer.parseInt(fechaPasada.trim().split("/")[0]);
