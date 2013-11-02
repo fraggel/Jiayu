@@ -48,7 +48,7 @@ public class Utilidades {
         try {
             String md5File=fileToMD5(filePath);
             String nombre=filePath.getName();
-            String decomp =md5File;
+            /*String decomp =md5File;
             String compres=null;
             try {
                 // Encode a String into bytes
@@ -76,10 +76,10 @@ public class Utilidades {
                 // handle
             } catch (java.util.zip.DataFormatException ex) {
                 // handle
-            }
+            }*/
 
 
-            if(nombre.toLowerCase().indexOf(compres.toLowerCase())!=-1){
+            if(nombre.toLowerCase().indexOf(md5File.substring(0,12).toLowerCase())!=-1){
                 iguales=true;
             }else{
                 iguales=false;

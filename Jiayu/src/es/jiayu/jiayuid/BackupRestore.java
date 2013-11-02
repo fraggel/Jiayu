@@ -224,9 +224,9 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                                 bos.write(("reboot recovery").getBytes());
                                 bos.flush();
                                 bos.close();
-                                //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                             } catch (Exception e) {
-                                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 150", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 150", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -286,9 +286,9 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                                     bos.write(("reboot recovery").getBytes());
                                     bos.flush();
                                     bos.close();
-                                    //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                    //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                                 } catch (Exception e) {
-                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 150", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 150", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -371,7 +371,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError) + " 159", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError) + " 159", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;

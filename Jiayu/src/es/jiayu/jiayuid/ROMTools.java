@@ -130,7 +130,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
 
             }
         }catch(Exception e ){
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 160", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 160", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -143,7 +143,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             if (listaAppsUrl != null && listaAppsUrl.size() > 0) {
                 String apkselec = listaAppsUrl.get(i);
                 if (!"".equals(apkselec.trim())) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgSeleccionado) + " " + new File(apkselec).getName(), Toast.LENGTH_SHORT).show();
                     apkBtn.setEnabled(true);
                     this.apkseleccionada = apkselec;
                 } else {
@@ -170,7 +169,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             Intent intent2 = new Intent(Intent.ACTION_VIEW);
             intent2.setDataAndType(Uri.fromFile(new File(apkseleccionada)), "application/vnd.android.package-archive");
             intent2.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // without this flag android returned a intent error!
-            getBaseContext().startActivity(intent2);
+            getApplicationContext().startActivity(intent2);
             this.apkseleccionada = "";
             this.apkSpn.setSelection(0);
             apkBtn.setEnabled(false);
@@ -180,7 +179,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 161", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 161", Toast.LENGTH_SHORT).show();
             }
         } else if (button.getId() == R.id.recoveryBtn) {
             try {
@@ -188,14 +187,14 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 162", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 162", Toast.LENGTH_SHORT).show();
             }
         }else if (button.getId()==R.id.rebootRecoveryBtn){
             {
                 try {
                     rebootRecoveryQuestion();
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 163", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 163", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -225,10 +224,10 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                     Intent intent2 = new Intent(Intent.ACTION_GET_CONTENT);
                     intent2.setType("file/*");
                     this.startActivity(intent2);
-                    //Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                 }
             } catch (ActivityNotFoundException e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError) + application_name+" 164", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError) + application_name+" 164", Toast.LENGTH_SHORT).show();
             }
         } else if (button.getId() == R.id.romBtn) {
             try {
@@ -236,7 +235,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 165", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 165", Toast.LENGTH_SHORT).show();
             }
 
         }else if(button.getId()==R.id.ingenieroBtn){
@@ -260,10 +259,10 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                     }
                 }
                 if(!existe){
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIngenieroNoExiste),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste),Toast.LENGTH_SHORT).show();
                 }
             }catch (ActivityNotFoundException e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+application_name+" 166",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+application_name+" 166",Toast.LENGTH_SHORT).show();
             }
         }else if(button.getId()==R.id.bootAnimationBtn){
             try {
@@ -272,7 +271,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("tipo","bootanimation");
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 167", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 167", Toast.LENGTH_SHORT).show();
             }
         }else if(button.getId()==R.id.backupBtn){
             try {
@@ -280,7 +279,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
             }
 
         }else if(button.getId()==R.id.toolsAndroidBtn){
@@ -289,7 +288,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 intent.putExtra("modelo",modelo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -320,7 +319,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                             bos.flush();
                             bos.close();
                         } catch (Exception e) {
-                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 168", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 168", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -342,7 +341,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 169", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 169", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;

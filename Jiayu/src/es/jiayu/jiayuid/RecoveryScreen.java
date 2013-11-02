@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
@@ -36,7 +38,7 @@ import java.util.zip.ZipFile;
  */
 public class RecoveryScreen extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     Spinner recoverySpn = null;
-
+    boolean firmarChk=false;
     Button recoveryBtn = null;
     ImageButton imageButton = null;
     Button rebootRcoveryBtn = null;
@@ -44,7 +46,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
     public static boolean descomprimido = false;
     String modelo=null;
     ArrayList<String> listaRecoUrl = new ArrayList<String>();
-
+    SharedPreferences ajustes=null;
     List listaReco = new ArrayList();
 
     boolean isRoot = false;
@@ -60,6 +62,9 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recoveryscreen);
+
+        ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
+        firmarChk=ajustes.getBoolean("firmarChk",false);
         modelo = getIntent().getExtras().getString("modelo");
         if (controlRoot()) {
             isRoot = true;
@@ -101,7 +106,6 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
             if (listaRecoUrl != null && listaRecoUrl.size() > 0) {
                 String recoveryselec = listaRecoUrl.get(i);
                 if (!"".equals(recoveryselec.trim())) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgSeleccionado) + " " + new File(recoveryselec).getName(), Toast.LENGTH_SHORT).show();
                     recoveryBtn.setEnabled(true);
                     this.recoveryseleccionado = recoveryselec;
                 } else {
@@ -148,32 +152,44 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int witch) {
                                     try {
-                                        if(Utilidades.checkFileMD5(new File(RecoveryScreen.recoveryseleccionado))){
+                                        if(firmarChk){
+                                            if(Utilidades.checkFileMD5(new File(RecoveryScreen.recoveryseleccionado))){
+                                                unZip(RecoveryScreen.recoveryseleccionado);
+                                                RecoveryScreen.descomprimido = true;
+                                                flashRecovery();
+
+                                            }else{
+                                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
+                                            }
+                                        }else{
                                             unZip(RecoveryScreen.recoveryseleccionado);
                                             RecoveryScreen.descomprimido = true;
                                             flashRecovery();
-
-                                        }else{
-                                            Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
                                         }
-                                        //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                        //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 145", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 145", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
                     dialog.show();
                 }else{
-                    if(Utilidades.checkFileMD5(new File(this.recoveryseleccionado))){
+                    if(firmarChk){
+                        if(Utilidades.checkFileMD5(new File(this.recoveryseleccionado))){
+                            unZip(this.recoveryseleccionado);
+                            this.descomprimido = true;
+                            flashRecovery();
+                        }else{
+                            Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
+                        }
+                    }else{
                         unZip(this.recoveryseleccionado);
                         this.descomprimido = true;
                         flashRecovery();
-                    }else{
-                        Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
                     }
                 }
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName()+" 146", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgErrorUnzip) + new File(this.recoveryseleccionado).getName()+" 146", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -217,15 +233,15 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                                     bos.write(("reboot recovery\n").getBytes());
                                     bos.flush();
                                     bos.close();
-                                    //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                    //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                                 } catch (Exception e) {
-                                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 146", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 146", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
                 dialog.show();
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRecovery) + new File(this.recoveryseleccionado).getName()+" 147", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgErrorRecovery) + new File(this.recoveryseleccionado).getName()+" 147", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -251,9 +267,9 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                             bos.write(("reboot recovery\n").getBytes());
                             bos.flush();
                             bos.close();
-                            //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                            //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                         } catch (Exception e) {
-                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 148", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 148", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -336,7 +352,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 149", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 149", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;
@@ -361,8 +377,6 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 }
             }
         }
-
-
 
         ArrayAdapter<String> dataAdapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listaReco);
         dataAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

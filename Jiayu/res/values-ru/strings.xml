@@ -113,9 +113,10 @@
     <string name="foroBtn">Forum</string>
     <string name="aboutBtn">About us...</string>
     <string name="cwmChk">I have CWM Recovery</string>
-    <string name="notificacionChk">Show Notifications (Updates, news)</string>
+    <string name="notificacionChkUpd">Show App updates notifications</string>
+    <string name="notificacionChkNews">Show News notifications</string>
     <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
-
+    <string name="firmarChk">Check files integrity</string>
     <string name="imeiSEBtn">Send email IMEI</string>
     <string name="salirBtn">Exit</string>
     <string name="bootanimationBtn">Change BootAnimation</string>
@@ -145,17 +146,21 @@
     <string-array name="languages">
         <item>Change Language</item>
         <item>English</item>
-        <item>Spanish</item>
-        <item>Japanese</item>
+        <item>Español</item>
+        <item>Catala</item>
+        <item>Française</item>
+        <item>日本語</item>
         <item>Portugues</item>
         <item>German</item>
-        <item>Rusian</item>
-        <item>Chinese</item>
+        <item>русский</item>
+        <item>中国语言</item>
     </string-array>
     <string-array name="languages_values">
         <item></item>
         <item>en</item>
         <item>es</item>
+        <item>ca</item>
+        <item>fr</item>
         <item>ja</item>
         <item>pt</item>
         <item>de</item>

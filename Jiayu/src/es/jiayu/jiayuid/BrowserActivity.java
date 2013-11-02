@@ -39,7 +39,7 @@ public class BrowserActivity extends Activity {
         setContentView(R.layout.activity_browser);
         res = this.getResources();
         pm = this.getPackageManager();
-        isDownloadManagerAvailable(getBaseContext());
+        isDownloadManagerAvailable(getApplicationContext());
         Intent intent = getIntent();
         String modelo = intent.getExtras().getString("modelo");
         String tipo = intent.getExtras().getString("tipo");
@@ -52,7 +52,7 @@ public class BrowserActivity extends Activity {
         } else if ("bootanimation".equals(tipo)) {
             descargas.loadUrl("http://www.jiayu.es/soporte/appboots.php");
         }else if ("downloads".equals(tipo)) {
-            mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
+            mNotificationManagerNews = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
             mNotificationManagerNews.cancel(SIMPLE_NOTFICATION_NEWS);
             ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
             editorAjustes = ajustes.edit();
@@ -141,7 +141,7 @@ public class BrowserActivity extends Activity {
                         request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
 
                         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
                         App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
 
 
@@ -163,7 +163,7 @@ public class BrowserActivity extends Activity {
                                     try {
                                         new File(f1.getAbsolutePath() + "/Jiayu.apk").delete();
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 132", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 132", Toast.LENGTH_SHORT).show();
                                     }
 
                                 }
@@ -173,13 +173,13 @@ public class BrowserActivity extends Activity {
                         request.setDestinationInExternalPublicDir(rutaDescarga, nombreFichero);
 
                         DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
                         App.listaDescargas.put(String.valueOf(manager.enqueue(request)), nombreFichero);
                     }
                     //manager.enqueue(request);
 
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 133", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 133", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             } else {

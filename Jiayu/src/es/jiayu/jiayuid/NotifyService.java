@@ -16,6 +16,7 @@ import android.os.IBinder;
 import android.os.PowerManager;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
 import java.util.Calendar;
 
 /**
@@ -66,6 +67,14 @@ public class NotifyService extends Service implements AsyncResponse {
 
     public void processFinish(String output) {
         try {
+            try {
+                FileOutputStream fos=new FileOutputStream("/sdcard/JIAYUES/notification.log",true);
+                fos.write(("NotifyService"+Calendar.getInstance().get(Calendar.HOUR)+":"+Calendar.getInstance().get(Calendar.MINUTE)+":"+Calendar.getInstance().get(Calendar.SECOND)+"\n").getBytes());
+                fos.flush();
+                fos.close();
+            }catch(Exception e){
+
+            }
             if (output != null && !"TIMEOUT----".equals(output)) {
 
                 String inicio = output.split("-;-")[0];
@@ -73,25 +82,25 @@ public class NotifyService extends Service implements AsyncResponse {
                 String[] split = output.split("----");
                 newversion = split[0].split(" ")[1];
                 urlActualizacion = split[1];
-                boolean notificaciones=ajustes.getBoolean("notificaciones",true);
-                if(notificaciones){
+                boolean notificacionesUpd=ajustes.getBoolean("notificacionesUpd",true);
+                if(notificacionesUpd){
                     if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
                         Resources res = this.getResources();
-                        mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
-                        final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getBaseContext().getResources().getString(R.string.ntfNuevaVersionTxt),System.currentTimeMillis());
-                        CharSequence contentTitle = getBaseContext().getResources().getString(R.string.ntfTituloNVTxt);
-                        CharSequence contentText = getBaseContext().getResources().getString(R.string.ntfDetallesNVTxt)+newversion;
+                        mNotificationManagerUpdate = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                        final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getApplicationContext().getResources().getString(R.string.ntfNuevaVersionTxt),System.currentTimeMillis());
+                        CharSequence contentTitle = getApplicationContext().getResources().getString(R.string.ntfTituloNVTxt);
+                        CharSequence contentText = getApplicationContext().getResources().getString(R.string.ntfDetallesNVTxt)+newversion;
                         Intent launch_intent = new Intent();
                         launch_intent.setComponent(new ComponentName("es.jiayu.jiayuid", "es.jiayu.jiayuid.App"));
                         PendingIntent intent2;
 
-                        intent2 = PendingIntent.getActivity(getBaseContext(), 0,
+                        intent2 = PendingIntent.getActivity(getApplicationContext(), 0,
                                 launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
-                        notifyDetails.setLatestEventInfo(getBaseContext(), contentTitle, contentText, intent2);
+                        notifyDetails.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, intent2);
                         mNotificationManagerUpdate.notify(SIMPLE_NOTFICATION_UPDATE, notifyDetails);
                     }
                 }
-                if((split.length-2)>0){
+               /* if((split.length-2)>0){
                     String fecha=null;
                     String model=null;
                     boolean modeloEncontrado=false;
@@ -126,24 +135,24 @@ public class NotifyService extends Service implements AsyncResponse {
                                 calModificacion.set(Calendar.SECOND,0);
                                 calModificacion.set(Calendar.MILLISECOND,0);
                                 if(calModificacion.after(calAcceso)){
-                                    mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
-                                    final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getBaseContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
-                                    CharSequence contentTitle = getBaseContext().getResources().getString(R.string.ntfTituloTxt);
-                                    CharSequence contentText = getBaseContext().getResources().getString(R.string.ntfDetallesTxt);
+                                    mNotificationManagerNews = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                                    final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getApplicationContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
+                                    CharSequence contentTitle = getApplicationContext().getResources().getString(R.string.ntfTituloTxt);
+                                    CharSequence contentText = getApplicationContext().getResources().getString(R.string.ntfDetallesTxt);
                                     Intent launch_intent = new Intent();
                                     launch_intent.setComponent(new ComponentName("es.jiayu.jiayuid", "es.jiayu.jiayuid.BrowserActivity"));
                                     launch_intent.putExtra("modelo", modelo);
                                     launch_intent.putExtra("tipo", "downloads");
                                     PendingIntent intent2;
-                                    intent2 = PendingIntent.getActivity(getBaseContext(), 0,
+                                    intent2 = PendingIntent.getActivity(getApplicationContext(), 0,
                                             launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                                    notifyDetails.setLatestEventInfo(getBaseContext(), contentTitle, contentText, intent2);
+                                    notifyDetails.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, intent2);
                                     mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
                                 }
                             }
                         }
-                }
+                }*/
             }
         } catch (Exception e) {
 

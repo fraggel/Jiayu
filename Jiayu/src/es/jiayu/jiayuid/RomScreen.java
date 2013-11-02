@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
@@ -49,7 +51,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     String modelo=null;
     CheckBox chkCWM = null;
     Button dataCacheDalvikBtn = null;
-
+    SharedPreferences ajustes=null;
+    boolean firmarChk=false;
     boolean isRoot = false;
     String path = "";
 
@@ -67,6 +70,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_romscreen);
         modelo = getIntent().getExtras().getString("modelo");
+        ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
+        firmarChk=ajustes.getBoolean("firmarChk",false);
         if (controlRoot()) {
             isRoot = true;
         }
@@ -124,7 +129,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
 
                 String romselec = listaRomsUrl.get(i);
                 if (!"".equals(romselec.trim())) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgSeleccionado) + " " + new File(romselec).getName(), Toast.LENGTH_SHORT).show();
                     romBtn.setEnabled(true);
                     this.romseleccionada = romselec;
                     zipSpn.setSelection(0);
@@ -143,7 +147,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
 
                 String zipselec=listaZipsUrl.get(i);
                 if(!"".equals(zipselec.trim())){
-                    Toast.makeText(getBaseContext(),getResources().getString(R.string.msgSeleccionado)+" "+new File(zipselec).getName(),Toast.LENGTH_SHORT).show();
                     zipBtn.setEnabled(true);
                     this.zipseleccionada=zipselec;
                     romBtn.setEnabled(false);
@@ -190,9 +193,9 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                     try {
                                         RomScreen.aceptadoNoModelo = true;
                                         flashRom();
-                                        //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                        //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 150", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 150", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -203,7 +206,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 }
 
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgErrorRom) + new File(this.romseleccionada).getName()+" 151", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgErrorRom) + new File(this.romseleccionada).getName()+" 151", Toast.LENGTH_SHORT).show();
             }
 
 
@@ -238,9 +241,9 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                        }else{
                                            flashZipRecoveryOficial();
                                        }
-                                       //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                                       //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                                    } catch (Exception e) {
-                                       Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 152", Toast.LENGTH_SHORT).show();
+                                       Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 152", Toast.LENGTH_SHORT).show();
                                    }
                                }
                            });
@@ -256,7 +259,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                }
 
            }catch(Exception e){
-               Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 153", Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 153", Toast.LENGTH_SHORT).show();
            }
 
        }else if(button.getId()==R.id.dataCacheDalvikBtn){
@@ -277,7 +280,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                rebootRecoveryQuestionFlashear();
 
            }catch(Exception e){
-               Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 154", Toast.LENGTH_SHORT).show();
+               Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 154", Toast.LENGTH_SHORT).show();
            }
        }
     }
@@ -288,37 +291,51 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 if (chkCWM.isChecked()) {
 
                     if (controlRoot()) {
-                        if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
-                            Runtime rt = Runtime.getRuntime();
-                            java.lang.Process p = rt.exec("su");
-                            BufferedOutputStream bos = new BufferedOutputStream(
-                                    p.getOutputStream());
-                            bos.write(("rm /cache/recovery/extendedcommand\n")
-                                    .getBytes());
-                            String fileCWM = "";
-                            if("G4A".equals(modelo) || "S1".equals(modelo)){
-                                fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
-                                bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
-                                bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                        if(firmarChk){
+                            if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
+                                writeCWMInstall();
                             }else{
-                                fileCWM =this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
-                                bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
-                                bos.write(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
                             }
-                            bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                                    /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                                    bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
-                            bos.flush();
-                            bos.close();
-                            rebootRecoveryQuestionFlashear();
                         }else{
-                            Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
+                            writeCWMInstall();
                         }
                     }
                 } else {
                     String application_name = "";
                     try {
-                        if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
+                        if(firmarChk){
+                            if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
+                                application_name = "com.mediatek.updatesystem.UpdateSystem";
+                                Intent intent = new Intent("android.intent.action.MAIN");
+                                List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
+                                boolean existe = false;
+                                for (ResolveInfo info : resolveinfo_list) {
+                                    if (info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.updatesystem")) {
+                                        if (info.activityInfo.name.equalsIgnoreCase(application_name)) {
+                                            File f = new File(this.romseleccionada);
+                                            if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                                new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                            }
+
+                                                f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                                                Intent launch_intent = new Intent("android.intent.action.MAIN");
+                                                launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
+                                                launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                this.startActivity(launch_intent);
+                                                existe = true;
+                                                break;
+                                        }
+                                    }
+                                }
+                                if (!existe) {
+                                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
+                            }
+                        }else{
                             application_name = "com.mediatek.updatesystem.UpdateSystem";
                             Intent intent = new Intent("android.intent.action.MAIN");
                             List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
@@ -332,37 +349,87 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
 
                                         }
 
-                                            f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                            Intent launch_intent = new Intent("android.intent.action.MAIN");
-                                            launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
-                                            launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            this.startActivity(launch_intent);
-                                            existe = true;
-                                            break;
+                                        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                                        Intent launch_intent = new Intent("android.intent.action.MAIN");
+                                        launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
+                                        launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        this.startActivity(launch_intent);
+                                        existe = true;
+                                        break;
                                     }
                                 }
                             }
                             if (!existe) {
-                                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                             }
-                        }else{
-                            Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
                         }
                     } catch (ActivityNotFoundException e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError) + application_name+" 155", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError) + application_name+" 155", Toast.LENGTH_SHORT).show();
                     }
 
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 156", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 156", Toast.LENGTH_SHORT).show();
         }
 
+    }
+    public void writeCWMInstall() throws Exception{
+        Runtime rt = Runtime.getRuntime();
+        java.lang.Process p = rt.exec("su");
+        BufferedOutputStream bos = new BufferedOutputStream(
+                p.getOutputStream());
+        bos.write(("rm /cache/recovery/extendedcommand\n")
+                .getBytes());
+        String fileCWM = "";
+        if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){
+            fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+            bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+            bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+        }else{
+            fileCWM =this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
+            bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
+            bos.write(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
+        }
+        bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+                                    /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
+                                    bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+        bos.flush();
+        bos.close();
+        rebootRecoveryQuestionFlashear();
     }
     public void flashZip(){
         try {
             if(aceptadoNoModelo){
-                if(Utilidades.checkFileMD5(new File(this.zipseleccionada))){
+                if(firmarChk){
+                    if(Utilidades.checkFileMD5(new File(this.zipseleccionada))){
+                        Runtime rt = Runtime.getRuntime();
+                        java.lang.Process p = rt.exec("su");
+                        BufferedOutputStream bos = new BufferedOutputStream(
+                                p.getOutputStream());
+                        bos.write(("rm /cache/recovery/extendedcommand\n")
+                                .getBytes());
+                        String fileCWM="";
+                        if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)){
+                            fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                            bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                            bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                        }else{
+                            fileCWM =this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
+                            bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                            bos.write(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                        }
+
+                        bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+                                /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
+                                bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+                        bos.flush();
+                        bos.close();
+                        rebootRecoveryQuestionFlashear();
+                    }else{
+                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
+                    }
+                }else{
                     Runtime rt = Runtime.getRuntime();
                     java.lang.Process p = rt.exec("su");
                     BufferedOutputStream bos = new BufferedOutputStream(
@@ -370,7 +437,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     bos.write(("rm /cache/recovery/extendedcommand\n")
                             .getBytes());
                     String fileCWM="";
-                    if("G4A".equals(modelo) || "S1".equals(modelo)){
+                    if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)){
                         fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
                         bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
                         bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -381,24 +448,53 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     }
 
                     bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                            /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                            bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+                                /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
+                                bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
                     bos.flush();
                     bos.close();
                     rebootRecoveryQuestionFlashear();
-                }else{
-                    Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 157", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 157", Toast.LENGTH_SHORT).show();
         }
 
     }
     public void flashZipRecoveryOficial(){
         try {
             if(aceptadoNoModelo){
-                if(Utilidades.checkFileMD5(new File(this.zipseleccionada))){
+                if(firmarChk){
+                    if(Utilidades.checkFileMD5(new File(this.zipseleccionada))){
+                        String application_name = "";
+                        application_name = "com.mediatek.updatesystem.UpdateSystem";
+                        Intent intent = new Intent("android.intent.action.MAIN");
+                        List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
+                        boolean existe = false;
+                        for (ResolveInfo info : resolveinfo_list) {
+                            if (info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.updatesystem")) {
+                                if (info.activityInfo.name.equalsIgnoreCase(application_name)) {
+                                    File f = new File(this.zipseleccionada);
+                                    if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                        new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                    }
+                                    f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                                    Intent launch_intent = new Intent("android.intent.action.MAIN");
+                                    launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
+                                    launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    this.startActivity(launch_intent);
+                                    existe = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!existe) {
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
+                    }
+                }else{
                     String application_name = "";
                     application_name = "com.mediatek.updatesystem.UpdateSystem";
                     Intent intent = new Intent("android.intent.action.MAIN");
@@ -423,14 +519,12 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         }
                     }
                     if (!existe) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                     }
                 }
-            }else{
-                Toast.makeText(getBaseContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_SHORT).show();
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 157", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 157", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -456,9 +550,9 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             bos.write(("reboot recovery\n").getBytes());
                             bos.flush();
                             bos.close();
-                            //((PowerManager) getSystemService(getBaseContext().POWER_SERVICE)).reboot("recovery");
+                            //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                         } catch (Exception e) {
-                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 158", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 158", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -481,7 +575,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 159", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 159", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;

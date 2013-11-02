@@ -108,8 +108,10 @@
     <string name="foroBtn">论坛</string>
     <string name="aboutBtn">关于我们</string>
     <string name="cwmChk">我有CWM恢复</string>
-    <string name="notificacionChk">显示通知（更新，新闻)</string>
+    <string name="notificacionChkUpd">Show App updates notifications</string>
+    <string name="notificacionChkNews">Show News notifications</string>
     <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
+    <string name="firmarChk">Check files integrity</string>
     <string name="imeiSEBtn">IMEI发送电子邮件</string>
     <string name="salirBtn">离开</string>
     <string name="bootanimationBtn">更改BootAnimation</string>
@@ -139,17 +141,21 @@
     <string-array name="languages">
         <item>Change Language</item>
         <item>English</item>
-        <item>Spanish</item>
-        <item>Japanese</item>
+        <item>Español</item>
+        <item>Catala</item>
+        <item>Française</item>
+        <item>日本語</item>
         <item>Portugues</item>
         <item>German</item>
-        <item>Rusian</item>
-        <item>Chinese</item>
+        <item>русский</item>
+        <item>中国语言</item>
     </string-array>
     <string-array name="languages_values">
         <item></item>
         <item>en</item>
         <item>es</item>
+        <item>ca</item>
+        <item>fr</item>
         <item>ja</item>
         <item>pt</item>
         <item>de</item>

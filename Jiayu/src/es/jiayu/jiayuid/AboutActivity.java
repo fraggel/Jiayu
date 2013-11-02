@@ -59,7 +59,7 @@ public class AboutActivity extends Activity {
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                         startActivity(intent);
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 122", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 122", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -80,13 +80,13 @@ public class AboutActivity extends Activity {
                         startActivity(Intent.createChooser(i,
                                 res2.getString(R.string.enviarEmailBtn)));
                     } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 123", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 123", Toast.LENGTH_SHORT).show();
                     }
                 }
 
             });
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 124", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 124", Toast.LENGTH_SHORT).show();
         }
     }
 }

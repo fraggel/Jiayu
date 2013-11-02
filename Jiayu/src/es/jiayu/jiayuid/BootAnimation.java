@@ -116,7 +116,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 Runtime rt = Runtime.getRuntime();
                 rt.exec("su");
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 125", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 125", Toast.LENGTH_SHORT).show();
             }
         }
         return rootB;
@@ -157,7 +157,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 intent.putExtra("tipo", tipo);
                 startActivity(intent);
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 126", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 126", Toast.LENGTH_SHORT).show();
             }
         }else if (button.getId() == R.id.bootInstallBtn) {
             try {
@@ -186,9 +186,9 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                     ff.delete();
                 }*/
                 bootSpn.setSelection(0);
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgInstallBootC), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgInstallBootC), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
-                Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 127", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 127", Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -209,7 +209,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             zos.close();
             zos.finish();
         }catch(Exception e){
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 128", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 128", Toast.LENGTH_SHORT).show();
         }
 
         return selec;
@@ -241,7 +241,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             bos.close();
             f2.delete();
         }catch(Exception e){
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 129", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 129", Toast.LENGTH_SHORT).show();
         }
     }
     AnimationDrawable frameAnimation=null;
@@ -253,7 +253,6 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 if (listaBootsUrl != null && listaBootsUrl.size() > 0) {
                     String bootselect = listaBootsUrl.get(i);
                     if (!"".equals(bootselect.trim())) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgSeleccionado) + " " + new File(bootselect).getName(), Toast.LENGTH_SHORT).show();
                         if(isBusy){
                             bootBtn.setEnabled(true);
                             this.bootSeleccionada = bootselect;
@@ -278,7 +277,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 }
             }
         }catch(Exception e){
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 130", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 130", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -429,7 +428,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                             startActivity(intent);
                             finish();
                         } catch (Exception e) {
-                            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 144", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 144", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

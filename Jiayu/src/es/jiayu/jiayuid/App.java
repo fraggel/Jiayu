@@ -1,7 +1,6 @@
 package es.jiayu.jiayuid;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
 import android.app.Notification;
@@ -22,32 +21,27 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.text.Html;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.WebView;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-public class App extends Activity implements AsyncResponse, AdapterView.OnItemSelectedListener {
+public class App extends Activity implements AsyncResponse {
 
     static long downloadREF = -1;
     static HashMap<String, String> listaDescargas = new HashMap<String, String>();
@@ -61,6 +55,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
     Button driversherramientas;
     Button herramientasROM;
     Button salir;
+    Button config;
     String modelo = "";
     String model = "";
     String urlActualizacion = "";
@@ -68,8 +63,8 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
     String compilacion = "";
     String newversion = "";
     String chip = "";
-    Spinner languageSpn=null;
     String listaIdiomas[]=null;
+
 
     boolean noInternet=false;
     static NotificationManager mNotificationManagerUpdate=null;
@@ -78,144 +73,153 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listaIdiomas=getResources().getStringArray(R.array.languages_values);
+        int i=ajustes.getInt("language",0);
+        //Locale current = getResources().getConfiguration().locale;
+        Locale locale = new Locale(listaIdiomas[i]);
+       //if(!locale.equals(current)){
+            Locale.setDefault(locale);
+            Configuration config = new Configuration();
+            config.locale = locale;
+            getApplicationContext().getResources().updateConfiguration(config,
+                    getApplicationContext().getResources().getDisplayMetrics());
+            onCreate(null);
+       // }
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
-        try {
-            super.onCreate(savedInstanceState);
-            nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
-            mNotificationManagerUpdate = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
-            mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
-            ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
-            editorAjustes=ajustes.edit();
-            String tmpFecha="";
-            tmpFecha=ajustes.getString("fechaUltimoAccesoDescargas", "");
-            if("".equals(tmpFecha)){
-                editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
-                editorAjustes.commit();
-            }
+            try {
+                //Intent intent = getIntent();
+                //String ini = intent.getExtras().getString("ini");
 
-            Calendar calc = Calendar.getInstance();
-            calc.add(Calendar.HOUR,6);
-            Intent intent2 = new Intent(getBaseContext(), NotifyService.class);
-            PendingIntent pintent = PendingIntent.getService(getBaseContext(), 0, intent2,
-                    0);
-            AlarmManager alarm = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
+                super.onCreate(savedInstanceState);
+                Resources res = this.getResources();
 
-            alarm.setRepeating(AlarmManager.RTC_WAKEUP, calc.getTimeInMillis(),21600*1000, pintent);
-            getBaseContext().startService(new Intent(getBaseContext(),NotifyService.class));
+                setContentView(R.layout.activity_app);
+                    //if("ini".equals(ini)){
+                    //    intent.putExtra("ini","");
+                        nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+                        mNotificationManagerUpdate = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                        mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
+                        ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+                        editorAjustes=ajustes.edit();
+                        boolean notificacionesNews=ajustes.getBoolean("notificacionesNews",true);
+                        boolean notificacionesUpd=ajustes.getBoolean("notificacionesUpd",true);
+                        editorAjustes.putBoolean("notificacionesNews",notificacionesNews);
+                        editorAjustes.putBoolean("notificacionesUpd",notificacionesUpd);
 
-            Calendar calc2 = Calendar.getInstance();
-            calc2.add(Calendar.HOUR,6);
-            Intent intent3 = new Intent(getBaseContext(), NotifyNewsService.class);
-            PendingIntent pintent2 = PendingIntent.getService(getBaseContext(), 0, intent3,
-                    0);
-            AlarmManager alarm2 = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
+                        String tmpFecha="";
+                        tmpFecha=ajustes.getString("fechaUltimoAccesoDescargas", "");
+                        if("".equals(tmpFecha)){
+                            editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
+                            editorAjustes.commit();
+                        }
+                        version = "Jiayu.es ";
+                        version = version + nversion;
 
-            alarm2.setRepeating(AlarmManager.RTC_WAKEUP, calc2.getTimeInMillis(),21600*1000, pintent2);
-            getBaseContext().startService(new Intent(getBaseContext(),NotifyNewsService.class));
-            version = "Jiayu.es ";
-            version = version + nversion;
-            File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
-            if (!f1.exists()) {
-                f1.mkdirs();
-            }
-            File f2 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/ROMS/");
-            if (!f2.exists()) {
-                f2.mkdirs();
-            }
-            File f3 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
-            if (!f3.exists()) {
-                f3.mkdirs();
-            }
-            File f4 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/DOWNLOADS/");
-            if (!f4.exists()) {
-                f4.mkdirs();
-            }
-            File f5 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/");
-            if (!f5.exists()) {
-                f5.mkdirs();
-            }
-            File f6 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/BOOTANIMATION/");
-            if (!f6.exists()) {
-                f6.mkdirs();
-            }
-            Resources res = this.getResources();
+                        comprobarVersionInicio(version);
+                    //}
+                        File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
+                        if (!f1.exists()) {
+                            f1.mkdirs();
+                        }
+                        File f2 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/ROMS/");
+                        if (!f2.exists()) {
+                            f2.mkdirs();
+                        }
+                        File f3 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
+                        if (!f3.exists()) {
+                            f3.mkdirs();
+                        }
+                        File f4 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/DOWNLOADS/");
+                        if (!f4.exists()) {
+                            f4.mkdirs();
+                        }
+                        File f5 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/");
+                        if (!f5.exists()) {
+                            f5.mkdirs();
+                        }
+                        File f6 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/BOOTANIMATION/");
+                        if (!f6.exists()) {
+                            f6.mkdirs();
+                        }
 
-            setContentView(R.layout.activity_app);
-            addListenerOnButton();
-            comprobarVersionInicio(version);
-            descargas = (Button) findViewById(R.id.button1);
-            about = (Button) findViewById(R.id.button2);
-            salir = (Button) findViewById(R.id.button11);
-            languageSpn= (Spinner) findViewById(R.id.languageSpn);
-            videotutoriales = (Button) findViewById(R.id.button3);
-            foro = (Button) findViewById(R.id.button4);
-            driversherramientas = (Button) findViewById(R.id.button9);
-            herramientasROM = (Button) findViewById(R.id.button10);
-            descargas.setEnabled(false);
-            //accesorios.setEnabled(false);
-            videotutoriales.setEnabled(false);
-            driversherramientas.setEnabled(false);
-            herramientasROM.setEnabled(false);
-            foro.setEnabled(false);
-            ImageButton img = new ImageButton(this);
-            img = (ImageButton) findViewById(R.id.imageButton1);
-            TextView t = new TextView(this);
-            TextView t2 = new TextView(this);
-            TextView t4 = new TextView(this);
-            TextView t5 = new TextView(this);
-            t4 = (TextView) findViewById(R.id.textView4);
-            t5 = (TextView) findViewById(R.id.textView5);
-            t4.setText(version);
-            compilacion = Build.DISPLAY;
-            fabricante = infoBrand();
-            t = (TextView) findViewById(R.id.textView1);
-            t2 = (TextView) findViewById(R.id.textView2);
-            if ("".equals(modelo)) {
-                calcularTelefono();
-                modelo = model;
-            } else {
-                recalcularTelefono();
-                descargas.setEnabled(true);
-                herramientasROM.setEnabled(true);
-                //accesorios.setEnabled(true);
-                foro.setEnabled(true);
-                driversherramientas.setEnabled(true);
-                videotutoriales.setEnabled(true);
+                        addListenerOnButton();
 
-            }
-            if (modelo.length() < 8) {
-                Calendar cal=Calendar.getInstance();
-                editorAjustes = ajustes.edit();
-                editorAjustes.putString("modelo", modelo);
-                editorAjustes.commit();
+                        descargas = (Button) findViewById(R.id.button1);
+                        about = (Button) findViewById(R.id.button2);
+                        salir = (Button) findViewById(R.id.button11);
+                        config = (Button) findViewById(R.id.button5);
+                        videotutoriales = (Button) findViewById(R.id.button3);
+                        foro = (Button) findViewById(R.id.button4);
+                        driversherramientas = (Button) findViewById(R.id.button9);
+                        herramientasROM = (Button) findViewById(R.id.button10);
+                        descargas.setEnabled(false);
+                        //accesorios.setEnabled(false);
+                        videotutoriales.setEnabled(false);
+                        driversherramientas.setEnabled(false);
+                        herramientasROM.setEnabled(false);
+                        foro.setEnabled(false);
+                        ImageButton img = new ImageButton(this);
+                        img = (ImageButton) findViewById(R.id.imageButton1);
+                        TextView t = new TextView(this);
+                        TextView t2 = new TextView(this);
+                        TextView t4 = new TextView(this);
+                        TextView t5 = new TextView(this);
+                        t4 = (TextView) findViewById(R.id.textView4);
+                        t5 = (TextView) findViewById(R.id.textView5);
+                        t4.setText(version);
+                        compilacion = Build.DISPLAY;
+                        fabricante = infoBrand();
+                        t = (TextView) findViewById(R.id.textView1);
+                        t2 = (TextView) findViewById(R.id.textView2);
+                        //if("ini".equals(ini)){
+                            if ("".equals(modelo)) {
+                                calcularTelefono();
+                                modelo = model;
+                            } else {
+                                recalcularTelefono();
+                                descargas.setEnabled(true);
+                                herramientasROM.setEnabled(true);
+                                //accesorios.setEnabled(true);
+                                foro.setEnabled(true);
+                                driversherramientas.setEnabled(true);
+                                videotutoriales.setEnabled(true);
 
-                descargas.setEnabled(true);
-                //accesorios.setEnabled(true);
-                foro.setEnabled(true);
-                driversherramientas.setEnabled(true);
-                videotutoriales.setEnabled(true);
-                herramientasROM.setEnabled(true);
-                if (!"JIAYU".equals(fabricante.toUpperCase().trim()) && !"PIPO".equals(fabricante.toUpperCase().trim())) {
-                    t5.setTextColor(Color.RED);
-                    t5.setText(res.getString(R.string.msgIdentificado1) +" "+ modelo + res.getString(R.string.msgIdentificado2));
-                }else{
-                    t5.setVisibility(View.INVISIBLE);
-                }
-            }
-            t.setText(res.getString(R.string.msgModelo) + modelo);
-            t2.setText(res.getString(R.string.msgCompilacion) + compilacion);
+                            }
+                            if (modelo.length() < 8) {
+                                Calendar cal=Calendar.getInstance();
+                                editorAjustes = ajustes.edit();
+                                editorAjustes.putString("modelo", modelo);
+                                editorAjustes.commit();
 
-            if("T1".equals(modelo) || "T2".equals(modelo)){
-                herramientasROM.setEnabled(false);
+                                descargas.setEnabled(true);
+                                //accesorios.setEnabled(true);
+                                foro.setEnabled(true);
+                                driversherramientas.setEnabled(true);
+                                videotutoriales.setEnabled(true);
+                                herramientasROM.setEnabled(true);
+                                if (!"JIAYU".equals(fabricante.toUpperCase().trim()) && !"PIPO".equals(fabricante.toUpperCase().trim())) {
+                                    t5.setTextColor(Color.RED);
+                                    t5.setText(res.getString(R.string.msgIdentificado1) +" "+ modelo + res.getString(R.string.msgIdentificado2));
+                                }else{
+                                    t5.setVisibility(View.INVISIBLE);
+                                }
+                            }
+                            t.setText(res.getString(R.string.msgModelo) + modelo);
+                            t2.setText(res.getString(R.string.msgCompilacion) + compilacion);
+
+                            if("T1".equals(modelo) || "T2".equals(modelo)){
+                                herramientasROM.setEnabled(false);
+                            }
+                       // }
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
-            listaIdiomas=getResources().getStringArray(R.array.languages_values);
-            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                    R.array.languages, android.R.layout.simple_spinner_item);
-            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            languageSpn.setAdapter(adapter);
-        } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
-        }
     }
 
     private String infoBrand() throws IOException {
@@ -244,7 +248,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             asyncTask.delegate = this;
             asyncTask.execute(version2);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 102", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 102", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -254,7 +258,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             asyncTask.delegate = this;
             asyncTask.execute(version2, "inicio");
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -277,10 +281,10 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             request.setDestinationInExternalPublicDir("/JIAYUES/APP/", nombreFichero);
 
             DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
             downloadREF = manager.enqueue(request);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 104", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 104", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -460,7 +464,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             }
 
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
         }/*
 					}
 				});
@@ -486,14 +490,14 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
                     } else {
                         total = false;
                     }
-                    while (!mBluetoothAdapter.disable()) {
+                    while (mBluetoothAdapter.isEnabled()) {
                         mBluetoothAdapter.disable();
                     }
 
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 106", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 106", Toast.LENGTH_SHORT).show();
         }
         return total;
     }
@@ -521,7 +525,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
                 }
             }
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 107", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 107", Toast.LENGTH_SHORT).show();
         }
         return total;
     }
@@ -553,16 +557,16 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
 
                 public void onClick(View arg0) {
                     try {
-                        /*Intent intent = new Intent(getBaseContext(), AboutActivity.class);
+                        /*Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                         startActivity(intent);*/
                         if(noInternet){
-                            Intent intent = new Intent(getBaseContext(), AboutActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                             startActivity(intent);
                         }else{
                             openBrowser(arg0, "about");
                         }
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 108", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 108", Toast.LENGTH_SHORT).show();
                     }
                     /*Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -577,7 +581,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
                     try {
                         finish();
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 109", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 109", Toast.LENGTH_SHORT).show();
                     }
                     /*Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -589,7 +593,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             foro.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgTapaTalk), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgTapaTalk), Toast.LENGTH_LONG).show();
                     Uri uri = Uri.parse("http://www.foro.jiayu.es");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);
@@ -617,20 +621,30 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
 
                 public void onClick(View arg0) {
                     try {
-                        Intent intent = new Intent(getBaseContext(), ROMTools.class);
+                        Intent intent = new Intent(getApplicationContext(), ROMTools.class);
                         intent.putExtra("modelo",modelo);
                         startActivity(intent);
                     } catch (Exception e) {
-                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
                     }
                 }
 
             });
-            languageSpn =(Spinner) findViewById(R.id.languageSpn);
-            languageSpn.setOnItemSelectedListener(this);
+            config = (Button) findViewById(R.id.button5);
+            config.setOnClickListener(new View.OnClickListener() {
 
+                public void onClick(View arg0) {
+                    try {
+                        Intent intent = new Intent(getApplicationContext(), ConfigActivity.class);
+                        startActivity(intent);
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 121", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+            });
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 111", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 111", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -668,7 +682,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             intent.putExtra("tipo", tipo);
             startActivity(intent);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 112", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 112", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -678,7 +692,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
             startActivity(myIntent);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 113", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 113", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -798,7 +812,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
                                     try {
                                         ActualizarVersion();
                                     } catch (Exception e) {
-                                        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });
@@ -850,19 +864,19 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
                             calModificacion.set(Calendar.SECOND,0);
                             calModificacion.set(Calendar.MILLISECOND,0);
                             if(calModificacion.after(calAcceso)){
-                                mNotificationManagerNews = (NotificationManager)getBaseContext().getSystemService(Context.NOTIFICATION_SERVICE);
-                                final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getBaseContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
-                                CharSequence contentTitle = getBaseContext().getResources().getString(R.string.ntfTituloTxt);
-                                CharSequence contentText = getBaseContext().getResources().getString(R.string.ntfDetallesTxt);
+                                mNotificationManagerNews = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                                final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getApplicationContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
+                                CharSequence contentTitle = getApplicationContext().getResources().getString(R.string.ntfTituloTxt);
+                                CharSequence contentText = getApplicationContext().getResources().getString(R.string.ntfDetallesTxt);
                                 Intent launch_intent = new Intent();
                                 launch_intent.setComponent(new ComponentName("es.jiayu.jiayuid", "es.jiayu.jiayuid.BrowserActivity"));
                                 launch_intent.putExtra("modelo", modelo);
                                 launch_intent.putExtra("tipo", "downloads");
                                 PendingIntent intent2;
-                                intent2 = PendingIntent.getActivity(getBaseContext(), 0,
+                                intent2 = PendingIntent.getActivity(getApplicationContext(), 0,
                                         launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
 
-                                notifyDetails.setLatestEventInfo(getBaseContext(), contentTitle, contentText, intent2);
+                                notifyDetails.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, intent2);
                                 mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
                             }
 
@@ -875,7 +889,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
             wv.loadUrl("http://www.jiayu.es/soporte/appbanner.php");
             wv.setVisibility(View.VISIBLE);
         } catch (Exception e) {
-            Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 119", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 119", Toast.LENGTH_SHORT).show();
             noInternet=true;
             WebView wv = (WebView) findViewById(R.id.webView);
             wv.setVisibility(View.INVISIBLE);
@@ -905,7 +919,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
                         openBrowser(item.getActionView(), "about");
                     }
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 120", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 120", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             case R.id.action_config:
@@ -913,7 +927,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
                     Intent intent = new Intent(this, ConfigActivity.class);
                     startActivity(intent);
                 } catch (Exception e) {
-                    Toast.makeText(getBaseContext(), getResources().getString(R.string.msgGenericError)+" 121", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 121", Toast.LENGTH_SHORT).show();
                 }
                 return true;
             case R.id.action_exit:
@@ -924,7 +938,7 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
         }
     }
     public void comprobarMT() throws Exception{
-        Toast.makeText(getBaseContext(), getResources().getString(R.string.msgActivandoBTWifi), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgActivandoBTWifi), Toast.LENGTH_SHORT).show();
         String buildprop = "";
         FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
         byte[] input = new byte[fis.available()];
@@ -954,22 +968,5 @@ public class App extends Activity implements AsyncResponse, AdapterView.OnItemSe
         }
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        Spinner spinner = (Spinner) adapterView;
-            if(!"".equals(listaIdiomas[i].trim())){
-                Locale locale = new Locale(listaIdiomas[i]);
-                Locale.setDefault(locale);
-                Configuration config = new Configuration();
-                config.locale = locale;
-                getApplicationContext().getResources().updateConfiguration(config,
-                        getBaseContext().getResources().getDisplayMetrics());
-                onCreate(null);
-            }
-    }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-
-    }
 }

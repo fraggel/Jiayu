@@ -63,11 +63,11 @@
                 android:background="@drawable/btn_white_border"
                 android:autoText="false"
                 style="@style/LabelTextRed"/>
-        <Spinner
+        <Button
+            android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/languageSpn"
-            android:layout_gravity="left|center_vertical"
+            android:text="@string/msgConfiguracion"
             style="@style/ButtonTextGreen"
             android:background="@drawable/btn_green"/>
         <Button

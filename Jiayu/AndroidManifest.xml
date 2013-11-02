@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="es.jiayu.jiayuid"
-          android:versionCode="38"
-          android:versionName="0.98">
+          android:versionCode="36"
+          android:versionName="0.96">
 
     <uses-sdk
             android:minSdkVersion="10"
@@ -68,11 +68,11 @@
                 <action android:name="android.intent.action.DOWNLOAD_NOTIFICATION_CLICKED"/>
             </intent-filter>
         </receiver>
-        <receiver android:name="es.jiayu.jiayuid.UpdateReceiver">
+        <!--<receiver android:name="es.jiayu.jiayuid.UpdateReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
             </intent-filter>
-        </receiver>
+        </receiver>-->
         <service android:name="es.jiayu.jiayuid.NotifyService"/>
         <service android:name="es.jiayu.jiayuid.NotifyNewsService"/>
     </application>

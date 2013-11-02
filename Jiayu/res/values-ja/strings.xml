@@ -107,8 +107,10 @@
     <string name="foroBtn">フォーラム</string>
     <string name="aboutBtn">私達について</string>
     <string name="cwmChk">私はCWMリカバリーを持って</string>
-    <string name="notificacionChk">ショー通知（更新、ニュース）</string>
+    <string name="notificacionChkUpd">Show App updates notifications</string>
+    <string name="notificacionChkNews">Show News notifications</string>
     <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
+    <string name="firmarChk">Check files integrity</string>
     <string name="imeiSEBtn">IMEIメールを送信</string>
     <string name="salirBtn">終了する</string>
     <string name="bootanimationBtn">変更BootAnimation</string>
@@ -138,17 +140,21 @@
     <string-array name="languages">
         <item>Change Language</item>
         <item>English</item>
-        <item>Spanish</item>
-        <item>Japanese</item>
+        <item>Español</item>
+        <item>Catala</item>
+        <item>Française</item>
+        <item>日本語</item>
         <item>Portugues</item>
         <item>German</item>
-        <item>Rusian</item>
-        <item>Chinese</item>
+        <item>русский</item>
+        <item>中国语言</item>
     </string-array>
     <string-array name="languages_values">
         <item></item>
         <item>en</item>
         <item>es</item>
+        <item>ca</item>
+        <item>fr</item>
         <item>ja</item>
         <item>pt</item>
         <item>de</item>
