@@ -74,7 +74,7 @@
     <string name="msgExisteBackup">Ya existe una copia con ese nombre, ¿Borrar?</string>
     <string name="msgNoExisteBackup">No se han encontrado copias</string>
     <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
-    <string name="msgNoSD">No hay tarjeta SD o está activo el almacenamiento USB, para usar esta aplicación es necesario una tarjeta SD</string>
+    <string name="msgNoSD">No hay tarjeta SD/Memoria o está activo el almacenamiento USB, para usar esta aplicación es necesario una tarjeta SD</string>
 
 
     <string name="about1">Distribuidor Oficial en España:</string>

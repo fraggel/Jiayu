@@ -72,7 +72,7 @@
     <string name="msgExisteBackup">A backup already exists, Delete?</string>
     <string name="msgNoExisteBackup">No backup found</string>
     <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
-    <string name="msgNoSD">No hay tarjeta SD o está activo el almacenamiento USB, para usar esta aplicación es necesario una tarjeta SD</string>
+    <string name="msgNoSD">No hay tarjeta SD/Memoria o está activo el almacenamiento USB, para usar esta aplicación es necesario una tarjeta SD</string>
 
     <string name="about1">Distribuïdor Oficial a Espanya:</string>
     <string name="about2">info@jiayu.es</string>
