@@ -63,13 +63,7 @@
                 android:background="@drawable/btn_white_border"
                 android:autoText="false"
                 style="@style/LabelTextRed"/>
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/msgConfiguracion"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
+
         <Button
                 android:id="@+id/button1"
                 android:layout_width="match_parent"
@@ -118,20 +112,12 @@
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
         <Button
-                android:id="@+id/button11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/salirBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <TextView
-                android:id="@+id/textView4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:background="@drawable/btn_white_border"
-                style="@style/LabelTextBlack"/>
+            android:id="@+id/button5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/msgConfiguracion"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
 
         <WebView
                 android:id="@+id/webView"
@@ -144,6 +130,13 @@
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
                 android:paddingTop="0dp"/>
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:background="@drawable/btn_white_border"
+            style="@style/LabelTextBlack"/>
     </LinearLayout>
 
 </ScrollView>

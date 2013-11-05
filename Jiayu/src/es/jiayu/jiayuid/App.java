@@ -25,6 +25,7 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -54,7 +55,6 @@ public class App extends Activity implements AsyncResponse {
     Button videotutoriales;
     Button driversherramientas;
     Button herramientasROM;
-    Button salir;
     Button config;
     String modelo = "";
     String model = "";
@@ -77,18 +77,18 @@ public class App extends Activity implements AsyncResponse {
     @Override
     protected void onResume() {
         super.onResume();
-        listaIdiomas=getResources().getStringArray(R.array.languages_values);
+        /*listaIdiomas=getResources().getStringArray(R.array.languages_values);
         int i=ajustes.getInt("language",0);
-        //Locale current = getResources().getConfiguration().locale;
+
         Locale locale = new Locale(listaIdiomas[i]);
-       //if(!locale.equals(current)){
+
             Locale.setDefault(locale);
             Configuration config = new Configuration();
             config.locale = locale;
             getApplicationContext().getResources().updateConfiguration(config,
                     getApplicationContext().getResources().getDisplayMetrics());
             onCreate(null);
-       // }
+*/
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,7 +152,6 @@ public class App extends Activity implements AsyncResponse {
 
                         descargas = (Button) findViewById(R.id.button1);
                         about = (Button) findViewById(R.id.button2);
-                        salir = (Button) findViewById(R.id.button11);
                         config = (Button) findViewById(R.id.button5);
                         videotutoriales = (Button) findViewById(R.id.button3);
                         foro = (Button) findViewById(R.id.button4);
@@ -216,6 +215,19 @@ public class App extends Activity implements AsyncResponse {
                             if("T1".equals(modelo) || "T2".equals(modelo)){
                                 herramientasROM.setEnabled(false);
                             }
+                String externalStorageState = Environment.getExternalStorageState();
+                if(!"mounted".equals(externalStorageState.toLowerCase())){
+                    driversherramientas.setEnabled(false);
+                    descargas.setEnabled(false);
+                    herramientasROM.setEnabled(false);
+                    if(t5.getVisibility()==View.INVISIBLE){
+                        t5.setVisibility(View.VISIBLE);
+                        t5.setTextColor(Color.RED);
+                        t5.setText(res.getString(R.string.msgNoSD));
+                    }else{
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgNoSD), Toast.LENGTH_LONG).show();
+                    }
+                }
                        // }
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
@@ -574,21 +586,7 @@ public class App extends Activity implements AsyncResponse {
                 }
 
             });
-            salir = (Button) findViewById(R.id.button11);
-            salir.setOnClickListener(new View.OnClickListener() {
 
-                public void onClick(View arg0) {
-                    try {
-                        finish();
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 109", Toast.LENGTH_SHORT).show();
-                    }
-                    /*Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);*/
-                }
-
-            });
             foro = (Button) findViewById(R.id.button4);
             foro.setOnClickListener(new View.OnClickListener() {
 
@@ -889,7 +887,6 @@ public class App extends Activity implements AsyncResponse {
             wv.loadUrl("http://www.jiayu.es/soporte/appbanner.php");
             wv.setVisibility(View.VISIBLE);
         } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 119", Toast.LENGTH_SHORT).show();
             noInternet=true;
             WebView wv = (WebView) findViewById(R.id.webView);
             wv.setVisibility(View.INVISIBLE);

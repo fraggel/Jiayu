@@ -61,6 +61,7 @@ public class BrowserActivity extends Activity {
             editorAjustes.commit();
             descargas.loadUrl("http://www.jiayu.es/soporte/appsoft.php?jiayu=" + modelo);
         }else if("about".equals(tipo)){
+            descargas.getSettings().setJavaScriptEnabled(true);
             descargas.loadUrl("http://www.jiayu.es/soporte/appabout.php");
         }
 

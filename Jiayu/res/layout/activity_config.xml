@@ -42,7 +42,8 @@
             android:layout_gravity="center_vertical|left"
             style="@style/ButtonTextGreen"
             android:background="@drawable/btn_green"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:visibility="invisible" />
 
         <CheckBox
                 android:layout_width="wrap_content"

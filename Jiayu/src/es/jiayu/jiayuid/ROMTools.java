@@ -63,7 +63,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         setContentView(R.layout.activity_romtools);
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
-        deleteDirectories();
+        //deleteDirectories();
         if (controlRoot()) {
             isRoot = true;
         }
@@ -115,7 +115,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         refreshCombos();
     }
 
-    private void deleteDirectories() {
+    /*private void deleteDirectories() {
         try {
             File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
             File[] files = f1.listFiles();
@@ -133,7 +133,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 160", Toast.LENGTH_SHORT).show();
         }
 
-    }
+    }*/
 
 
     @Override

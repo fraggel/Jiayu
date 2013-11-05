@@ -50,7 +50,7 @@ public class AboutActivity extends Activity {
 
             });
 
-            visit = (Button) findViewById(R.id.button2);
+            /*visit = (Button) findViewById(R.id.button2);
             visit.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
@@ -63,8 +63,8 @@ public class AboutActivity extends Activity {
                     }
                 }
 
-            });
-            contacto = (Button) findViewById(R.id.button1);
+            });*/
+            /*contacto = (Button) findViewById(R.id.button1);
             contacto.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
@@ -84,7 +84,7 @@ public class AboutActivity extends Activity {
                     }
                 }
 
-            });
+            });*/
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 124", Toast.LENGTH_SHORT).show();
         }
