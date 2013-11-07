@@ -77,10 +77,15 @@ public class App extends Activity implements AsyncResponse {
     @Override
     protected void onResume() {
         super.onResume();
-        /*listaIdiomas=getResources().getStringArray(R.array.languages_values);
+        listaIdiomas=getResources().getStringArray(R.array.languages_values);
         int i=ajustes.getInt("language",0);
+        Locale locale =null;
+        if(i==0){
+            locale=getResources().getConfiguration().locale;
+        }else{
+            locale = new Locale(listaIdiomas[i]);
+        }
 
-        Locale locale = new Locale(listaIdiomas[i]);
 
             Locale.setDefault(locale);
             Configuration config = new Configuration();
@@ -88,7 +93,7 @@ public class App extends Activity implements AsyncResponse {
             getApplicationContext().getResources().updateConfiguration(config,
                     getApplicationContext().getResources().getDisplayMetrics());
             onCreate(null);
-*/
+
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +102,7 @@ public class App extends Activity implements AsyncResponse {
                 //String ini = intent.getExtras().getString("ini");
 
                 super.onCreate(savedInstanceState);
+
                 Resources res = this.getResources();
 
                 setContentView(R.layout.activity_app);

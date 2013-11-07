@@ -1,177 +1,145 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Jiayu</string>
-    <string name="bienvenida">Welcome to the Jiayu App. This application will show your exact model
-        with the nomenclature you will find on www.jiayu.es.
-    </string>
+    <string name="app_name">"Jiayu.es"</string>
+    <string name="bienvenida">"Willkommen auf Jiayu.es Anwendung. Diese Anwendung zeigt die genaue Modellbezeichnung mit der Nomenklatur www.jiayu.es finden."</string>
 
     <!--Activity Titulos-->
-    <string name="title_activity_browser">Jiayu Downloads</string>
-    <string name="title_activity_about">About us...</string>
-    <string name="title_activity_romtool">ROM Tools</string>
-    <string name="title_activity_inicio">Index</string>
-    <string name="title_activity_video">Videotutorials</string>
-    <string name="title_activity_romscreen">ROM Operations</string>
-    <string name="title_activity_recoveryscreen">Recovery Operations</string>
-    <string name="title_activity_imeiscreen">IMEI Operations</string>
-    <string name="title_activity_configscreen">Configuration</string>
-    <string name="title_activity_bootanimation">BootAnimation</string>
-    <string name="title_activity_backup">Backup/Restore</string>
-    <string name="title_activity_tools">Tools Android</string>
-
+    <string name="title_activity_browser">"Downloads Jiayu.es"</string>
+    <string name="title_activity_about">"Über uns ..."</string>
+    <string name="title_activity_romtool">"Werkzeuge ROMs"</string>
+    <string name="title_activity_inicio">"Einleitung"</string>
+    <string name="title_activity_video">"Videotutorials"</string>
+    <string name="title_activity_romscreen">"Operationen ROM"</string>
+    <string name="title_activity_recoveryscreen">"Recovery-Operationen"</string>
+    <string name="title_activity_imeiscreen">"IMEI Operationen"</string>
+    <string name="title_activity_configscreen">"Configuration"</string>
+    <string name="title_activity_bootanimation">"Bootanimation"</string>
+    <string name="title_activity_backup">"Backup / Restore"</string>
+    <string name="title_activity_tools">"Android-Tools"</string>
 
     <!--Menu-->
-    <string name="updateMnu">Check Updates</string>
-    <string name="aboutMnu">About us...</string>
-    <string name="configMnu">Configuration</string>
-    <string name="exitMnu">Exit</string>
+    <string name="updateMnu">"Nach Updates suchen"</string>
+    <string name="aboutMnu">"Über uns ..."</string>
+    <string name="configMnu">"Configuration"</string>
+    <string name="exitMnu">"Verlassen"</string>
 
     <!--Values-->
-    <string name="seleccionaValue">Select</string>
+    <string name="seleccionaValue">"Wählen"</string>
 
     <!--Mensajes-->
-    <string name="msgComprobarVersion">New version available</string>
-    <string name="msgPreguntaVersion">¿Download?</string>
-    <string name="msgCompilacion">Compilation:</string>
-    <string name="msgModelo">Model:</string>
-    <string name="msgIdentificado1">Identified as </string>
-    <string name="msgIdentificado2">, although on the device information Jiayu is not indicated as manufacturer</string>
-    <string name="msgTerminalNoJiayu">This mobile phone is not Jiayu</string>
-    <string name="msgErrorIdentificar">An error has occurred. It´s not possible to detect your Jiayu model</string>
-    <string name="msgSeleccionado">Selected</string>
-    <string name="msgIngenieroNoExiste">App don´t exists</string>
-    <string name="msgErrorUnzip">Error while decompress</string>
-    <string name="msgErrorRom">Error while initialize ROM Flashing</string>
-    <string name="msgErrorRecovery">Error while writing Recovery file</string>
-    <string name="msgNoRoot">Root is necessary</string>
-    <string name="msgRecoveryFlasheado">Recovery Flashed, Reboot into Recovery?</string>
-    <string name="msgRebootRecoveryQF">To flash the ROM/Wipe/Zip you need to restart now, want to restart now?</string>
-    <string name="msgRebootBackupQF">To create Backup must reboot, reboot now?</string>
-    <string name="msgRebootRestoreQF">To restore Backup must reboot, reboot now?</string>
-    <string name="msgRebootRecoveryQ">Reboot into Recovery?</string>
-    <string name="msgImeiExiste1">A previous</string>
-    <string name="msgImeiExiste2">backup exists, this will overwrite it, Want to continue?</string>
-    <string name="msgImeihecho">created</string>
-    <string name="msgImeirestored">restored</string>
-    <string name="msgImeiRestoreQ1">Are you sure you want to restore the </string>
-    <string name="msgImeiRestoreQ2">？</string>
-    <string name="msgTerminadaDescarga">Download completed</string>
-    <string name="msgIniciandoDescarga">Download begin</string>
-    <string name="msgTapaTalk">You can find us on TAPATALK too! Jiayu.es</string>
-    <string name="msgLastVersion">You already have the latest version</string>
-    <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Oficial en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
-        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
-        telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
-        Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
-    </string>
-    <string name="msgGenericError">Error occurred</string>
-    <string name="msgSubjectInfo">Jiayu.es Info</string>
-    <string name="msgActivandoBTWifi">BT and WIFI is activating to indentify yout terminal</string>
-    <string name="msgModeloNoIgualFichero">The selected file does not appear to contain your device model name, may not be compatible with your device, you want to install it anyway?</string>
-    <string name="msgConfiguracion">Configuration</string>
-    <string name="msgRebootQ">To restore IMEI must restart, Restart now?</string>
-    <string name="msgInstallBootC">BootAnimation changed</string>
-    <string name="msgNoBusybox">No busybox, download?</string>
-    <string name="msgExisteBackup">A backup already exists, Delete?</string>
-    <string name="msgNoExisteBackup">No backup found</string>
-    <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
-    <string name="msgNoSD">SD Card/Memory is not present or USB storage is activated, to use this app is necessary an SD Card</string>
+    <string name="msgComprobarVersion">"Neue Version verfügbar"</string>
+    <string name="msgPreguntaVersion">"Ist das Herunterladen?"</string>
+    <string name="msgCompilacion">"Zusammenstellung:"</string>
+    <string name="msgModelo">"Modell"</string>
+    <string name="msgIdentificado1">"Dies als "</string>
+    <string name="msgIdentificado2">" Obwohl in der ROM Informationen nicht als Hersteller angegeben JIAYU"</string>
+    <string name="msgTerminalNoJiayu">"Ihr Gerät ist nicht JIAYU"</string>
+    <string name="msgErrorIdentificar">"Ein Fehler ist aufgetreten, das verhindert, dass Ihr Gerät erkennen Modell"</string>
+    <string name="msgSeleccionado">"Ausgewählt"</string>
+    <string name="msgIngenieroNoExiste">"Die Anwendung ist nicht vorhanden"</string>
+    <string name="msgErrorUnzip">"Fehler beim dekomprimiert"</string>
+    <string name="msgErrorRom">"Fehler bei der Initialisierung der Installation des ROM"</string>
+    <string name="msgErrorRecovery">"Fehler beim Schreiben der Wiederherstellung"</string>
+    <string name="msgNoRoot">"Sie müssen heiß sein"</string>
+    <string name="msgRecoveryFlasheado">"Recovery installiert ist, in Recovery-Reset?"</string>
+    <string name="msgRebootRecoveryQF">"Um das ROM zu installieren / Wischen / Zip müssen das Gerät neu zu starten, möchten Sie jetzt neu starten?"</string>
+    <string name="msgRebootBackupQF">"Um eine Kopie des Systems zu starten erstellen, möchten Sie jetzt neu starten?"</string>
+    <string name="msgRebootRestoreQF">"Um das System wieder zu starten, möchten Sie jetzt neu starten?"</string>
+    <string name="msgRebootRecoveryQ">"Starten? Erholung?"</string>
+    <string name="msgImeiExiste1">"Es ist bereits ein Backup Ihrer "</string>
+    <string name="msgImeiExiste2">"Und diese Operation wird die vorhandene überschreiben, möchten Sie fortfahren?"</string>
+    <string name="msgImeihecho">"erstellt"</string>
+    <string name="msgImeirestored">"wiederhergestellt"</string>
+    <string name="msgImeiRestoreQ1">"Möchten Sie Ihre IMEI mit Datei wiederherstellen "</string>
+    <string name="msgImeiRestoreQ2">"gefunden?"</string>
+
+    <string name="msgTerminadaDescarga">"Download abgeschlossen"</string>
+    <string name="msgIniciandoDescarga">"Laden eingeleitet"</string>
+    <string name="msgTapaTalk">"Sie finden uns auch auf Tapatalk! Jiayu.es"</string>
+    <string name="msgLastVersion">"Ich habe die neueste Version der Anwendung"</string>
+    <string name="msgInfoJiayu">"&lt;b&gt; offizieller Distributor in Spanien: &lt;/ b&gt; E-Mail: &lt;a href=\"info@jiayu.es\"&gt; info@jiayu.es &lt;/ a&gt; &lt;b&gt; Anruf Öffnungszeiten: &lt;/ b&gt; 9.00 bis 14.00 LV &lt;b&gt; Ort: &lt;/ b&gt; Jiayu España, Pasaje Angels i Frederic, 2. 46022, Valencia (Spain) Tel. &lt;br&gt; 963556091
+    "</string>
+    <string name="msgGenericError">"Gescheiterte"</string>
+    <string name="msgSubjectInfo">"Jiayu.es Info"</string>
+    <string name="msgActivandoBTWifi">"Aktivieren Bluetooth und WiFi, notwendig, um das Gerät zu identifizieren Modell"</string>
+    <string name="msgModeloNoIgualFichero">"Die ausgewählte Datei scheint nicht zu Ihrem Gerätemodell Namen enthalten, können nicht mit dem Gerät kompatibel, Sie wollen es trotzdem installieren?"</string>
+    <string name="msgConfiguracion">"Configuration"</string>
+    <string name="msgRebootQ">"Um die neue IMEI zu starten gelten, jetzt neu starten?"</string>
+    <string name="msgInstallBootC">"Bootanimation geändert"</string>
+    <string name="msgNoBusybox">"Busybox nicht installiert ist, wird das Herunterladen?"</string>
+    <string name="msgExisteBackup">"Eine Kopie existiert bereits mit diesem Namen, löschen?"</string>
+    <string name="msgNoExisteBackup">"Keine Kopien gefunden"</string>
+    <string name="msgErrorMD5">"Datei-Integrität Fehler, ungültige Datei downloaden fehlerhafte oder imcompleta"</string>
+    <string name="msgNoSD">"Kein SD / Memory-oder USB-Speicher aktiviert ist, um diese App nutzen, benötigen Sie einen SD-Karte"</string>
 
 
-    <string name="about1">Distribuidor Oficial en España:</string>
-    <string name="about2">info@jiayu.es</string>
-    <string name="about3">Horario atención telefónica:</string>
-    <string name="about4">9:00 a 14:00 L-V</string>
-    <string name="about5">Localización:</string>
+    <string name="about1">"Offizieller Distributor in Spanien:"</string>
+    <string name="about2">"info@jiayu.es"</string>
+    <string name="about3">"Rufen Zeitplan:"</string>
+    <string name="about4">"MF 9.00 bis 02.00 Uhr"</string>
+    <string name="about5">"Ort:"</string>
     <string name="about6">Jiayu España, Pasaje Angels i Federic,2. 46022, Valencia (Spain)
-    </string>
-    <string name="about7">+34963555091</string>
+    "</string>
+    <string name="about7">"+34963555091"</string>
 
     <!--Labels-->
-    <string name="downloadedFlashZipTxt">Downloaded Zip</string>
-    <string name="downloadedRecoveryTxt">Downloaded Recovery</string>
-    <string name="downloadedRomTxt">Downloaded ROM</string>
-    <string name="downloadedAPKTxt">Downloaded APKS</string>
-    <string name="downloadedBootTxt">Downloaded BootAnimation</string>
+    <string name="downloadedFlashZipTxt">"Zips heruntergeladen"</string>
+    <string name="downloadedRecoveryTxt">"Recoverys heruntergeladen"</string>
+    <string name="downloadedRomTxt">"Heruntergeladene ROMs"</string>
+    <string name="downloadedAPKTxt">"APKs heruntergeladen"</string>
+    <string name="downloadedBootTxt">"Heruntergeladene bootanimation"</string>
 
 
     <!--Botones-->
-    <string name="descargasBtn">Downloads</string>
-    <string name="accesoriosBtn">Accessories</string>
-    <string name="videosBtn">Videotutorials</string>
-    <string name="herramientasBtn">Drivers-Tools</string>
-    <string name="herramientasROMBtn">ROM Tools</string>
-    <string name="flashRecoveryBtn">Flash Recovery</string>
-    <string name="flashZipBtn">Flash Zip</string>
-    <string name="flashRomBtn">Flash ROM</string>
-    <string name="installApkBtn">Install APK</string>
-    <string name="ingenieroBtn">Engineer Mode</string>
-    <string name="imeiBtn">Backup/Restore Imei</string>
-    <string name="imeiBBtn">Backup Imei</string>
-    <string name="imeiRBtn">Restore Imei</string>
-    <string name="rebootRecoveryBtn">Reboot Recovery</string>
-    <string name="cancelarBtn">Cancel</string>
-    <string name="aceptarBtn">Accept</string>
-    <string name="fileExplorerBtn">Open File Explorer</string>
-    <string name="visitarWebBtn">Visit Web</string>
-    <string name="enviarEmailBtn">Send email</string>
-    <string name="foroBtn">Forum</string>
-    <string name="aboutBtn">About us...</string>
-    <string name="cwmChk">I have CWM Recovery</string>
-    <string name="notificacionChkUpd">Show App updates notifications</string>
-    <string name="notificacionChkNews">Show News notifications</string>
-    <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
-    <string name="firmarChk">Check files integrity</string>
-    <string name="softkeysBtn">Enable/Disable Softkeys</string>
+    <string name="descargasBtn">"Downloads"</string>
+    <string name="accesoriosBtn">"Zubehör"</string>
+    <string name="videosBtn">"Videotutorials"</string>
+    <string name="herramientasBtn">"Treiber-Werkzeuge"</string>
+    <string name="herramientasROMBtn">"Werkzeuge ROMs"</string>
+    <string name="flashRecoveryBtn">"Installieren Sie Recovery-"</string>
+    <string name="flashZipBtn">"Installieren Zip"</string>
+    <string name="flashRomBtn">"Installieren ROM"</string>
+    <string name="installApkBtn">"Installieren APK"</string>
+    <string name="ingenieroBtn">"Application Engineer-Modus"</string>
+    <string name="imeiBtn">"Backup / Restore-IMEI"</string>
+    <string name="imeiBBtn">"Kopieren IMEI"</string>
+    <string name="imeiRBtn">"Wiederherstellen IMEI"</string>
+    <string name="rebootRecoveryBtn">"Reboot in Recovery-"</string>
+    <string name="cancelarBtn">"Stornieren"</string>
+    <string name="aceptarBtn">"Akzeptieren"</string>
+    <string name="fileExplorerBtn">"Öffnen Sie Datei-Explorer"</string>
+    <string name="visitarWebBtn">"Besuchen Sie Web"</string>
+    <string name="enviarEmailBtn">"E-Mail senden"</string>
+    <string name="foroBtn">"Forum"</string>
+    <string name="aboutBtn">"Über uns ..."</string>
+    <string name="cwmChk">"Ich habe das CWM Recovery installiert ist"</string>
+    <string name="notificacionChkUpd">"Zeige Updates Umsetzung"</string>
+    <string name="notificacionChkNews">"News für Ihr Gerät"</string>
+    <string name="ajustaBootChk">"Der Versuch, rescale bootanimation Bildschirmauflösung"</string>
+    <string name="firmarChk">"Überprüfen Sie die Integrität der Datei"</string>
+    <string name="imeiSEBtn">"E-Mail schicken IMEI"</string>
+    <string name="salirBtn">"Verlassen"</string>
+    <string name="bootanimationBtn">"Ändern bootanimation"</string>
+    <string name="dataCacheDalvikBtn">"Wipe data / cache / dalvik"</string>
+    <string name="installBootBtn">"Install bootanimation"</string>
+    <string name="bootDescargaBtn">"Herunterladen bootanimation"</string>
+    <string name="backupBtn">"Backup / Restore-System"</string>
+    <string name="softkeysBtn">"Show / Hide Softkeys"</string>
+    <string name="toolsAndroidBtn">"Android-Tools"</string>
 
-    <string name="imeiSEBtn">Send email IMEI</string>
-    <string name="salirBtn">Exit</string>
-    <string name="bootanimationBtn">Change BootAnimation</string>
-    <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
-    <string name="installBootBtn">Install BootAnimation</string>
-    <string name="bootDescargaBtn">Download BootAnimation</string>
-    <string name="backupBtn">Backup/Restore</string>
-    <string name="toolsAndroidBtn">Android Tools</string>
+    <string name="backupRdb">"Back up-System"</string>
+    <string name="restoreRdb">"Wiederherstellen Backup-System"</string>
 
+    <string name="ntfMinTxt">"Neu bei JIAYU.es"</string>
+    <string name="ntfTituloTxt">"Neu bei JIAYU.es"</string>
+    <string name="ntfDetallesTxt">"Neue Produkte für Ihr Gerät"</string>
 
-    <string name="backupRdb">Backup</string>
-    <string name="restoreRdb">Restore</string>
+    <string name="ntfNuevaVersionTxt">"Update JIAYU.es"</string>
+    <string name="ntfTituloNVTxt">"Update JIAYU.es "</string>
+    <string name="ntfDetallesNVTxt">"Version:"</string>
 
-    <string name="ntfNuevaVersionTxt">Update JIAYU.es</string>
-    <string name="ntfTituloNVTxt">Update JIAYU.es</string>
-    <string name="ntfDetallesNVTxt">Version:</string>
-    <string name="ntfMinTxt">News on JIAYU.es</string>
-    <string name="ntfTituloTxt">News on JIAYU.es content</string>
-    <string name="ntfDetallesTxt">News for your Device</string>
-
-    <string name="bcknameTxt">Write backup name</string>
-    <string name="txtbckRdb">Select</string>
-    <string name="makebackuprestoreBtn">Execute</string>
-    <string name="guardarBtn">Save</string>
-
-    <string-array name="languages">
-        <item>Change Language</item>
-        <item>English</item>
-        <item>Español</item>
-        <item>Catala</item>
-        <item>Française</item>
-        <item>日本語</item>
-        <item>Portugues</item>
-        <item>German</item>
-        <item>русский</item>
-        <item>中国语言</item>
-    </string-array>
-    <string-array name="languages_values">
-        <item></item>
-        <item>en</item>
-        <item>es</item>
-        <item>ca</item>
-        <item>fr</item>
-        <item>ja</item>
-        <item>pt</item>
-        <item>de</item>
-        <item>ru</item>
-        <item>zh</item>
-    </string-array>
+    <string name="bcknameTxt">"Schreiben Sie Namen von Backup"</string>
+    <string name="txtbckRdb">"Wählen"</string>
+    <string name="makebackuprestoreBtn">"Führen"</string>
+    <string name="guardarBtn">"Speichern"</string>
 </resources>

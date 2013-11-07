@@ -1,243 +1,144 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">佳域</string>
-    <string name="bienvenida">欢迎佳域实施, 这个应用程序将显示的确切型号的命名，你可以找到在网络上www.jiayu.es。</string>
+    <string name="app_name">"Jiayu.es"</string>
+    <string name="bienvenida">"欢迎应用Jiayu.es。此应用程序将显示的确切型号命名www.jiayu.es发现。"</string>
+
+    <!--Activity Titulos-->
+    <string name="title_activity_browser">"下载Jiayu.es"</string>
+    <string name="title_activity_about">"关于我们......"</string>
+    <string name="title_activity_romtool">"工具光盘"</string>
+    <string name="title_activity_inicio">"引发"</string>
+    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_romscreen">"操作ROM"</string>
+    <string name="title_activity_recoveryscreen">"恢复操作"</string>
+    <string name="title_activity_imeiscreen">"IMEI业务"</string>
+    <string name="title_activity_configscreen">"组态"</string>
+    <string name="title_activity_bootanimation">"Bootanimation"</string>
+    <string name="title_activity_backup">"备份/恢复"</string>
+    <string name="title_activity_tools">"Android的工具"</string>
+
+    <!--Menu-->
+    <string name="updateMnu">"检查更新"</string>
+    <string name="aboutMnu">"关于我们......"</string>
+    <string name="configMnu">"组态"</string>
+    <string name="exitMnu">"离开"</string>
+
+    <!--Values-->
+    <string name="seleccionaValue">"选择"</string>
+
+    <!--Mensajes-->
+    <string name="msgComprobarVersion">"新版本"</string>
+    <string name="msgPreguntaVersion">"正在下载？"</string>
+    <string name="msgCompilacion">"编译："</string>
+    <string name="msgModelo">"模型"</string>
+    <string name="msgIdentificado1">"确定为"</string>
+    <string name="msgIdentificado2">"在ROM中的信息，虽然没有表示的生产JIAYU"</string>
+    <string name="msgTerminalNoJiayu">"您的设备不嘉裕"</string>
+    <string name="msgErrorIdentificar">"发生错误，防止检测到您的设备型号"</string>
+    <string name="msgSeleccionado">"选"</string>
+    <string name="msgIngenieroNoExiste">"应用程序不存在"</string>
+    <string name="msgErrorUnzip">"而解压缩出错"</string>
+    <string name="msgErrorRom">"在初始化安装的ROM错误"</string>
+    <string name="msgErrorRecovery">"写入错误恢复"</string>
+    <string name="msgNoRoot">"你需要根"</string>
+    <string name="msgRecoveryFlasheado">"安装恢复，复位恢复？"</string>
+    <string name="msgRebootRecoveryQF">"要安装ROM /擦拭/邮编将需要重新启动设备，你想现在重新启动？"</string>
+    <string name="msgRebootBackupQF">"要创建的副本系统重新启动，你想现在重新启动？"</string>
+    <string name="msgRebootRestoreQF">"要恢复系统重启，你想现在重新启动？"</string>
+    <string name="msgRebootRecoveryQ">"重新启动恢复？"</string>
+    <string name="msgImeiExiste1">"已经有一个备份您的"</string>
+    <string name="msgImeiExiste2">"而且，此操作将覆盖现有的，你要继续吗？"</string>
+    <string name="msgImeihecho">"创建"</string>
+    <string name="msgImeirestored">"恢复"</string>
+    <string name="msgImeiRestoreQ1">"要恢复您的IMEI文件"</string>
+    <string name="msgImeiRestoreQ2">"发现了什么？"</string>
+
+    <string name="msgTerminadaDescarga">"下载完成"</string>
+    <string name="msgIniciandoDescarga">"下载开始"</string>
+    <string name="msgTapaTalk">"您也可以找到我们上Tapatalk！ Jiayu.es"</string>
+    <string name="msgLastVersion">"我有最新版本的应用程序"</string>
+    <string name="msgInfoJiayu">"西班牙官方分销商&lt;B&gt;：&lt;/ B&gt;  - 电子邮件：&lt;A href=\"info@jiayu.es\"&gt; info@jiayu.es &lt;/ A&gt;  -  &lt;B&gt;通话时间：&lt;/ B&gt;  -  9:00至14:00 LV  -  &lt;B&gt;地点：&lt;/ B&gt;  - Jiayu España, Pasaje Angels i Frederic, 2. 46022, Valencia (Spain)电话 - 963556091"</string>
+    <string name="msgGenericError">"失败"</string>
+    <string name="msgSubjectInfo">"Jiayu.es信息"</string>
+    <string name="msgActivandoBTWifi">"激活蓝牙和WiFi，有必要识别装置模型"</string>
+    <string name="msgModeloNoIgualFichero">"选定的文件似乎并没有包含您的设备型号名称，可能与您的设备不兼容，你反正要安装它吗？"</string>
+    <string name="msgConfiguracion">"组态"</string>
+    <string name="msgRebootQ">"要应用新的IMEI，重启，现在重新启动？"</string>
+    <string name="msgInstallBootC">"Bootanimation改变"</string>
+    <string name="msgNoBusybox">"BusyBox是没有安装，下载？"</string>
+    <string name="msgExisteBackup">"已存在同名副本，删除吗？"</string>
+    <string name="msgNoExisteBackup">"没有找到副本"</string>
+    <string name="msgErrorMD5">"文件完整性错误，无效的文件，下载错误或imcompleta的"</string>
+    <string name="msgNoSD">"启用没有SD /记忆或USB存储，使用这个程序，你需要一个SD卡"</string>
 
 
-    <string name="title_activity_browser">嘉裕下载</string>
-    <string name="title_activity_about">关于</string>
-    <string name="title_activity_romtool">ROM工具</string>
-    <string name="title_activity_inicio">引发</string>
-    <string name="title_activity_video">视频教程</string>
-    <string name="title_activity_romscreen">ROM的操作</string>
-    <string name="title_activity_recoveryscreen">恢复操作</string>
-    <string name="title_activity_imeiscreen">IMEI业务</string>
-    <string name="title_activity_configscreen">组态</string>
-    <string name="title_activity_backup">Backup/Restore</string>
-    <string name="title_activity_tools">Tools Android</string>
+    <string name="about1">"在西班牙的官方经销商："</string>
+    <string name="about2">"info@jiayu.es"</string>
+    <string name="about3">"致电预约："</string>
+    <string name="about4">"MF 9:00至下午2时30分"</string>
+    <string name="about5">"地点："</string>
+    <string name="about6">"Jiayu España, Pasaje Angels i Federic,2. 46022, Valencia (Spain)"</string>
+    <string name="about7">"34963555091"</string>
 
-    <string name="updateMnu">检查更新</string>
-    <string name="aboutMnu">关于</string>
-    <string name="configMnu">组态</string>
-    <string name="exitMnu">离开</string>
-
-    <string name="seleccionaValue">选择</string>
+    <!--Labels-->
+    <string name="downloadedFlashZipTxt">"拉链下载"</string>
+    <string name="downloadedRecoveryTxt">"Recoverys下载"</string>
+    <string name="downloadedRomTxt">"下载的光盘"</string>
+    <string name="downloadedAPKTxt">"下载的APK"</string>
+    <string name="downloadedBootTxt">"下载bootanimation"</string>
 
 
-    <string name="msgComprobarVersion">新版本</string>
-    <string name="msgPreguntaVersion">¿下载？</string>
-    <string name="msgCompilacion">编译：</string>
-    <string name="msgModelo">型号：</string>
-    <string name="msgIdentificado1">确定为</string>
-    <string name="msgIdentificado2">,虽然该设备的信息还没有表示的生产佳域</string>
-    <string name="msgTerminalNoJiayu">该设备不是佳域</string>
-    <string name="msgErrorIdentificar">这是一个错误，不可能检测到模型佳域的.</string>
-    <string name="msgSeleccionado">选</string>
-    <string name="msgIngenieroNoExiste">应用程序不存在</string>
-    <string name="msgErrorUnzip">错误，而解压缩</string>
-    <string name="msgErrorRom">初始化ROM闪烁时出错</string>
-    <string name="msgErrorRecovery">而写恢复文件时出错</string>
-    <string name="msgNoRoot">根是必要的</string>
-    <string name="msgRecoveryFlasheado">恢复一闪而过，重新进入复苏？</string>
-    <string name="msgRebootRecoveryQF">闪烁ROM /Wipe/邮编，您现在需要重新启动，现在要重新启动吗？</string>
-    <string name="msgRebootBackupQF">To create Backup must reboot, reboot now?</string>
-    <string name="msgRebootRestoreQF">To restore Backup must reboot, reboot now?</string>
-    <string name="msgRebootRecoveryQ">重启进入恢复？</string>
-    <string name="msgImeiExiste1">以前</string>
-    <string name="msgImeiExiste2">的存在，这将覆盖它，要继续吗？</string>
-    <string name="msgImeihecho">创造</string>
-    <string name="msgImeirestored">恢复</string>
-    <string name="msgImeiRestoreQ1">你确定要恢复</string>
-    <string name="msgImeiRestoreQ2">？</string>
-    <string name="msgTerminadaDescarga">下载完成</string>
-    <string name="msgIniciandoDescarga">下载开始</string>
-    <string name="msgTapaTalk">你可以找到我们上TAPATALK太！ Jiayu.es</string>
-    <string name="msgLastVersion">我有最新的版本</string>
-    <string name="msgInfoJiayu"><b>在西班牙的经销商:</b><br/>电子邮箱: <a
-            href = "info@jiayu.es">info@jiayu.es</a><br/><b>致电预约:</b><br/>9:00-14:00 L-V <br/><b>地点:</b><br/>Jiayu
-        Ivardis, Passatge Angels i Federic, 2. 46022, València (Spain) <br/>Tel 963556091
-    </string>
-    <string name="msgGenericError">失败</string>
-    <string name="msgSubjectInfo">Jiayu.es信息</string>
-    <string name="msgActivandoBTWifi">它激活Bluetooth和WiFi终端检查版本</string>
-    <string name="msgModeloNoIgualFichero">选定的文件似乎并没有包含您的设备型号名称，可能与您的设备不兼容，你反正要安装它吗？</string>
-    <string name="msgConfiguracion">组态</string>
-    <string name="msgRebootQ">要应用新的IMEI，重启，现在重新启动？</string>
-    <string name="msgInstallBootC">BootAnimation changed</string>
-    <string name="msgNoBusybox">No busybox, download?</string>
-    <string name="msgExisteBackup">A backup already exists, Delete?</string>
-    <string name="msgNoExisteBackup">No backup found</string>
-    <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
-    <string name="msgNoSD">SD Card/Memory is not present or USB storage is activated, to use this app is necessary an SD Card</string>
+    <!--Botones-->
+    <string name="descargasBtn">"下载"</string>
+    <string name="accesoriosBtn">"饰品"</string>
+    <string name="videosBtn">"Videotutoriales"</string>
+    <string name="herramientasBtn">"驱动工具"</string>
+    <string name="herramientasROMBtn">"工具光盘"</string>
+    <string name="flashRecoveryBtn">"安装恢复"</string>
+    <string name="flashZipBtn">"安装拉链"</string>
+    <string name="flashRomBtn">"安装ROM"</string>
+    <string name="installApkBtn">"安装APK"</string>
+    <string name="ingenieroBtn">"应用工程师模式"</string>
+    <string name="imeiBtn">"备份/恢复IMEI"</string>
+    <string name="imeiBBtn">"复制IMEI"</string>
+    <string name="imeiRBtn">"还原IMEI"</string>
+    <string name="rebootRecoveryBtn">"重新启动恢复"</string>
+    <string name="cancelarBtn">"取消"</string>
+    <string name="aceptarBtn">"接受"</string>
+    <string name="fileExplorerBtn">"打开档案总管"</string>
+    <string name="visitarWebBtn">"访问网站"</string>
+    <string name="enviarEmailBtn">"发送电​​子邮件"</string>
+    <string name="foroBtn">"论坛"</string>
+    <string name="aboutBtn">"关于我们......"</string>
+    <string name="cwmChk">"我已经安装了CWM恢复"</string>
+    <string name="notificacionChkUpd">"显示更新实施"</string>
+    <string name="notificacionChkNews">"为您的设备显示新闻"</string>
+    <string name="ajustaBootChk">"尝试重新调整bootanimation屏幕分辨率"</string>
+    <string name="firmarChk">"检查文件的完整性"</string>
+    <string name="imeiSEBtn">"发送电​​子邮件IMEI"</string>
+    <string name="salirBtn">"离开"</string>
+    <string name="bootanimationBtn">"更改bootanimation"</string>
+    <string name="dataCacheDalvikBtn">"擦除数据/缓存/达尔维克"</string>
+    <string name="installBootBtn">"安装bootanimation"</string>
+    <string name="bootDescargaBtn">"下载bootanimation"</string>
+    <string name="backupBtn">"备份/恢复系统"</string>
+    <string name="softkeysBtn">"显示/隐藏软键"</string>
+    <string name="toolsAndroidBtn">"Android的工具"</string>
 
+    <string name="backupRdb">"备份系统"</string>
+    <string name="restoreRdb">"恢复备份系统"</string>
 
-    <string name="about1">在西班牙的经销商:</string>
-    <string name="about2">info@jiayu.es</string>
-    <string name="about3">致电预约:</string>
-    <string name="about4">9:00 a 14:00 L-V</string>
-    <string name="about5">地点:</string>
-    <string name="about6">Jiayu España, Pasaje Angels i Federic,2. 46022, Valencia (Spain)
-    </string>
-    <string name="about7">+34963555091</string>
+    <string name="ntfMinTxt">"新JIAYU.es"</string>
+    <string name="ntfTituloTxt">"新JIAYU.es"</string>
+    <string name="ntfDetallesTxt">"为您的设备的新产品"</string>
 
-    <string name="downloadedFlashZipTxt">下载的zip</string>
-    <string name="downloadedRecoveryTxt">下载的恢复</string>
-    <string name="downloadedRomTxt">下载ROM</string>
-    <string name="downloadedAPKTxt">下载的APKs的</string>
-    <string name="downloadedBootTxt">下载的BootAnimation的</string>
+    <string name="ntfNuevaVersionTxt">"更新JIAYU.es"</string>
+    <string name="ntfTituloNVTxt">"更新JIAYU.es"</string>
+    <string name="ntfDetallesNVTxt">"版本："</string>
 
+    <string name="bcknameTxt">"写名的备份"</string>
+    <string name="txtbckRdb">"选择"</string>
+    <string name="makebackuprestoreBtn">"运行"</string>
+    <string name="guardarBtn">"节省"</string>
 
-
-    <string name="descargasBtn">下载</string>
-    <string name="accesoriosBtn">饰品</string>
-    <string name="videosBtn">Videotutorials</string>
-    <string name="herramientasBtn">驱动工具</string>
-    <string name="herramientasROMBtn">ROM工具</string>
-    <string name="flashRecoveryBtn">快速恢复</string>
-    <string name="flashZipBtn">闪存邮编</string>
-    <string name="flashRomBtn">快闪记忆体（Flash ROM）</string>
-    <string name="installApkBtn">安装APK</string>
-    <string name="ingenieroBtn">工程师模式</string>
-    <string name="imeiBtn">备份/还原IMEI</string>
-    <string name="imeiBBtn">备份维明</string>
-    <string name="imeiRBtn">还原维明</string>
-    <string name="rebootRecoveryBtn">重新启动恢复</string>
-    <string name="cancelarBtn">取消</string>
-    <string name="aceptarBtn">接受</string>
-    <string name="fileExplorerBtn">打开档案总管</string>
-    <string name="visitarWebBtn">访问网站</string>
-    <string name="enviarEmailBtn">发送电子邮件</string>
-    <string name="foroBtn">论坛</string>
-    <string name="aboutBtn">关于我们</string>
-    <string name="cwmChk">我有CWM恢复</string>
-    <string name="notificacionChkUpd">Show App updates notifications</string>
-    <string name="notificacionChkNews">Show News notifications</string>
-    <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
-    <string name="firmarChk">Check files integrity</string>
-    <string name="imeiSEBtn">IMEI发送电子邮件</string>
-    <string name="salirBtn">离开</string>
-    <string name="bootanimationBtn">更改BootAnimation</string>
-    <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
-    <string name="installBootBtn">Install BootAnimation</string>
-    <string name="bootDescargaBtn">Download BootAnimation</string>
-    <string name="backupBtn">Backup/Restore</string>
-    <string name="softkeysBtn">Enable/Disable Softkeys</string>
-    <string name="toolsAndroidBtn">Android Tools</string>
-
-    <string name="backupRdb">Backup</string>
-    <string name="restoreRdb">Restore</string>
-
-    <string name="ntfMinTxt">新闻JIAYU.es</string>
-    <string name="ntfTituloTxt">新闻JIAYU.es内容</string>
-    <string name="ntfDetallesTxt">新闻为您的设备</string>
-
-    <string name="ntfNuevaVersionTxt">更新JIAYU.es</string>
-    <string name="ntfTituloNVTxt">更新JIAYU.es</string>
-    <string name="ntfDetallesNVTxt">版本：</string>
-
-    <string name="bcknameTxt">Write backup name</string>
-    <string name="txtbckRdb">Select</string>
-    <string name="makebackuprestoreBtn">Execute</string>
-    <string name="guardarBtn">Save</string>
-
-    <string-array name="languages">
-        <item>Change Language</item>
-        <item>English</item>
-        <item>Español</item>
-        <item>Catala</item>
-        <item>Française</item>
-        <item>日本語</item>
-        <item>Portugues</item>
-        <item>German</item>
-        <item>русский</item>
-        <item>中国语言</item>
-    </string-array>
-    <string-array name="languages_values">
-        <item></item>
-        <item>en</item>
-        <item>es</item>
-        <item>ca</item>
-        <item>fr</item>
-        <item>ja</item>
-        <item>pt</item>
-        <item>de</item>
-        <item>ru</item>
-        <item>zh</item>
-    </string-array>
 </resources>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

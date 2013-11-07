@@ -1,167 +1,144 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-        <string name="app_name">Jiayu.es</string>
-        <string name="bienvenida">Jiayuのアプリへようこそ。このアプリケーションでは、www.jiayu.esに見つける命名法を使用して正確なモデルが表示されます。</string>
+    <string name="app_name">"Jiayu.es"</string>
+    <string name="bienvenida">"Jiayu.esアプリケーションへようこそ。このアプリケーションは、命名www.jiayu.esと正確なモデルを見つける表示されます。"</string>
+
+    <!--Activity Titulos-->
+    <string name="title_activity_browser">"ダウンロードJiayu.es"</string>
+    <string name="title_activity_about">"私達について..."</string>
+    <string name="title_activity_romtool">"ツールROMの"</string>
+    <string name="title_activity_inicio">"開始"</string>
+    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_romscreen">"オペレーションROM"</string>
+    <string name="title_activity_recoveryscreen">"回収作業"</string>
+    <string name="title_activity_imeiscreen">"IMEI操作"</string>
+    <string name="title_activity_configscreen">"設定"</string>
+    <string name="title_activity_bootanimation">"Bootanimation"</string>
+    <string name="title_activity_backup">"バックアップ/リストア"</string>
+    <string name="title_activity_tools">"アンドロイドツール"</string>
+
+    <!--Menu-->
+    <string name="updateMnu">"アップデートの確認"</string>
+    <string name="aboutMnu">"私達について..."</string>
+    <string name="configMnu">"設定"</string>
+    <string name="exitMnu">"去る"</string>
+
+    <!--Values-->
+    <string name="seleccionaValue">"選択する"</string>
+
+    <!--Mensajes-->
+    <string name="msgComprobarVersion">"利用可能な新しいバージョン"</string>
+    <string name="msgPreguntaVersion">"ダウンロードしている？"</string>
+    <string name="msgCompilacion">"コンパイル："</string>
+    <string name="msgModelo">"モデル"</string>
+    <string name="msgIdentificado1">"として識別"</string>
+    <string name="msgIdentificado2">"、ROM情報でメーカーJiayuのとして示されていませんが"</string>
+    <string name="msgTerminalNoJiayu">"お使いのデバイスは、Jiayuのではない"</string>
+    <string name="msgErrorIdentificar">"エラーは、お使いのデバイスモデルを検出できないような発生"</string>
+    <string name="msgSeleccionado">"選択"</string>
+    <string name="msgIngenieroNoExiste">"アプリケーションが存在しません"</string>
+    <string name="msgErrorUnzip">"解凍中にエラーが発生しました"</string>
+    <string name="msgErrorRom">"ROMのインストールを初期化中にエラー"</string>
+    <string name="msgErrorRecovery">"回復の書き込み中にエラー"</string>
+    <string name="msgNoRoot">"あなたがrootになる必要があり"</string>
+    <string name="msgRecoveryFlasheado">"Recoveryがインストールされ、復旧にリセット？"</string>
+    <string name="msgRebootRecoveryQF">"ROMをインストールして、/ / Zipは、デバイスを再起動する必要がありますワイプするには、ここで再起動したいですか？"</string>
+    <string name="msgRebootBackupQF">"再起動するようにシステムのコピーを作成するには、今では再起動したいですか？"</string>
+    <string name="msgRebootRestoreQF">"再起動するように戻ってシステムを復元するには、ここで再起動したいですか？"</string>
+    <string name="msgRebootRecoveryQ">"再起動？回復？"</string>
+    <string name="msgImeiExiste1">"あなたのバックアップが既に存在します"</string>
+    <string name="msgImeiExiste2">"と、この操作は既存のものを上書きします、あなたは継続したいですか？"</string>
+    <string name="msgImeihecho">"作成"</string>
+    <string name="msgImeirestored">"回復する"</string>
+    <string name="msgImeiRestoreQ1">"ファイルとあなたのIMEIを復元したい"</string>
+    <string name="msgImeiRestoreQ2">"見つかった？"</string>
+
+    <string name="msgTerminadaDescarga">"完全なダウンロード"</string>
+    <string name="msgIniciandoDescarga">"開始されたダウンロード"</string>
+    <string name="msgTapaTalk">"またTapatalk上で私たちを見つけることができます！ Jiayu.es"</string>
+    <string name="msgLastVersion">"私は、アプリケーションが最新バージョンである"</string>
+    <string name="msgInfoJiayu">"スペインの&lt;B&gt;公式代理店：&lt;/ b&gt;の検索、電子メール：&lt;a href=\"info@jiayu.es\"&gt; info@jiayu.es &lt;/ a&gt;を検索&lt;B&gt;通話時間：&lt;/ b&gt;の検索午前14時LV検索&lt;B&gt;場所9:00〜：&lt;/ b&gt;Jiayu España, Pasaje Angels i Frederic, 2. 46022, Valencia (Spain)電話番号検索963556091"</string>
+    <string name="msgGenericError">"失敗した"</string>
+    <string name="msgSubjectInfo">"Jiayu.es情報"</string>
+    <string name="msgActivandoBTWifi">"ブルートゥースを活性化し、装置モデルを特定するために必要な、無線LAN"</string>
+    <string name="msgModeloNoIgualFichero">"選択したファイルは、デバイスのモデル名を含むように表示されない場合、お使いのデバイスと互換性がないかもしれませんが、とにかくそれをインストールしたいですか？"</string>
+    <string name="msgConfiguracion">"設定"</string>
+    <string name="msgRebootQ">"再起動するための新たなIMEIを適用するには、[今すぐ再？"</string>
+    <string name="msgInstallBootC">"Bootanimationが変更"</string>
+    <string name="msgNoBusybox">"busyboxのがインストールされていない、ダウンロードされていますか？"</string>
+    <string name="msgExisteBackup">"コピーはその名前ですでに存在して、削除しますか？"</string>
+    <string name="msgNoExisteBackup">"いいえコピーが見つかりませんでした"</string>
+    <string name="msgErrorMD5">"ファイルの整合性エラー、無効なファイル、誤ってダウンロードするかimcompleta"</string>
+    <string name="msgNoSD">"いいえSD /メモリやUSBストレージが有効になっていない、このアプリを使用することは、SDカードが必要"</string>
 
 
-     <string name="title_activity_browser">Jiayuのダウンロード</string>
-     <string name="title_activity_about">約</string>
-     <string name="title_activity_romtool">ROMツール</string>
-     <string name="title_activity_inicio">インデックス</string>
-     <string name="title_activity_video">ビデオチュートリアル</string>
-     <string name="title_activity_romscreen">ROM操作</string>
-     <string name="title_activity_recoveryscreen">回収作業</string>
-     <string name="title_activity_imeiscreen">IMEI操作</string>
-    <string name="title_activity_configscreen">設定</string>
-    <string name="title_activity_bootanimation">BootAnimation</string>
-    <string name="title_activity_backup">Backup/Restore</string>
-    <string name="title_activity_tools">Tools Android</string>
+    <string name="about1">"スペインでの公式代理店："</string>
+    <string name="about2">"info@jiayu.es"</string>
+    <string name="about3">"スケジュールコール："</string>
+    <string name="about4">"午後二時にMF 9時"</string>
+    <string name="about5">"場所："</string>
+    <string name="about6">"Jiayuのスペイン、パサ天使Iフレデリック、2。 46022、バレンシア（スペイン）"</string>
+    <string name="about7">"+34963555091"</string>
 
-     <string name="updateMnu">アップデートを確認する</string>
-     <string name="aboutMnu">私達について</string>
-    <string name="configMnu">設定</string>
-     <string name="exitMnu">終了する</string>
-
-     <string name="seleccionaValue">選択する</string>
+    <!--Labels-->
+    <string name="downloadedFlashZipTxt">"ジッパーは、ダウンロード"</string>
+    <string name="downloadedRecoveryTxt">"Recoverysがダウンロード"</string>
+    <string name="downloadedRomTxt">"ダウンロードしたROMの"</string>
+    <string name="downloadedAPKTxt">"のAPKがダウンロード"</string>
+    <string name="downloadedBootTxt">"bootanimationダウンロード"</string>
 
 
-     <string name="msgComprobarVersion">利用可能な新しいバージョン</string>
-     <string name="msgPreguntaVersion">¿ダウンロードしますか？</string>
-     <string name="msgCompilacion">コンパイル：</string>
-     <string name="msgModelo">モデル：</string>
-     <string name="msgIdentificado1">として識別</string>
-     <string name="msgIdentificado2">、メーカーとして示されていないデバイス情報Jiayuの上が</string>
-     <string name="msgTerminalNoJiayu">この携帯電話はJiayuのではない</string>
-     <string name="msgErrorIdentificar">エラーが発生しました。それはあなたのJiayuのモデルを検出することはできません</string>
-     <string name="msgSeleccionado">選択</string>
-     <string name="msgIngenieroNoExiste">アプリは存在しません</string>
-     <string name="msgErrorUnzip">解凍中にエラーが発生しました</string>
-     <string name="msgErrorRom">初期ROMのフラッシュ中にエラー</string>
-     <string name="msgErrorRecovery">リカバリファイルを書き込み中にエラー</string>
-     <string name="msgNoRoot">ルートが必要です</string>
-     <string name="msgRecoveryFlasheado"> 回復は、回復への再起動をフラッシュ？</string>
-     <string name="msgRebootRecoveryQF">今すぐ再起動する必要がROM /Wipe /郵便番号をフラッシュするには、[今すぐ再起動したいですか？</string>
-    <string name="msgRebootBackupQF">To create Backup must reboot, reboot now?</string>
-    <string name="msgRebootRestoreQF">To restore Backup must reboot, reboot now?</string>
-     <string name="msgRebootRecoveryQ">回復に再起動？</string>
-     <string name="msgImeiExiste1">以前</string>
-     <string name="msgImeiExiste2">は、これはそれを上書きします、存在し続けたいですか？</string>
-     <string name="msgImeihecho">作成</string>
-     <string name="msgImeirestored">、復元</string>
-     <string name="msgImeiRestoreQ1">あなたは</string>
-     <string name="msgImeiRestoreQ2">を復元してもよろしいですか？</string>
-     <string name="msgTerminadaDescarga">完成ダウンロード</string>
-     <string name="msgIniciandoDescarga"> 開始ダウンロード</string>
-     <string name="msgTapaTalk">あなたもTAPATALK上で私たちを見つけることができます！ Jiayu.es</string>
-     <string name="msgLastVersion">あなたは既に最新バージョンがインストールされている</string>
-         <string name="msgInfoJiayu">&lt;b&gt;Distribuidor Oficial en España:&lt;/b&gt;&lt;br&gt;email:&lt;a
-             href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;Horario atención
-             telefónica:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Localización:&lt;/b&gt;&lt;br&gt;Jiayu
-             Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
-         </string>
-    <string name="msgGenericError">エラーが発生しました</string>
-    <string name="msgSubjectInfo">Jiayu.es情報</string>
-    <string name="msgActivandoBTWifi">BTとWIFIはYOUT端子indentifyするために活性化される</string>
-    <string name="msgModeloNoIgualFichero">選択したファイルは、デバイスのモデル名を含むように表示されない場合、お使いのデバイスと互換性がないかもしれませんが、とにかくそれをインストールしたいですか？</string>
-    <string name="msgConfiguracion">設定</string>
-    <string name="msgRebootQ">再起動するための新たなIMEIを適用するには、[今すぐ再？</string>
-    <string name="msgInstallBootC">BootAnimation changed</string>
-    <string name="msgNoBusybox">No busybox, download?</string>
-    <string name="msgExisteBackup">A backup already exists, Delete?</string>
-    <string name="msgNoExisteBackup">No backup found</string>
-    <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
-    <string name="msgNoSD">SD Card/Memory is not present or USB storage is activated, to use this app is necessary an SD Card</string>
+    <!--Botones-->
+    <string name="descargasBtn">"ダウンロード"</string>
+    <string name="accesoriosBtn">"アクセサリー"</string>
+    <string name="videosBtn">"Videotutoriales"</string>
+    <string name="herramientasBtn">"ドライバ·ツール"</string>
+    <string name="herramientasROMBtn">"ツールROMの"</string>
+    <string name="flashRecoveryBtn">"Recoveryをインストール"</string>
+    <string name="flashZipBtn">"インストールジップ"</string>
+    <string name="flashRomBtn">"ROMをインストール"</string>
+    <string name="installApkBtn">"APKをインストール"</string>
+    <string name="ingenieroBtn">"アプリケーションエンジニアモード"</string>
+    <string name="imeiBtn">"バックアップ/復元IMEI"</string>
+    <string name="imeiBBtn">"コピーIMEI"</string>
+    <string name="imeiRBtn">"IMEIを復元"</string>
+    <string name="rebootRecoveryBtn">"リカバリーで再起動"</string>
+    <string name="cancelarBtn">"キャンセル"</string>
+    <string name="aceptarBtn">"受け入れる"</string>
+    <string name="fileExplorerBtn">"ファイルエクスプローラを開く"</string>
+    <string name="visitarWebBtn">"ウェブにアクセスしてください"</string>
+    <string name="enviarEmailBtn">"メールを送信"</string>
+    <string name="foroBtn">"フォーラム"</string>
+    <string name="aboutBtn">"私達について..."</string>
+    <string name="cwmChk">"私はCWMリカバリーをインストールしている"</string>
+    <string name="notificacionChkUpd">"アップデート実装を表示"</string>
+    <string name="notificacionChkNews">"あなたのデバイスのためのニュースを表示"</string>
+    <string name="ajustaBootChk">"再スケーリングbootanimation画面解像度にしようとすると、"</string>
+    <string name="firmarChk">"ファイルの整合性をチェックします"</string>
+    <string name="imeiSEBtn">"メールIMEIを送信"</string>
+    <string name="salirBtn">"去る"</string>
+    <string name="bootanimationBtn">"変更bootanimation"</string>
+    <string name="dataCacheDalvikBtn">"データ/キャッシュ/のDalvikを拭き"</string>
+    <string name="installBootBtn">"インストールbootanimation"</string>
+    <string name="bootDescargaBtn">"ダウンロードbootanimation"</string>
+    <string name="backupBtn">"システムをバックアップ/復元する"</string>
+    <string name="softkeysBtn">"ソフトキーの表示/非表示"</string>
+    <string name="toolsAndroidBtn">"アンドロイドツール"</string>
 
+    <string name="backupRdb">"システムをバックアップ"</string>
+    <string name="restoreRdb">"バックアップシステムの復元"</string>
 
-    <string name="about1">Distribuidor Oficial en España:</string>
-    <string name="about2">info@jiayu.es</string>
-    <string name="about3">Horario atención telefónica:</string>
-    <string name="about4">9:00 a 14:00 L-V</string>
-    <string name="about5">Localización:</string>
-    <string name="about6">Jiayu España, Pasaje Angels i Federic,2. 46022, Valencia (Spain)</string>
-    <string name="about7">+34963555091</string>
-    <string name="downloadedFlashZipTxt"> ダウンロードしたZIP</string>
-    <string name="downloadedRecoveryTxt">ダウンロード回復</string>
-    <string name="downloadedRomTxt">ダウンロードしたROM</string>
-    <string name="downloadedAPKTxt">ダウンロードのAPK</string>
-    <string name="downloadedBootTxt">ダウンロードのBootAnimation</string>
+    <string name="ntfMinTxt">"JIAYU.esに新しい"</string>
+    <string name="ntfTituloTxt">"JIAYU.esに新しい"</string>
+    <string name="ntfDetallesTxt">"デバイスの新製品"</string>
 
+    <string name="ntfNuevaVersionTxt">"アップデートJIAYU.es"</string>
+    <string name="ntfTituloNVTxt">"アップデートJIAYU.es"</string>
+    <string name="ntfDetallesNVTxt">"バージョン："</string>
 
-    <string name="descargasBtn">ダウンロード</string>
-    <string name="accesoriosBtn">アクセサリー</string>
-    <string name="videosBtn">Videotutorials</string>
-    <string name="herramientasBtn">ドライバ·ツール</string>
-    <string name="herramientasROMBtn">ROMツール</string>
-    <string name="flashRecoveryBtn">フラッシュリカバリ</string>
-    <string name="flashZipBtn">フラッシュ郵便</string>
-    <string name="flashRomBtn">フラッシュROM</string>
-    <string name="installApkBtn">APKをインストール</string>
-    <string name="ingenieroBtn">エンジニアモード</string>
-    <string name="imeiBtn">バックアップ/復元IMEI</string>
-    <string name="imeiBBtn">バックアップIMEI</string>
-    <string name="imeiRBtn">IMEIを復元</string>
-    <string name="rebootRecoveryBtn">再起動による回復</string>
-    <string name="cancelarBtn">キャンセル</string>
-    <string name="aceptarBtn">受け入れる</string>
-    <string name="fileExplorerBtn">ファイルエクスプローラを開く</string>
-    <string name="visitarWebBtn"> ウェブにアクセスしてください</string>
-    <string name="enviarEmailBtn">メールを送信</string>
-    <string name="foroBtn">フォーラム</string>
-    <string name="aboutBtn">私達について</string>
-    <string name="cwmChk">私はCWMリカバリーを持って</string>
-    <string name="notificacionChkUpd">Show App updates notifications</string>
-    <string name="notificacionChkNews">Show News notifications</string>
-    <string name="ajustaBootChk">Try to resize bootAnimation to resolution screen</string>
-    <string name="firmarChk">Check files integrity</string>
-    <string name="imeiSEBtn">IMEIメールを送信</string>
-    <string name="salirBtn">終了する</string>
-    <string name="bootanimationBtn">変更BootAnimation</string>
-    <string name="dataCacheDalvikBtn">Wipe data/cache/dalvik</string>
-    <string name="installBootBtn">Install BootAnimation</string>
-    <string name="bootDescargaBtn">Download BootAnimation</string>
-    <string name="backupBtn">Backup/Restore</string>
-    <string name="softkeysBtn">Enable/Disable Softkeys</string>
-    <string name="toolsAndroidBtn">Android Tools</string>
+    <string name="bcknameTxt">"バックアップの名前を書く"</string>
+    <string name="txtbckRdb">"選択する"</string>
+    <string name="makebackuprestoreBtn">"実行"</string>
+    <string name="guardarBtn">"保存"</string>
 
-    <string name="backupRdb">Backup</string>
-    <string name="restoreRdb">Restore</string>
-
-    <string name="ntfMinTxt">JIAYU.esのニュース</string>
-    <string name="ntfTituloTxt">JIAYU.esコンテンツのニュース</string>
-    <string name="ntfDetallesTxt">あなたのデバイスのためのニュース</string>
-
-    <string name="ntfNuevaVersionTxt">アップデートJIAYU.es</string>
-    <string name="ntfTituloNVTxt">アップデートJIAYU.es</string>
-    <string name="ntfDetallesNVTxt">バージョン：</string>
-
-    <string name="bcknameTxt">Write backup name</string>
-    <string name="txtbckRdb">Select</string>
-    <string name="makebackuprestoreBtn">Execute</string>
-    <string name="guardarBtn">Save</string>
-
-    <string-array name="languages">
-        <item>Change Language</item>
-        <item>English</item>
-        <item>Español</item>
-        <item>Catala</item>
-        <item>Française</item>
-        <item>日本語</item>
-        <item>Portugues</item>
-        <item>German</item>
-        <item>русский</item>
-        <item>中国语言</item>
-    </string-array>
-    <string-array name="languages_values">
-        <item></item>
-        <item>en</item>
-        <item>es</item>
-        <item>ca</item>
-        <item>fr</item>
-        <item>ja</item>
-        <item>pt</item>
-        <item>de</item>
-        <item>ru</item>
-        <item>zh</item>
-    </string-array>
 </resources>

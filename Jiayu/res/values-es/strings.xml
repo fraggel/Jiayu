@@ -146,29 +146,4 @@
     <string name="txtbckRdb">Seleccionar</string>
     <string name="makebackuprestoreBtn">Ejecutar</string>
     <string name="guardarBtn">Guardar</string>
-
-    <string-array name="languages">
-        <item>Cambiar Idioma</item>
-        <item>English</item>
-        <item>Español</item>
-        <item>Catala</item>
-        <item>Française</item>
-        <item>日本語</item>
-        <item>Portugues</item>
-        <item>German</item>
-        <item>русский</item>
-        <item>中国语言</item>
-    </string-array>
-    <string-array name="languages_values">
-        <item></item>
-        <item>en</item>
-        <item>es</item>
-        <item>ca</item>
-        <item>fr</item>
-        <item>ja</item>
-        <item>pt</item>
-        <item>de</item>
-        <item>ru</item>
-        <item>zh</item>
-    </string-array>
 </resources>

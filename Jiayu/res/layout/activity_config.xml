@@ -43,7 +43,7 @@
             style="@style/ButtonTextGreen"
             android:background="@drawable/btn_green"
             android:textAlignment="center"
-            android:visibility="invisible" />
+            android:visibility="visible" />
 
         <CheckBox
                 android:layout_width="wrap_content"
