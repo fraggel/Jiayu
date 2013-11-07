@@ -70,7 +70,7 @@
     <string name="msgNoExisteBackup">"いいえコピーが見つかりませんでした"</string>
     <string name="msgErrorMD5">"ファイルの整合性エラー、無効なファイル、誤ってダウンロードするかimcompleta"</string>
     <string name="msgNoSD">"いいえSD /メモリやUSBストレージが有効になっていない、このアプリを使用することは、SDカードが必要"</string>
-
+    <string name="msgMD5Jiayu">このオプションは、jiayu.esからダウンロードしたROM/リカバリで動作することを覚えておいてください</string>
 
     <string name="about1">"スペインでの公式代理店："</string>
     <string name="about2">"info@jiayu.es"</string>

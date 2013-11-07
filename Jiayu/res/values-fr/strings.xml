@@ -71,7 +71,7 @@
     <string name="msgNoExisteBackup">"Aucune copie trouvés"</string>
     <string name="msgErrorMD5">"erreur d'intégrité du fichier, fichier non valide, téléchargez erronées ou imcompleta"</string>
     <string name="msgNoSD">"Pas de stockage SD / mémoire ou USB est activée, d'utiliser cette application, vous avez besoin d'une carte SD"</string>
-
+    <string name="msgMD5Jiayu">"Rappelez-vous que cette option ne fonctionne qu'avec ROM / Recovery téléchargé depuis jiayu.es"</string>
 
     <string name="about1">"Distributeur officiel en Espagne:"</string>
     <string name="about2">"info@jiayu.es"</string>

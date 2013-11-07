@@ -15,6 +15,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.Locale;
 
@@ -102,6 +103,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
         }else if(buttonView.getId()==R.id.firmarChk){
             if(buttonView.isChecked()){
                 editorAjustes.putBoolean("firmarChk",true);
+                Toast.makeText(getApplicationContext(),R.string.msgMD5Jiayu,Toast.LENGTH_LONG).show();
             }else{
                 editorAjustes.putBoolean("firmarChk",false);
             }

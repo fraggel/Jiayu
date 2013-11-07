@@ -71,7 +71,7 @@
     <string name="msgNoExisteBackup">"No s'han trobat còpies"</string>
     <string name="msgErrorMD5">"Error d'integritat de l'arxiu, arxiu no vàlid, descàrrega errònia o imcompleta"</string>
     <string name="msgNoSD">"No hi ha targeta SD / Memòria o està actiu l'emmagatzematge USB, per utilitzar aquesta aplicació cal una targeta SD"</string>
-
+    <string name="msgMD5Jiayu">Recorda que aquesta opció només funcionarà amb les ROM / Recovery descarregades des jiayu.es</string>
 
     <string name="about1">"Distribuïdor Oficial a Espanya:"</string>
     <string name="about2">"info@jiayu.es"</string>

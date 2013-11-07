@@ -71,7 +71,7 @@
     <string name="msgNoExisteBackup">"Копии не найдены"</string>
     <string name="msgErrorMD5">"Целостности файлов ошибка, недействительный файл, скачать ошибочных или imcompleta"</string>
     <string name="msgNoSD">"Нет SD / Memory или накопителя не будет включен, чтобы использовать это приложение вам нужно карт SD"</string>
-
+    <string name="msgMD5Jiayu">Помните, что эта опция будет работать только с ROM / Восстановление скачаны с jiayu.es</string>
 
     <string name="about1">"Официальный дистрибьютор в Испании:"</string>
     <string name="about2">"info@jiayu.es"</string>

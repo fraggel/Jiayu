@@ -70,7 +70,7 @@
     <string name="msgNoExisteBackup">"没有找到副本"</string>
     <string name="msgErrorMD5">"文件完整性错误，无效的文件，下载错误或imcompleta的"</string>
     <string name="msgNoSD">"启用没有SD /记忆或USB存储，使用这个程序，你需要一个SD卡"</string>
-
+    <string name="msgMD5Jiayu">请记住，此选项只会ROM/恢复从jiayu.es下载</string>
 
     <string name="about1">"在西班牙的官方经销商："</string>
     <string name="about2">"info@jiayu.es"</string>
