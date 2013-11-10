@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -22,7 +23,7 @@ import java.util.Locale;
 /**
  * Created by Fraggel on 10/08/13.
  */
-public class ConfigActivity extends Activity implements CompoundButton.OnCheckedChangeListener, AdapterView.OnItemSelectedListener{
+public class ConfigActivity extends Activity implements CompoundButton.OnCheckedChangeListener, AdapterView.OnItemSelectedListener, AsyncResponse{
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
     boolean notificacionesNews=true;
@@ -34,6 +35,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
     ImageButton imageButton;
     Spinner languageSpn=null;
     String listaIdiomas[]=null;
+    Button md5Btn=null;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +53,14 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
             }
 
         });
+        md5Btn=(Button)findViewById(R.id.downloadMD5Btn);
+        md5Btn.setOnClickListener(new View.OnClickListener() {
 
+            public void onClick(View arg0) {
+                descargarFirmas();
+            }
+
+        });
         notificacionesNews=ajustes.getBoolean("notificacionesNews",true);
         notificacionesChkNews = (CheckBox) findViewById(R.id.notificacionChkNews);
         notificacionesChkNews.setOnCheckedChangeListener(this);
@@ -80,8 +89,10 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
         firmarChk.setOnCheckedChangeListener(this);
         if(firmaChk){
             firmarChk.setChecked(true);
+            md5Btn.setEnabled(true);
         }else{
             firmarChk.setChecked(false);
+            md5Btn.setEnabled(false);
         }
     }
 
@@ -103,9 +114,11 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
         }else if(buttonView.getId()==R.id.firmarChk){
             if(buttonView.isChecked()){
                 editorAjustes.putBoolean("firmarChk",true);
+                md5Btn.setEnabled(true);
                 Toast.makeText(getApplicationContext(),R.string.msgMD5Jiayu,Toast.LENGTH_LONG).show();
             }else{
                 editorAjustes.putBoolean("firmarChk",false);
+                md5Btn.setEnabled(false);
             }
         }
         editorAjustes.commit();
@@ -129,9 +142,24 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
 
         }
     }
-
+    private void descargarFirmas(){
+        try {
+            MD5Thread asyncTask = new MD5Thread();
+            asyncTask.delegate = this;
+            asyncTask.execute();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+    public void processFinish(String output) {
+
+        if("firmaok".equals(output)){
+            Toast.makeText(getApplicationContext(),R.string.msgMmd5Updated, Toast.LENGTH_SHORT).show();
+        }
 
     }
 }

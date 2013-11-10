@@ -76,6 +76,7 @@
     <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
     <string name="msgNoSD">No hay tarjeta SD/Memoria o está activo el almacenamiento USB, para usar esta aplicación es necesario una tarjeta SD</string>
     <string name="msgMD5Jiayu">Recuerda que esta opción solo funcionará con las Roms/Recovery descargados de jiayu.es</string>
+    <string name="msgMmd5Updated">Lista de MD5 Actualizada</string>
 
     <string name="about1">Distribuidor Oficial en España:</string>
     <string name="about2">info@jiayu.es</string>
@@ -130,7 +131,7 @@
     <string name="backupBtn">Copiar/Restaurar Sistema</string>
     <string name="softkeysBtn">Mostrar/Ocultar Teclas en pantalla</string>
     <string name="toolsAndroidBtn">Herramientas Android</string>
-
+    <string name="downloadMD5Btn">"Descargar archivo de lista de MD5"</string>
     <string name="backupRdb">Crear copia de sistema</string>
     <string name="restoreRdb">Restaurar copia de sistema</string>
 

@@ -69,6 +69,15 @@
             android:checked="true"
             style="@style/LabelTextBlack"
             android:enabled="true" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/downloadMD5Btn"
+            android:id="@+id/downloadMD5Btn"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/btn_green"
+            style="@style/ButtonTextGreen"
+            android:enabled="false"/>
     </LinearLayout>
 
 </ScrollView>

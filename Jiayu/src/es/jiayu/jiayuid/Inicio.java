@@ -12,12 +12,13 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class Inicio extends Activity {
+public class Inicio extends Activity implements AsyncResponse{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
+        descargarFirmas();
         Calendar calc = Calendar.getInstance();
         calc.add(Calendar.SECOND,2);
         Intent intent2 = new Intent(getApplicationContext(), NotifyService.class);
@@ -46,5 +47,19 @@ public class Inicio extends Activity {
                 startActivity(i3);
             }
         }, 500);
+    }
+    private void descargarFirmas(){
+        try {
+            MD5Thread asyncTask = new MD5Thread();
+            asyncTask.delegate = this;
+            asyncTask.execute();
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void processFinish(String output) {
+
     }
 }

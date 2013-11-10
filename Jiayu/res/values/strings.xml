@@ -72,7 +72,7 @@
     <string name="msgErrorMD5">"File integrity error, invalid file, download erroneous or imcompleta"</string>
     <string name="msgNoSD">"No SD / Memory or USB storage is enabled, to use this app you need an SD card"</string>
     <string name="msgMD5Jiayu">Remember that this option will only work with ROM / Recovery downloaded from jiayu.es</string>
-
+    <string name="msgMmd5Updated">Md5 List Updated</string>
     <string name="about1">"Official Distributor in Spain:"</string>
     <string name="about2">"info@jiayu.es"</string>
     <string name="about3">"Call Schedule:"</string>
@@ -125,7 +125,7 @@
     <string name="backupBtn">"Backup / Restore System"</string>
     <string name="softkeysBtn">"Show / Hide Softkeys"</string>
     <string name="toolsAndroidBtn">"Android Tools"</string>
-
+    <string name="downloadMD5Btn">"Download MD5 list file"</string>
     <string name="backupRdb">"Back up system"</string>
     <string name="restoreRdb">"Restore backup system"</string>
 
@@ -148,6 +148,7 @@
         <item>"Español"</item>
         <item>"Catala"</item>
         <item>"Français"</item>
+        <item>"Italiano"</item>
         <item>"日本语"</item>
         <item>"Portugues"</item>
         <item>"Deutsch"</item>
@@ -160,6 +161,7 @@
         <item>"es"</item>
         <item>"ca"</item>
         <item>"fr"</item>
+        <item>"it"</item>
         <item>"ja"</item>
         <item>"pt"</item>
         <item>"de"</item>

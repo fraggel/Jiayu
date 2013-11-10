@@ -1,8 +1,12 @@
 package es.jiayu.jiayuid;
 
+import android.os.Environment;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.security.MessageDigest;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
@@ -77,12 +81,26 @@ public class Utilidades {
             } catch (java.util.zip.DataFormatException ex) {
                 // handle
             }*/
-
-
-            if(nombre.toLowerCase().indexOf(md5File.substring(0,12).toLowerCase())!=-1){
-                iguales=true;
-            }else{
-                iguales=false;
+            BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(new File(Environment.getExternalStorageDirectory() + "/JIAYUES/CHECKSUM.md5"))));
+            String line=in.readLine();
+            while (line!=null){
+                String[] md5=line.split("  ");
+                if(nombre.toLowerCase().equals(md5[1].toLowerCase())){
+                    if(md5File.toUpperCase().equals(md5[0].toUpperCase())){
+                        iguales=true;
+                        break;
+                    }else{
+                        iguales=false;
+                    }
+                }else{
+                    if(md5File.toUpperCase().equals(md5[0].toUpperCase())){
+                        iguales=true;
+                        break;
+                    }else{
+                        iguales=false;
+                    }
+                }
+                line=in.readLine();
             }
         }catch(Exception e){
             e.printStackTrace();

@@ -72,7 +72,7 @@
     <string name="msgErrorMD5">"Целостности файлов ошибка, недействительный файл, скачать ошибочных или imcompleta"</string>
     <string name="msgNoSD">"Нет SD / Memory или накопителя не будет включен, чтобы использовать это приложение вам нужно карт SD"</string>
     <string name="msgMD5Jiayu">Помните, что эта опция будет работать только с ROM / Восстановление скачаны с jiayu.es</string>
-
+    <string name="msgMmd5Updated">Обновлен список Md5</string>
     <string name="about1">"Официальный дистрибьютор в Испании:"</string>
     <string name="about2">"info@jiayu.es"</string>
     <string name="about3">"Позвоните расписание:"</string>
@@ -125,7 +125,7 @@
     <string name="backupBtn">"Резервное копирование / восстановление системы"</string>
     <string name="softkeysBtn">"Показать / Скрыть клавиши"</string>
     <string name="toolsAndroidBtn">"Android Tools"</string>
-
+    <string name="downloadMD5Btn">"Скачать список файлов MD5"</string>
     <string name="backupRdb">"Резервное копирование системы"</string>
     <string name="restoreRdb">"Восстановление системы резервного копирования"</string>
 

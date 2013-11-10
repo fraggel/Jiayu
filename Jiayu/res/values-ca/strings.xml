@@ -72,7 +72,7 @@
     <string name="msgErrorMD5">"Error d'integritat de l'arxiu, arxiu no vàlid, descàrrega errònia o imcompleta"</string>
     <string name="msgNoSD">"No hi ha targeta SD / Memòria o està actiu l'emmagatzematge USB, per utilitzar aquesta aplicació cal una targeta SD"</string>
     <string name="msgMD5Jiayu">Recorda que aquesta opció només funcionarà amb les ROM / Recovery descarregades des jiayu.es</string>
-
+    <string name="msgMmd5Updated">"Llista d'md5 Actualitzada"</string>
     <string name="about1">"Distribuïdor Oficial a Espanya:"</string>
     <string name="about2">"info@jiayu.es"</string>
     <string name="about3">"Horari atenció telefònica:"</string>
@@ -125,7 +125,7 @@
     <string name="backupBtn">"Copia / Restaurar Sistema"</string>
     <string name="softkeysBtn">"Mostra / Amaga Tecles en pantalla"</string>
     <string name="toolsAndroidBtn">"Eines Android"</string>
-
+    <string name="downloadMD5Btn">"Descarrega arxiu de llista de MD5"</string>
     <string name="backupRdb">"Crear còpia de sistema"</string>
     <string name="restoreRdb">"Restaurar còpia de sistema"</string>
 

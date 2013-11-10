@@ -65,7 +65,6 @@ public class App extends Activity implements AsyncResponse {
     String chip = "";
     String listaIdiomas[]=null;
 
-
     boolean noInternet=false;
     static NotificationManager mNotificationManagerUpdate=null;
     static NotificationManager mNotificationManagerNews=null;
@@ -279,6 +278,7 @@ public class App extends Activity implements AsyncResponse {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     private void ActualizarVersion() {
         try {
@@ -792,7 +792,7 @@ public class App extends Activity implements AsyncResponse {
     @Override
     public void processFinish(String output) {
         try {
-            if (output != null && !"TIMEOUT----".equals(output)) {
+            if (output != null && !"TIMEOUT----".equals(output) && (!"firmaok".equals(output) && !"firmanok".equals(output))) {
 
                 String inicio = output.split("-;-")[0];
                 output = output.split("-;-")[1];

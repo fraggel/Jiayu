@@ -72,7 +72,7 @@
     <string name="msgErrorMD5">"Datei-Integrität Fehler, ungültige Datei downloaden fehlerhafte oder imcompleta"</string>
     <string name="msgNoSD">"Kein SD / Memory-oder USB-Speicher aktiviert ist, um diese App nutzen, benötigen Sie einen SD-Karte"</string>
     <string name="msgMD5Jiayu">Denken Sie daran, dass diese Option nur mit ROM / Recovery von jiayu.es heruntergeladen arbeiten</string>
-
+    <string name="msgMmd5Updated">"Md5 Liste aktualisiert"</string>
     <string name="about1">"Offizieller Distributor in Spanien:"</string>
     <string name="about2">"info@jiayu.es"</string>
     <string name="about3">"Rufen Zeitplan:"</string>
@@ -88,7 +88,7 @@
     <string name="downloadedRomTxt">"Heruntergeladene ROMs"</string>
     <string name="downloadedAPKTxt">"APKs heruntergeladen"</string>
     <string name="downloadedBootTxt">"Heruntergeladene bootanimation"</string>
-
+    <string name="downloadMD5Btn">"Herunterladen Liste Datei MD5"</string>
 
     <!--Botones-->
     <string name="descargasBtn">"Downloads"</string>
