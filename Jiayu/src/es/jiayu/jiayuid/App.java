@@ -436,7 +436,11 @@ public class App extends Activity implements AsyncResponse {
                         comprobarMT();
                         if ("512MB".equals(ram)) {
                             if ("MT6628".equals(chip)) {
-                                model = "G2DCPVN";
+                                if(new File("/system/usr/icu/icudt46l.dat").exists()){
+                                    model = "G2DCPVNQ";
+                                }else{
+                                    model = "G2DCPVN";
+                                }
                             } else if ("MT6620".equals(chip)) {
                                 model = "G2DCPV";
                             } else {
