@@ -60,6 +60,7 @@
         <activity android:name="es.jiayu.jiayuid.BackupRestore" android:label="@string/title_activity_backup" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.SelectNameBck" android:label="@string/title_activity_backup" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.ToolsAndroid" android:label="@string/title_activity_tools" android:configChanges="orientation|screenSize"/>
+        <activity android:name=".SendInformeActivity" />
 
         <receiver
                 android:name="es.jiayu.jiayuid.DownloadReceiver"

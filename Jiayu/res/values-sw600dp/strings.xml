@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+    <string name="emailContacto">spainjiayu@gmail.com</string>
+    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
+</resources>

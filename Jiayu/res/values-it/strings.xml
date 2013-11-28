@@ -142,5 +142,8 @@
     <string name="txtbckRdb">"Selezionare"</string>
     <string name="makebackuprestoreBtn">"Esegui"</string>
     <string name="guardarBtn">"Salva"</string>
+    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+    <string name="emailContacto">spainjiayu@gmail.com</string>
+    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
 
 </resources>

@@ -55,14 +55,23 @@
                 style="@style/LabelTextBlack"
                 android:background="@drawable/btn_white_border"/>
 
-        <TextView
+        <Button
+            style="@style/ButtonTextGreen"
+            android:id="@+id/envioNoExisteBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="@string/enviarNoExisteBtn"
+            android:background="@drawable/btn_green" />
+
+        <!--<TextView
                 android:id="@+id/textView5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:background="@drawable/btn_white_border"
                 android:autoText="false"
-                style="@style/LabelTextRed"/>
+                style="@style/LabelTextRed"/>-->
 
         <Button
                 android:id="@+id/button1"
