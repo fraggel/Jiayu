@@ -25,15 +25,14 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Calendar;
@@ -335,7 +334,6 @@ public class App extends Activity implements AsyncResponse {
                 procesador = getInfoCPU();
                 int orientation = getResources().getConfiguration().orientation;
 
-
                 ram = getTotalRAM();
                 int ramInt = (Integer.parseInt(ram) / 1000);
                 if (ramInt <= 290 && ramInt >= 200) {
@@ -346,6 +344,15 @@ public class App extends Activity implements AsyncResponse {
                     ram = "1GB";
                 } else if (ramInt <= 2100 && ramInt >= 1700) {
                     ram = "2GB";
+                }
+                if(width==1080 || (orientation==2 && height==1080)){
+                    if ("qct apq8064 mtp".equals(procesador.toLowerCase())) {
+                        if ("2GB".equals(ram)) {
+                            model = "S1";
+                        } else {
+                            model = "";
+                        }
+                    }
                 }
                 if (width == 720 || (orientation == 2 && height == 720)) {
                     if ("mt6577".equals(procesador.toLowerCase())) {
@@ -410,6 +417,12 @@ public class App extends Activity implements AsyncResponse {
                         } else {
                             model = "";
                         }
+                    } else if ("mt6582".equals(procesador.toLowerCase())) {
+                        if ("1GB".equals(ram)) {
+                            model="G2F";
+                        } else {
+                            model = "";
+                        }
                     }
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
 						    		/*if("mt6577".equals(procesador.toLowerCase())){
@@ -436,10 +449,11 @@ public class App extends Activity implements AsyncResponse {
                         comprobarMT();
                         if ("512MB".equals(ram)) {
                             if ("MT6628".equals(chip)) {
-                                if(new File("/system/usr/icu/icudt46l.dat").exists()){
-                                    model = "G2DCPVNQ";
-                                }else{
-                                    model = "G2DCPVN";
+                                model = "G2DCPVN";
+                                if ((Build.DISPLAY.toUpperCase()).indexOf("G2LSQ") != -1
+                                        ||(Build.DISPLAY.toUpperCase()).indexOf("G2DCPVNQ") != -1
+                                        ||(Build.DISPLAY.toUpperCase()).indexOf("Q") != -1) {
+                                    model="G2DCPVNQ";
                                 }
                             } else if ("MT6620".equals(chip)) {
                                 model = "G2DCPV";
