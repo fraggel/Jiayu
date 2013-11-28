@@ -378,8 +378,7 @@ public class App extends Activity implements AsyncResponse {
                             model = "";
                         }
                     }
-                }
-                if (width == 720 || (orientation == 2 && height == 720)) {
+                }else if (width == 720 || (orientation == 2 && height == 720)) {
                     if ("mt6577".equals(procesador.toLowerCase())) {
                         comprobarMT();
                         if ("MT6628".equals(chip)) {

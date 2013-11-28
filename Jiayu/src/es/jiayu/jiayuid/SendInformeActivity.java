@@ -60,6 +60,7 @@ public class SendInformeActivity extends Activity {
         textoTMP+="DIMENSIONES PANTALLA:\n"+"*"+height+"x"+width+"*\n";
         String modelo = Build.MODEL;
         String disp = Build.DISPLAY;
+        String fabr=Build.BRAND;
         android.hardware.Camera cam = android.hardware.Camera.open(1);
         List<Camera.Size> supportedPictureSizes = cam.getParameters().getSupportedPictureSizes();
         int result = -1;
@@ -74,7 +75,7 @@ public class SendInformeActivity extends Activity {
         textoTMP+="CAMARA:\n"+"*"+result+"*\n";
         textoTMP+="MODEL:\n"+"*"+modelo+"*\n";
         textoTMP+="DISPLAY:\n"+"*"+disp+"*\n";
-
+        textoTMP+="FAB:\n"+"*"+fabr+"*\n";
 
 
         return textoTMP;
