@@ -144,6 +144,7 @@
     <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
     <string name="emailContacto">spainjiayu@gmail.com</string>
     <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
+    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
 
     <string-array name="languages">
         <item>"Change Language"</item>

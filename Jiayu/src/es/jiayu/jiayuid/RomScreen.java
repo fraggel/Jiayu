@@ -12,7 +12,6 @@ import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.PowerManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,18 +22,13 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 
-public class RomScreen extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
+public class RomScreen extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener{
 
     Spinner romSpn = null;
     Button romBtn = null;
@@ -72,6 +66,27 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         modelo = getIntent().getExtras().getString("modelo");
         ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         firmarChk=ajustes.getBoolean("firmarChk",false);
+        if(firmarChk){
+            File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/CHECKSUM.md5");
+            if(!f1.exists()){
+                AlertDialog dialog = new AlertDialog.Builder(this).create();
+                dialog.setMessage(getResources().getString(R.string.msgNoMD5File));
+                dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                        getResources().getString(R.string.aceptarBtn),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int witch) {
+                                try {
+                                    Intent intent = new Intent(getApplicationContext(), ConfigActivity.class);
+                                    startActivity(intent);
+
+                                } catch (Exception e) {
+                                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 285", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                dialog.show();
+            }
+        }
         if (controlRoot()) {
             isRoot = true;
         }

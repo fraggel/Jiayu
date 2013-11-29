@@ -2,23 +2,17 @@ package es.jiayu.jiayuid;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ResolveInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.PowerManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -39,6 +33,7 @@ import java.util.zip.ZipFile;
 public class RecoveryScreen extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener {
     Spinner recoverySpn = null;
     boolean firmarChk=false;
+
     Button recoveryBtn = null;
     ImageButton imageButton = null;
     Button rebootRcoveryBtn = null;
@@ -65,6 +60,27 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
 
         ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         firmarChk=ajustes.getBoolean("firmarChk",false);
+        if(firmarChk){
+            File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/CHECKSUM.md5");
+            if(!f1.exists()){
+                AlertDialog dialog = new AlertDialog.Builder(this).create();
+                dialog.setMessage(getResources().getString(R.string.msgNoMD5File));
+                dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                        getResources().getString(R.string.aceptarBtn),
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int witch) {
+                                try {
+                                        Intent intent = new Intent(getApplicationContext(), ConfigActivity.class);
+                                        startActivity(intent);
+
+                                } catch (Exception e) {
+                                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 285", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                dialog.show();
+            }
+        }
         modelo = getIntent().getExtras().getString("modelo");
         if (controlRoot()) {
             isRoot = true;
@@ -383,6 +399,4 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
         recoverySpn.setAdapter(dataAdapter2);
 
     }
-
-
 }
