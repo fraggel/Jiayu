@@ -82,7 +82,7 @@
     <string name="about7">"+34963555091"</string>
 
     <!--Labels-->
-    <string name="downloadedFlashZipTxt">"Zipser descarregats"</string>
+    <string name="downloadedFlashZipTxt">"Zips descarregats"</string>
     <string name="downloadedRecoveryTxt">"Recoverys descarregats"</string>
     <string name="downloadedRomTxt">"ROM descarregades"</string>
     <string name="downloadedAPKTxt">"APKs descarregades"</string>
