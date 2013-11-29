@@ -1,6 +1,5 @@
 package es.jiayu.jiayuid;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -16,7 +15,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.hardware.Camera.Size;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -200,7 +198,7 @@ public class App extends Activity implements AsyncResponse {
 
                             }
 
-                            if (modelo.length() < 8) {
+                            if (modelo.length() < 10) {
                                 Calendar cal=Calendar.getInstance();
                                 editorAjustes = ajustes.edit();
                                 editorAjustes.putString("modelo", modelo);
