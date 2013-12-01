@@ -426,26 +426,25 @@ public class App extends Activity implements AsyncResponse {
                                 }else if("T".equals(load)){
                                     model="G3QCT";
                                 }
-                            }
-                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
+                            }else if(compilacion.indexOf("G4")!=-1 || modelBuild.indexOf("G4")!=-1){
                                 if("B".equals(load)){
                                     model="G4B";
                                 }else if("T".equals(load)){
                                     model="G4T";
                                 }
-                            }
-                            if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
+                            }else if(compilacion.indexOf("G5")!=-1 || modelBuild.indexOf("G5")!=-1){
                                 if("B".equals(load)){
                                     model="G5B";
                                 }else if("T".equals(load)){
                                     model="G5B";
                                 }
+                            }else{
+                                model="Modelo Desconocido, Custom Rom no permite detectar correctamente tu dispositivo";
                             }
                         } else if ("2GB".equals(ram)) {
                             if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
                             model="G4A";
-                            }
-                            if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
+                            }else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
                                 model="G5A";
                             }
 
