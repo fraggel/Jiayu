@@ -538,7 +538,7 @@ public class App extends Activity implements AsyncResponse {
 					}
 				});
 		dialog.show();*/
-        BufferedInputStream kernel;
+        /*BufferedInputStream kernel;
         BufferedInputStream recovery;
         BufferedInputStream uboot;
         ByteArrayOutputStream kernelBAOS=new ByteArrayOutputStream();
@@ -593,7 +593,7 @@ public class App extends Activity implements AsyncResponse {
             System.out.println("FIN CALC");
         }catch(Exception e){
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
-        }
+        }*/
     }
 
     private boolean levantarBlueTooth() {

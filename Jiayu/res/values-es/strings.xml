@@ -73,7 +73,7 @@
     <string name="msgNoBusybox">Busybox no está instalado, ¿Descargar?</string>
     <string name="msgExisteBackup">Ya existe una copia con ese nombre, ¿Borrar?</string>
     <string name="msgNoExisteBackup">No se han encontrado copias</string>
-    <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o imcompleta</string>
+    <string name="msgErrorMD5">Error de integridad del archivo, archivo no válido, descarga errónea o incompleta</string>
     <string name="msgNoSD">No hay tarjeta SD/Memoria o está activo el almacenamiento USB, para usar esta aplicación es necesario una tarjeta SD</string>
     <string name="msgMD5Jiayu">Recuerda que esta opción solo funcionará con las Roms/Recovery descargados de jiayu.es</string>
     <string name="msgMmd5Updated">Lista de MD5 Actualizada</string>
