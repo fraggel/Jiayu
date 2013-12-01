@@ -66,6 +66,7 @@ public class App extends Activity implements AsyncResponse {
     String urlActualizacion = "";
     String fabricante = "";
     String compilacion = "";
+    String modelBuild="";
     String newversion = "";
     String chip = "";
     String listaIdiomas[]=null;
@@ -185,6 +186,7 @@ public class App extends Activity implements AsyncResponse {
                         //t5 = (TextView) findViewById(R.id.textView5);
                         t4.setText(version);
                         compilacion = Build.DISPLAY;
+                        modelBuild=Build.MODEL;
                         fabricante = infoBrand();
                         t = (TextView) findViewById(R.id.textView1);
                         t2 = (TextView) findViewById(R.id.textView2);
@@ -396,56 +398,57 @@ public class App extends Activity implements AsyncResponse {
                         } else {
                             model = "";
                         }
-                    } else if ("mt6589".equals(procesador.toLowerCase())) {
+                    } else if ("mt6589".equals(procesador.toLowerCase()) || ("mt6589t".equals(procesador.toLowerCase()))) {
                         if ("1GB".equals(ram)) {
-                            String modelo = Build.MODEL;
-                            String disp = Build.DISPLAY;
-                            android.hardware.Camera cam = android.hardware.Camera.open(1);
-                            List<Size> supportedPictureSizes = cam.getParameters().getSupportedPictureSizes();
-                            int result = -1;
-                            for (Iterator iterator = supportedPictureSizes
-                                    .iterator(); iterator
-                                         .hasNext(); ) {
-                                Size sizes = (Size) iterator.next();
-                                result = sizes.width;
+                            /*model = getCPUFreqG3();
+                            model = getCPUFreqG4();*/
+                            RandomAccessFile reader = null;
+                            String load = "";
+                            try {
+                                reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
+                                load = reader.readLine();
+                                int cpufreq = Integer.parseInt(load.trim());
+                                if (cpufreq > 1400000) {
+                                    load = "T";
+                                } else {
+                                    load = "B";
+                                }
+                            } catch (IOException ex) {
 
+                            } finally {
+                                if (reader != null) {
+                                    reader.close();
+                                }
                             }
-                            cam.release();
-                            //if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
-                            if (result != -1 && result <= 1600) {
-                                model = getCPUFreqG3();
-                            } else {
-                                model = getCPUFreqG4();
+                            if(compilacion.indexOf("G3")!=-1 || modelBuild.indexOf("G3")!=-1){
+                                if("B".equals(load)){
+                                    model="G3QC";
+                                }else if("T".equals(load)){
+                                    model="G3QCT";
+                                }
+                            }
+                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
+                                if("B".equals(load)){
+                                    model="G4B";
+                                }else if("T".equals(load)){
+                                    model="G4T";
+                                }
+                            }
+                            if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
+                                if("B".equals(load)){
+                                    model="G5B";
+                                }else if("T".equals(load)){
+                                    model="G5B";
+                                }
                             }
                         } else if ("2GB".equals(ram)) {
-                            model = "G4A";
-                        } else {
-                            model = "";
-                        }
-                    } else if ("mt6589t".equals(procesador.toLowerCase())) {
-                        if ("1GB".equals(ram)) {
-                            String modelo = Build.MODEL;
-                            String disp = Build.DISPLAY;
-                            android.hardware.Camera cam = android.hardware.Camera.open(1);
-                            List<Size> supportedPictureSizes = cam.getParameters().getSupportedPictureSizes();
-                            int result = -1;
-                            for (Iterator iterator = supportedPictureSizes
-                                    .iterator(); iterator
-                                         .hasNext(); ) {
-                                Size sizes = (Size) iterator.next();
-                                result = sizes.width;
-
+                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
+                            model="G4A";
                             }
-                            cam.release();
-                            //if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
-                            //if (result != -1 && result <= 1600) {
-                            //    model = getCPUFreqG3();
-                            //} else {
-                            //    model = getCPUFreqG4();
-                            //}
-                            model="G5B";
-                        } else if ("2GB".equals(ram)) {
-                            model = "G5A";
+                            if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
+                                model="G5A";
+                            }
+
                         } else {
                             model = "";
                         }
