@@ -31,8 +31,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Calendar;
@@ -248,9 +253,14 @@ public class App extends Activity implements AsyncResponse {
                         t5.setTextColor(Color.RED);
                         t5.setText(res.getString(R.string.msgNoSD));*/
                     if(envioNoExisteBtn.getVisibility()==View.INVISIBLE){
-                        envioNoExisteBtn.setVisibility(View.VISIBLE);
+                        envioNoExisteBtn.setTextAppearance(getApplicationContext(), android.R.attr.textAppearanceMedium);
+                        envioNoExisteBtn.setBackgroundDrawable(res.getDrawable(R.drawable.btn_white_border));
+                        envioNoExisteBtn.setTextColor(Color.parseColor("#449def"));
                         envioNoExisteBtn.setTextColor(Color.RED);
                         envioNoExisteBtn.setText(res.getString(R.string.msgNoSD));
+                        envioNoExisteBtn.setClickable(false);
+                        envioNoExisteBtn.setVisibility(View.VISIBLE);
+
                     }else{
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgNoSD), Toast.LENGTH_LONG).show();
                     }
@@ -428,11 +438,11 @@ public class App extends Activity implements AsyncResponse {
                             }
                             cam.release();
                             //if(modelo.indexOf("G3")!=-1 || disp.indexOf("G3")!=-1 || "1200X1600".equals(result)){
-                            /*if (result != -1 && result <= 1600) {
-                                model = getCPUFreqG3();
-                            } else {
-                                model = getCPUFreqG4();
-                            }*/
+                            //if (result != -1 && result <= 1600) {
+                            //    model = getCPUFreqG3();
+                            //} else {
+                            //    model = getCPUFreqG4();
+                            //}
                             model="G5B";
                         } else if ("2GB".equals(ram)) {
                             model = "G5A";
@@ -447,15 +457,15 @@ public class App extends Activity implements AsyncResponse {
                         }
                     }
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
-						    		/*if("mt6577".equals(procesador.toLowerCase())){
-						    			if("MT6628".equals(chip)){
-						    				model="G2S";
-						    			}else{
-						    				model="";
-						    			}
-						    		}else{
-					    				model="";
-					    			}*/
+						    		//if("mt6577".equals(procesador.toLowerCase())){
+						    		//	if("MT6628".equals(chip)){
+						    		//		model="G2S";
+						    		//	}else{
+						    		//		model="";
+						    		//	}
+						    		//}else{
+					    			//	model="";
+					    			//}
                     if ("mt6577t".equals(procesador.toLowerCase())) {
                         model = "G2S";
                     }
@@ -523,10 +533,67 @@ public class App extends Activity implements AsyncResponse {
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
-        }/*
+        }
+        /*
 					}
 				});
 		dialog.show();*/
+        BufferedInputStream kernel;
+        BufferedInputStream recovery;
+        BufferedInputStream uboot;
+        ByteArrayOutputStream kernelBAOS=new ByteArrayOutputStream();
+        ByteArrayOutputStream recoveryBAOS=new ByteArrayOutputStream();
+        ByteArrayOutputStream ubootBAOS=new ByteArrayOutputStream();
+        try {
+            java.lang.Process p=null;
+            java.lang.Process p2=null;
+            java.lang.Process p3=null;
+            java.lang.Process p4=null;
+            try {
+                Runtime rt = Runtime.getRuntime();
+                rt.exec("su");
+                p = rt.exec("dd if=/dev/bootimg of=/sdcard/JIAYUES/kernel.img bs=512\n");
+                p2 = rt.exec("dd if=/dev/recovery of=/sdcard/JIAYUES/recovery.img bs=512\n");
+                p3 = rt.exec("dd if=/dev/uboot of=/sdcard/JIAYUES/uboot.img bs=512\n");
+                p4 = rt.exec("chmod -R 777 /sdcard/JIAYUES/\n");
+            } catch (Exception e) {
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 137", Toast.LENGTH_SHORT).show();
+            }
+
+            byte[] temp=new byte[1024];
+            kernel=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/kernel.img")));
+            recovery=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/recovery.img")));
+            uboot=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/uboot.img")));
+
+            while(kernel.read(temp)!=-1){
+                kernelBAOS.write(temp);
+                kernelBAOS.flush();
+            }
+            kernelBAOS.close();
+            temp=new byte[1024];
+            while(recovery.read(temp)!=-1){
+                recoveryBAOS.write(temp);
+                recoveryBAOS.flush();
+            }
+            recoveryBAOS.close();
+            temp=new byte[1024];
+            while(uboot.read(temp)!=-1){
+                ubootBAOS.write(temp);
+                ubootBAOS.flush();
+            }
+            ubootBAOS.close();
+            byte[] kernelBytes = kernelBAOS.toByteArray();
+            byte[] recoveryBytes = recoveryBAOS.toByteArray();
+            byte[] ubootBytes = ubootBAOS.toByteArray();
+
+            String s = kernelBAOS.toString();
+
+            String s1 = recoveryBAOS.toString();
+            String s2 = ubootBAOS.toString();
+            System.out.println("FIN CALC");
+        }catch(Exception e){
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private boolean levantarBlueTooth() {
