@@ -83,11 +83,22 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         recoveryBtn = (Button) findViewById(R.id.recoveryBtn);
         imeiBtn = (Button) findViewById(R.id.imeiBtn);
         romBtn = (Button) findViewById(R.id.romBtn);
-        ingenieroBtn = (Button) findViewById(R.id.ingenieroBtn);
         abrirExploradorBtn = (Button) findViewById(R.id.filesBtn);
-        rebootRecoveryBtn = (Button) findViewById(R.id.rebootRecoveryBtn);
         bootAnimationBtn=(Button) findViewById(R.id.bootAnimationBtn);
         backupBtn=(Button) findViewById(R.id.backupBtn);
+        String externalStorageState = Environment.getExternalStorageState();
+        if(!"mounted".equals(externalStorageState.toLowerCase())){
+            recoveryBtn.setEnabled(false);
+            imeiBtn.setEnabled(false);
+            abrirExploradorBtn.setEnabled(false);
+            bootAnimationBtn.setEnabled(false);
+            backupBtn.setEnabled(false);
+            apkSpn.setEnabled(false);
+            apkBtn.setEnabled(false);
+        }
+        ingenieroBtn = (Button) findViewById(R.id.ingenieroBtn);
+        rebootRecoveryBtn = (Button) findViewById(R.id.rebootRecoveryBtn);
+
         toolsAndroidBtn=(Button)findViewById(R.id.toolsAndroidBtn);
         if (!isRoot) {
             recoveryBtn.setVisibility(View.INVISIBLE);

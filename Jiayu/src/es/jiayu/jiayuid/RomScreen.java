@@ -134,6 +134,14 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         zipBtn.setOnClickListener(this);
         dataCacheDalvikBtn.setOnClickListener(this);
         refreshCombos();
+        String externalStorageState = Environment.getExternalStorageState();
+        if(!"mounted".equals(externalStorageState.toLowerCase())){
+            romSpn.setEnabled(false);
+            romBtn.setEnabled(false);
+            zipBtn.setEnabled(false);
+            zipSpn.setEnabled(false);
+            findViewById(R.id.zipTxt).setEnabled(false);
+        }
     }
 
     @Override
@@ -668,9 +676,17 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             romSpn.setVisibility(View.VISIBLE);
             romBtn.setVisibility(View.VISIBLE);
             dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
-            zipBtn.setVisibility(View.INVISIBLE);
+            /*zipBtn.setVisibility(View.INVISIBLE);
             findViewById(R.id.zipTxt).setVisibility(View.INVISIBLE);
-            zipSpn.setVisibility(View.INVISIBLE);
+            zipSpn.setVisibility(View.INVISIBLE);*/
+        }
+        String externalStorageState = Environment.getExternalStorageState();
+        if(!"mounted".equals(externalStorageState.toLowerCase())){
+            romSpn.setEnabled(false);
+            romBtn.setEnabled(false);
+            zipBtn.setEnabled(false);
+            zipSpn.setEnabled(false);
+            findViewById(R.id.zipTxt).setEnabled(false);
         }
     }
 }

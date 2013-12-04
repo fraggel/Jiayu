@@ -245,7 +245,7 @@ public class App extends Activity implements AsyncResponse {
                 if(!"mounted".equals(externalStorageState.toLowerCase())){
                     driversherramientas.setEnabled(false);
                     descargas.setEnabled(false);
-                    herramientasROM.setEnabled(false);
+                    //herramientasROM.setEnabled(false);
                     /*if(t5.getVisibility()==View.INVISIBLE){
                         t5.setVisibility(View.VISIBLE);
                         t5.setTextColor(Color.RED);
