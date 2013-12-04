@@ -15,7 +15,6 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.hardware.Camera.Size;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -31,19 +30,12 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 
 public class App extends Activity implements AsyncResponse {
@@ -157,6 +149,10 @@ public class App extends Activity implements AsyncResponse {
                         File f6 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/BOOTANIMATION/");
                         if (!f6.exists()) {
                             f6.mkdirs();
+                        }
+                        File f7 = new File(Environment.getExternalStorageDirectory() + "/update.zip");
+                        if (f7.exists()) {
+                            f7.delete();
                         }
 
                         addListenerOnButton();
