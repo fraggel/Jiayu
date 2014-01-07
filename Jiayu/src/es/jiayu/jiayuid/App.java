@@ -70,7 +70,7 @@ public class App extends Activity implements AsyncResponse {
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
-
+    public static boolean updatemostrado=false;
     @Override
     protected void onResume() {
         super.onResume();
@@ -911,13 +911,14 @@ public class App extends Activity implements AsyncResponse {
     public void processFinish(String output) {
         try {
             if (output != null && !"TIMEOUT----".equals(output) && (!"firmaok".equals(output) && !"firmanok".equals(output))) {
-
+                if(!updatemostrado){
                 String inicio = output.split("-;-")[0];
                 output = output.split("-;-")[1];
                 String[] split = output.split("----");
                 newversion = split[0].split(" ")[1];
                 urlActualizacion = split[1];
                 if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
+                    updatemostrado=true;
                     Resources res = this.getResources();
                     AlertDialog dialog = new AlertDialog.Builder(this).create();
                     dialog.setMessage(res.getString(R.string.msgComprobarVersion) + " " + nversion + "->" + newversion + " " + res.getString(R.string.msgPreguntaVersion));
@@ -925,6 +926,7 @@ public class App extends Activity implements AsyncResponse {
                             res.getString(R.string.cancelarBtn),
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int witch) {
+                                    App.updatemostrado=false;
                                 }
                             });
                     dialog.setButton(AlertDialog.BUTTON_POSITIVE,
@@ -932,6 +934,7 @@ public class App extends Activity implements AsyncResponse {
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int witch) {
                                     try {
+                                        App.updatemostrado=false;
                                         ActualizarVersion();
                                     } catch (Exception e) {
                                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
@@ -1005,6 +1008,7 @@ public class App extends Activity implements AsyncResponse {
                         }
                     }
                 }
+            }
             }
             noInternet=false;
             WebView wv = (WebView) findViewById(R.id.webView);
