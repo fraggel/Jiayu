@@ -15,6 +15,8 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
@@ -92,7 +94,21 @@ public class App extends Activity implements AsyncResponse {
             onCreate(null);
 
     }
+    private boolean comprobarConexion() {
+        boolean nohayinternet=false;
+        ConnectivityManager cn=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nf=cn.getActiveNetworkInfo();
+        if(nf != null && nf.isConnected()==true )
+        {
+            nohayinternet=false;
 
+        }
+        else
+        {
+            nohayinternet=true;
+        }
+        return nohayinternet;
+    }
     protected void onCreate(Bundle savedInstanceState) {
             try {
                 //Intent intent = getIntent();
@@ -123,7 +139,7 @@ public class App extends Activity implements AsyncResponse {
                         }
                         version = "Jiayu.es ";
                         version = version + nversion;
-
+                        noInternet=comprobarConexion();
                         comprobarVersionInicio(version);
                     //}
                         File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
