@@ -27,6 +27,8 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import static es.jiayu.jiayuid.Utilidades.controlRoot;
+
 /**
  * Created by u028952 on 24/07/13.
  */
@@ -82,7 +84,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
             }
         }
         modelo = getIntent().getExtras().getString("modelo");
-        if (controlRoot()) {
+        if (controlRoot(getApplicationContext(),getResources(),"Recovery")) {
             isRoot = true;
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
@@ -351,29 +353,6 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
         }
 
     }
-
-    private boolean controlRoot() {
-        boolean rootB = false;
-        File f = new File("/system/bin/su");
-        if (!f.exists()) {
-            f = new File("/system/xbin/su");
-            if (f.exists()) {
-                rootB = true;
-            }
-        } else {
-            rootB = true;
-        }
-        if (rootB) {
-            try {
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 149", Toast.LENGTH_SHORT).show();
-            }
-        }
-        return rootB;
-    }
-
 
     public void refreshCombos() {
         listaReco.clear();

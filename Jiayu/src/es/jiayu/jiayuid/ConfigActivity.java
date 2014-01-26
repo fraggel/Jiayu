@@ -144,6 +144,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
     }
     private void descargarFirmas(){
         try {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIniciandoDescarga), Toast.LENGTH_SHORT).show();
             MD5Thread asyncTask = new MD5Thread();
             asyncTask.delegate = this;
             asyncTask.execute();

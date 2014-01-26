@@ -31,6 +31,8 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import static es.jiayu.jiayuid.Utilidades.controlRoot;
+
 /**
  * Created by u028952 on 24/07/13.
  */
@@ -64,8 +66,10 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
         //deleteDirectories();
-        if (controlRoot()) {
+        if (controlRoot(getApplicationContext(),getResources(),"RomTools")) {
             isRoot = true;
+        }else{
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -101,12 +105,18 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
 
         toolsAndroidBtn=(Button)findViewById(R.id.toolsAndroidBtn);
         if (!isRoot) {
-            recoveryBtn.setVisibility(View.INVISIBLE);
-            rebootRecoveryBtn.setVisibility(View.INVISIBLE);
-            imeiBtn.setVisibility(View.INVISIBLE);
-            bootAnimationBtn.setVisibility(View.INVISIBLE);
-            backupBtn.setVisibility(View.INVISIBLE);
-            toolsAndroidBtn.setVisibility(View.INVISIBLE);
+            recoveryBtn.setEnabled(false);
+            //recoveryBtn.setVisibility(View.INVISIBLE);
+            rebootRecoveryBtn.setEnabled(false);
+            //rebootRecoveryBtn.setVisibility(View.INVISIBLE);
+            imeiBtn.setEnabled(false);
+            //imeiBtn.setVisibility(View.INVISIBLE);
+            bootAnimationBtn.setEnabled(false);
+            //bootAnimationBtn.setVisibility(View.INVISIBLE);
+            backupBtn.setEnabled(false);
+            //backupBtn.setVisibility(View.INVISIBLE);
+            toolsAndroidBtn.setEnabled(false);
+            //toolsAndroidBtn.setVisibility(View.INVISIBLE);
         }
 
         apkBtn.setEnabled(false);
@@ -335,27 +345,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                     }
                 });
         dialog.show();
-    }
-    private boolean controlRoot() {
-        boolean rootB = false;
-        File f = new File("/system/bin/su");
-        if (!f.exists()) {
-            f = new File("/system/xbin/su");
-            if (f.exists()) {
-                rootB = true;
-            }
-        } else {
-            rootB = true;
-        }
-        if (rootB) {
-            try {
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 169", Toast.LENGTH_SHORT).show();
-            }
-        }
-        return rootB;
     }
 
     public void refreshCombos() {

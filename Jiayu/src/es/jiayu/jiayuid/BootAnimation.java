@@ -41,6 +41,8 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
+import static es.jiayu.jiayuid.Utilidades.controlRoot;
+
 /**
  * Created by Fraggel on 25/08/13.
  */
@@ -70,7 +72,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         setContentView(R.layout.activity_bootanimation);
         modelo = getIntent().getExtras().getString("modelo");
         tipo = getIntent().getExtras().getString("tipo");
-        if (controlRoot()) {
+        if (controlRoot(getApplicationContext(),getResources(),"BootAnimation")) {
             isRoot = true;
             if (!controlBusybox()) {
                 isBusy = false;
@@ -100,27 +102,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         bootDescargaBtn.setOnClickListener(this);
         bootSpn.setOnItemSelectedListener(this);
     }
-    private boolean controlRoot() {
-        boolean rootB = false;
-        File f = new File("/system/bin/su");
-        if (!f.exists()) {
-            f = new File("/system/xbin/su");
-            if (f.exists()) {
-                rootB = true;
-            }
-        } else {
-            rootB = true;
-        }
-        if (rootB) {
-            try {
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 125", Toast.LENGTH_SHORT).show();
-            }
-        }
-        return rootB;
-    }
+
     public void refreshCombos() {
         listaBoots.clear();
         listaBootsUrl.clear();

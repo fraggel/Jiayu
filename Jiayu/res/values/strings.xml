@@ -145,12 +145,15 @@
     <string name="emailContacto">spainjiayu@gmail.com</string>
     <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
     <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
+    <string name="menuflashRomBtn">Install ROM/ZIP</string>
+    <string name="msgOptDisabled">Root not available, some options are disabled</string>
 
     <string-array name="languages">
         <item>"Change Language"</item>
         <item>"English"</item>
         <item>"Español"</item>
         <item>"Catala"</item>
+        <item>"Euskera"</item>
         <item>"Français"</item>
         <item>"Italiano"</item>
         <item>"日本语"</item>
@@ -164,6 +167,7 @@
         <item>"en"</item>
         <item>"es"</item>
         <item>"ca"</item>
+        <item>"eu"</item>
         <item>"fr"</item>
         <item>"it"</item>
         <item>"ja"</item>

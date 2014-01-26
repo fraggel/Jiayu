@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">"Jiayu.es"</string>
+
+    <string name="bienvenida">"Ongietorria Jiayu.es aplikaziora. Aplikazio hau nomenklatura www.jiayu.es aurkituko duzu eredu zehatza erakutsiko ditu."</string>
+
+    <!--Activity Titulos-->
+
+
+    <string name="title_activity_browser">"Deskarga Jiayu.es"</string>
+
+    <string name="title_activity_about">"Guri buruz ..."</string>
+
+    <string name="title_activity_romtool">"Tresnak ROMak"</string>
+
+    <string name="title_activity_inicio">"Hasiera"</string>
+
+    <string name="title_activity_video">"Videotutoriales"</string>
+
+    <string name="title_activity_romscreen">"Eragiketak ROM"</string>
+
+    <string name="title_activity_recoveryscreen">"Berreskuratzea ebakuntzak"</string>
+
+    <string name="title_activity_imeiscreen">"IMEI ebakuntzak"</string>
+
+    <string name="title_activity_configscreen">"Konfigurazioa"</string>
+
+    <string name="title_activity_bootanimation">"Bootanimation"</string>
+
+    <string name="title_activity_backup">"Backup / Restore"</string>
+
+    <string name="title_activity_tools">"Android tresnak"</string>
+
+    <!--Menu-->
+
+
+    <string name="updateMnu">"Eguneratzeak bilatu"</string>
+
+    <string name="aboutMnu">"Guri buruz ..."</string>
+
+    <string name="configMnu">"Konfigurazioa"</string>
+
+    <string name="exitMnu">"Utzi"</string>
+
+    <!--Values-->
+
+
+    <string name="seleccionaValue">"Hautatu"</string>
+
+    <!--Mensajes-->
+
+
+    <string name="msgComprobarVersion">"Bertsio berria eskuragarri"</string>
+
+    <string name="msgPreguntaVersion">"Da deskargatzen?"</string>
+
+    <string name="msgCompilacion">"Compilation"</string>
+
+    <string name="msgModelo">"Eredua:"</string>
+
+    <string name="msgIdentificado1">"Gisa identifikatu "</string>
+
+    <string name="msgIdentificado2">" , Adierazten ez arren Jiayu informazio ROM fabrikatzaile gisa parte"</string>
+
+    <string name="msgTerminalNoJiayu">"Zure telefonoak ez du Jiayu"</string>
+
+    <string name="msgErrorIdentificar">"Errore bat gailuaren modeloa gertatu eragozten duten antzemateko"</string>
+
+    <string name="msgSeleccionado">"Aukeratutako"</string>
+
+    <string name="msgIngenieroNoExiste">"Aplikazioa ez da existitzen"</string>
+
+    <string name="msgErrorUnzip">"Error suna bitartean"</string>
+
+    <string name="msgErrorRom">"Errorea ROM instalatzen hasitako"</string>
+
+    <string name="msgErrorRecovery">"Error berreskuratzea du idaztean"</string>
+
+    <string name="msgNoRoot">"Root izan behar zara"</string>
+
+    <string name="msgRecoveryFlasheado">"Berreskuratzea instalatutako, berrezarri berreskuratzea in?"</string>
+
+    <string name="msgRebootRecoveryQF">"ROM instalatu / Ekortu / Zip gailua berrabiarazi behar izango, Orain berrabiarazi nahi duzu?"</string>
+
+    <string name="msgRebootBackupQF">"Sistemaren kopia bat berrabiarazi behar sortzeko, Orain berrabiarazi nahi duzu?"</string>
+
+    <string name="msgRebootRestoreQF">"Backup sistema berrabiarazi behar da leheneratu, Orain berrabiarazi nahi duzu?"</string>
+
+    <string name="msgRebootRecoveryQ">"Ez berrabiarazi dut berreskuratzea in?"</string>
+
+    <string name="msgImeiExiste1">"Dago dagoeneko segurtasun kopia bat zure "</string>
+
+    <string name="msgImeiExiste2">"Eta eragiketa hau lehendik dagoen bat zapalduko du, jarraitu nahi duzu?"</string>
+
+    <string name="msgImeihecho">"sortu"</string>
+
+    <string name="msgImeirestored">"zaharberritu"</string>
+
+    <string name="msgImeiRestoreQ1">"Ez IMEI berreskuratu fitxategia nahi duzun "</string>
+
+    <string name="msgImeiRestoreQ2">"Aurkitu dut?"</string>
+
+    <string name="msgTerminadaDescarga">"Deskarga amaituta"</string>
+
+    <string name="msgIniciandoDescarga">"Deskarga hasitako"</string>
+
+    <string name="msgTapaTalk">"Baita ere gurekin Tapatalk on! Jiayu.es"</string>
+
+    <string name="msgLastVersion">"Dagoeneko aplikazioaren azken bertsioa duzu"</string>
+
+    <string name="msgInfoJiayu">&lt;b&gt;Espainian banatzaile ofiziala:&lt;/b&gt;&lt;br&gt;email:&lt;a
+        href="info@jiayu.es"&gt;info@jiayu.es&lt;/a&gt;&lt;br&gt;&lt;b&gt;ordu deiak:&lt;/b&gt;&lt;br&gt;9:00 a 14:00 L-V&lt;br&gt;&lt;b&gt;Kokalekua:&lt;/b&gt;&lt;br&gt;Jiayu
+        Ivardis, Pasaje Angels i Federic,2. 46022, Valencia (Spain)&lt;br&gt;Tel. 963556091
+    </string>
+<string name="msgGenericError">"Errore bat gertatu da"</string>
+
+<string name="msgSubjectInfo">"Jiayu.es Info"</string>
+
+<string name="msgActivandoBTWifi">"Bluetooth eta WiFi, beharrezkoa aktibatzea gailu eredua identifikatzeko"</string>
+
+<string name="msgModeloNoIgualFichero">"Hautatutako fitxategia ez da agertzen Gailuaren modeloak izen bat eduki agian ez da zure gailua bateragarria, instalazio berdin nahi duzu?"</string>
+
+<string name="msgConfiguracion">"Konfigurazioa"</string>
+
+<string name="msgRebootQ">"The IMEI berria berrabiarazi behar duzu aplikatzeko, Berrabiarazi orain?"</string>
+
+<string name="msgInstallBootC">"Aldatutako bootanimation"</string>
+
+<string name="msgNoBusybox">"Busybox instalatu gabe dago, Is deskargatzea?"</string>
+
+<string name="msgExisteBackup">"Kopia dago jada izen horrekin existitzen da, ezabatu?"</string>
+
+<string name="msgNoExisteBackup">"Aldizkariaren aleak aurkitu"</string>
+
+<string name="msgErrorMD5">"Integritate error, fitxategia baliogabea, okerrak edo osatu deskargatu"</string>
+
+<string name="msgNoSD">"No txartela SD SD / memoria txartela edo USB gaituta dagoenean, aplikazio hau erabili behar duzu"</string>
+
+<string name="msgMD5Jiayu">"Gogoratu aukera hau bakarrik izango ROMak / jiayu.es berreskuratzea jaits batekin lan"</string>
+
+<string name="msgMmd5Updated">"MD5 zerrenda eguneratu"</string>
+
+<string name="about1">"Espainian banatzaile ofiziala:"</string>
+
+<string name="about2">"info@jiayu.es"</string>
+
+<string name="about3">"Ordutegiak deiak:"</string>
+
+<string name="about4">"9:00 etatik 14:00 etara LV"</string>
+
+<string name="about5">"Kokapena:"</string>
+
+<string name="about6">"Jiayu Espainia, Frederic Passage Angels i, 2. 46022, Valencia (España) "</string>
+
+<string name="about7">"+34963555091"</string>
+
+    <!--Labels-->
+
+
+<string name="downloadedFlashZipTxt">"Deskargatu kremailerak"</string>
+
+<string name="downloadedRecoveryTxt">"Deskargatu Recoverys"</string>
+
+<string name="downloadedRomTxt">"Deskargatu ROMak"</string>
+
+<string name="downloadedAPKTxt">"Deskargatu APKs"</string>
+
+<string name="downloadedBootTxt">"Deskargatu bootanimation"</string>
+
+    <!--Botones-->
+
+
+<string name="descargasBtn">"Astero"</string>
+
+<string name="accesoriosBtn">"Osagarri"</string>
+
+<string name="videosBtn">"Videotutoriales"</string>
+
+<string name="herramientasBtn">"Gidariek-tresnak"</string>
+
+<string name="herramientasROMBtn">"Tresnak ROMak"</string>
+
+<string name="flashRecoveryBtn">"Instalatu berreskuratzea"</string>
+
+<string name="flashZipBtn">"Instalatu Zip"</string>
+
+<string name="flashRomBtn">"Instalatu ROM"</string>
+
+<string name="installApkBtn">"Instalatu APK"</string>
+
+<string name="ingenieroBtn">"Aplikazioa ingeniaria Mode"</string>
+
+<string name="imeiBtn">"Backup / Restore IMEI"</string>
+
+<string name="imeiBBtn">"Kopia IMEI"</string>
+
+<string name="imeiRBtn">"Leheneratu IMEI"</string>
+
+<string name="rebootRecoveryBtn">"Berreskuratzea in berrabiarazi"</string>
+
+<string name="cancelarBtn">"Ezeztatu"</string>
+
+<string name="aceptarBtn">"Onartu"</string>
+
+<string name="fileExplorerBtn">"Ireki fitxategia Explorer"</string>
+
+<string name="visitarWebBtn">"Bisitatu Web"</string>
+
+<string name="enviarEmailBtn">"Bidali email"</string>
+
+<string name="foroBtn">"Foroa"</string>
+
+<string name="aboutBtn">"Guri buruz ..."</string>
+
+<string name="cwmChk">"Dute CWM berreskuratzea instalatu dut"</string>
+
+<string name="notificacionChkUpd">"Erakutsi aplikazio updates"</string>
+
+<string name="notificacionChkNews">"Erakutsi telefonorako updates"</string>
+
+<string name="ajustaBootChk">"Bootanimation pantaila bereizmen berreskalatu saiatzean"</string>
+
+<string name="firmarChk">"Check integritate"</string>
+
+<string name="imeiSEBtn">"Bidali posta elektroniko IMEI"</string>
+
+<string name="salirBtn">"Utzi"</string>
+
+<string name="bootanimationBtn">"Aldatu bootanimation"</string>
+
+<string name="dataCacheDalvikBtn">"Ekortu data / cache / dalvik"</string>
+
+<string name="installBootBtn">"Instalatu bootanimation"</string>
+
+<string name="bootDescargaBtn">"Deskargatu bootanimation"</string>
+
+<string name="backupBtn">"Kopia / System Restore"</string>
+
+<string name="softkeysBtn">"Erakutsi / ezkutatu Softkeys"</string>
+
+<string name="toolsAndroidBtn">"Android tresnak"</string>
+
+<string name="downloadMD5Btn">"Deskarga zerrendako fitxategia MD5"</string>
+
+<string name="backupRdb">"Babeskopiak egiteko sistema"</string>
+
+<string name="restoreRdb">"Backup sistema leheneratu"</string>
+
+<string name="ntfMinTxt">"JIAYU.es buruzko berria"</string>
+
+<string name="ntfTituloTxt">"JIAYU.es buruzko berria"</string>
+
+<string name="ntfDetallesTxt">"Telefonorako produktu berriak"</string>
+
+<string name="ntfNuevaVersionTxt">"Eguneratu JIAYU.es"</string>
+
+<string name="ntfTituloNVTxt">"Eguneratu JIAYU.es "</string>
+
+<string name="ntfDetallesNVTxt">"Bertsioa:"</string>
+
+<string name="bcknameTxt">"Idatzi kopia-taldearen izena"</string>
+
+<string name="txtbckRdb">"Hautatu"</string>
+
+<string name="makebackuprestoreBtn">"Run"</string>
+
+<string name="guardarBtn">"Gorde"</string>
+
+<string name="enviarNoExisteBtn">"Bidali txostena modeloa"</string>
+
+<string name="emailContacto">"spainjiayu@gmail.com"</string>
+
+<string name="envioErrores">"NO aitortzen Jiayu Telefonoa App"</string>
+
+<string name="msgNoMD5File">"Ez dago MD5 fitxategia gabe, deskargatu ezazu konfigurazio pantailara etik"</string>
+
+<string name="menuflashRomBtn">"ROM / ZIP instalatu"</string>
+
+<string name="msgOptDisabled">"Erroa ez dago, aukera batzuk desgaituta daude"</string>
+
+</resources>

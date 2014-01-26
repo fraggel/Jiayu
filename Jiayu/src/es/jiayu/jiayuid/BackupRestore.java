@@ -25,6 +25,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static es.jiayu.jiayuid.Utilidades.controlRoot;
+
 public class BackupRestore extends Activity implements OnItemSelectedListener,
         AdapterView.OnItemClickListener,DialogInterface.OnClickListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 	AlertDialog diag;
@@ -51,7 +53,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
         ejecutarBtn= (Button) findViewById(R.id.executeBtn);
         chkCWM = (CheckBox) findViewById(R.id.cwmChk);
         chkCWM.setOnCheckedChangeListener(this);
-        if (controlRoot()) {
+        if (controlRoot(getApplicationContext(),getResources(),"Backup/Restore")) {
             isRoot = true;
             if (chkCWM.isChecked()) {
                 backupRdb.setVisibility(View.VISIBLE);
@@ -355,28 +357,6 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
             ejecutarBtn.setVisibility(View.INVISIBLE);
         }
     }
-    private boolean controlRoot() {
-        boolean rootB = false;
-        File f = new File("/system/bin/su");
-        if (!f.exists()) {
-            f = new File("/system/xbin/su");
-            if (f.exists()) {
-                rootB = true;
-            }
-        } else {
-            rootB = true;
-        }
-        if (rootB) {
-            try {
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError) + " 159", Toast.LENGTH_SHORT).show();
-            }
-        }
-        return rootB;
-    }
-
     @Override
     public void onClick(View view) {
 

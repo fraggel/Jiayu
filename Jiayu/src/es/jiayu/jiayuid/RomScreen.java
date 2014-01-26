@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,6 +27,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 
 public class RomScreen extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener{
@@ -87,7 +90,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 dialog.show();
             }
         }
-        if (controlRoot()) {
+        if (controlRoot(getApplicationContext(),getResources(),"Rom1")) {
             isRoot = true;
         }
         imageButton = (ImageButton) findViewById(R.id.imageButton);
@@ -111,20 +114,27 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
 
 
         if (!isRoot) {
-            chkCWM.setVisibility(View.INVISIBLE);
-            //zipSpn.setVisibility(View.INVISIBLE);
-            dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
+            chkCWM.setEnabled(false);
+            chkCWM.setTextColor(Color.GRAY);
+            //chkCWM.setVisibility(View.INVISIBLE);
+            dataCacheDalvikBtn.setEnabled(false);
+            //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
             if (chkCWM.isChecked()) {
-                romSpn.setVisibility(View.INVISIBLE);
-                romBtn.setVisibility(View.INVISIBLE);
-                findViewById(R.id.romTxt).setVisibility(View.INVISIBLE);
-                dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
+                romSpn.setEnabled(false);
+                //romSpn.setVisibility(View.INVISIBLE);
+                romBtn.setEnabled(false);
+                //romBtn.setVisibility(View.INVISIBLE);
+                findViewById(R.id.romTxt).setEnabled(false);
+                //findViewById(R.id.romTxt).setVisibility(View.INVISIBLE);
+                dataCacheDalvikBtn.setEnabled(false);
+                //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
             }
         }
         //zipBtn.setVisibility(View.INVISIBLE);
         //zipSpn.setVisibility(View.INVISIBLE);
         //findViewById(R.id.zipTxt).setVisibility(View.INVISIBLE);
-        dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
+        dataCacheDalvikBtn.setEnabled(false);
+        //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
         zipBtn.setEnabled(false);
         romBtn.setEnabled(false);
         romSpn.setOnItemSelectedListener(this);
@@ -313,7 +323,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 CheckBox chkCWM = (CheckBox) findViewById(R.id.cwmChk);
                 if (chkCWM.isChecked()) {
 
-                    if (controlRoot()) {
+                    if (controlRoot(getApplicationContext(),getResources(),"Rom Flash")) {
                         if(firmarChk){
                             if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
                                 writeCWMInstall();
@@ -582,28 +592,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         dialog.show();
     }
 
-    private boolean controlRoot() {
-        boolean rootB = false;
-        File f = new File("/system/bin/su");
-        if (!f.exists()) {
-            f = new File("/system/xbin/su");
-            if (f.exists()) {
-                rootB = true;
-            }
-        } else {
-            rootB = true;
-        }
-        if (rootB) {
-            try {
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 159", Toast.LENGTH_SHORT).show();
-            }
-        }
-        return rootB;
-    }
-
     public void refreshCombos() {
         listaRo.clear();
         listaZip.clear();
@@ -657,28 +645,66 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
         if(compoundButton.isChecked()){
             if(!isRoot){
-                romSpn.setVisibility(View.INVISIBLE);
-                romBtn.setVisibility(View.INVISIBLE);
-                dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
-                zipSpn.setVisibility(View.INVISIBLE);
-                zipBtn.setVisibility(View.INVISIBLE);
-                findViewById(R.id.zipTxt).setVisibility(View.INVISIBLE);
+                romSpn.setEnabled(true);
+                //romSpn.setVisibility(View.INVISIBLE);
+                if(romSpn.getSelectedItemPosition()==0){
+                    romBtn.setEnabled(false);
+                }else{
+                    romBtn.setEnabled(true);
+                }
+                //romBtn.setVisibility(View.INVISIBLE);
+                dataCacheDalvikBtn.setEnabled(false);
+                //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
+                if(zipSpn.getSelectedItemPosition()==0){
+                    zipBtn.setEnabled(false);
+                }else{
+                    zipBtn.setEnabled(true);
+                }
+                //zipSpn.setVisibility(View.INVISIBLE);
+
+                //zipBtn.setVisibility(View.INVISIBLE);
             }else{
-                romSpn.setVisibility(View.VISIBLE);
-                romBtn.setVisibility(View.VISIBLE);
-                dataCacheDalvikBtn.setVisibility(View.VISIBLE);
-                zipBtn.setVisibility(View.VISIBLE);
-                zipSpn.setVisibility(View.VISIBLE);
-                findViewById(R.id.zipTxt).setVisibility(View.VISIBLE);
+                romSpn.setEnabled(true);
+                //romSpn.setVisibility(View.INVISIBLE);
+                if(romSpn.getSelectedItemPosition()==0){
+                    romBtn.setEnabled(false);
+                }else{
+                    romBtn.setEnabled(true);
+                }
+                //romBtn.setVisibility(View.INVISIBLE);
+                dataCacheDalvikBtn.setEnabled(true);
+                //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
+                zipSpn.setEnabled(true);
+                //zipSpn.setVisibility(View.INVISIBLE);
+                if(zipSpn.getSelectedItemPosition()==0){
+                    zipBtn.setEnabled(false);
+                }else{
+                    zipBtn.setEnabled(true);
+                }
+                //zipBtn.setVisibility(View.INVISIBLE);
             }
 
         }else{
-            romSpn.setVisibility(View.VISIBLE);
-            romBtn.setVisibility(View.VISIBLE);
-            dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
-            /*zipBtn.setVisibility(View.INVISIBLE);
-            findViewById(R.id.zipTxt).setVisibility(View.INVISIBLE);
-            zipSpn.setVisibility(View.INVISIBLE);*/
+            romSpn.setEnabled(true);
+            //romSpn.setVisibility(View.INVISIBLE);
+            if(romSpn.getSelectedItemPosition()==0){
+                romBtn.setEnabled(false);
+            }else{
+                romBtn.setEnabled(true);
+            }
+            //romBtn.setVisibility(View.INVISIBLE);
+            dataCacheDalvikBtn.setEnabled(false);
+            //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
+            zipSpn.setEnabled(true);
+            //zipSpn.setVisibility(View.INVISIBLE);
+            if(zipSpn.getSelectedItemPosition()==0){
+                zipBtn.setEnabled(false);
+            }else{
+                zipBtn.setEnabled(true);
+            }
+            //zipBtn.setVisibility(View.INVISIBLE);
+
+            //findViewById(R.id.zipTxt).setVisibility(View.INVISIBLE);
         }
         String externalStorageState = Environment.getExternalStorageState();
         if(!"mounted".equals(externalStorageState.toLowerCase())){

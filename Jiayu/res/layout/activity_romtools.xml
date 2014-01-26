@@ -50,22 +50,23 @@
                 android:layout_gravity="left|center_vertical"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
-        <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/flashRomBtn"
-                android:id="@+id/romBtn"
-                android:layout_gravity="left|center_vertical"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
+
         <Button
             style="@style/ButtonTextGreen"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/backupBtn"
             android:id="@+id/backupBtn"
-            android:layout_gravity="center_vertical|left"
             android:background="@drawable/btn_green" />
+
+        <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/menuflashRomBtn"
+                android:id="@+id/romBtn"
+                android:layout_gravity="left|center_vertical"
+                style="@style/ButtonTextGreen"
+                android:background="@drawable/btn_green"/>
 
         <Button
                 android:layout_width="match_parent"

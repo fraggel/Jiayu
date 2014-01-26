@@ -1,6 +1,9 @@
 package es.jiayu.jiayuid;
 
+import android.content.Context;
+import android.content.res.Resources;
 import android.os.Environment;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -46,6 +49,27 @@ public class Utilidades {
             returnVal += Integer.toString(( md5Bytes[i] & 0xff ) + 0x100, 16).substring(1);
         }
         return returnVal;
+    }
+    public static boolean controlRoot(Context context,Resources res,String origen) {
+        boolean rootB = false;
+        File f = new File("/system/bin/su");
+        if (!f.exists()) {
+            f = new File("/system/xbin/su");
+            if (f.exists()) {
+                rootB = true;
+            }
+        } else {
+            rootB = true;
+        }
+        if (rootB) {
+            try {
+                Runtime rt = Runtime.getRuntime();
+                rt.exec("su");
+            } catch (Exception e) {
+                Toast.makeText(context, res.getString(R.string.msgGenericError) +" "+ origen, Toast.LENGTH_SHORT).show();
+            }
+        }
+        return rootB;
     }
     public static boolean checkFileMD5(File filePath) {
         boolean iguales=false;
