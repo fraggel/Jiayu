@@ -166,10 +166,10 @@ public class App extends Activity implements AsyncResponse {
                         if (!f6.exists()) {
                             f6.mkdirs();
                         }
-                        File f7 = new File(Environment.getExternalStorageDirectory() + "/update.zip");
+                        /*File f7 = new File(Environment.getExternalStorageDirectory() + "/update.zip");
                         if (f7.exists()) {
                             f7.delete();
-                        }
+                        }*/
 
                         addListenerOnButton();
 

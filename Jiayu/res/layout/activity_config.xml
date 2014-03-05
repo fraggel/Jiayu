@@ -64,6 +64,14 @@
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/recoveryChk"
+            android:id="@+id/recoveryChk"
+            android:checked="true"
+            style="@style/LabelTextBlack"
+            android:enabled="true" />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/firmarChk"
             android:id="@+id/firmarChk"
             android:checked="true"

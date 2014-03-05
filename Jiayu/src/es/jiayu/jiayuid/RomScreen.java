@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +53,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     boolean firmarChk=false;
     boolean isRoot = false;
     String path = "";
-
+    boolean detectRecovery=false;
+    String recoveryDetectado="ori";
     @Override
     protected void onResume() {
         super.onResume();
@@ -152,6 +154,71 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             zipSpn.setEnabled(false);
             findViewById(R.id.zipTxt).setEnabled(false);
         }
+        if(isRoot){
+            if(ajustes.getBoolean("recoveryChk",false)){
+                detectRecovery=true;
+                recoveryDetectado=comprobarRecovery();
+            }else{
+                detectRecovery=false;
+                chkCWM.setEnabled(true);
+                chkCWM.setVisibility(View.VISIBLE);
+            }
+            if(detectRecovery){
+                if("cwm".equals(recoveryDetectado)){
+                    chkCWM.setChecked(true);
+                    chkCWM.setEnabled(false);
+                    chkCWM.setVisibility(View.INVISIBLE);
+                }else if("ori".equals(recoveryDetectado)){
+                    chkCWM.setChecked(false);
+                    chkCWM.setEnabled(false);
+                    chkCWM.setVisibility(View.INVISIBLE);
+                }else{
+                    chkCWM.setChecked(false);
+                    chkCWM.setEnabled(true);
+                    chkCWM.setVisibility(View.VISIBLE);
+                }
+            }
+        }
+    }
+
+    private String comprobarRecovery() {
+        String cwm="cwm";
+        String ori="ori";
+        String recovery="";
+        try {
+            File f=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/last_log");
+            if(f.exists()){
+               f.delete();
+            }
+            Runtime rt = Runtime.getRuntime();
+            java.lang.Process p = rt.exec("su");
+            BufferedOutputStream bos = new BufferedOutputStream(
+                    p.getOutputStream());
+
+            bos.write(("busybox cp /cache/recovery/last_log " + Environment.getExternalStorageDirectory() + "/JIAYUES/last_log" + "\n")
+                    .getBytes());
+            bos.flush();
+            bos.close();
+            f=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/last_log");
+            if(f.exists()){
+                FileInputStream fis=new FileInputStream(f);
+                byte bb[]=new byte[1024];
+                fis.read(bb);
+                String str=new String(bb);
+                if(str.toUpperCase().lastIndexOf("CWM")!=-1){
+                    recovery=cwm;
+                }else{
+                    recovery=ori;
+                }
+            }else{
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgNecesarioReiniDetect), Toast.LENGTH_LONG).show();
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+            recovery="";
+        }
+        return recovery;
     }
 
     @Override

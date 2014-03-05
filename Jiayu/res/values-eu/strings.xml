@@ -278,5 +278,7 @@
 <string name="menuflashRomBtn">"ROM / ZIP instalatu"</string>
 
 <string name="msgOptDisabled">"Erroa ez dago, aukera batzuk desgaituta daude"</string>
+    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
+    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
 
 </resources>

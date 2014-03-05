@@ -29,9 +29,11 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
     boolean notificacionesNews=true;
     boolean notificacionesUpd=true;
     boolean firmaChk=false;
+    boolean recChk=false;
     CheckBox notificacionesChkNews = null;
     CheckBox notificacionesChkUpd = null;
     CheckBox firmarChk= null;
+    CheckBox recoveryChk= null;
     ImageButton imageButton;
     Spinner languageSpn=null;
     String listaIdiomas[]=null;
@@ -87,12 +89,21 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
         firmaChk=ajustes.getBoolean("firmarChk",false);
         firmarChk = (CheckBox) findViewById(R.id.firmarChk);
         firmarChk.setOnCheckedChangeListener(this);
+        recChk=ajustes.getBoolean("recoveryChk",false);
+        recoveryChk= (CheckBox) findViewById(R.id.recoveryChk);
+        recoveryChk.setOnCheckedChangeListener(this);
+
         if(firmaChk){
             firmarChk.setChecked(true);
             md5Btn.setEnabled(true);
         }else{
             firmarChk.setChecked(false);
             md5Btn.setEnabled(false);
+        }
+        if(recChk){
+            recoveryChk.setChecked(true);
+        }else{
+            recoveryChk.setChecked(false);
         }
     }
 
@@ -119,6 +130,12 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
             }else{
                 editorAjustes.putBoolean("firmarChk",false);
                 md5Btn.setEnabled(false);
+            }
+        }else if(buttonView.getId()==R.id.recoveryChk){
+            if(buttonView.isChecked()){
+                editorAjustes.putBoolean("recoveryChk",true);
+            }else{
+                editorAjustes.putBoolean("recoveryChk",false);
             }
         }
         editorAjustes.commit();
