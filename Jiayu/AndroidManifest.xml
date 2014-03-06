@@ -63,6 +63,7 @@
         <activity android:name="es.jiayu.jiayuid.SelectNameBck" android:label="@string/title_activity_backup" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.ToolsAndroid" android:label="@string/title_activity_tools" android:configChanges="orientation|screenSize"/>
         <activity android:name=".SendInformeActivity" />
+        <activity android:name=".NoInternet" />
 
         <receiver
                 android:name="es.jiayu.jiayuid.DownloadReceiver"

@@ -676,10 +676,14 @@ public class App extends Activity implements AsyncResponse {
             imageButton.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-
-                    Uri uri = Uri.parse("http://www.jiayu.es");
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);
+                    if(noInternet){
+                        Intent intent = new Intent(getApplicationContext(), NoInternet.class);
+                        startActivity(intent);
+                    }else{
+                        Uri uri = Uri.parse("http://www.jiayu.es");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
                 }
 
             });
@@ -687,7 +691,12 @@ public class App extends Activity implements AsyncResponse {
             descargas.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    openBrowser(arg0, "downloads");
+                    if(noInternet){
+                        Intent intent = new Intent(getApplicationContext(), NoInternet.class);
+                        startActivity(intent);
+                    }else{
+                        openBrowser(arg0, "downloads");
+                    }
                 }
 
             });
@@ -718,10 +727,15 @@ public class App extends Activity implements AsyncResponse {
             foro.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgTapaTalk), Toast.LENGTH_LONG).show();
-                    Uri uri = Uri.parse("http://www.foro.jiayu.es");
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);
+                    if(noInternet){
+                        Intent intent = new Intent(getApplicationContext(), NoInternet.class);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgTapaTalk), Toast.LENGTH_LONG).show();
+                        Uri uri = Uri.parse("http://www.foro.jiayu.es");
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
                 }
 
             });
@@ -729,7 +743,12 @@ public class App extends Activity implements AsyncResponse {
             videotutoriales.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    openBrowserVideo(arg0);
+                    if(noInternet){
+                        Intent intent = new Intent(getApplicationContext(), NoInternet.class);
+                        startActivity(intent);
+                    }else{
+                        openBrowserVideo(arg0);
+                    }
                 }
 
             });
@@ -737,7 +756,12 @@ public class App extends Activity implements AsyncResponse {
             driversherramientas.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    openBrowser(arg0, "drivers");
+                    if(noInternet){
+                        Intent intent = new Intent(getApplicationContext(), NoInternet.class);
+                        startActivity(intent);
+                    }else{
+                        openBrowser(arg0, "drivers");
+                    }
                 }
 
             });

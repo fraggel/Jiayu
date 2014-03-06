@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitCenter"
+            android:src="@drawable/jiayulogoic"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/noInternet"
+            android:textColor="#cc0000"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/btn_white_border"/>
+
+    </LinearLayout>
+</ScrollView>

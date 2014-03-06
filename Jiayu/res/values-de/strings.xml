@@ -150,4 +150,5 @@
     <string name="msgOptDisabled">Root not available, some options are disabled</string>
     <string name="recoveryChk">Detectar recovery (necesario Root)</string>
     <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
+    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
 </resources>

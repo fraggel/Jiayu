@@ -194,8 +194,9 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             java.lang.Process p = rt.exec("su");
             BufferedOutputStream bos = new BufferedOutputStream(
                     p.getOutputStream());
-
             bos.write(("busybox cp /cache/recovery/last_log " + Environment.getExternalStorageDirectory() + "/JIAYUES/last_log" + "\n")
+                    .getBytes());
+            bos.write(("cp /cache/recovery/last_log " + Environment.getExternalStorageDirectory() + "/JIAYUES/last_log" + "\n")
                     .getBytes());
             bos.flush();
             bos.close();
