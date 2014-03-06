@@ -3,6 +3,7 @@ package es.jiayu.jiayuid;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.app.NotificationManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,6 +15,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
+import android.view.Display;
+import android.view.WindowManager;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -33,7 +36,7 @@ public class BrowserActivity extends Activity {
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
-
+    WebView descargas=null;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
@@ -43,7 +46,7 @@ public class BrowserActivity extends Activity {
         Intent intent = getIntent();
         String modelo = intent.getExtras().getString("modelo");
         String tipo = intent.getExtras().getString("tipo");
-        WebView descargas = (WebView) findViewById(R.id.webView1);
+        descargas = (WebView) findViewById(R.id.webView1);
         descargas.setWebViewClient(new JiayuWebViewClient());
         descargas.setDownloadListener(new JiayuDownloadListener());
 
@@ -63,10 +66,37 @@ public class BrowserActivity extends Activity {
         }else if("about".equals(tipo)){
             descargas.getSettings().setJavaScriptEnabled(true);
             descargas.loadUrl("http://www.jiayu.es/soporte/appabout.php");
+        }else if ("foro".equals(tipo)){
+            descargas.getSettings().setSupportZoom(true);
+            descargas.getSettings().setBuiltInZoomControls(true);
+            descargas.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+            descargas.getSettings().setUserAgentString("Android");
+            descargas.getSettings().setJavaScriptEnabled(true);
+            descargas.getSettings().setLoadWithOverviewMode(true);
+            descargas.getSettings().setUseWideViewPort(true);
+            descargas.loadUrl("http://foro.jiayu.es");
+        }else if ("videos".equals(tipo)){
+
+                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
+                startActivity(myIntent);
+            /*descargas.getSettings().setSupportZoom(true);
+            descargas.getSettings().setBuiltInZoomControls(true);
+            descargas.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+            descargas.getSettings().setUserAgentString("Android");
+            descargas.getSettings().setJavaScriptEnabled(true);
+            descargas.getSettings().setLoadWithOverviewMode(true);
+            descargas.getSettings().setUseWideViewPort(true);
+            descargas.loadUrl("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos");*/
         }
 
     }
-
+    private int getScale(){
+        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        int width = display.getWidth();
+        Double val = new Double(width)/new Double(1);
+        val = val * 100d;
+        return val.intValue();
+    }
     class JiayuDownloadListener implements DownloadListener {
 
         public void onDownloadStart(String s, String s2, String s3, String s4, long l) {
@@ -184,10 +214,10 @@ public class BrowserActivity extends Activity {
                 }
                 return true;
             } else {
-                Uri uri = Uri.parse(urlDestino);
+                /*Uri uri = Uri.parse(urlDestino);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
-                return true;
+                startActivity(intent);*/
+                return false;
             }
         }
 
@@ -195,6 +225,17 @@ public class BrowserActivity extends Activity {
         public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
             super.onReceivedError(view, errorCode, description, failingUrl);
             setContentView(R.layout.activity_nointernet);
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(descargas.getUrl().equals("http://foro.jiayu.es/")
+                || descargas.getUrl().equals("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")
+                || descargas.getUrl().equals("http://m.youtube.com/#/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")){
+            super.onBackPressed();
+        }else{
+            descargas.goBack();
         }
     }
 

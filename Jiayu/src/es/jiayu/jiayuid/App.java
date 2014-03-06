@@ -12,6 +12,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -38,6 +39,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 
 public class App extends Activity implements AsyncResponse {
@@ -731,10 +733,12 @@ public class App extends Activity implements AsyncResponse {
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
+
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgTapaTalk), Toast.LENGTH_LONG).show();
-                        Uri uri = Uri.parse("http://www.foro.jiayu.es");
+                        /*Uri uri = Uri.parse("http://www.foro.jiayu.es");
                         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
+                        startActivity(intent);*/
+                        openBrowser(arg0,"foro");
                     }
                 }
 
@@ -747,7 +751,27 @@ public class App extends Activity implements AsyncResponse {
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
-                        openBrowserVideo(arg0);
+                        Intent launch_intent =null;
+                        String application_name = "youtube";
+                        Intent intents = new Intent("android.intent.action.MAIN");
+                        List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intents, 0);
+                        boolean existe = false;
+                        for (ResolveInfo info : resolveinfo_list) {
+                            if (info.activityInfo.packageName.toLowerCase().lastIndexOf("youtube")!=-1) {
+                                if (info.activityInfo.name.toLowerCase().lastIndexOf(application_name)!=-1) {
+                                    launch_intent = new Intent(Intent.ACTION_VIEW ,Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
+                                    launch_intent.setComponent(new ComponentName(info.activityInfo.packageName,info.activityInfo.name));
+                                    //launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    existe = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if(existe){
+                            startActivity(launch_intent);
+                        }else{
+                            openBrowserVideo(arg0);
+                        }
                     }
                 }
 
