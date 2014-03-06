@@ -167,11 +167,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 if("cwm".equals(recoveryDetectado)){
                     chkCWM.setChecked(true);
                     chkCWM.setEnabled(false);
-                    chkCWM.setVisibility(View.INVISIBLE);
+                    chkCWM.setTextColor(Color.BLUE);
+                    chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" CWM RECOVERY");
+                    //chkCWM.setVisibility(View.INVISIBLE);
                 }else if("ori".equals(recoveryDetectado)){
                     chkCWM.setChecked(false);
                     chkCWM.setEnabled(false);
-                    chkCWM.setVisibility(View.INVISIBLE);
+                    chkCWM.setTextColor(Color.BLUE);
+                    chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" ORIGINAL RECOVERY");
+                    //chkCWM.setVisibility(View.INVISIBLE);
                 }else{
                     chkCWM.setChecked(false);
                     chkCWM.setEnabled(true);
@@ -200,6 +204,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     .getBytes());
             bos.flush();
             bos.close();
+            p.waitFor();
             f=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/last_log");
             if(f.exists()){
                 FileInputStream fis=new FileInputStream(f);
@@ -407,6 +412,47 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     try {
                         if(firmarChk){
                             if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
+                                if(isRoot){
+                                    writeORIInstall();
+                                }else{
+                                    application_name = "com.mediatek.updatesystem.UpdateSystem";
+                                    Intent intent = new Intent("android.intent.action.MAIN");
+                                    List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
+                                    boolean existe = false;
+                                    for (ResolveInfo info : resolveinfo_list) {
+                                        if (info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.updatesystem")) {
+                                            if (info.activityInfo.name.equalsIgnoreCase(application_name)) {
+                                                File f = new File(this.romseleccionada);
+                                                if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                                    new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                                }
+
+                                                    f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                                                    Intent launch_intent = new Intent("android.intent.action.MAIN");
+                                                    launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
+                                                    launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                    this.startActivity(launch_intent);
+                                                    existe = true;
+                                                    break;
+                                            }
+                                        }
+                                    }
+                                    if (!existe) {
+                                        if(isRoot){
+                                            writeORIInstall();
+                                        }else{
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+                            }else{
+                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
+                            }
+                        }else{
+                            if(isRoot){
+                                writeORIInstall();
+                            }else{
                                 application_name = "com.mediatek.updatesystem.UpdateSystem";
                                 Intent intent = new Intent("android.intent.action.MAIN");
                                 List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
@@ -420,51 +466,26 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
 
                                             }
 
-                                                f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                                Intent launch_intent = new Intent("android.intent.action.MAIN");
-                                                launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
-                                                launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                                this.startActivity(launch_intent);
-                                                existe = true;
-                                                break;
+                                            f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                                            Intent launch_intent = new Intent("android.intent.action.MAIN");
+                                            launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
+                                            launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            this.startActivity(launch_intent);
+                                            existe = true;
+                                            break;
                                         }
                                     }
                                 }
                                 if (!existe) {
-                                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
-                                }
-                            }else{
-                                Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
-                            }
-                        }else{
-                            application_name = "com.mediatek.updatesystem.UpdateSystem";
-                            Intent intent = new Intent("android.intent.action.MAIN");
-                            List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
-                            boolean existe = false;
-                            for (ResolveInfo info : resolveinfo_list) {
-                                if (info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.updatesystem")) {
-                                    if (info.activityInfo.name.equalsIgnoreCase(application_name)) {
-                                        File f = new File(this.romseleccionada);
-                                        if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
-                                            new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
-
-                                        }
-
-                                        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                        Intent launch_intent = new Intent("android.intent.action.MAIN");
-                                        launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
-                                        launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        this.startActivity(launch_intent);
-                                        existe = true;
-                                        break;
+                                    if(isRoot){
+                                        writeORIInstall();
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             }
-                            if (!existe) {
-                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
-                            }
                         }
-                    } catch (ActivityNotFoundException e) {
+                    } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError) + application_name+" 155", Toast.LENGTH_SHORT).show();
                     }
 
@@ -481,6 +502,30 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         BufferedOutputStream bos = new BufferedOutputStream(
                 p.getOutputStream());
         bos.write(("rm /cache/recovery/extendedcommand\n")
+                .getBytes());
+        String fileCWM = "";
+        if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){
+            fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+            bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+            bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+        }else{
+            fileCWM =this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
+            bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
+            bos.write(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
+        }
+        bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+                                    /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
+                                    bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
+        bos.flush();
+        bos.close();
+        rebootRecoveryQuestionFlashear();
+    }
+    public void writeORIInstall() throws Exception{
+        Runtime rt = Runtime.getRuntime();
+        java.lang.Process p = rt.exec("su");
+        BufferedOutputStream bos = new BufferedOutputStream(
+                p.getOutputStream());
+        bos.write(("rm /cache/recovery/command\n")
                 .getBytes());
         String fileCWM = "";
         if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){

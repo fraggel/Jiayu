@@ -232,7 +232,13 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 bos.flush();
                 bos.close();
                 AlertDialog dialog = new AlertDialog.Builder(this).create();
-                dialog.setMessage(getResources().getString(R.string.msgRecoveryFlasheado));
+                String recoveryInstall="";
+                if(ajustes.getBoolean("recoveryChk",false)){
+                    recoveryInstall=getResources().getString(R.string.msgRecoveryDetectadoReboot);
+                    dialog.setMessage(recoveryInstall+getResources().getString(R.string.msgRecoveryFlasheado));
+                }else{
+                    dialog.setMessage(getResources().getString(R.string.msgRecoveryFlasheado));
+                }
                 dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
                         getResources().getString(R.string.cancelarBtn),
                         new DialogInterface.OnClickListener() {

@@ -150,6 +150,8 @@
     <string name="recoveryChk">Detectar recovery (necesario Root)</string>
     <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
     <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
+    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
+    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
 
     <string-array name="languages">
         <item>"Change Language"</item>
