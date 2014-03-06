@@ -76,17 +76,14 @@ public class BrowserActivity extends Activity {
             descargas.getSettings().setUseWideViewPort(true);
             descargas.loadUrl("http://foro.jiayu.es");
         }else if ("videos".equals(tipo)){
-
-                Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
-                startActivity(myIntent);
-            /*descargas.getSettings().setSupportZoom(true);
+            descargas.getSettings().setSupportZoom(true);
             descargas.getSettings().setBuiltInZoomControls(true);
             descargas.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
             descargas.getSettings().setUserAgentString("Android");
             descargas.getSettings().setJavaScriptEnabled(true);
             descargas.getSettings().setLoadWithOverviewMode(true);
             descargas.getSettings().setUseWideViewPort(true);
-            descargas.loadUrl("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos");*/
+            descargas.loadUrl("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos");
         }
 
     }
@@ -213,7 +210,20 @@ public class BrowserActivity extends Activity {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 133", Toast.LENGTH_SHORT).show();
                 }
                 return true;
-            } else {
+            } else if(url.lastIndexOf("watch?")!=-1){
+                try {
+                    Intent launch_intent = new Intent(Intent.ACTION_VIEW );
+                    launch_intent.setData(Uri.parse("vnd.youtube:"+url.split("v=")[1]));
+                    launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(launch_intent);
+                }catch(Exception e){
+                    Intent launch_intent = new Intent(Intent.ACTION_VIEW );
+                    launch_intent.setData(Uri.parse(url));
+                    launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(launch_intent);
+                }
+                return true;
+            }else{
                 /*Uri uri = Uri.parse(urlDestino);
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(intent);*/
@@ -232,7 +242,11 @@ public class BrowserActivity extends Activity {
     public void onBackPressed() {
         if(descargas.getUrl().equals("http://foro.jiayu.es/")
                 || descargas.getUrl().equals("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")
-                || descargas.getUrl().equals("http://m.youtube.com/#/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")){
+                || descargas.getUrl().equals("http://m.youtube.com/#/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")
+                || descargas.getUrl().equals("http://www.jiayu.es/soporte/appabout.php")
+                || descargas.getUrl().equals("http://www.jiayu.es/soporte/appboots.php")
+                || descargas.getUrl().equals("http://www.jiayu.es/soporte/apptools.php")
+                || (descargas.getUrl().lastIndexOf("http://www.jiayu.es/soporte/appsoft.php?jiayu=")!=-1)){
             super.onBackPressed();
         }else{
             descargas.goBack();

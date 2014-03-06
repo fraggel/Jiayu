@@ -42,7 +42,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-public class App extends Activity implements AsyncResponse {
+public class App extends Activity implements AsyncResponse{
 
     static long downloadREF = -1;
     static HashMap<String, String> listaDescargas = new HashMap<String, String>();
@@ -751,27 +751,7 @@ public class App extends Activity implements AsyncResponse {
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
-                        Intent launch_intent =null;
-                        String application_name = "youtube";
-                        Intent intents = new Intent("android.intent.action.MAIN");
-                        List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intents, 0);
-                        boolean existe = false;
-                        for (ResolveInfo info : resolveinfo_list) {
-                            if (info.activityInfo.packageName.toLowerCase().lastIndexOf("youtube")!=-1) {
-                                if (info.activityInfo.name.toLowerCase().lastIndexOf(application_name)!=-1) {
-                                    launch_intent = new Intent(Intent.ACTION_VIEW ,Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
-                                    launch_intent.setComponent(new ComponentName(info.activityInfo.packageName,info.activityInfo.name));
-                                    //launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    existe = true;
-                                    break;
-                                }
-                            }
-                        }
-                        if(existe){
-                            startActivity(launch_intent);
-                        }else{
-                            openBrowserVideo(arg0);
-                        }
+                        openBrowser(arg0,"videos");
                     }
                 }
 
@@ -872,7 +852,7 @@ public class App extends Activity implements AsyncResponse {
         }
     }
 
-    public void openBrowserVideo(View v) {
+    /*public void openBrowserVideo(View v) {
 
         try {
             Intent myIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos"));
@@ -880,7 +860,7 @@ public class App extends Activity implements AsyncResponse {
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 113", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     public static String getTotalRAM() throws Exception {
         RandomAccessFile reader = null;
@@ -1156,6 +1136,5 @@ public class App extends Activity implements AsyncResponse {
             }
         }
     }
-
 
 }

@@ -152,4 +152,5 @@
     <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
     <string name="msgRecoveryDetectado">Recovery Instalado:</string>
     <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
+    <string name="volverBtn">Volver</string>
 </resources>

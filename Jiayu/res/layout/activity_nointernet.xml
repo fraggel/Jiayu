@@ -34,5 +34,15 @@
             style="@style/LabelTextBlack"
             android:background="@drawable/btn_white_border"/>
 
+        <Button
+            style="@style/ButtonTextGreen"
+            android:id="@+id/volverBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:text="@string/volverBtn"
+            android:onClick="volver"
+            android:background="@drawable/btn_green" />
+
     </LinearLayout>
 </ScrollView>
