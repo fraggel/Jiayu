@@ -136,21 +136,23 @@
     <string name="ntfNuevaVersionTxt">"Actualització JIAYU.es"</string>
     <string name="ntfTituloNVTxt">"Actualització JIAYU.es "</string>
     <string name="ntfDetallesNVTxt">"Version:"</string>
-
+    <string name="emailContacto">spainjiayu@gmail.com</string>
     <string name="bcknameTxt">"Escriure nom de backup"</string>
     <string name="txtbckRdb">"Seleccionar"</string>
     <string name="makebackuprestoreBtn">"Executar"</string>
     <string name="guardarBtn">"Desa"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
-    <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
     <string name="menuflashRomBtn">Instal · lar ROM/ZIP</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+    <string name="recoveryChk">Detectar recovery (necessari Root)"</string>
+    <string name="msgNecesarioReiniDetect">"No s'ha pogut detectar el recovery instal · lat, cal reiniciar en recovery i reiniciar perquè pugui ser detectat per l'aplicació Jiayu.es"</string>
+    <string name="noInternet">"No es pot mostrar la pantalla seleccionada, no hi ha connexió a internet. Revisi la seva connexió i torneu a provar"</string>
+    <string name="msgRecoveryDetectado">"Recovery Instal · lat:"</string>
+    <string name="msgRecoveryDetectadoReboot">"Detectar Recovery està activat, perquè funcioni correctament cal reiniciar ara en recovery."</string>
+    <string name="volverBtn">"Tornar"</string>
+    <string name="msgNuevasOpciones">"S'han afegit noves opcions disponibles a la pantalla de configuració. Prem el botó de configuració per revisar"</string>
+    <string name="enviarNoExisteBtn">"Envieu un informe de Model"</string>
+    <string name="envioErrores">"Telèfon no reconegut"</string>
+    <string name="msgNoMD5File">"No MD5 de l'arxiu, pot descarregar des de la pantalla de configuració"</string>
+    <string name="msgOptDisabled">"No Root disponibles, algunes opcions estan deshabilitades"</string>
+
+
 </resources>

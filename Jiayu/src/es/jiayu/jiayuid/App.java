@@ -23,6 +23,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -57,6 +58,7 @@ public class App extends Activity implements AsyncResponse{
     Button herramientasROM;
     Button config;
     Button envioNoExisteBtn;
+    Button btnInfo;
     String modelo = "";
     String model = "";
     String urlActualizacion = "";
@@ -66,6 +68,7 @@ public class App extends Activity implements AsyncResponse{
     String newversion = "";
     String chip = "";
     String listaIdiomas[]=null;
+
 
     boolean noInternet=false;
     static NotificationManager mNotificationManagerUpdate=null;
@@ -79,6 +82,7 @@ public class App extends Activity implements AsyncResponse{
     protected void onResume() {
         super.onResume();
         listaIdiomas=getResources().getStringArray(R.array.languages_values);
+        ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
         int i=ajustes.getInt("language",0);
         Locale locale =null;
         if(i==0){
@@ -183,6 +187,7 @@ public class App extends Activity implements AsyncResponse{
                         driversherramientas = (Button) findViewById(R.id.button9);
                         herramientasROM = (Button) findViewById(R.id.button10);
                         envioNoExisteBtn=(Button)findViewById(R.id.envioNoExisteBtn);
+                        btnInfo=(Button)findViewById(R.id.btnInfo);
                         envioNoExisteBtn.setVisibility(View.INVISIBLE);
                         descargas.setEnabled(false);
                         //accesorios.setEnabled(false);
@@ -282,9 +287,26 @@ public class App extends Activity implements AsyncResponse{
                     }
                 }
                        // }
+                if(ajustes.getBoolean("firstUse",true)){
+                    btnInfo.setTextAppearance(getApplicationContext(), android.R.attr.textAppearanceMedium);
+                    btnInfo.setBackgroundDrawable(res.getDrawable(R.drawable.btn_white_border));
+                    btnInfo.setTextColor(Color.parseColor("#449def"));
+                    btnInfo.setTextColor(Color.BLUE);
+                    btnInfo.setText(R.string.msgNuevasOpciones);
+                    btnInfo.setClickable(false);
+                    btnInfo.setVisibility(View.VISIBLE);
+                    config.setBackgroundDrawable(res.getDrawable(R.drawable.btn_yellow));
+                    config.requestFocus();
+                }else{
+                    btnInfo.setVisibility(View.GONE);
+                    config.setBackgroundDrawable(res.getDrawable(R.drawable.btn_green));
+
+                }
+
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
+
     }
 
     private String infoBrand() throws IOException {
@@ -784,6 +806,7 @@ public class App extends Activity implements AsyncResponse{
 
             });
             config = (Button) findViewById(R.id.button5);
+            config.setFocusable(true);
             config.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {

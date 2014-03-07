@@ -140,17 +140,22 @@
     <string name="txtbckRdb">"选择"</string>
     <string name="makebackuprestoreBtn">"运行"</string>
     <string name="guardarBtn">"节省"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+
     <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
+
     <string name="menuflashRomBtn">"安装ROM/ZIP"</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+
+    <string name="recoveryChk">检测恢复（需要根</string>
+    <string name="msgNecesarioReiniDetect">未能检测到安装的恢复，必须重新启动以恢复并重新启动它由应用程序Jiayu.es进行检测</string>
+    <string name="noInternet">无法显示所选的屏幕，没有互联网连接。请检查您的连接，然后再试一次</string>
+    <string name="msgRecoveryDetectado">恢复已安装：</string>
+    <string name="msgRecoveryDetectadoReboot">检测恢复启用正常工作，你需要重启进入恢复了。</string>
+    <string name="volverBtn">回归</string>
+    <string name="msgNuevasOpciones">在配置屏幕可添加新的选项。点击设置按钮进行审查</string>
+    <string name="enviarNoExisteBtn">发送报告模型</string>
+    <string name="envioErrores">电话未确认</string>
+
+    <string name="msgNoMD5File">没有MD5的文件，从配置屏幕下载它</string>
+    <string name="msgOptDisabled">根本无法使用，某些选项被禁用</string>
 
 </resources>

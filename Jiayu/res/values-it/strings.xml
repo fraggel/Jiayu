@@ -142,17 +142,25 @@
     <string name="txtbckRdb">"Selezionare"</string>
     <string name="makebackuprestoreBtn">"Esegui"</string>
     <string name="guardarBtn">"Salva"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+
     <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
+
     <string name="menuflashRomBtn">Installare ROM/ZIP</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+
+    <string name="recoveryChk">Rileva recupero (Root richiesto)</string>
+    <string name="msgNecesarioReiniDetect">Impossibile rilevare il recupero installato, è necessario riavviare in recovery e riavviare per poter essere rilevato dai Jiayu.es applicazione</string>
+    <string name="noInternet">Impossibile visualizzare la schermata selezionata, senza connessione a internet. Controllare la connessione e riprovare</string>
+    <string name="msgRecoveryDetectado">Recovery installata:</string>
+    <string name="msgRecoveryDetectadoReboot">Rileva Recovery è in grado di funzionare correttamente è necessario riavviare in recovery ora.</string>
+    <string name="volverBtn">ritorno</string>
+    <string name="msgNuevasOpciones">Nuove opzioni disponibili aggiunti nella schermata di configurazione. Fare clic sul pulsante Imposta per la revisione</string>
+
+    <string name="enviarNoExisteBtn">Invia modello di report</string>
+    <string name="envioErrores">Telefono NO riconosciuto</string>
+
+
+    <string name="msgNoMD5File">Nessun file MD5, Scaricalo dalla schermata di configurazione</string>
+    <string name="msgOptDisabled">Non Root disponibili, alcune opzioni sono disabilitate</string>
+
 
 </resources>

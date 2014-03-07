@@ -278,11 +278,13 @@
 <string name="menuflashRomBtn">"ROM / ZIP instalatu"</string>
 
 <string name="msgOptDisabled">"Erroa ez dago, aukera batzuk desgaituta daude"</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+    <string name="recoveryChk">Detektatzeko berreskuratzeko (Erro beharrezkoa)</string>
+    <string name="msgNecesarioReiniDetect">Huts egin instalatutako berreskuratzeko detektatzeko, berreskuratzeko berrabiarazi behar duzu eta berrabiarazi da aplikazio Jiayu.es bidez detektatu ahal</string>
+    <string name="noInternet">Ezin da hautatutako pantaila, internet konexioa ez bistaratzeko. Begiratu zure konexioa eta saiatu berriro</string>
+    <string name="msgRecoveryDetectado">Berreskuratzea Instalatutako:</string>
+    <string name="msgRecoveryDetectadoReboot">Detektatzeko berreskuratzea funtziona gaituta dago ondo orain arte berreskuratzeko sartu berrabiarazi behar duzu.</string>
+    <string name="volverBtn">bueltan</string>
+    <string name="msgNuevasOpciones">Erantsia aukera berriak eskuragarri konfigurazio pantailan. Klik Setup botoia berrikusteko</string>
+
 
 </resources>

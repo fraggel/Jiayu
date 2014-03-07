@@ -3,13 +3,16 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scrollbars="horizontal">
-
-    <LinearLayout
+     <LinearLayout
             android:id="@+id/LinearLayout1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            tools:context=".Inicio2">
+            tools:context=".Inicio2"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="0dp">
 
         <ImageButton
                 android:id="@+id/imageButton1"
@@ -120,11 +123,19 @@
                 android:text="@string/aboutBtn"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
+         <Button
+             android:id="@+id/btnInfo"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             style="@style/ButtonTextGreen"
+             android:background="@drawable/btn_green"
+             android:visibility="gone"/>
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/msgConfiguracion"
+            android:focusableInTouchMode="true"
             style="@style/ButtonTextGreen"
             android:background="@drawable/btn_green"/>
 
@@ -144,8 +155,9 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
+
             android:background="@drawable/btn_white_border"
             style="@style/LabelTextBlack"/>
-    </LinearLayout>
 
+    </LinearLayout>
 </ScrollView>

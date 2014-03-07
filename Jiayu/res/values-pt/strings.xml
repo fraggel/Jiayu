@@ -141,17 +141,22 @@
     <string name="txtbckRdb">"Selecionar"</string>
     <string name="makebackuprestoreBtn">"Correr"</string>
     <string name="guardarBtn">"Salvar"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+
     <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
+
+    <string name="recoveryChk">Detectar recuperação (Root required)</string>
+    <string name="msgNecesarioReiniDetect">Falha ao detectar a recuperação instalado, você deve reiniciar em recuperação e reiniciar para que possa ser detectado pelos Jiayu.es aplicação</string>
+    <string name="noInternet">Não é possível exibir a tela selecionada, sem conexão à Internet. Verifique sua conexão e tente novamente</string>
+    <string name="msgRecoveryDetectado">Recovery instalado:</string>
+    <string name="msgRecoveryDetectadoReboot">Detectar a recuperação está habilitado para funcionar corretamente você precisa reiniciar em recuperação agora.</string>
+    <string name="volverBtn">retorno</string>
+    <string name="msgNuevasOpciones">Adicionado novas opções disponíveis na tela de configuração. Clique no botão Configurar para revisão</string>
     <string name="menuflashRomBtn">Instalar ROM/ZIP</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+
+    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+    <string name="envioErrores">Telefono NO reconocido</string>
+    <string name="msgNoMD5File">No MD5 do arquivo, faça o download a partir da tela de configuração</string>
+    <string name="msgOptDisabled">Root não estiver disponível, algumas opções estão desabilitadas</string>
+
 
 </resources>

@@ -40,71 +40,77 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
     Button md5Btn=null;
 
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Resources res = this.getResources();
-        setContentView(R.layout.activity_config);
-        ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
-        imageButton = (ImageButton) findViewById(R.id.imageButton1);
-        imageButton.setOnClickListener(new View.OnClickListener() {
 
-            public void onClick(View arg0) {
+        try {
+            super.onCreate(savedInstanceState);
+            Resources res = this.getResources();
+            setContentView(R.layout.activity_config);
+            ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
+            editorAjustes=ajustes.edit();
+            editorAjustes.putBoolean("firstUse",false);
+            editorAjustes.commit();
+            imageButton = (ImageButton) findViewById(R.id.imageButton1);
+            imageButton.setOnClickListener(new View.OnClickListener() {
 
-                Uri uri = Uri.parse("http://www.jiayu.es");
-                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                startActivity(intent);
+                public void onClick(View arg0) {
+
+                    Uri uri = Uri.parse("http://www.jiayu.es");
+                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                    startActivity(intent);
+                }
+
+            });
+            md5Btn=(Button)findViewById(R.id.downloadMD5Btn);
+            md5Btn.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View arg0) {
+                    descargarFirmas();
+                }
+
+            });
+            notificacionesNews=ajustes.getBoolean("notificacionesNews",true);
+            notificacionesChkNews = (CheckBox) findViewById(R.id.notificacionChkNews);
+            notificacionesChkNews.setOnCheckedChangeListener(this);
+            if(notificacionesNews){
+                notificacionesChkNews.setChecked(true);
+            }else{
+                notificacionesChkNews.setChecked(false);
             }
-
-        });
-        md5Btn=(Button)findViewById(R.id.downloadMD5Btn);
-        md5Btn.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View arg0) {
-                descargarFirmas();
+            notificacionesUpd=ajustes.getBoolean("notificacionesUpd",true);
+            notificacionesChkUpd = (CheckBox) findViewById(R.id.notificacionChkUpd);
+            notificacionesChkUpd.setOnCheckedChangeListener(this);
+            if(notificacionesUpd){
+                notificacionesChkUpd.setChecked(true);
+            }else{
+                notificacionesChkUpd.setChecked(false);
             }
+            languageSpn =(Spinner) findViewById(R.id.languageSpn);
+            listaIdiomas=getResources().getStringArray(R.array.languages_values);
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.languages, android.R.layout.simple_spinner_item);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            languageSpn.setAdapter(adapter);
+            languageSpn.setOnItemSelectedListener(this);
+            firmaChk=ajustes.getBoolean("firmarChk",false);
+            firmarChk = (CheckBox) findViewById(R.id.firmarChk);
+            firmarChk.setOnCheckedChangeListener(this);
+            recChk=ajustes.getBoolean("recoveryChk",false);
+            recoveryChk= (CheckBox) findViewById(R.id.recoveryChk);
+            recoveryChk.setOnCheckedChangeListener(this);
 
-        });
-        notificacionesNews=ajustes.getBoolean("notificacionesNews",true);
-        notificacionesChkNews = (CheckBox) findViewById(R.id.notificacionChkNews);
-        notificacionesChkNews.setOnCheckedChangeListener(this);
-        if(notificacionesNews){
-            notificacionesChkNews.setChecked(true);
-        }else{
-            notificacionesChkNews.setChecked(false);
-        }
-        notificacionesUpd=ajustes.getBoolean("notificacionesUpd",true);
-        notificacionesChkUpd = (CheckBox) findViewById(R.id.notificacionChkUpd);
-        notificacionesChkUpd.setOnCheckedChangeListener(this);
-        if(notificacionesUpd){
-            notificacionesChkUpd.setChecked(true);
-        }else{
-            notificacionesChkUpd.setChecked(false);
-        }
-        languageSpn =(Spinner) findViewById(R.id.languageSpn);
-        listaIdiomas=getResources().getStringArray(R.array.languages_values);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.languages, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        languageSpn.setAdapter(adapter);
-        languageSpn.setOnItemSelectedListener(this);
-        firmaChk=ajustes.getBoolean("firmarChk",false);
-        firmarChk = (CheckBox) findViewById(R.id.firmarChk);
-        firmarChk.setOnCheckedChangeListener(this);
-        recChk=ajustes.getBoolean("recoveryChk",false);
-        recoveryChk= (CheckBox) findViewById(R.id.recoveryChk);
-        recoveryChk.setOnCheckedChangeListener(this);
-
-        if(firmaChk){
-            firmarChk.setChecked(true);
-            md5Btn.setEnabled(true);
-        }else{
-            firmarChk.setChecked(false);
-            md5Btn.setEnabled(false);
-        }
-        if(recChk){
-            recoveryChk.setChecked(true);
-        }else{
-            recoveryChk.setChecked(false);
-        }
+            if(firmaChk){
+                firmarChk.setChecked(true);
+                md5Btn.setEnabled(true);
+            }else{
+                firmarChk.setChecked(false);
+                md5Btn.setEnabled(false);
+            }
+            if(recChk){
+                recoveryChk.setChecked(true);
+            }else{
+                recoveryChk.setChecked(false);
+            }
+        }catch(Exception e){}
     }
 
     @Override
@@ -133,6 +139,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
             }
         }else if(buttonView.getId()==R.id.recoveryChk){
             if(buttonView.isChecked()){
+                Toast.makeText(getApplicationContext(),R.string.msgRecoveryDetectadoReboot,Toast.LENGTH_LONG).show();
                 editorAjustes.putBoolean("recoveryChk",true);
             }else{
                 editorAjustes.putBoolean("recoveryChk",false);

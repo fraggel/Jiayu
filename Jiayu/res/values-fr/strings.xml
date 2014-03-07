@@ -142,17 +142,22 @@
     <string name="txtbckRdb">"Sélectionner"</string>
     <string name="makebackuprestoreBtn">"Exécuter"</string>
     <string name="guardarBtn">"Sauvegarder"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
     <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
-    <string name="menuflashRomBtn">Installez ROM/ZIP</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+
+    <string name="menuflashRomBtn">"Installez ROM/ZIP"</string>
+    <string name="recoveryChk">"Détecter la récupération (Root obligatoire)"</string>
+    <string name="msgNecesarioReiniDetect">"Impossible de détecter la récupération installé, vous devez redémarrer dans la récupération et redémarrer pour qu'il soit détecté par les Jiayu.es d'application"</string>
+    <string name="noInternet">"Impossible d'afficher l'écran sélectionné, pas de connexion internet. Vérifiez votre connexion et réessayez"</string>
+    <string name="msgRecoveryDetectado">"Recovery installé:</string>
+    <string name="msgRecoveryDetectadoReboot">"Détection de récupération est activé pour fonctionner correctement, vous devez redémarrer dans la récupération maintenant."</string>
+    <string name="volverBtn">"Retour"</string>
+    <string name="msgNuevasOpciones">"Nouvelles options ajoutées disponibles dans l'écran de configuration. Cliquez sur le bouton d'installation pour examen"</string>
+    <string name="enviarNoExisteBtn">"Envoyer un rapport Modèle"</string>
+    <string name="envioErrores">"Téléphone NON reconnue"</string>
+    <string name="msgNoMD5File">"Aucun fichier MD5, Téléchargez-le depuis l'écran de configuration"</string>
+    <string name="msgOptDisabled">"Racine pas disponible, certaines options sont désactivées"</string>
+
+
+
 
 </resources>

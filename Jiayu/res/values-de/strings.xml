@@ -137,21 +137,31 @@
     <string name="ntfNuevaVersionTxt">"Update JIAYU.es"</string>
     <string name="ntfTituloNVTxt">"Update JIAYU.es "</string>
     <string name="ntfDetallesNVTxt">"Version:"</string>
-
+    <string name="emailContacto">spainjiayu@gmail.com</string>
     <string name="bcknameTxt">"Schreiben Sie Namen von Backup"</string>
     <string name="txtbckRdb">"Wählen"</string>
     <string name="makebackuprestoreBtn">"Führen"</string>
     <string name="guardarBtn">"Speichern"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
-    <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
     <string name="menuflashRomBtn">Installieren ROM/ZIP</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+    <string name="recoveryChk">Erkennen Erholung (Root erforderlich)</string>
+    <string name="msgNecesarioReiniDetect">Konnte die Wiederherstellung installiert zu erkennen, muss man bei der Wiederherstellung neu starten, und starten Sie es von der Anwendung erkannt werden Jiayu.es</string>
+    <string name="noInternet">Kann nicht die ausgewählte Bildschirm, keine Internetverbindung anzeigen. Überprüfen Sie Ihre Verbindung und versuchen Sie es erneut</string>
+    <string name="msgRecoveryDetectado">Recovery installiert:</string>
+    <string name="msgRecoveryDetectadoReboot">Erkennen Wiederherstellung aktiviert ist, um funktionieren richtig, was Sie jetzt in den Recovery neu starten müssen.</string>
+    <string name="volverBtn">Rückkehr</string>
+    <string name="msgNuevasOpciones">Neue Optionen im Konfigurationsfenster zur Verfügung. Klicken Sie auf die Setup-Taste zur Überprüfung</string>
+
+
+    <string name="enviarNoExisteBtn">Bericht absenden Modell</string>
+    <string name="envioErrores">Telefon NICHT erkannt</string>
+
+    <string name="msgNoMD5File">Keine MD5-Datei Laden Sie es von Konfigurationsbildschirm</string>
+    <string name="msgOptDisabled">Wurzel nicht verfügbar ist, deaktiviert sind einige Optionen</string>
+
+
+
+
+
+
+
 </resources>

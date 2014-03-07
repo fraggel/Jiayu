@@ -141,17 +141,23 @@
     <string name="txtbckRdb">"Выбирать"</string>
     <string name="makebackuprestoreBtn">"Работать"</string>
     <string name="guardarBtn">"Экономить"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+
     <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
+
     <string name="menuflashRomBtn">"Установить ROM/ZIP"</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+
+    <string name="recoveryChk">Обнаружение восстановление (корень обязательно)</string>
+    <string name="msgNecesarioReiniDetect">Не удалось обнаружить восстановление установлен, необходимо перезапустить в восстановлении и перезапустить его, чтобы быть обнаружены Jiayu.es приложений</string>
+    <string name="noInternet">Не удается показать выбранного экрана, ни подключение к интернету. Проверьте подключение и попробуйте еще раз</string>
+    <string name="msgRecoveryDetectado">Восстановление Установлено:</string>
+    <string name="msgRecoveryDetectadoReboot">Обнаружение восстановления включена функционировать должным образом вам нужно перезагрузиться в восстановлении сейчас.</string>
+    <string name="volverBtn">возвращение</string>
+    <string name="msgNuevasOpciones">Добавлены новые параметры, доступные в окне конфигурации. Нажмите кнопку Настройка для рассмотрения</string>
+    <string name="enviarNoExisteBtn">Отправить модели отчета</string>
+    <string name="envioErrores">Телефон не признаются</string>
+
+
+    <string name="msgNoMD5File">Нет Файл MD5, Скачать его от экрана Configuration</string>
+    <string name="msgOptDisabled">Корневая недоступен, некоторые параметры отключены</string>
 
 </resources>

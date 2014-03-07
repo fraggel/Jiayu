@@ -140,17 +140,25 @@
     <string name="txtbckRdb">"選択する"</string>
     <string name="makebackuprestoreBtn">"実行"</string>
     <string name="guardarBtn">"保存"</string>
-    <string name="enviarNoExisteBtn">Enviar informe de Modelo</string>
+
     <string name="emailContacto">spainjiayu@gmail.com</string>
-    <string name="envioErrores">Jiayu App Telefono NO reconocido</string>
-    <string name="msgNoMD5File">No MD5 File, Download it from Configuration screen</string>
+
     <string name="menuflashRomBtn">"ROM/ZIPをインストール"</string>
-    <string name="msgOptDisabled">Root not available, some options are disabled</string>
-    <string name="recoveryChk">Detectar recovery (necesario Root)</string>
-    <string name="msgNecesarioReiniDetect">No se ha podido detectar el recovery instalado, es necesario reiniciar en recovery y reiniciar para que pueda ser detectado por la aplicación Jiayu.es</string>
-    <string name="noInternet">No se puede mostrar la pantalla seleccionada, no hay conexión a internet. Revise su conexión e inténtelo de nuevo</string>
-    <string name="msgRecoveryDetectado">Recovery Instalado:</string>
-    <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
-    <string name="volverBtn">Volver</string>
+
+    <string name="recoveryChk">回復を検出（ルートが必要）</string>
+    <string name="msgNecesarioReiniDetect">インストールの回復を検出することができなかった、それがアプリケーションJiayu.esによって検出されるためには、リカバリと再起動で再起動する必要があります</string>
+    <string name="noInternet">選択した画面、インターネット未接続を表示することができません。接続を確認し、再試行してください</string>
+    <string name="msgRecoveryDetectado">回復がインストールされている：</string>
+    <string name="msgRecoveryDetectadoReboot">検出復旧があなたが今、回復に再起動する必要が正しく機能するために有効になっています。</string>
+    <string name="volverBtn">リターン</string>
+    <string name="msgNuevasOpciones">設定画面で利用できる新しいオプションが追加されました。レビューのために[設定]ボタンをクリック</string>
+
+
+
+    <string name="enviarNoExisteBtn">レポートモデルを送ってください</string>
+    <string name="envioErrores">電話番号認識</string>
+    <string name="msgNoMD5File">何のMD5ファイルは、Configuration画面からダウンロードしてくださいませ</string>
+    <string name="msgOptDisabled">ルートは利用できません、いくつかのオプションが無効になっています</string>
+
 
 </resources>
