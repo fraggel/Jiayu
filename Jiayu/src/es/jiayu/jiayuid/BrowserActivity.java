@@ -16,6 +16,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 import android.webkit.DownloadListener;
 import android.webkit.WebView;
@@ -252,7 +253,9 @@ public class BrowserActivity extends Activity {
             descargas.goBack();
         }
     }
-
+    public void volver(View view) {
+        super.onBackPressed();
+    }
     public static boolean isDownloadManagerAvailable(Context context) {
         try {
             if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {

@@ -374,7 +374,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                java.lang.Process p = rt.exec("su");
                BufferedOutputStream bos = new BufferedOutputStream(
                        p.getOutputStream());
-
+               bos.write(("rm /cache/recovery/command\n")
+                       .getBytes());
                bos.write(("rm /cache/recovery/extendedcommand\n")
                        .getBytes());
                bos.write(("echo 'ui_print(\"Wipe data/cache iniciando...\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -503,28 +504,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 p.getOutputStream());
         bos.write(("rm /cache/recovery/extendedcommand\n")
                 .getBytes());
-        String fileCWM = "";
-        if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){
-            fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
-            bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
-            bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
-        }else{
-            fileCWM =this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
-            bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
-            bos.write(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
-        }
-        bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                                    /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                                    bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
-        bos.flush();
-        bos.close();
-        rebootRecoveryQuestionFlashear();
-    }
-    public void writeORIInstall() throws Exception{
-        Runtime rt = Runtime.getRuntime();
-        java.lang.Process p = rt.exec("su");
-        BufferedOutputStream bos = new BufferedOutputStream(
-                p.getOutputStream());
         bos.write(("rm /cache/recovery/command\n")
                 .getBytes());
         String fileCWM = "";
@@ -544,6 +523,35 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         bos.close();
         rebootRecoveryQuestionFlashear();
     }
+    public void writeORIInstall() throws Exception{
+        File f = new File(this.romseleccionada);
+        if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+            new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+        }
+
+        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+        Runtime rt = Runtime.getRuntime();
+        java.lang.Process p = rt.exec("su");
+        BufferedOutputStream bos = new BufferedOutputStream(
+                p.getOutputStream());
+        bos.write(("rm /cache/recovery/command\n")
+                .getBytes());
+        bos.write(("rm /cache/recovery/extendedcommand\n")
+                .getBytes());
+        String fileCWM = "";
+        if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){
+            bos.write(("echo '--update_package=/sdcard/update.zip\n' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--locale=es_ES\n' >> /cache/recovery/command\n").getBytes());
+
+        }else{
+            bos.write(("echo '--update_package=/sdcard2/update.zip\n' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--locale=es_ES\n' >> /cache/recovery/command\n").getBytes());
+        }
+        bos.flush();
+        bos.close();
+        rebootRecoveryQuestionFlashear();
+    }
     public void flashZip(){
         try {
             if(aceptadoNoModelo){
@@ -553,6 +561,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         java.lang.Process p = rt.exec("su");
                         BufferedOutputStream bos = new BufferedOutputStream(
                                 p.getOutputStream());
+                        bos.write(("rm /cache/recovery/command\n")
+                                .getBytes());
                         bos.write(("rm /cache/recovery/extendedcommand\n")
                                 .getBytes());
                         String fileCWM="";
@@ -580,6 +590,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     java.lang.Process p = rt.exec("su");
                     BufferedOutputStream bos = new BufferedOutputStream(
                             p.getOutputStream());
+                    bos.write(("rm /cache/recovery/command\n")
+                            .getBytes());
                     bos.write(("rm /cache/recovery/extendedcommand\n")
                             .getBytes());
                     String fileCWM="";
