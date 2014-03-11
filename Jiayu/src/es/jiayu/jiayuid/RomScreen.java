@@ -319,7 +319,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
 
         }else if(button.getId()==R.id.zipBtn){
            try {
-               boolean mimodelo=false;
+               /*boolean mimodelo=false;
                if(this.zipseleccionada.indexOf(modelo)!=-1){
                    mimodelo=true;
                }else{
@@ -354,7 +354,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                }
                            });
                    dialog.show();
-               }else{
+               }else{*/
                    aceptadoNoModelo=true;
                    CheckBox chkCWM = (CheckBox) findViewById(R.id.cwmChk);
                    if (chkCWM.isChecked()) {
@@ -362,7 +362,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                    }else{
                        flashZipRecoveryOficial();
                    }
-               }
+              /* }*/
 
            }catch(Exception e){
                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 153", Toast.LENGTH_SHORT).show();
@@ -414,6 +414,13 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         if(firmarChk){
                             if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
                                 if(isRoot){
+                                    File f = new File(this.romseleccionada);
+                                    if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                        new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                    }
+
+                                    f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
                                     writeORIInstall();
                                 }else{
                                     application_name = "com.mediatek.updatesystem.UpdateSystem";
@@ -441,6 +448,13 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                     }
                                     if (!existe) {
                                         if(isRoot){
+                                            File f = new File(this.romseleccionada);
+                                            if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                                new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                            }
+
+                                            f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
                                             writeORIInstall();
                                         }else{
                                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
@@ -452,6 +466,13 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             }
                         }else{
                             if(isRoot){
+                                File f = new File(this.romseleccionada);
+                                if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                    new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                }
+
+                                f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
                                 writeORIInstall();
                             }else{
                                 application_name = "com.mediatek.updatesystem.UpdateSystem";
@@ -479,6 +500,13 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                 }
                                 if (!existe) {
                                     if(isRoot){
+                                        File f = new File(this.romseleccionada);
+                                        if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                            new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                        }
+
+                                        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
                                         writeORIInstall();
                                     }else{
                                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
@@ -524,13 +552,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         rebootRecoveryQuestionFlashear();
     }
     public void writeORIInstall() throws Exception{
-        File f = new File(this.romseleccionada);
-        if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
-            new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
 
-        }
-
-        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
         Runtime rt = Runtime.getRuntime();
         java.lang.Process p = rt.exec("su");
         BufferedOutputStream bos = new BufferedOutputStream(
@@ -623,6 +645,67 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             if(aceptadoNoModelo){
                 if(firmarChk){
                     if(Utilidades.checkFileMD5(new File(this.zipseleccionada))){
+                        if(isRoot){
+                            File f = new File(this.zipseleccionada);
+                            if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                            }
+
+                            f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                            writeORIInstall();
+                        }else{
+                            String application_name = "";
+                            application_name = "com.mediatek.updatesystem.UpdateSystem";
+                            Intent intent = new Intent("android.intent.action.MAIN");
+                            List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
+                            boolean existe = false;
+                            for (ResolveInfo info : resolveinfo_list) {
+                                if (info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.updatesystem")) {
+                                    if (info.activityInfo.name.equalsIgnoreCase(application_name)) {
+                                        File f = new File(this.zipseleccionada);
+                                        if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                            new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                        }
+                                        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                                        Intent launch_intent = new Intent("android.intent.action.MAIN");
+                                        launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
+                                        launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        this.startActivity(launch_intent);
+                                        existe = true;
+                                        break;
+                                    }
+                                }
+                            }
+
+                            if(isRoot){
+                                File f = new File(this.zipseleccionada);
+                                if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                                    new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                                }
+
+                                f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                                writeORIInstall();
+                            }else{
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }else{
+                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    if(isRoot){
+                        File f = new File(this.zipseleccionada);
+                        if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
+                            new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
+
+                        }
+
+                        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
+                        writeORIInstall();
+                    }else{
                         String application_name = "";
                         application_name = "com.mediatek.updatesystem.UpdateSystem";
                         Intent intent = new Intent("android.intent.action.MAIN");
@@ -647,37 +730,19 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             }
                         }
                         if (!existe) {
-                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
-                        }
-                    }else{
-                        Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
-                    }
-                }else{
-                    String application_name = "";
-                    application_name = "com.mediatek.updatesystem.UpdateSystem";
-                    Intent intent = new Intent("android.intent.action.MAIN");
-                    List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
-                    boolean existe = false;
-                    for (ResolveInfo info : resolveinfo_list) {
-                        if (info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.updatesystem")) {
-                            if (info.activityInfo.name.equalsIgnoreCase(application_name)) {
+                            if(isRoot){
                                 File f = new File(this.zipseleccionada);
                                 if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
                                     new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
 
                                 }
+
                                 f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                Intent launch_intent = new Intent("android.intent.action.MAIN");
-                                launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
-                                launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                this.startActivity(launch_intent);
-                                existe = true;
-                                break;
+                                writeORIInstall();
+                            }else{
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                             }
                         }
-                    }
-                    if (!existe) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
