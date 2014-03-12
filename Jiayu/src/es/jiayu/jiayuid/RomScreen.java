@@ -563,12 +563,12 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 .getBytes());
         String fileCWM = "";
         if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){
-            bos.write(("echo '--update_package=/sdcard/update.zip\n' >> /cache/recovery/command\n").getBytes());
-            bos.write(("echo '--locale=es_ES\n' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--update_package=/sdcard/update.zip' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--locale=es_ES' >> /cache/recovery/command\n").getBytes());
 
         }else{
-            bos.write(("echo '--update_package=/sdcard2/update.zip\n' >> /cache/recovery/command\n").getBytes());
-            bos.write(("echo '--locale=es_ES\n' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--update_package=/sdcard2/update.zip' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--locale=es_ES' >> /cache/recovery/command\n").getBytes());
         }
         bos.flush();
         bos.close();
@@ -752,19 +752,32 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
 
     }
     private void rebootRecoveryQuestionFlashear() {
-        AlertDialog dialog = new AlertDialog.Builder(this).create();
+        /*AlertDialog dialog = new AlertDialog.Builder(this).create();
         dialog.setMessage(getResources().getString(R.string.msgRebootRecoveryQF));
         dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
                 getResources().getString(R.string.cancelarBtn),
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int witch) {
-
+                        if(isRoot){
+                            try{
+                                Runtime rt = Runtime.getRuntime();
+                                java.lang.Process p = rt.exec("su");
+                                BufferedOutputStream bos = new BufferedOutputStream(
+                                        p.getOutputStream());
+                                bos.write(("rm /cache/recovery/command\n")
+                                        .getBytes());
+                                bos.write(("rm /cache/recovery/extendedcommand\n")
+                                        .getBytes());
+                                bos.flush();
+                                bos.close();
+                            }catch(Exception e){}
+                        }
                     }
                 });
         dialog.setButton(AlertDialog.BUTTON_POSITIVE,
                 getResources().getString(R.string.aceptarBtn),
                 new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int witch) {
+                    public void onClick(DialogInterface dialog, int witch) {*/
                         try {
                             Runtime rt = Runtime.getRuntime();
                             java.lang.Process p = rt.exec("su");
@@ -776,10 +789,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 158", Toast.LENGTH_SHORT).show();
-                        }
+                        }/*
                     }
                 });
-        dialog.show();
+        dialog.show();*/
     }
 
     public void refreshCombos() {
