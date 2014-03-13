@@ -414,14 +414,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         if(firmarChk){
                             if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
                                 if(isRoot){
-                                    File f = new File(this.romseleccionada);
-                                    if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
-                                        new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
 
-                                    }
-
-                                    f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                    writeORIInstall();
+                                    writeORIInstall(this.romseleccionada);
                                 }else{
                                     application_name = "com.mediatek.updatesystem.UpdateSystem";
                                     Intent intent = new Intent("android.intent.action.MAIN");
@@ -448,16 +442,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                     }
                                     if (!existe) {
                                         if(isRoot){
+                                            writeORIInstall(this.romseleccionada);
+                                        }else{
                                             File f = new File(this.romseleccionada);
                                             if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
                                                 new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
 
                                             }
-
                                             f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                            writeORIInstall();
-                                        }else{
-                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgManualReboot), Toast.LENGTH_LONG).show();
                                         }
                                     }
                                 }
@@ -466,14 +459,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             }
                         }else{
                             if(isRoot){
-                                File f = new File(this.romseleccionada);
-                                if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
-                                    new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
-
-                                }
-
-                                f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                writeORIInstall();
+                                writeORIInstall(this.romseleccionada);
                             }else{
                                 application_name = "com.mediatek.updatesystem.UpdateSystem";
                                 Intent intent = new Intent("android.intent.action.MAIN");
@@ -500,16 +486,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                 }
                                 if (!existe) {
                                     if(isRoot){
+                                        writeORIInstall(this.romseleccionada);
+                                    }else{
                                         File f = new File(this.romseleccionada);
                                         if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
                                             new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
 
                                         }
-
                                         f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                        writeORIInstall();
-                                    }else{
-                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgManualReboot), Toast.LENGTH_LONG).show();
                                     }
                                 }
                             }
@@ -545,14 +530,11 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             bos.write(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
         }
         bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                                    /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                                    bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
         bos.flush();
         bos.close();
         rebootRecoveryQuestionFlashear();
     }
-    public void writeORIInstall() throws Exception{
-
+    public void writeORIInstall(String fichero) throws Exception{
         Runtime rt = Runtime.getRuntime();
         java.lang.Process p = rt.exec("su");
         BufferedOutputStream bos = new BufferedOutputStream(
@@ -563,11 +545,13 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 .getBytes());
         String fileCWM = "";
         if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){
-            bos.write(("echo '--update_package=/sdcard/update.zip' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--wipe_data' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--update_package="+fichero.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard")+"' >> /cache/recovery/command\n").getBytes());
             bos.write(("echo '--locale=es_ES' >> /cache/recovery/command\n").getBytes());
 
         }else{
-            bos.write(("echo '--update_package=/sdcard2/update.zip' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--wipe_data' >> /cache/recovery/command\n").getBytes());
+            bos.write(("echo '--update_package="+fichero.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2")+"' >> /cache/recovery/command\n").getBytes());
             bos.write(("echo '--locale=es_ES' >> /cache/recovery/command\n").getBytes());
         }
         bos.flush();
@@ -599,8 +583,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         }
 
                         bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                                /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                                bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
                         bos.flush();
                         bos.close();
                         rebootRecoveryQuestionFlashear();
@@ -628,8 +610,6 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     }
 
                     bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
-                                /*String fileCWM2=this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2");
-                                bos.write(("echo 'install_zip(\""+ fileCWM2 +"\");' >> /cache/recovery/extendedcommand\n").getBytes());*/
                     bos.flush();
                     bos.close();
                     rebootRecoveryQuestionFlashear();
@@ -646,14 +626,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 if(firmarChk){
                     if(Utilidades.checkFileMD5(new File(this.zipseleccionada))){
                         if(isRoot){
-                            File f = new File(this.zipseleccionada);
-                            if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
-                                new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
-
-                            }
-
-                            f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                            writeORIInstall();
+                            writeORIInstall(this.zipseleccionada);
                         }else{
                             String application_name = "";
                             application_name = "com.mediatek.updatesystem.UpdateSystem";
@@ -680,16 +653,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             }
 
                             if(isRoot){
+                                writeORIInstall(this.zipseleccionada);
+                            }else{
                                 File f = new File(this.zipseleccionada);
                                 if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
                                     new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
 
                                 }
-
                                 f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                writeORIInstall();
-                            }else{
-                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgManualReboot), Toast.LENGTH_LONG).show();
                             }
                         }
                     }else{
@@ -697,14 +669,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     }
                 }else{
                     if(isRoot){
-                        File f = new File(this.zipseleccionada);
-                        if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
-                            new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
-
-                        }
-
-                        f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                        writeORIInstall();
+                        writeORIInstall(this.zipseleccionada);
                     }else{
                         String application_name = "";
                         application_name = "com.mediatek.updatesystem.UpdateSystem";
@@ -731,16 +696,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         }
                         if (!existe) {
                             if(isRoot){
+                                writeORIInstall(this.zipseleccionada);
+                            }else{
                                 File f = new File(this.zipseleccionada);
                                 if (new File(Environment.getExternalStorageDirectory() + "/update.zip").exists()) {
                                     new File(Environment.getExternalStorageDirectory() + "/update.zip").delete();
 
                                 }
-
                                 f.renameTo(new File(Environment.getExternalStorageDirectory() + "/update.zip"));
-                                writeORIInstall();
-                            }else{
-                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgManualReboot), Toast.LENGTH_LONG).show();
                             }
                         }
                     }

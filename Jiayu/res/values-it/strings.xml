@@ -162,5 +162,6 @@
     <string name="msgNoMD5File">Nessun file MD5, Scaricalo dalla schermata di configurazione</string>
     <string name="msgOptDisabled">Non Root disponibili, alcune opzioni sono disabilitate</string>
 
+    <string name="msgManualReboot">Update.zip file copiato nella root della memoria, ora è necessario riavviare in recovery ed installare manualmente il file update.zip dal recupero</string>
 
 </resources>

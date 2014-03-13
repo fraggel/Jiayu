@@ -159,7 +159,7 @@
     <string name="msgOptDisabled">Wurzel nicht verfügbar ist, deaktiviert sind einige Optionen</string>
 
 
-
+    <string name="msgManualReboot">Update.zip Datei in das Stammverzeichnis des Speicher kopiert, jetzt müssen Sie in den Recovery manuell neu zu starten und die update.zip Datei aus dem Recovery installieren müssen</string>
 
 
 

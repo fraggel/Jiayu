@@ -160,4 +160,7 @@
     <string name="msgRecoveryDetectadoReboot">Detectar Recovery está activado, para que funcione correctamente es necesario reiniciar ahora en recovery.</string>
     <string name="volverBtn">Volver</string>
     <string name="msgNuevasOpciones">Se han añadido nuevas opciones disponibles en la pantalla de configuración. Pulsa el botón de configuración para revisarlas</string>
+
+    <string name="msgManualReboot">Fichero update.zip copiado en la raíz de la memoria, ahora es necesario reiniciar en recovery e instalar manualmente el fichero update.zip desde el recovery</string>
+
 </resources>

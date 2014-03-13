@@ -158,5 +158,6 @@
     <string name="msgNoMD5File">No MD5 do arquivo, faça o download a partir da tela de configuração</string>
     <string name="msgOptDisabled">Root não estiver disponível, algumas opções estão desabilitadas</string>
 
+    <string name="msgManualReboot">Update.zip arquivo copiado para a raiz da memória, agora você precisa reiniciar em recuperação e instalar manualmente o arquivo update.zip da recuperação</string>
 
 </resources>

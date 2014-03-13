@@ -158,6 +158,6 @@
     <string name="msgOptDisabled">"Racine pas disponible, certaines options sont désactivées"</string>
 
 
-
+    <string name="msgManualReboot">Update.zip fichier copié à la racine de la mémoire, vous devez maintenant redémarrer dans la récupération et installer manuellement le fichier update.zip de la reprise</string>
 
 </resources>

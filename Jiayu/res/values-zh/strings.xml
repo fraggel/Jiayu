@@ -158,4 +158,6 @@
     <string name="msgNoMD5File">没有MD5的文件，从配置屏幕下载它</string>
     <string name="msgOptDisabled">根本无法使用，某些选项被禁用</string>
 
+    <string name="msgManualReboot">的update.zip文件拷贝到内存的根，现在则需要重新启动进入恢复和恢复手动安装的update.zip文件</string>
+
 </resources>

@@ -160,5 +160,6 @@
     <string name="msgNoMD5File">何のMD5ファイルは、Configuration画面からダウンロードしてくださいませ</string>
     <string name="msgOptDisabled">ルートは利用できません、いくつかのオプションが無効になっています</string>
 
+    <string name="msgManualReboot">メモリのルートにコピーしたファイルUpdate.zip、今では回復に再起動し、手動で復旧からupdate.zipファイルをインストールする必要があります</string>
 
 </resources>

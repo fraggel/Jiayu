@@ -286,5 +286,6 @@
     <string name="volverBtn">bueltan</string>
     <string name="msgNuevasOpciones">Erantsia aukera berriak eskuragarri konfigurazio pantailan. Klik Setup botoia berrikusteko</string>
 
+    <string name="msgManualReboot">Update.zip fitxategia Memoriaren erroan kopiatu, orain arte berreskuratzeko sartu berrabiarazi eta eskuz instalatu update.zip fitxategia berreskuratzeko behar duzu</string>
 
 </resources>

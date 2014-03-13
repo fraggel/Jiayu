@@ -154,5 +154,6 @@
     <string name="msgNoMD5File">"No MD5 de l'arxiu, pot descarregar des de la pantalla de configuració"</string>
     <string name="msgOptDisabled">"No Root disponibles, algunes opcions estan deshabilitades"</string>
 
+    <string name="msgManualReboot">"Fitxer update.zip copiat a l'arrel de la memòria, ara cal reiniciar en recovery i instal · lar manualment el fitxer update.zip des del recovery"</string>
 
 </resources>

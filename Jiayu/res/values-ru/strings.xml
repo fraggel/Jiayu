@@ -160,4 +160,7 @@
     <string name="msgNoMD5File">Нет Файл MD5, Скачать его от экрана Configuration</string>
     <string name="msgOptDisabled">Корневая недоступен, некоторые параметры отключены</string>
 
+
+    <string name="msgManualReboot">Update.zip файл копируется в корень памяти, теперь вам нужно перезагрузиться в восстановлении и вручную установить файл update.zip от восстановления</string>
+
 </resources>
