@@ -1145,19 +1145,25 @@ public class App extends Activity implements AsyncResponse{
             chip = "INDEFINIDO";
         }
 
+        if("".equals(modelo)){
+            boolean levantadoB = levantarBlueTooth();
+            boolean levantadoW = LevantarWifi();
+            if ("MT6628".equals(chip)) {
+                if (!levantadoB && !levantadoW) {
+                    chip = "MT6620";
+                }
 
-        boolean levantadoB = levantarBlueTooth();
-        boolean levantadoW = LevantarWifi();
-        if ("MT6628".equals(chip)) {
-            if (!levantadoB && !levantadoW) {
-                chip = "MT6620";
-            }
-
-        } else if ("MT6620".equals(chip)) {
-            if (!levantadoB && !levantadoW) {
-                chip = "MT6628";
+            } else if ("MT6620".equals(chip)) {
+                if (!levantadoB && !levantadoW) {
+                    chip = "MT6628";
+                }
             }
         }
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        modelo="";
+    }
 }

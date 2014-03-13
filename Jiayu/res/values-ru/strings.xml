@@ -8,7 +8,7 @@
     <string name="title_activity_about">"О нас ..."</string>
     <string name="title_activity_romtool">"Инструменты диски"</string>
     <string name="title_activity_inicio">"Инициирование"</string>
-    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_video">"Видео Уроки"</string>
     <string name="title_activity_romscreen">"Операции ROM"</string>
     <string name="title_activity_recoveryscreen">"Операций по рекуперации"</string>
     <string name="title_activity_imeiscreen">"IMEI операций"</string>
@@ -92,8 +92,8 @@
     <!--Botones-->
     <string name="descargasBtn">"Загрузки"</string>
     <string name="accesoriosBtn">"Аксессуары"</string>
-    <string name="videosBtn">"Videotutoriales"</string>
-    <string name="herramientasBtn">"Драйверы-Tools"</string>
+    <string name="videosBtn">"Видео Уроки"</string>
+    <string name="herramientasBtn">"Драйверы-инструментарий"</string>
     <string name="herramientasROMBtn">"Инструменты диски"</string>
     <string name="flashRecoveryBtn">"Установите восстановления"</string>
     <string name="flashZipBtn">"Установить почтовый"</string>
@@ -157,7 +157,7 @@
     <string name="envioErrores">Телефон не признаются</string>
 
 
-    <string name="msgNoMD5File">Нет Файл MD5, Скачать его от экрана Configuration</string>
+    <string name="msgNoMD5File">Нет Файл MD5, Скачать его от экрана конфигурация</string>
     <string name="msgOptDisabled">Корневая недоступен, некоторые параметры отключены</string>
 
 

@@ -8,7 +8,7 @@
     <string name="title_activity_about">"私達について..."</string>
     <string name="title_activity_romtool">"ツールROMの"</string>
     <string name="title_activity_inicio">"開始"</string>
-    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_video">"ビデオチュートリアル"</string>
     <string name="title_activity_romscreen">"オペレーションROM"</string>
     <string name="title_activity_recoveryscreen">"回収作業"</string>
     <string name="title_activity_imeiscreen">"IMEI操作"</string>
@@ -91,7 +91,7 @@
     <!--Botones-->
     <string name="descargasBtn">"ダウンロード"</string>
     <string name="accesoriosBtn">"アクセサリー"</string>
-    <string name="videosBtn">"Videotutoriales"</string>
+    <string name="videosBtn">"ビデオチュートリアル"</string>
     <string name="herramientasBtn">"ドライバ·ツール"</string>
     <string name="herramientasROMBtn">"ツールROMの"</string>
     <string name="flashRecoveryBtn">"Recoveryをインストール"</string>

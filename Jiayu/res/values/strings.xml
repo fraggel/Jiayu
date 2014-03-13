@@ -8,7 +8,7 @@
     <string name="title_activity_about">"About us ..."</string>
     <string name="title_activity_romtool">"Tools ROMs"</string>
     <string name="title_activity_inicio">"Initiation"</string>
-    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_video">"Videotutorials"</string>
     <string name="title_activity_romscreen">"Operations ROM"</string>
     <string name="title_activity_recoveryscreen">"Recovery Operations"</string>
     <string name="title_activity_imeiscreen">"IMEI Operations"</string>
@@ -92,7 +92,7 @@
     <!--Botones-->
     <string name="descargasBtn">"Downloads"</string>
     <string name="accesoriosBtn">"Accessories"</string>
-    <string name="videosBtn">"Videotutoriales"</string>
+    <string name="videosBtn">"Videotutorials"</string>
     <string name="herramientasBtn">"Drivers-Tools"</string>
     <string name="herramientasROMBtn">"Tools ROMs"</string>
     <string name="flashRecoveryBtn">"Install Recovery"</string>

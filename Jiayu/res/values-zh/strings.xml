@@ -8,7 +8,7 @@
     <string name="title_activity_about">"关于我们......"</string>
     <string name="title_activity_romtool">"工具光盘"</string>
     <string name="title_activity_inicio">"引发"</string>
-    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_video">"视频教程"</string>
     <string name="title_activity_romscreen">"操作ROM"</string>
     <string name="title_activity_recoveryscreen">"恢复操作"</string>
     <string name="title_activity_imeiscreen">"IMEI业务"</string>
@@ -91,7 +91,7 @@
     <!--Botones-->
     <string name="descargasBtn">"下载"</string>
     <string name="accesoriosBtn">"饰品"</string>
-    <string name="videosBtn">"Videotutoriales"</string>
+    <string name="videosBtn">"视频教程"</string>
     <string name="herramientasBtn">"驱动工具"</string>
     <string name="herramientasROMBtn">"工具光盘"</string>
     <string name="flashRecoveryBtn">"安装恢复"</string>

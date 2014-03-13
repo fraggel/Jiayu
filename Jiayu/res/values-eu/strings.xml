@@ -16,7 +16,7 @@
 
     <string name="title_activity_inicio">"Hasiera"</string>
 
-    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_video">"Bideo tutoretzak"</string>
 
     <string name="title_activity_romscreen">"Eragiketak ROM"</string>
 
@@ -175,7 +175,7 @@
 
 <string name="accesoriosBtn">"Osagarri"</string>
 
-<string name="videosBtn">"Videotutoriales"</string>
+<string name="videosBtn">"Bideo tutoretzak"</string>
 
 <string name="herramientasBtn">"Gidariek-tresnak"</string>
 

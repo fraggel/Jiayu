@@ -8,7 +8,7 @@
     <string name="title_activity_about">"Über uns ..."</string>
     <string name="title_activity_romtool">"Werkzeuge ROMs"</string>
     <string name="title_activity_inicio">"Einleitung"</string>
-    <string name="title_activity_video">"Videotutorials"</string>
+    <string name="title_activity_video">"Video Tutorials"</string>
     <string name="title_activity_romscreen">"Operationen ROM"</string>
     <string name="title_activity_recoveryscreen">"Recovery-Operationen"</string>
     <string name="title_activity_imeiscreen">"IMEI Operationen"</string>
@@ -93,7 +93,7 @@
     <!--Botones-->
     <string name="descargasBtn">"Downloads"</string>
     <string name="accesoriosBtn">"Zubehör"</string>
-    <string name="videosBtn">"Videotutorials"</string>
+    <string name="videosBtn">"Video Tutorials"</string>
     <string name="herramientasBtn">"Treiber-Werkzeuge"</string>
     <string name="herramientasROMBtn">"Werkzeuge ROMs"</string>
     <string name="flashRecoveryBtn">"Installieren Sie Recovery-"</string>
