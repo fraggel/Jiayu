@@ -4,9 +4,12 @@ package es.jiayu.jiayuid;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -25,6 +28,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import static es.jiayu.jiayuid.Utilidades.comprobarRecovery;
 import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 public class BackupRestore extends Activity implements OnItemSelectedListener,
@@ -41,6 +45,9 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
     String cadena="";
     File fff=null;
     CheckBox chkCWM = null;
+    boolean detectRecovery=false;
+    String recoveryDetectado="ori";
+    SharedPreferences ajustes=null;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		res = this.getResources();
@@ -48,6 +55,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
 		diag = new Builder(this).create();
         Intent intent=getIntent();
         modelo = intent.getExtras().getString("modelo");
+        ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         backupRdb= (RadioButton) findViewById(R.id.rdbbackup);
         restoreRdb= (RadioButton) findViewById(R.id.rdbrestore);
         ejecutarBtn= (Button) findViewById(R.id.executeBtn);
@@ -55,6 +63,31 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
         chkCWM.setOnCheckedChangeListener(this);
         if (controlRoot(getApplicationContext(),getResources(),"Backup/Restore")) {
             isRoot = true;
+            if(isRoot){
+                if(ajustes.getBoolean("recoveryChk",false)){
+                    detectRecovery=true;
+                    recoveryDetectado=comprobarRecovery(getApplicationContext(),getResources(),"Backup/Restore");
+                }else{
+                    detectRecovery=false;
+                    chkCWM.setEnabled(true);
+                    chkCWM.setVisibility(View.VISIBLE);
+                }
+                if(detectRecovery){
+                    if("cwm".equals(recoveryDetectado)){
+                        chkCWM.setChecked(true);
+                        chkCWM.setEnabled(false);
+                        chkCWM.setTextColor(Color.BLUE);
+                        chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" CWM RECOVERY");
+                        //chkCWM.setVisibility(View.INVISIBLE);
+                    }else if("ori".equals(recoveryDetectado)){
+                        chkCWM.setChecked(false);
+                        chkCWM.setEnabled(false);
+                        chkCWM.setTextColor(Color.RED);
+                        chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" ORIGINAL RECOVERY");
+                        //chkCWM.setVisibility(View.INVISIBLE);
+                    }
+                }
+            }
             if (chkCWM.isChecked()) {
                 backupRdb.setVisibility(View.VISIBLE);
                 restoreRdb.setVisibility(View.VISIBLE);

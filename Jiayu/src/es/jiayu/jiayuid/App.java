@@ -177,7 +177,7 @@ public class App extends Activity implements AsyncResponse{
                             f7.delete();
                         }*/
 
-                        addListenerOnButton();
+
 
                         descargas = (Button) findViewById(R.id.button1);
                         about = (Button) findViewById(R.id.button2);
@@ -296,9 +296,11 @@ public class App extends Activity implements AsyncResponse{
                     btnInfo.setClickable(false);
                     btnInfo.setVisibility(View.VISIBLE);
                     config.setBackgroundDrawable(res.getDrawable(R.drawable.btn_yellow));
+                    config.setFocusableInTouchMode(true);
                     config.requestFocus();
                 }else{
                     btnInfo.setVisibility(View.GONE);
+                    config.setFocusableInTouchMode(false);
                     config.setBackgroundDrawable(res.getDrawable(R.drawable.btn_green));
 
                 }
@@ -306,7 +308,7 @@ public class App extends Activity implements AsyncResponse{
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
-
+        addListenerOnButton();
     }
 
     private String infoBrand() throws IOException {

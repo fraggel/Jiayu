@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.os.Environment;
 import android.widget.Toast;
 
+import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -131,5 +132,46 @@ public class Utilidades {
         }
 
         return iguales;
+    }
+    public static String comprobarRecovery(Context context,Resources res,String origen) {
+        String cwm="cwm";
+        String ori="ori";
+        String recovery="";
+        try {
+            File f=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/last_log");
+            if(f.exists()){
+                f.delete();
+            }
+            Runtime rt = Runtime.getRuntime();
+            java.lang.Process p = rt.exec("su");
+            BufferedOutputStream bos = new BufferedOutputStream(
+                    p.getOutputStream());
+            bos.write(("busybox cp /cache/recovery/last_log " + Environment.getExternalStorageDirectory() + "/JIAYUES/last_log" + "\n")
+                    .getBytes());
+            bos.write(("cp /cache/recovery/last_log " + Environment.getExternalStorageDirectory() + "/JIAYUES/last_log" + "\n")
+                    .getBytes());
+            bos.flush();
+            bos.close();
+            p.waitFor();
+            f=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/last_log");
+            if(f.exists()){
+                FileInputStream fis=new FileInputStream(f);
+                byte bb[]=new byte[1024];
+                fis.read(bb);
+                String str=new String(bb);
+                if(str.toUpperCase().lastIndexOf("CWM")!=-1){
+                    recovery=cwm;
+                }else{
+                    recovery=ori;
+                }
+            }else{
+                Toast.makeText(context, res.getString(R.string.msgNecesarioReiniDetect), Toast.LENGTH_LONG).show();
+            }
+
+        }catch(Exception e){
+            e.printStackTrace();
+            recovery="";
+        }
+        return recovery;
     }
 }

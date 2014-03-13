@@ -135,7 +135,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/msgConfiguracion"
-            android:focusableInTouchMode="true"
             style="@style/ButtonTextGreen"
             android:background="@drawable/btn_green"/>
 

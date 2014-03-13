@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -31,6 +34,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
+import static es.jiayu.jiayuid.Utilidades.comprobarRecovery;
 import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 /**
@@ -53,8 +57,10 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     String apkseleccionada = null;
     ArrayList<String> listaAppsUrl = new ArrayList<String>();
     List listaApps = new ArrayList();
-
+    boolean detectRecovery=false;
+    String recoveryDetectado="ori";
     boolean isRoot = false;
+    SharedPreferences ajustes=null;
     protected void onResume() {
         super.onResume();
         apkSpn = (Spinner) findViewById(R.id.apkSpn);
@@ -65,6 +71,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         setContentView(R.layout.activity_romtools);
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
+        ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         //deleteDirectories();
         if (controlRoot(getApplicationContext(),getResources(),"RomTools")) {
             isRoot = true;
@@ -133,6 +140,23 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         backupBtn.setOnClickListener(this);
         toolsAndroidBtn.setOnClickListener(this);
         //bootAnimationBtn.setEnabled(false);
+        if(isRoot){
+            if(ajustes.getBoolean("recoveryChk",false)){
+                detectRecovery=true;
+                recoveryDetectado=comprobarRecovery(getApplicationContext(),getResources(),"RomTools");
+            }else{
+                detectRecovery=false;
+            }
+            if(detectRecovery){
+                if("cwm".equals(recoveryDetectado)){
+                    backupBtn.setEnabled(true);
+                    //chkCWM.setVisibility(View.INVISIBLE);
+                }else if("ori".equals(recoveryDetectado)){
+                    backupBtn.setEnabled(false);
+                    //chkCWM.setVisibility(View.INVISIBLE);
+                }
+            }
+        }
         refreshCombos();
     }
 
