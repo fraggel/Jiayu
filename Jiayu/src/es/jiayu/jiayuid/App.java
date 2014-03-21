@@ -544,7 +544,11 @@ public class App extends Activity implements AsyncResponse{
                         } else {
                             model = "";
                         }
-                    } else {
+                    } else if ("mt6572".equals(procesador.toLowerCase())) {
+                        if ("512MB".equals(ram)) {
+                            model="F1";
+                        }
+                    }else{
                         model = "";
                     }
                 } else if (width == 320 || (orientation == 2 && height == 320)) {
