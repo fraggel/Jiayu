@@ -426,6 +426,17 @@ public class App extends Activity implements AsyncResponse{
                             model = "";
                         }
                     }
+                    if ("mt6592".equals(procesador.toLowerCase())) {
+                        if ("2GB".equals(ram)) {
+                            if(compilacion.indexOf("G6")!=-1 || modelBuild.indexOf("G6")!=-1){
+                                model = "G6";
+                            }else {
+                                model = "S2";
+                            }
+                        } else if ("1GB".equals(ram)) {
+                            model = "G6";
+                        }
+                    }
                 }else if (width == 720 || (orientation == 2 && height == 720)) {
                     if ("mt6577".equals(procesador.toLowerCase())) {
                         comprobarMT();
@@ -491,7 +502,13 @@ public class App extends Activity implements AsyncResponse{
                         }
                     } else if ("mt6582".equals(procesador.toLowerCase())) {
                         if ("1GB".equals(ram)) {
-                            model="G2F";
+                            if(compilacion.indexOf("G3")!=-1|| modelBuild.indexOf("G3")!=-1){
+                                model="G3C";
+                            }else if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
+                                model="G4C";
+                            }else if(compilacion.indexOf("G2")!=-1|| modelBuild.indexOf("G2")!=-1){
+                                model="G2F";
+                            }
                         } else {
                             model = "";
                         }

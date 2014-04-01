@@ -55,13 +55,44 @@ public class ToolsAndroid extends Activity implements View.OnClickListener {
 
             if(out.indexOf("0")!=-1){
                 bos.write(("setprop qemu.hw.mainkeys 1\n").getBytes());
+				cambiarFileGeneric(true);
             }else{
                 bos.write(("setprop qemu.hw.mainkeys 0\n").getBytes());
+				cambiarFileGeneric(false);
             }
             bos.write(("busybox pkill zygote\n").getBytes());
             bos.flush();
             bos.close();
         }
+        }catch(Exception e){
+
+        }
+    }
+	private void cambiarFileGeneric(boolean b) {
+        try {
+            if(b){
+                Runtime rt2 = Runtime.getRuntime();
+                Process pp2 = rt2.exec("su");
+                BufferedOutputStream bos2 = new BufferedOutputStream(
+                        pp2.getOutputStream());
+                bos2.write("busybox sed -i 's/key 102 .*/#key 102 MOVE_HOME/g' /system/usr/keylayout/Generic.kl".getBytes());
+                bos2.write("busybox sed -i 's/key 139 .*/#key 139 MENU WAKE_DROPPED/g' /system/usr/keylayout/Generic.kl".getBytes());
+                bos2.write("busybox sed -i 's/key 158 .*/#key 158 MENU WAKE_DROPPED/g' /system/usr/keylayout/Generic.kl".getBytes());
+                bos2.flush();
+                bos2.close();
+
+            }else{
+                Runtime rt3 = Runtime.getRuntime();
+                Process pp3 = rt3.exec("su");
+                BufferedOutputStream bos3 = new BufferedOutputStream(
+                        pp3.getOutputStream());
+                bos3.write("busybox sed -i 's/#key 102 .*/key 102 MOVE_HOME/g' /system/usr/keylayout/Generic.kl".getBytes());
+                bos3.write("busybox sed -i 's/#key 139 .*/key 139 MENU WAKE_DROPPED/g' /system/usr/keylayout/Generic.kl".getBytes());
+                bos3.write("busybox sed -i 's/#key 158 .*/key 158 MENU WAKE_DROPPED/g' /system/usr/keylayout/Generic.kl".getBytes());
+                bos3.flush();
+                bos3.close();
+
+            }
         }catch(Exception e){
 
         }
