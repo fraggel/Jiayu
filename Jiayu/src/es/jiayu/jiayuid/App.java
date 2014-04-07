@@ -70,7 +70,7 @@ public class App extends Activity implements AsyncResponse{
     String listaIdiomas[]=null;
 
 
-    boolean noInternet=false;
+    public static boolean noInternet=false;
     static NotificationManager mNotificationManagerUpdate=null;
     static NotificationManager mNotificationManagerNews=null;
     private int SIMPLE_NOTFICATION_UPDATE=8888;
@@ -145,7 +145,7 @@ public class App extends Activity implements AsyncResponse{
                         }
                         version = "Jiayu.es ";
                         version = version + nversion;
-                        noInternet=comprobarConexion();
+                        App.noInternet=comprobarConexion();
                         comprobarVersionInicio(version);
                     //}
                         File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
@@ -723,7 +723,7 @@ public class App extends Activity implements AsyncResponse{
             imageButton.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    if(noInternet){
+                    if(App.noInternet){
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
@@ -738,7 +738,7 @@ public class App extends Activity implements AsyncResponse{
             descargas.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    if(noInternet){
+                    if(App.noInternet){
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
@@ -754,7 +754,7 @@ public class App extends Activity implements AsyncResponse{
                     try {
                         /*Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                         startActivity(intent);*/
-                        if(noInternet){
+                        if(App.noInternet){
                             Intent intent = new Intent(getApplicationContext(), AboutActivity.class);
                             startActivity(intent);
                         }else{
@@ -774,7 +774,7 @@ public class App extends Activity implements AsyncResponse{
             foro.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    if(noInternet){
+                    if(App.noInternet){
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
@@ -792,7 +792,7 @@ public class App extends Activity implements AsyncResponse{
             videotutoriales.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    if(noInternet){
+                    if(App.noInternet){
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
@@ -805,7 +805,7 @@ public class App extends Activity implements AsyncResponse{
             driversherramientas.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
-                    if(noInternet){
+                    if(App.noInternet){
                         Intent intent = new Intent(getApplicationContext(), NoInternet.class);
                         startActivity(intent);
                     }else{
@@ -1049,7 +1049,7 @@ public class App extends Activity implements AsyncResponse{
                         String fecha=null;
                         String model=null;
                         boolean modeloEncontrado=false;
-                        for (int x =2;x<split.length;x++){
+                        for (int x =2;x<split.length-1;x++){
                             model=split[x].split("->")[0];
                             fecha=split[x].split("->")[1];
                             if(modelo.equals(model)){
@@ -1127,11 +1127,11 @@ public class App extends Activity implements AsyncResponse{
                 try {
                     /*Intent intent = new Intent(this, AboutActivity.class);
                     startActivity(intent);*/
-                    if(noInternet){
+                    if(App.noInternet){
                         Intent intent = new Intent(this, AboutActivity.class);
                         startActivity(intent);
                     }else{
-                        openBrowser(item.getActionView(), "about");
+                        openBrowser(this.findViewById(R.id.action_about), "about");
                     }
                 } catch (Exception e) {
                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 120", Toast.LENGTH_SHORT).show();
