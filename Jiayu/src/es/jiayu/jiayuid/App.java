@@ -429,12 +429,20 @@ public class App extends Activity implements AsyncResponse{
                     if ("mt6592".equals(procesador.toLowerCase())) {
                         if ("2GB".equals(ram)) {
                             if(compilacion.indexOf("G6")!=-1 || modelBuild.indexOf("G6")!=-1){
-                                model = "G6";
-                            }else {
-                                model = "S2";
+                                model = "G6A";
+                            }else if(compilacion.indexOf("S2")!=-1 || modelBuild.indexOf("S2")!=-1){
+                                model = "S2A";
+                            } else {
+                                model = "";
                             }
                         } else if ("1GB".equals(ram)) {
-                            model = "G6";
+                            if(compilacion.indexOf("G6")!=-1 || modelBuild.indexOf("G6")!=-1){
+                                model = "G6M";
+                            }else if(compilacion.indexOf("S2")!=-1 || modelBuild.indexOf("S2")!=-1){
+                                model = "S2M";
+                            } else {
+                                model = "";
+                            }
                         }
                     }
                 }else if (width == 720 || (orientation == 2 && height == 720)) {
@@ -512,7 +520,23 @@ public class App extends Activity implements AsyncResponse{
                         } else {
                             model = "";
                         }
+                    } else if ("mt6592".equals(procesador.toLowerCase()) || "mt6592m".equals(procesador.toLowerCase())) {
+                        if ("1GB".equals(ram)) {
+                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
+                                model="G4SM";
+                            } else {
+                                model = "";
+                            }
+                        } else if ("2GB".equals(ram)) {
+                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
+                                model="G4S";
+                            } else {
+                                model = "";
+                            }
+                        } else
+                            model = "";
                     }
+
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
 						    		//if("mt6577".equals(procesador.toLowerCase())){
 						    		//	if("MT6628".equals(chip)){
@@ -525,6 +549,8 @@ public class App extends Activity implements AsyncResponse{
 					    			//}
                     if ("mt6577t".equals(procesador.toLowerCase())) {
                         model = "G2S";
+                    } else {
+                        model = "";
                     }
                 } else if (width == 480 || (orientation == 2 && height == 480)) {
                     if ("mt6575".equals(procesador.toLowerCase())) {
@@ -571,14 +597,20 @@ public class App extends Activity implements AsyncResponse{
                 } else if (width == 320 || (orientation == 2 && height == 320)) {
                     if ("256MB".equals(ram)) {
                         model = "G1";
+                    } else {
+                        model = "";
                     }
                 } else if (width == 800 || (orientation == 2 && width == 1280)) {
                     if ("2GB".equals(ram)) {
                            model="T1";
+                    } else {
+                        model = "";
                     }
                 }else if (width == 600 || (orientation == 2 && width == 1024)) {
                     if ("1GB".equals(ram)) {
                         model="T2";
+                    } else {
+                        model = "";
                     }
                 }else{
                         model = res.getString(R.string.msgTerminalNoJiayu);
