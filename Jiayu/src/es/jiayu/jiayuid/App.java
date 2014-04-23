@@ -488,12 +488,16 @@ public class App extends Activity implements AsyncResponse{
                                     model="G4B";
                                 }else if("T".equals(load)){
                                     model="G4T";
+                                }else {
+                                    model = "";
                                 }
                             }else if(compilacion.indexOf("G5")!=-1 || modelBuild.indexOf("G5")!=-1){
                                 if("B".equals(load)){
                                     model="G5B";
                                 }else if("T".equals(load)){
                                     model="G5B";
+                                }else {
+                                    model = "";
                                 }
                             }else{
                                 model="Modelo Desconocido, Custom Rom no permite detectar correctamente tu dispositivo";
@@ -503,8 +507,9 @@ public class App extends Activity implements AsyncResponse{
                             model="G4A";
                             }else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
                                 model="G5A";
+                            }else {
+                                model = "";
                             }
-
                         } else {
                             model = "";
                         }
@@ -538,15 +543,6 @@ public class App extends Activity implements AsyncResponse{
                     }
 
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
-						    		//if("mt6577".equals(procesador.toLowerCase())){
-						    		//	if("MT6628".equals(chip)){
-						    		//		model="G2S";
-						    		//	}else{
-						    		//		model="";
-						    		//	}
-						    		//}else{
-					    			//	model="";
-					    			//}
                     if ("mt6577t".equals(procesador.toLowerCase())) {
                         model = "G2S";
                     } else {
@@ -621,7 +617,7 @@ public class App extends Activity implements AsyncResponse{
             }
 
             if ("".equals(model.trim())) {
-                model = res.getString(R.string.msgTerminalNoJiayu);
+                model = res.getString(R.string.msgErrorIdentificar);
             }
 
         } catch (Exception e) {
