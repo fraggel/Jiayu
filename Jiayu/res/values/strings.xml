@@ -156,10 +156,9 @@
     <string name="msgNuevasOpciones">Added new options available in the configuration screen. Click the Config button for review</string>
 
     <string name="msgManualReboot">Update.zip file copied to the root of the memory, now you need to reboot into recovery and manually install the update.zip file from the recovery</string>
-
-
-
-
+    <string name="herramientasUsuTxt">Tools</string>
+    <string name="copiasSegTxt">Backup Tools</string>
+    <string name="herramientasROMTxt">Device Tools</string>
 
 
     <string-array name="languages">

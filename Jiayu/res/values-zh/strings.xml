@@ -159,5 +159,8 @@
     <string name="msgOptDisabled">根本无法使用，某些选项被禁用</string>
 
     <string name="msgManualReboot">的update.zip文件拷贝到内存的根，现在则需要重新启动进入恢复和恢复手动安装的update.zip文件</string>
+    <string name="herramientasUsuTxt">Tools</string>
+    <string name="copiasSegTxt">Backup Tools</string>
+    <string name="herramientasROMTxt">Device Tools</string>
 
 </resources>

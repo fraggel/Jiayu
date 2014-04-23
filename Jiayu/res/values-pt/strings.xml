@@ -159,5 +159,8 @@
     <string name="msgOptDisabled">Root não estiver disponível, algumas opções estão desabilitadas</string>
 
     <string name="msgManualReboot">Update.zip arquivo copiado para a raiz da memória, agora você precisa reiniciar em recuperação e instalar manualmente o arquivo update.zip da recuperação</string>
+    <string name="herramientasUsuTxt">Tools</string>
+    <string name="copiasSegTxt">Backup Tools</string>
+    <string name="herramientasROMTxt">Device Tools</string>
 
 </resources>

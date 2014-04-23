@@ -24,6 +24,67 @@
                 android:paddingBottom="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_horizontal_margin"/>
 
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/herramientasUsuTxt"
+            android:id="@+id/herramientasUsuTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTextBlack"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ingenieroBtn"
+            android:id="@+id/ingenieroBtn"
+            android:layout_gravity="left|center_vertical"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/filesBtn"
+            android:layout_gravity="left|center_vertical"
+            android:text="@string/fileExplorerBtn"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bootanimationBtn"
+            android:id="@+id/bootAnimationBtn"
+            android:layout_gravity="left|center_vertical"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/toolsAndroidBtn"
+            android:id="@+id/toolsAndroidBtn"
+            android:layout_gravity="left|center_vertical"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/copiasSegTxt"
+            android:id="@+id/copiasSegTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTextBlack"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,25 +93,6 @@
                 android:layout_gravity="left|center_vertical"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
-
-        <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/filesBtn"
-                android:layout_gravity="left|center_vertical"
-                android:text="@string/fileExplorerBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/ingenieroBtn"
-                android:id="@+id/ingenieroBtn"
-                android:layout_gravity="left|center_vertical"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
         <Button
             style="@style/ButtonTextGreen"
             android:layout_width="match_parent"
@@ -58,6 +100,29 @@
             android:text="@string/backupBtn"
             android:id="@+id/backupBtn"
             android:background="@drawable/btn_green" />
+
+
+
+
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/herramientasROMTxt"
+            android:id="@+id/herramientasROMTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTextBlack"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/flashRecoveryBtn"
+            android:id="@+id/recoveryBtn"
+            android:layout_gravity="left|center_vertical"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
 
         <Button
                 android:layout_width="match_parent"
@@ -69,38 +134,17 @@
                 android:background="@drawable/btn_green"/>
 
         <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/flashRecoveryBtn"
-                android:id="@+id/recoveryBtn"
-                android:layout_gravity="left|center_vertical"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/bootanimationBtn"
-                android:id="@+id/bootAnimationBtn"
-                android:layout_gravity="left|center_vertical"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/toolsAndroidBtn"
-            android:id="@+id/toolsAndroidBtn"
-            android:layout_gravity="left|center_vertical"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
-
-        <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/rebootRecoveryBtn"
                 android:id="@+id/rebootRecoveryBtn"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
+
+
+
+
+
 
         <TextView
                 android:layout_width="wrap_content"

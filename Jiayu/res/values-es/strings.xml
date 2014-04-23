@@ -162,5 +162,8 @@
     <string name="msgNuevasOpciones">Se han añadido nuevas opciones disponibles en la pantalla de configuración. Pulsa el botón de configuración para revisarlas</string>
 
     <string name="msgManualReboot">Fichero update.zip copiado en la raíz de la memoria, ahora es necesario reiniciar en recovery e instalar manualmente el fichero update.zip desde el recovery</string>
+    <string name="herramientasUsuTxt">Tools</string>
+    <string name="copiasSegTxt">Backup Tools</string>
+    <string name="herramientasROMTxt">Device Tools</string>
 
 </resources>
