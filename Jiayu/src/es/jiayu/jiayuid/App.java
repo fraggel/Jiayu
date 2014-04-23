@@ -581,13 +581,17 @@ public class App extends Activity implements AsyncResponse{
                         if ("1GB".equals(ram)) {
                             if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
                                 model="G4SM";
-                            } else {
+                            } else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
+                                model="G5SM";
+                            } else{
                                 model = "";
                             }
                         } else if ("2GB".equals(ram)) {
                             if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
                                 model="G4S";
-                            } else {
+                            } else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
+                                model="G5S";
+                            } else{
                                 model = "";
                             }
                         } else
