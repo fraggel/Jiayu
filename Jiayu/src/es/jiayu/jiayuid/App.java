@@ -23,6 +23,7 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StatFs;
 import android.text.Layout;
 import android.util.DisplayMetrics;
 import android.view.Menu;
@@ -418,6 +419,7 @@ public class App extends Activity implements AsyncResponse{
                 } else if (ramInt <= 2100 && ramInt >= 1700) {
                     ram = "2GB";
                 }
+                ram="512MB";
                 if(width==1080 || (orientation==2 && height==1080)){
                     if ("qctapq8064mtp".equals(procesador.toLowerCase())) {
                         if ("2GB".equals(ram)) {
@@ -510,8 +512,58 @@ public class App extends Activity implements AsyncResponse{
                             }else {
                                 model = "";
                             }
-                        } else {
-                            model = "";
+                        } else if ("512MB".equals(ram)) {
+                            File path = Environment.getExternalStorageDirectory();
+                            StatFs stat = new StatFs(path.getAbsolutePath());
+                            long blockSize = stat.getBlockSize();
+                            long totalBlocks = stat.getBlockCount();
+                            long totalSpace = totalBlocks * blockSize;
+                            double gigaTotal = totalSpace / 1073741824;
+                            RandomAccessFile reader = null;
+                            String load = "";
+                            reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
+                            load = reader.readLine();
+                            int cpufreq = Integer.parseInt(load.trim());
+                            if (cpufreq > 1400000) {
+                                load = "T";
+                            } else {
+                                load = "B";
+                            }
+
+
+                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
+                                if(gigaTotal>20.0){
+                                    load="A";
+                                }
+                                model="G4"+load;
+                            }else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
+                                if(gigaTotal>20.0){
+                                    load="A";
+                                }
+                                model="G5";
+                            }else if(compilacion.indexOf("G3")!=-1|| modelBuild.indexOf("G3")!=-1) {
+                                if("B".equals(load)){
+                                    load="";
+                                }
+                                model="G3QC"+load;
+                            }else{
+                                model="";
+                            }
+
+                            AlertDialog dialog = new AlertDialog.Builder(this).create();
+                            dialog.setMessage(res.getString(R.string.msgIdentificadoParcial) + ": " + model + " " + res.getString(R.string.msgRamProblem)+": "+ram+" "+res.getString(R.string.msgRamProblem2));
+                            dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                                    res.getString(R.string.aceptarBtn),
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int witch) {
+                                            try {
+                                                finish();
+                                            } catch (Exception e) {
+                                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                            dialog.show();
                         }
                     } else if ("mt6582".equals(procesador.toLowerCase())) {
                         if ("1GB".equals(ram)) {
