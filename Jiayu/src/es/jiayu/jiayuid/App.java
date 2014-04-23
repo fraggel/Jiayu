@@ -419,7 +419,6 @@ public class App extends Activity implements AsyncResponse{
                 } else if (ramInt <= 2100 && ramInt >= 1700) {
                     ram = "2GB";
                 }
-                ram="512MB";
                 if(width==1080 || (orientation==2 && height==1080)){
                     if ("qctapq8064mtp".equals(procesador.toLowerCase())) {
                         if ("2GB".equals(ram)) {
