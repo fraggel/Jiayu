@@ -210,6 +210,7 @@ public class App extends Activity implements AsyncResponse{
                         fabricante = infoBrand();
                         t = (TextView) findViewById(R.id.textView1);
                         t2 = (TextView) findViewById(R.id.textView2);
+                        addListenerOnButton();
                         //if("ini".equals(ini)){
                             if ("".equals(modelo)) {
                                 calcularTelefono();
@@ -280,6 +281,7 @@ public class App extends Activity implements AsyncResponse{
                         envioNoExisteBtn.setTextColor(Color.parseColor("#449def"));
                         envioNoExisteBtn.setTextColor(Color.RED);
                         envioNoExisteBtn.setText(res.getString(R.string.msgNoSD));
+                        envioNoExisteBtn.setOnClickListener(null);
                         envioNoExisteBtn.setClickable(false);
                         envioNoExisteBtn.setVisibility(View.VISIBLE);
 
@@ -309,7 +311,7 @@ public class App extends Activity implements AsyncResponse{
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
-        addListenerOnButton();
+
     }
 
     private String infoBrand() throws IOException {

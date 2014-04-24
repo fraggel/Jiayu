@@ -155,11 +155,11 @@
     <string name="msgOptDisabled">"No Root disponibles, algunes opcions estan deshabilitades"</string>
 
     <string name="msgManualReboot">"Fitxer update.zip copiat a l'arrel de la memòria, ara cal reiniciar en recovery i instal · lar manualment el fitxer update.zip des del recovery"</string>
-    <string name="herramientasUsuTxt">Tools</string>
-    <string name="copiasSegTxt">Backup Tools</string>
-    <string name="herramientasROMTxt">Device Tools</string>
-    <string name="msgRamProblem">, pero parece que hay un problema con la cantidad de RAM que se ha detectado, se detectó</string>
-    <string name="msgRamProblem2">y debería ser de 1GB o 2GB, por favor instala la ultima ROM por SPFLASHTOOL para resolver este problema</string>
-    <string name="msgIdentificadoParcial">Identificado, no de manera exacta, como</string>
+    <string name="herramientasUsuTxt">Eines</string>
+    <string name="copiasSegTxt">Eines Backup</string>
+    <string name="herramientasROMTxt">Eines dispositiu</string>
+    <string name="msgRamProblem">", però sembla que hi ha un problema amb la quantitat de RAM que s'ha detectat, es va detectar"</string>
+    <string name="msgRamProblem2">i hauria de ser de 1GB o 2GB, si us plau instal · la la ultima ROM per SPFLASHTOOL per resoldre aquest problema</string>
+    <string name="msgIdentificadoParcial">Identificat, no de manera exacta, com</string>
 
 </resources>

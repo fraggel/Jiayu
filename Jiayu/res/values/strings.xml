@@ -30,7 +30,7 @@
     <string name="msgComprobarVersion">"New version available"</string>
     <string name="msgPreguntaVersion">"Is downloading?"</string>
     <string name="msgCompilacion">"Compilation:"</string>
-    <string name="msgModelo">"Model"</string>
+    <string name="msgModelo">"Model:"</string>
     <string name="msgIdentificado1">"Identified as "</string>
     <string name="msgIdentificado2">" , Although in the ROM information is not indicated as a manufacturer JIAYU"</string>
     <string name="msgTerminalNoJiayu">"Your device is not JIAYU"</string>

@@ -30,7 +30,7 @@
     <string name="msgComprobarVersion">"Nouvelle version disponible"</string>
     <string name="msgPreguntaVersion">"Le téléchargement est?"</string>
     <string name="msgCompilacion">"Compilation:"</string>
-    <string name="msgModelo">"Modèle"</string>
+    <string name="msgModelo">"Modèle:"</string>
     <string name="msgIdentificado1">"Identifié comme "</string>
     <string name="msgIdentificado2">" , Bien que dans les informations de ROM n'est pas indiquée comme JIAYU du fabricant"</string>
     <string name="msgTerminalNoJiayu">"Votre appareil n'est pas JIAYU"</string>
@@ -159,11 +159,11 @@
 
 
     <string name="msgManualReboot">Update.zip fichier copié à la racine de la mémoire, vous devez maintenant redémarrer dans la récupération et installer manuellement le fichier update.zip de la reprise</string>
-    <string name="herramientasUsuTxt">Tools</string>
-    <string name="copiasSegTxt">Backup Tools</string>
-    <string name="herramientasROMTxt">Device Tools</string>
-    <string name="msgRamProblem">, but it seems that there is a problem with the RAM amount, that is</string>
-    <string name="msgRamProblem2">and should be 1GB or 2GB, please flash the latest ROM with SPFLASHTOOL to solve this problem</string>
-    <string name="msgIdentificadoParcial">Identified, not exactly, as</string>
+    <string name="herramientasUsuTxt">Outils</string>
+    <string name="copiasSegTxt">Outils de sauvegarde</string>
+    <string name="herramientasROMTxt">Outils de périphérique</string>
+    <string name="msgRamProblem">",mais il semble qu'il existe un problème avec la quantité de mémoire RAM, c'est-à-"</string>
+    <string name="msgRamProblem2">"et devrait être de 1 Go ou 2 Go, s'il vous plaît clignoter la dernière ROM avec SPFLASHTOOL pour résoudre ce problème"</string>
+    <string name="msgIdentificadoParcial">"Identifié, pas exactement, comme"</string>
 
 </resources>

@@ -30,7 +30,7 @@
     <string name="msgComprobarVersion">"Доступна новая версия"</string>
     <string name="msgPreguntaVersion">"Загружает?"</string>
     <string name="msgCompilacion">"Компиляция:"</string>
-    <string name="msgModelo">"Модель"</string>
+    <string name="msgModelo">"Модель:"</string>
     <string name="msgIdentificado1">"Определены как "</string>
     <string name="msgIdentificado2">" , Хотя в ROM Сведения не указываются, как производитель JIAYU"</string>
     <string name="msgTerminalNoJiayu">"Данное устройство не является JIAYU"</string>
@@ -162,11 +162,11 @@
 
 
     <string name="msgManualReboot">Update.zip файл копируется в корень памяти, теперь вам нужно перезагрузиться в восстановлении и вручную установить файл update.zip от восстановления</string>
-    <string name="herramientasUsuTxt">Tools</string>
-    <string name="copiasSegTxt">Backup Tools</string>
-    <string name="herramientasROMTxt">Device Tools</string>
-    <string name="msgRamProblem">, but it seems that there is a problem with the RAM amount, that is</string>
-    <string name="msgRamProblem2">and should be 1GB or 2GB, please flash the latest ROM with SPFLASHTOOL to solve this problem</string>
-    <string name="msgIdentificadoParcial">Identified, not exactly, as</string>
+    <string name="herramientasUsuTxt">инструментарий</string>
+    <string name="copiasSegTxt">Инструменты резервного копирования</string>
+    <string name="herramientasROMTxt">устройства Инструменты</string>
+    <string name="msgRamProblem">, но кажется, что существует проблема с количеством RAM, то есть</string>
+    <string name="msgRamProblem2">и должен быть 1 Гб или 2 Гб, пожалуйста прошить последнюю диск с SPFLASHTOOL решить эту проблему</string>
+    <string name="msgIdentificadoParcial">Выявленные, не совсем, как</string>
 
 </resources>

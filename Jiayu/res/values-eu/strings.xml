@@ -287,8 +287,8 @@
     <string name="msgNuevasOpciones">Erantsia aukera berriak eskuragarri konfigurazio pantailan. Klik Setup botoia berrikusteko</string>
 
     <string name="msgManualReboot">Update.zip fitxategia Memoriaren erroan kopiatu, orain arte berreskuratzeko sartu berrabiarazi eta eskuz instalatu update.zip fitxategia berreskuratzeko behar duzu</string>
-    <string name="herramientasUsuTxt">Tools</string>
-    <string name="copiasSegTxt">Backup Tools</string>
+    <string name="herramientasUsuTxt">Tresnak</string>
+    <string name="copiasSegTxt">Backup Tresnak</string>
     <string name="herramientasROMTxt">Device Tools</string>
     <string name="msgRamProblem">, pero parece que hay un problema con la cantidad de RAM que se ha detectado, se detectó</string>
     <string name="msgRamProblem2">y debería ser de 1GB o 2GB, por favor instala la ultima ROM por SPFLASHTOOL para resolver este problema</string>

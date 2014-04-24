@@ -30,7 +30,7 @@
     <string name="msgComprobarVersion">"Nova versão disponível"</string>
     <string name="msgPreguntaVersion">"Está baixando?"</string>
     <string name="msgCompilacion">"Compilação:"</string>
-    <string name="msgModelo">"Modelo"</string>
+    <string name="msgModelo">"Modelo:"</string>
     <string name="msgIdentificado1">"Identificado como "</string>
     <string name="msgIdentificado2">" , Embora a informação ROM não é indicado como um fabricante JIAYU"</string>
     <string name="msgTerminalNoJiayu">"O dispositivo não é JIAYU"</string>
@@ -159,11 +159,11 @@
     <string name="msgOptDisabled">Root não estiver disponível, algumas opções estão desabilitadas</string>
 
     <string name="msgManualReboot">Update.zip arquivo copiado para a raiz da memória, agora você precisa reiniciar em recuperação e instalar manualmente o arquivo update.zip da recuperação</string>
-    <string name="herramientasUsuTxt">Tools</string>
-    <string name="copiasSegTxt">Backup Tools</string>
-    <string name="herramientasROMTxt">Device Tools</string>
-    <string name="msgRamProblem">, but it seems that there is a problem with the RAM amount, that is</string>
-    <string name="msgRamProblem2">and should be 1GB or 2GB, please flash the latest ROM with SPFLASHTOOL to solve this problem</string>
-    <string name="msgIdentificadoParcial">Identified, not exactly, as</string>
+    <string name="herramientasUsuTxt">Ferramentas</string>
+    <string name="copiasSegTxt">Ferramentas de Backup</string>
+    <string name="herramientasROMTxt">Ferramentas de dispositivo</string>
+    <string name="msgRamProblem">,mas parece que existe um problema com a quantidade de RAM, que é</string>
+    <string name="msgRamProblem2">e deve ser de 1 GB ou 2 GB, por favor piscar a última ROM com SPFLASHTOOL para resolver este problema</string>
+    <string name="msgIdentificadoParcial">Identificado, não exatamente, como</string>
 
 </resources>

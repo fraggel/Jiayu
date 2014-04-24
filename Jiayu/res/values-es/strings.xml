@@ -162,11 +162,11 @@
     <string name="msgNuevasOpciones">Se han añadido nuevas opciones disponibles en la pantalla de configuración. Pulsa el botón de configuración para revisarlas</string>
 
     <string name="msgManualReboot">Fichero update.zip copiado en la raíz de la memoria, ahora es necesario reiniciar en recovery e instalar manualmente el fichero update.zip desde el recovery</string>
-    <string name="herramientasUsuTxt">Tools</string>
-    <string name="copiasSegTxt">Backup Tools</string>
-    <string name="herramientasROMTxt">Device Tools</string>
-    <string name="msgRamProblem">, pero parece que hay un problema con la cantidad de RAM que se ha detectado, se detectó</string>
-    <string name="msgRamProblem2">y debería ser de 1GB o 2GB, por favor instala la ultima ROM por SPFLASHTOOL para resolver este problema</string>
-    <string name="msgIdentificadoParcial">Identificado, no de manera exacta, como</string>
+    <string name="herramientasUsuTxt">Herramientas</string>
+    <string name="copiasSegTxt">Herramientas Backup</string>
+    <string name="herramientasROMTxt">Tresnak gailu</string>
+    <string name="msgRamProblem">, gogo RAM zenbatekoa detektatu da arazo bat izan nahi du, detektatu zen</string>
+    <string name="msgRamProblem2">eta 1GB edo 2GB izan behar du, mesedez instalatu SPFLASHTOOL azken ROM arazo hau konpontzeko</string>
+    <string name="msgIdentificadoParcial">Identifikatu, ez zehazki, gisa</string>
 
 </resources>

@@ -106,6 +106,7 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             backupBtn.setEnabled(false);
             apkSpn.setEnabled(false);
             apkBtn.setEnabled(false);
+            romBtn.setEnabled(false);
         }
         ingenieroBtn = (Button) findViewById(R.id.ingenieroBtn);
         rebootRecoveryBtn = (Button) findViewById(R.id.rebootRecoveryBtn);
@@ -141,19 +142,22 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         toolsAndroidBtn.setOnClickListener(this);
         //bootAnimationBtn.setEnabled(false);
         if(isRoot){
-            if(ajustes.getBoolean("recoveryChk",false)){
-                detectRecovery=true;
-                recoveryDetectado=comprobarRecovery(getApplicationContext(),getResources(),"RomTools");
-            }else{
-                detectRecovery=false;
-            }
-            if(detectRecovery){
-                if("cwm".equals(recoveryDetectado)){
-                    backupBtn.setEnabled(true);
-                    //chkCWM.setVisibility(View.INVISIBLE);
-                }else if("ori".equals(recoveryDetectado)){
-                    backupBtn.setEnabled(false);
-                    //chkCWM.setVisibility(View.INVISIBLE);
+            if("mounted".equals(externalStorageState.toLowerCase())) {
+                if (ajustes.getBoolean("recoveryChk", false)) {
+                    detectRecovery = true;
+                    recoveryDetectado = comprobarRecovery(getApplicationContext(), getResources(), "RomTools");
+
+                } else {
+                    detectRecovery = false;
+                }
+                if (detectRecovery) {
+                    if ("cwm".equals(recoveryDetectado)) {
+                        backupBtn.setEnabled(true);
+                        //chkCWM.setVisibility(View.INVISIBLE);
+                    } else if ("ori".equals(recoveryDetectado)) {
+                        backupBtn.setEnabled(false);
+                        //chkCWM.setVisibility(View.INVISIBLE);
+                    }
                 }
             }
         }

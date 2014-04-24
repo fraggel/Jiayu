@@ -30,7 +30,7 @@
     <string name="msgComprobarVersion">"新版本"</string>
     <string name="msgPreguntaVersion">"正在下载？"</string>
     <string name="msgCompilacion">"编译："</string>
-    <string name="msgModelo">"模型"</string>
+    <string name="msgModelo">"模型:"</string>
     <string name="msgIdentificado1">"确定为"</string>
     <string name="msgIdentificado2">"在ROM中的信息，虽然没有表示的生产JIAYU"</string>
     <string name="msgTerminalNoJiayu">"您的设备不嘉裕"</string>
@@ -159,11 +159,11 @@
     <string name="msgOptDisabled">根本无法使用，某些选项被禁用</string>
 
     <string name="msgManualReboot">的update.zip文件拷贝到内存的根，现在则需要重新启动进入恢复和恢复手动安装的update.zip文件</string>
-    <string name="herramientasUsuTxt">Tools</string>
-    <string name="copiasSegTxt">Backup Tools</string>
-    <string name="herramientasROMTxt">Device Tools</string>
-    <string name="msgRamProblem">, but it seems that there is a problem with the RAM amount, that is</string>
-    <string name="msgRamProblem2">and should be 1GB or 2GB, please flash the latest ROM with SPFLASHTOOL to solve this problem</string>
-    <string name="msgIdentificadoParcial">Identified, not exactly, as</string>
+    <string name="herramientasUsuTxt">工具</string>
+    <string name="copiasSegTxt">备份工具</string>
+    <string name="herramientasROMTxt">设备工具</string>
+    <string name="msgRamProblem">, 但似乎有一个与RAM数量的一个问题，那就是</string>
+    <string name="msgRamProblem2">并应1GB或2GB，请刷新最新的ROM SPFLASHTOOL来解决这个问题</string>
+    <string name="msgIdentificadoParcial">经鉴定，不完全是，因为</string>
 
 </resources>
