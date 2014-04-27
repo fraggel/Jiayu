@@ -289,9 +289,9 @@
     <string name="msgManualReboot">Update.zip fitxategia Memoriaren erroan kopiatu, orain arte berreskuratzeko sartu berrabiarazi eta eskuz instalatu update.zip fitxategia berreskuratzeko behar duzu</string>
     <string name="herramientasUsuTxt">Tresnak</string>
     <string name="copiasSegTxt">Backup Tresnak</string>
-    <string name="herramientasROMTxt">Device Tools</string>
-    <string name="msgRamProblem">, pero parece que hay un problema con la cantidad de RAM que se ha detectado, se detectó</string>
-    <string name="msgRamProblem2">y debería ser de 1GB o 2GB, por favor instala la ultima ROM por SPFLASHTOOL para resolver este problema</string>
-    <string name="msgIdentificadoParcial">Identificado, no de manera exacta, como</string>
+    <string name="herramientasROMTxt">Tresnak gailu</string>
+    <string name="msgRamProblem">, gogo RAM zenbatekoa detektatu da arazo bat izan nahi du, detektatu zen</string>
+    <string name="msgRamProblem2">eta 1GB edo 2GB izan behar du, mesedez instalatu SPFLASHTOOL azken ROM arazo hau konpontzeko</string>
+    <string name="msgIdentificadoParcial">Identifikatu, ez zehazki, gisa</string>
 
 </resources>
