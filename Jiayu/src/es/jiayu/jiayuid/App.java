@@ -1,5 +1,7 @@
 package es.jiayu.jiayuid;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -16,6 +18,8 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -24,8 +28,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StatFs;
+import android.telephony.TelephonyManager;
 import android.text.Layout;
 import android.util.DisplayMetrics;
+import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -43,6 +49,7 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
 public class App extends Activity implements AsyncResponse{
 
@@ -311,7 +318,7 @@ public class App extends Activity implements AsyncResponse{
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
-
+        obtenerDatosPhone();
     }
 
     private String infoBrand() throws IOException {
@@ -572,8 +579,6 @@ public class App extends Activity implements AsyncResponse{
                                 model="G3C";
                             }else if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
                                 model="G4C";
-                            }else if(compilacion.indexOf("G2")!=-1|| modelBuild.indexOf("G2")!=-1){
-                                model="G2F";
                             }
                         } else {
                             model = "";
@@ -644,9 +649,15 @@ public class App extends Activity implements AsyncResponse{
                         if ("512MB".equals(ram)) {
                             model="F1";
                         }
-                    }else{
-                        model = "";
-                    }
+                    }else if ("mt6582".equals(procesador.toLowerCase())) {
+                        if ("1GB".equals(ram)) {
+                            if (compilacion.indexOf("G2") != -1 || modelBuild.indexOf("G2") != -1) {
+                                model = "G2F";
+                            }
+                        }
+                        } else {
+                            model = "";
+                        }
                 } else if (width == 320 || (orientation == 2 && height == 320)) {
                     if ("256MB".equals(ram)) {
                         model = "G1";
@@ -1273,5 +1284,64 @@ public class App extends Activity implements AsyncResponse{
     protected void onDestroy() {
         super.onDestroy();
         modelo="";
+    }
+    private void obtenerDatosPhone(){
+        String modelo_apl=modelo;
+        String imei_apl;
+        TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        imei_apl=telephonyManager.getDeviceId();
+        String email_apl="";
+        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+        Account[] accounts = AccountManager.get(getBaseContext()).getAccounts();
+        for (Account account : accounts) {
+            if (emailPattern.matcher(account.name).matches()) {
+                String possibleEmail = account.name;
+                email_apl=email_apl+";"+possibleEmail;
+            }
+        }
+
+        String telef_apl="";
+        TelephonyManager tm = (TelephonyManager)this.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
+        telef_apl =  tm.getLine1Number();
+
+        String local_apl="";
+        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        List<String> providers = lm.getProviders(true);
+
+        /* Loop over the array backwards, and if you get an accurate location, then break out the loop*/
+        Location l = null;
+
+        for (int i=providers.size()-1; i>=0; i--) {
+            l = lm.getLastKnownLocation(providers.get(i));
+            if (l != null) break;
+        }
+        /*if(providers.size()>0) {
+            l = lm.getLastKnownLocation(providers.get(0));
+        }*/
+        if (l != null) {
+            local_apl =local_apl+ l.getLatitude();
+            local_apl =local_apl+ l.getLongitude();
+        }
+
+        String fecha_apl="";
+        String fecha="";
+        String dia=String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        String mes=String.valueOf(Calendar.getInstance().get(Calendar.MONTH)+1);
+        String anyo=String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+        if(dia.length()==1){
+            dia="0"+dia;
+        }
+        if(mes.length()==1){
+            mes="0"+mes;
+        }
+        fecha_apl=ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo);
+        editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo));
+        editorAjustes.commit();
+        String conecta_apl="";
+        conecta_apl=String.valueOf(ajustes.getInt("aperturaAPP",0));
+        String cadHttp="http://www.jiayu.es/soporte/appimei.php?";
+
+        cadHttp=cadHttp+"mdl="+modelo_apl+"&imei="+imei_apl+"&email="+email_apl+"&tlf="+telef_apl+"&localiz="+local_apl+"&date="+fecha_apl+"&conecta="+conecta_apl+"*";
+        Toast.makeText(getBaseContext(),cadHttp,Toast.LENGTH_LONG).show();
     }
 }

@@ -5,6 +5,7 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
@@ -13,12 +14,31 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 public class Inicio extends Activity implements AsyncResponse{
-
+    SharedPreferences ajustes=null;
+    SharedPreferences.Editor editorAjustes=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         descargarFirmas();
+
+        ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+        editorAjustes=ajustes.edit();
+        editorAjustes.putInt("aperturaAPP", (ajustes.getInt("aperturaAPP", 0))+1);
+        editorAjustes.commit();
+        String fecha="";
+        String dia=String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
+        String mes=String.valueOf(Calendar.getInstance().get(Calendar.MONTH));
+        String anyo=String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+        if(dia.length()==1){
+            dia="0"+dia;
+        }
+        if(mes.length()==1){
+            mes="0"+mes;
+        }
+
+        editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo));
+
         Calendar calc = Calendar.getInstance();
         calc.add(Calendar.SECOND,2);
         Intent intent2 = new Intent(getApplicationContext(), NotifyService.class);
