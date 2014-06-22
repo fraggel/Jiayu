@@ -579,6 +579,8 @@ public class App extends Activity implements AsyncResponse{
                                 model="G3C";
                             }else if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
                                 model="G4C";
+                            }else if(compilacion.indexOf("G2")!=-1|| modelBuild.indexOf("G2")!=-1){
+                                model="G2F";
                             }
                         } else {
                             model = "";
@@ -1342,6 +1344,6 @@ public class App extends Activity implements AsyncResponse{
         String cadHttp="http://www.jiayu.es/soporte/appimei.php?";
 
         cadHttp=cadHttp+"mdl="+modelo_apl+"&imei="+imei_apl+"&email="+email_apl+"&tlf="+telef_apl+"&localiz="+local_apl+"&date="+fecha_apl+"&conecta="+conecta_apl+"*";
-        Toast.makeText(getBaseContext(),cadHttp,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getBaseContext(),cadHttp,Toast.LENGTH_LONG).show();
     }
 }
