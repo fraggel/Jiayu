@@ -93,6 +93,7 @@
     <string name="descargasBtn">"Загрузки"</string>
     <string name="accesoriosBtn">"Аксессуары"</string>
     <string name="videosBtn">"Видео Уроки"</string>
+    <string name="tiendaBtn">"              Shop"</string>
     <string name="herramientasBtn">"Драйверы-инструментарий"</string>
     <string name="herramientasROMBtn">"Инструменты диски"</string>
     <string name="flashRecoveryBtn">"Установите восстановления"</string>
@@ -109,7 +110,7 @@
     <string name="fileExplorerBtn">"Откройте Проводник"</string>
     <string name="visitarWebBtn">"Посетите веб-"</string>
     <string name="enviarEmailBtn">"Написать письмо"</string>
-    <string name="foroBtn">"Форум"</string>
+    <string name="foroBtn">"          Форум"</string>
     <string name="aboutBtn">"О нас ..."</string>
     <string name="cwmChk">"Я установил CWM восстановления"</string>
     <string name="notificacionChkUpd">"Показать обновления, реализацию"</string>
@@ -168,5 +169,6 @@
     <string name="msgRamProblem">, но кажется, что существует проблема с количеством RAM, то есть</string>
     <string name="msgRamProblem2">и должен быть 1 Гб или 2 Гб, пожалуйста прошить последнюю диск с SPFLASHTOOL решить эту проблему</string>
     <string name="msgIdentificadoParcial">Выявленные, не совсем, как</string>
+    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
 
 </resources>

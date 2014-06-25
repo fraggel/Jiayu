@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Jiayu.es</string>
-    <string name="bienvenida">Bienvenido a la aplicación Jiayu.es. Esta aplicación mostrará el modelo exacto con la nomenclatura que encontrarás en www.jiayu.es.</string>
+   <string name="bienvenida">Bienvenido a la aplicación Jiayu.es. Esta aplicación mostrará el modelo exacto con la nomenclatura que encontrarás en www.jiayu.es.</string>
 
     <!--Activity Titulos-->
     <string name="title_activity_browser">Descargas Jiayu.es</string>
@@ -98,7 +98,8 @@
     <!--Botones-->
     <string name="descargasBtn">Descargas</string>
     <string name="accesoriosBtn">Accesorios</string>
-    <string name="videosBtn">Videotutoriales</string>
+    <string name="videosBtn">"              Videos"</string>
+    <string name="tiendaBtn">"              Tienda"</string>
     <string name="herramientasBtn">Drivers-Herramientas</string>
     <string name="herramientasROMBtn">Herramientas ROMs</string>
     <string name="flashRecoveryBtn">Instalar Recovery</string>
@@ -115,7 +116,7 @@
     <string name="fileExplorerBtn">Abrir Explorador de Archivos</string>
     <string name="visitarWebBtn">Visitar Web</string>
     <string name="enviarEmailBtn">Enviar email</string>
-    <string name="foroBtn">Foro</string>
+    <string name="foroBtn">"          Foro"</string>
     <string name="aboutBtn">Sobre nosotros...</string>
     <string name="cwmChk">Tengo instalado el CWM Recovery</string>
     <string name="notificacionChkUpd">Mostrar actualizaciones de aplicación</string>
@@ -168,6 +169,7 @@
     <string name="msgRamProblem">, pero parece que hay un problema con la cantidad de RAM que se ha detectado, se detectó</string>
     <string name="msgRamProblem2">y debería ser de 1GB o 2GB, por favor instala la ultima ROM por SPFLASHTOOL para resolver este problema</string>
     <string name="msgIdentificadoParcial">Identificado, no de manera exacta, como</string>
+    <string name="msgRomSpFlash">La ROM que estás descargando es SOLO para instalar con SPFLASHTOOL, esta ROM no puede instalarse con esta App Jiayu</string>
 
 
 </resources>

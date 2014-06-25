@@ -65,7 +65,8 @@ public class App extends Activity implements AsyncResponse{
     Button driversherramientas;
     Button herramientasROM;
     Button config;
-    Button envioNoExisteBtn;
+    TextView t3;
+    //Button envioNoExisteBtn;
     Button btnInfo;
     String modelo = "";
     String model = "";
@@ -194,9 +195,9 @@ public class App extends Activity implements AsyncResponse{
                         foro = (Button) findViewById(R.id.button4);
                         driversherramientas = (Button) findViewById(R.id.button9);
                         herramientasROM = (Button) findViewById(R.id.button10);
-                        envioNoExisteBtn=(Button)findViewById(R.id.envioNoExisteBtn);
-                        btnInfo=(Button)findViewById(R.id.btnInfo);
-                        envioNoExisteBtn.setVisibility(View.INVISIBLE);
+                        //envioNoExisteBtn=(Button)findViewById(R.id.envioNoExisteBtn);
+                        //btnInfo=(Button)findViewById(R.id.btnInfo);
+                        //envioNoExisteBtn.setVisibility(View.INVISIBLE);
                         descargas.setEnabled(false);
                         //accesorios.setEnabled(false);
                         videotutoriales.setEnabled(false);
@@ -205,8 +206,9 @@ public class App extends Activity implements AsyncResponse{
                         foro.setEnabled(false);
                         ImageButton img = new ImageButton(this);
                         img = (ImageButton) findViewById(R.id.imageButton1);
-                        TextView t = new TextView(this);
-                        TextView t2 = new TextView(this);
+                        TextView tmodelo = new TextView(this);
+                        t3 =(TextView) findViewById(R.id.textView3);
+                        t3.setText(R.string.bienvenida);
                         TextView t4 = new TextView(this);
                         //TextView t5 = new TextView(this);
                         t4 = (TextView) findViewById(R.id.textView4);
@@ -215,8 +217,8 @@ public class App extends Activity implements AsyncResponse{
                         compilacion = Build.DISPLAY;
                         modelBuild=Build.MODEL;
                         fabricante = infoBrand();
-                        t = (TextView) findViewById(R.id.textView1);
-                        t2 = (TextView) findViewById(R.id.textView2);
+                        tmodelo = (TextView) findViewById(R.id.textView1);
+
                         addListenerOnButton();
                         //if("ini".equals(ini)){
                             if ("".equals(modelo)) {
@@ -247,57 +249,65 @@ public class App extends Activity implements AsyncResponse{
                                 herramientasROM.setEnabled(true);
 
                                 if (!"JIAYU".equals(fabricante.toUpperCase().trim()) && !"PIPO".equals(fabricante.toUpperCase().trim())) {
-                                    envioNoExisteBtn.setTextAppearance(getApplicationContext(),android.R.attr.textAppearanceMedium);
-                                    envioNoExisteBtn.setBackgroundDrawable(res.getDrawable(R.drawable.btn_white_border));
-                                    envioNoExisteBtn.setTextColor(Color.parseColor("#449def"));
-                                    envioNoExisteBtn.setTextColor(Color.RED);
-                                    envioNoExisteBtn.setText(res.getString(R.string.msgIdentificado1) +" "+ modelo + res.getString(R.string.msgIdentificado2));
-                                    envioNoExisteBtn.setClickable(false);
-                                    envioNoExisteBtn.setVisibility(View.VISIBLE);
+                                    t3.setTextColor(Color.parseColor("#449def"));
+                                    t3.setTextColor(Color.RED);
+                                    t3.setText(res.getString(R.string.msgIdentificado1) +" "+ modelo + res.getString(R.string.msgIdentificado2));
+                                    t3.setClickable(false);
+                                    t3.setVisibility(View.VISIBLE);
                                     //t5.setTextColor(Color.RED);
                                     //t5.setText(res.getString(R.string.msgIdentificado1) +" "+ modelo + res.getString(R.string.msgIdentificado2));
                                 }else{
-                                    envioNoExisteBtn.setVisibility(View.INVISIBLE);
+                                    t3.setTextColor(Color.BLACK);
+                                    t3.setText(res.getString(R.string.bienvenida));
+                                    t3.setClickable(false);
+                                    t3.setVisibility(View.VISIBLE);
                                     //t5.setVisibility(View.INVISIBLE);
                                 }
                             }else{
-                                envioNoExisteBtn.setBackgroundDrawable(res.getDrawable(R.drawable.btn_red));
-                                envioNoExisteBtn.setTextColor(Color.parseColor("#ffffff"));
-                                envioNoExisteBtn.setText(res.getString(R.string.enviarNoExisteBtn));
-                                envioNoExisteBtn.setClickable(true);
-                                envioNoExisteBtn.setVisibility(View.VISIBLE);
+                                t3.setTextColor(Color.parseColor("#ffffff"));
+                                t3.setText(res.getString(R.string.enviarNoExisteBtn));
+                                t3.setClickable(true);
+                                t3.setVisibility(View.VISIBLE);
+                                descargas.setEnabled(false);
+                                driversherramientas.setEnabled(false);
+                                herramientasROM.setEnabled(false);
                             }
-                            t.setText(res.getString(R.string.msgModelo) + modelo);
-                            t2.setText(res.getString(R.string.msgCompilacion) + compilacion);
+                            tmodelo.setText(res.getString(R.string.msgModelo) + modelo+"\n"+res.getString(R.string.msgCompilacion) + compilacion);
+
 
                             if("T1".equals(modelo) || "T2".equals(modelo)){
                                 herramientasROM.setEnabled(false);
                             }
-                String externalStorageState = Environment.getExternalStorageState();
-                if(!"mounted".equals(externalStorageState.toLowerCase())){
-                    driversherramientas.setEnabled(false);
-                    descargas.setEnabled(false);
-                    //herramientasROM.setEnabled(false);
+                if (modelo.length() < 10 && ("JIAYU".equals(fabricante.toUpperCase().trim()) || "PIPO".equals(fabricante.toUpperCase().trim()))) {
+                    String externalStorageState = Environment.getExternalStorageState();
+                    if (!"mounted".equals(externalStorageState.toLowerCase())) {
+                        driversherramientas.setEnabled(false);
+                        descargas.setEnabled(false);
+                        //herramientasROM.setEnabled(false);
                     /*if(t5.getVisibility()==View.INVISIBLE){
                         t5.setVisibility(View.VISIBLE);
                         t5.setTextColor(Color.RED);
                         t5.setText(res.getString(R.string.msgNoSD));*/
-                    if(envioNoExisteBtn.getVisibility()==View.INVISIBLE){
-                        envioNoExisteBtn.setTextAppearance(getApplicationContext(), android.R.attr.textAppearanceMedium);
-                        envioNoExisteBtn.setBackgroundDrawable(res.getDrawable(R.drawable.btn_white_border));
-                        envioNoExisteBtn.setTextColor(Color.parseColor("#449def"));
-                        envioNoExisteBtn.setTextColor(Color.RED);
-                        envioNoExisteBtn.setText(res.getString(R.string.msgNoSD));
-                        envioNoExisteBtn.setOnClickListener(null);
-                        envioNoExisteBtn.setClickable(false);
-                        envioNoExisteBtn.setVisibility(View.VISIBLE);
-
-                    }else{
+                        //if(envioNoExisteBtn.getVisibility()==View.INVISIBLE){
+                        t3.setTextColor(Color.parseColor("#449def"));
+                        t3.setTextColor(Color.RED);
+                        t3.setText(res.getString(R.string.msgNoSD));
+                        t3.setClickable(false);
+                        t3.setVisibility(View.VISIBLE);
+                    /*}else{
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgNoSD), Toast.LENGTH_LONG).show();
+                    }*/
+                    } else {
+                        driversherramientas.setEnabled(true);
+                        descargas.setEnabled(true);
+                        t3.setTextColor(Color.BLACK);
+                        t3.setText(res.getString(R.string.bienvenida));
+                        t3.setClickable(false);
+                        t3.setVisibility(View.VISIBLE);
                     }
                 }
                        // }
-                if(ajustes.getBoolean("firstUse",true)){
+                /*if(ajustes.getBoolean("firstUse",true)){
                     btnInfo.setTextAppearance(getApplicationContext(), android.R.attr.textAppearanceMedium);
                     btnInfo.setBackgroundDrawable(res.getDrawable(R.drawable.btn_white_border));
                     btnInfo.setTextColor(Color.parseColor("#449def"));
@@ -308,14 +318,16 @@ public class App extends Activity implements AsyncResponse{
                     config.setBackgroundDrawable(res.getDrawable(R.drawable.btn_yellow));
                     config.setFocusableInTouchMode(true);
                     config.requestFocus();
-                }else{
-                    btnInfo.setVisibility(View.GONE);
-                    config.setFocusableInTouchMode(false);
-                    config.setBackgroundDrawable(res.getDrawable(R.drawable.btn_green));
+                }else{*/
+                    //btnInfo.setVisibility(View.GONE);
+                    //config.setFocusableInTouchMode(false);
+                    //config.setBackgroundDrawable(res.getDrawable(R.drawable.btn_green));
+                    //config.setBackgroundDrawable(res.getDrawable(R.drawable.bt08));
 
-                }
+                /*}*/
 
             } catch (Exception e) {
+
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
         obtenerDatosPhone();
@@ -514,7 +526,7 @@ public class App extends Activity implements AsyncResponse{
                             }
                         } else if ("2GB".equals(ram)) {
                             if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
-                            model="G4A";
+                                model="G4A";
                             }else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
                                 model="G5A";
                             }else {
@@ -927,7 +939,7 @@ public class App extends Activity implements AsyncResponse{
 
             });
             config = (Button) findViewById(R.id.button5);
-            config.setFocusable(true);
+
             config.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
@@ -935,13 +947,13 @@ public class App extends Activity implements AsyncResponse{
                         Intent intent = new Intent(getApplicationContext(), ConfigActivity.class);
                         startActivity(intent);
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 121", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError) + " 121", Toast.LENGTH_SHORT).show();
                     }
                 }
 
             });
-            envioNoExisteBtn=(Button)findViewById(R.id.envioNoExisteBtn);
-            envioNoExisteBtn.setOnClickListener(new View.OnClickListener() {
+            t3=(TextView)findViewById(R.id.textView3);
+            t3.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
                     try {
@@ -1336,6 +1348,8 @@ public class App extends Activity implements AsyncResponse{
         if(mes.length()==1){
             mes="0"+mes;
         }
+        ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+        editorAjustes=ajustes.edit();
         fecha_apl=ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo);
         editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo));
         editorAjustes.commit();

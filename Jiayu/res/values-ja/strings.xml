@@ -92,6 +92,7 @@
     <string name="descargasBtn">"ダウンロード"</string>
     <string name="accesoriosBtn">"アクセサリー"</string>
     <string name="videosBtn">"ビデオチュートリアル"</string>
+    <string name="tiendaBtn">"              Shop"</string>
     <string name="herramientasBtn">"ドライバ·ツール"</string>
     <string name="herramientasROMBtn">"ツールROMの"</string>
     <string name="flashRecoveryBtn">"Recoveryをインストール"</string>
@@ -108,7 +109,7 @@
     <string name="fileExplorerBtn">"ファイルエクスプローラを開く"</string>
     <string name="visitarWebBtn">"ウェブにアクセスしてください"</string>
     <string name="enviarEmailBtn">"メールを送信"</string>
-    <string name="foroBtn">"フォーラム"</string>
+    <string name="foroBtn">"          フォーラム"</string>
     <string name="aboutBtn">"私達について..."</string>
     <string name="cwmChk">"私はCWMリカバリーをインストールしている"</string>
     <string name="notificacionChkUpd">"アップデート実装を表示"</string>
@@ -167,5 +168,6 @@
     <string name="msgRamProblem">, それはRAM量に問題があると思われる、すなわち</string>
     <string name="msgRamProblem2">および1ギガバイトまたは2ギガバイトである必要があり、この問題を解決するためにSPFLASHTOOLを最新のフラッシュROMください</string>
     <string name="msgIdentificadoParcial">特定され、正確ではない、として</string>
+    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
 
 </resources>

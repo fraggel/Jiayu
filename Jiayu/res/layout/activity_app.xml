@@ -3,7 +3,7 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:scrollbars="horizontal">
-     <LinearLayout
+     <!--<LinearLayout
             android:id="@+id/LinearLayout1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -14,58 +14,58 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="0dp">
 
+
+     </LinearLayout>-->
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:background="#ffffff">
         <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/jiayulogoic"
-                android:contentDescription="Jiayu.es"
-                android:clickable="false"
-                android:focusable="false"
-                android:adjustViewBounds="false"
-                android:background="@android:color/transparent"
-                android:layout_weight="0.11"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_horizontal_margin"/>
+            android:id="@+id/imageButton1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jiayulogoic"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"/>
 
         <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/activity_vertical_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:text="@string/bienvenida"
-                style="@style/LabelTextWhite"
-                android:background="@drawable/btn_black"
-                android:visibility="visible"
-                android:password="false"/>
+            android:id="@+id/textView3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/activity_vertical_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:text="@string/bienvenida"
+            style="@style/LabelTextWhite"
+            android:background="@drawable/aviso"
+            android:visibility="visible"
+            android:password="false"
+            />
 
         <TextView
-                android:id="@+id/textView1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/LabelTextBlack"
-                android:background="@drawable/btn_white_border"
-                android:autoText="false"/>
+            android:id="@+id/textView1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            style="@style/LabelTextBlack"
+            android:background="@android:color/white"
+            android:autoText="false"/>
 
-        <TextView
-                android:id="@+id/textView2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/LabelTextBlack"
-                android:background="@drawable/btn_white_border"/>
-
-        <Button
+        <!--<Button
             style="@style/ButtonTextGreen"
             android:id="@+id/envioNoExisteBtn"
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:visibility="invisible"
             android:text="@string/enviarNoExisteBtn"
-            android:background="@drawable/btn_green" />
+            android:background="@drawable/btn_green" />-->
 
         <!--<TextView
                 android:id="@+id/textView5"
@@ -77,86 +77,118 @@
                 style="@style/LabelTextRed"/>-->
 
         <Button
-                android:id="@+id/button1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/descargasBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <Button
-                android:id="@+id/button9"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/herramientasBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <Button
-                android:id="@+id/button10"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/herramientasROMBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/videosBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <Button
-                android:id="@+id/button4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/foroBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-
-        <Button
-                android:id="@+id/button2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/aboutBtn"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
-         <Button
-             android:id="@+id/btnInfo"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"
-             style="@style/ButtonTextGreen"
-             android:background="@drawable/btn_green"
-             android:visibility="gone"/>
-        <Button
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/msgConfiguracion"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
-
-        <WebView
-                android:id="@+id/webView"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_margin="0dp"
-                android:padding="0dp"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
-                android:paddingTop="0dp"/>
-        <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/button1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="@string/descargasBtn"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/bt01"/>
 
-            android:background="@drawable/btn_white_border"
-            style="@style/LabelTextBlack"/>
+        <Button
+            android:id="@+id/button9"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/herramientasBtn"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/bt02"/>
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/button10"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/herramientasROMBtn"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/bt03"/>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="2">
+        <Button
+            android:id="@+id/button11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tiendaBtn"
+            android:textStyle="bold"
+            android:textSize="13dp"
+            android:background="@drawable/bt04"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/foroBtn"
+            android:textStyle="bold"
+            android:textSize="13dp"
+            android:background="@drawable/bt05"
+            android:layout_weight="1"
+            />
+            <Button
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/videosBtn"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:background="@drawable/bt05"
+                android:layout_weight="1"
+                />
+        </TableRow>
+
+    <!-- <TableLayout
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:baselineAligned="false"
+     android:background="#ffffff">-->
+     <!--<TableRow android:layout_width="fill_parent"
+         android:layout_height="wrap_content">-->
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/aboutBtn"
+        android:textStyle="bold"
+        android:textSize="13dp"
+        android:background="@drawable/bt07"/>
+
+    <!--<Button
+        android:id="@+id/btnInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="13dp"
+        android:background="@drawable/btn_green"
+        android:visibility="gone"/>-->
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/msgConfiguracion"
+        style="@style/LabelTextBlack"
+        android:background="@drawable/bt08"
+
+        />
+    <!--</TableRow>-->
+
+    <WebView
+        android:id="@+id/webView"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="0dp"
+        android:padding="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"/>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+
+        android:background="@drawable/btn_white_border"
+        style="@style/LabelTextBlack"/>
+
+    </TableLayout>
 </ScrollView>

@@ -145,6 +145,10 @@ public class BrowserActivity extends Activity {
                         rutaDescarga = "/JIAYUES/ROMS/";
                     } else if (nombreFichero.indexOf("bootanimation") != -1) {
                         rutaDescarga = "/JIAYUES/BOOTANIMATION/";
+                    }else if (nombreFichero.indexOf("SP") != -1) {
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgRomSpFlash) + " " + nombreFichero, Toast.LENGTH_LONG).show();
+                        rutaDescarga = "/JIAYUES/DOWNLOADS/";
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgRomSpFlash) + " " + nombreFichero, Toast.LENGTH_LONG).show();
                     }else{
                         rutaDescarga = "/JIAYUES/DOWNLOADS/";
                     }
