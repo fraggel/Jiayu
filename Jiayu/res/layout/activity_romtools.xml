@@ -3,41 +3,42 @@
             android:layout_height="fill_parent"
             android:scrollbars="horizontal">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
-
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:background="#ffffff">
         <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/jiayulogoic"
-                android:contentDescription="Jiayu.es"
-                android:clickable="false"
-                android:focusable="false"
-                android:adjustViewBounds="false"
-                android:background="@android:color/transparent"
-                android:layout_weight="0.11"
-                android:layout_gravity="center"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_horizontal_margin"/>
+            android:id="@+id/imageButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jiayulogoic"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"/>
 
-
-
-
-
-
-        <TextView
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/herramientasUsuTxt"
+            android:id="@+id/herramientasUsuTxt"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/bt01"/>
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/herramientasUsuTxt"
             android:id="@+id/herramientasUsuTxt"
             android:layout_gravity="left|center_vertical"
-            style="@style/LabelTextBlack"/>
-        <Button
+            style="@style/LabelTextBlack"/>-->
+        <!--<Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ingenieroBtn"
@@ -70,22 +71,28 @@
             android:layout_gravity="left|center_vertical"
             style="@style/ButtonTextGreen"
             android:background="@drawable/btn_green"/>
+            -->
 
 
 
 
 
-
-
-        <TextView
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/copiasSegTxt"
+            android:id="@+id/copiasSegTxt"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/bt01"/>
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/copiasSegTxt"
             android:id="@+id/copiasSegTxt"
             android:layout_gravity="left|center_vertical"
-            style="@style/LabelTextBlack"/>
-        <Button
+            style="@style/LabelTextBlack"/>-->
+        <!--<Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/imeiBtn"
@@ -100,22 +107,28 @@
             android:text="@string/backupBtn"
             android:id="@+id/backupBtn"
             android:background="@drawable/btn_green" />
+            -->
 
 
 
 
 
-
-
-        <TextView
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/herramientasROMTxt"
+            android:id="@+id/herramientasROMTxt"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/bt01"/>
+        <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/herramientasROMTxt"
             android:id="@+id/herramientasROMTxt"
             android:layout_gravity="left|center_vertical"
-            style="@style/LabelTextBlack"/>
-        <Button
+            style="@style/LabelTextBlack"/>-->
+        <!--<Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/flashRecoveryBtn"
@@ -140,13 +153,19 @@
                 android:id="@+id/rebootRecoveryBtn"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
+        -->
 
 
 
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/downloadedAPKTxt"
+            android:id="@+id/apkTexto"
+            style="@style/LabelTextBlack"
+            android:background="@drawable/bt01"/>
 
-
-
-        <TextView
+        <!--<TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
@@ -154,9 +173,9 @@
                 android:id="@+id/apkTexto"
                 android:layout_gravity="left|center_vertical"
                 android:paddingTop="20dp"
-                style="@style/LabelTextBlack"/>
+                style="@style/LabelTextBlack"/>-->
 
-        <Spinner
+        <!--<Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/apkSpn"
@@ -172,5 +191,6 @@
                 android:layout_gravity="left|center_vertical"
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
-    </LinearLayout>
+                -->
+    </TableLayout>
 </ScrollView>

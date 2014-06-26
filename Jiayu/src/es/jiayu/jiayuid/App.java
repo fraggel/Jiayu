@@ -929,7 +929,7 @@ public class App extends Activity implements AsyncResponse{
 
                 public void onClick(View arg0) {
                     try {
-                        Intent intent = new Intent(getApplicationContext(), ROMTools.class);
+                        Intent intent = new Intent(getApplicationContext(), SecondScreen.class);
                         intent.putExtra("modelo",modelo);
                         startActivity(intent);
                     } catch (Exception e) {

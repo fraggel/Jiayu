@@ -1,0 +1,53 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal">
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:background="#ffffff">
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jiayulogoic"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/downloadedAPKTxt"
+                android:id="@+id/apkTexto"
+                android:layout_gravity="left|center_vertical"
+                android:paddingTop="20dp"
+                style="@style/LabelTextBlack"/>
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/apkSpn"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/btn_green"
+            style="@style/ButtonTextGreen"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/installApkBtn"
+            android:id="@+id/apkBtn"
+            android:layout_gravity="left|center_vertical"
+            style="@style/ButtonTextGreen"
+            android:background="@drawable/btn_green"/>
+    </TableLayout>
+</ScrollView>

@@ -68,6 +68,11 @@
         <activity android:name="es.jiayu.jiayuid.ToolsAndroid" android:label="@string/title_activity_tools" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.SendInformeActivity" />
         <activity android:name="es.jiayu.jiayuid.NoInternet" />
+        <activity android:name="es.jiayu.jiayuid.SecondScreen" />
+        <activity android:name="es.jiayu.jiayuid.SCApkInstall" />
+        <activity android:name="es.jiayu.jiayuid.SCCopiaSeg"/>
+        <activity android:name="es.jiayu.jiayuid.SCHerramientasRom"/>
+        <activity android:name="es.jiayu.jiayuid.SCHerramientasUsu"/>
 
         <receiver
                 android:name="es.jiayu.jiayuid.DownloadReceiver"
