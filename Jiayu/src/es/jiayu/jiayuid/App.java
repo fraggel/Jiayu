@@ -35,9 +35,11 @@ import android.util.Patterns;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -134,7 +136,37 @@ public class App extends Activity implements AsyncResponse{
                 Resources res = this.getResources();
 
                 setContentView(R.layout.activity_app);
-                    //if("ini".equals(ini)){
+                TextView scText=(TextView) findViewById(R.id.textView3);
+                TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                int dpi=getResources().getDisplayMetrics().densityDpi;
+                /*if(dpi==240) {
+                    llp.setMargins(0, 180, 0, 2);
+                }else if(dpi==320) {
+                    llp.setMargins(0, 250, 0, 2);
+                }else if(dpi==480) {
+                    llp.setMargins(0, 350, 0, 2);
+                }*/
+                if(dpi==240) {
+                    llp.setMargins(0, 175, 0, 2);
+                }else if(dpi==320) {
+                    llp.setMargins(0, 230, 0, 2);
+                }else if(dpi==480) {
+                    llp.setMargins(0, 350, 0, 2);
+                }
+
+                scText.setLayoutParams((llp));
+                /*WebView wvv=(WebView) findViewById(R.id.webView);
+                TableLayout.LayoutParams llp2 = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                int dpi2=getResources().getDisplayMetrics().densityDpi;
+                if(dpi2==240) {
+                    llp2.height=70;
+                }else if(dpi2==320) {
+                    llp2.height=90;
+                }else if(dpi2==480) {
+                    llp2.height=100;
+                }
+                wvv.setLayoutParams((llp2));*/
+                //if("ini".equals(ini)){
                     //    intent.putExtra("ini","");
                         nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
                         mNotificationManagerUpdate = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
@@ -199,11 +231,16 @@ public class App extends Activity implements AsyncResponse{
                         //btnInfo=(Button)findViewById(R.id.btnInfo);
                         //envioNoExisteBtn.setVisibility(View.INVISIBLE);
                         descargas.setEnabled(false);
+                        descargas.setTextColor(Color.parseColor("#BDBDBD"));
                         //accesorios.setEnabled(false);
                         videotutoriales.setEnabled(false);
+                        videotutoriales.setTextColor(Color.parseColor("#BDBDBD"));
                         driversherramientas.setEnabled(false);
+                        driversherramientas.setTextColor(Color.parseColor("#BDBDBD"));
                         herramientasROM.setEnabled(false);
+                        herramientasROM.setTextColor(Color.parseColor("#BDBDBD"));
                         foro.setEnabled(false);
+                        foro.setTextColor(Color.parseColor("#BDBDBD"));
                         ImageButton img = new ImageButton(this);
                         img = (ImageButton) findViewById(R.id.imageButton1);
                         TextView tmodelo = new TextView(this);
@@ -232,6 +269,11 @@ public class App extends Activity implements AsyncResponse{
                                 foro.setEnabled(true);
                                 driversherramientas.setEnabled(true);
                                 videotutoriales.setEnabled(true);
+                                descargas.setTextColor(Color.BLACK);
+                                herramientasROM.setTextColor(Color.BLACK);
+                                foro.setTextColor(Color.BLACK);
+                                driversherramientas.setTextColor(Color.BLACK);
+                                videotutoriales.setTextColor(Color.BLACK);
 
                             }
 
@@ -242,12 +284,16 @@ public class App extends Activity implements AsyncResponse{
                                 editorAjustes.commit();
 
                                 descargas.setEnabled(true);
+                                descargas.setTextColor(Color.BLACK);
                                 //accesorios.setEnabled(true);
                                 foro.setEnabled(true);
+                                foro.setTextColor(Color.BLACK);
                                 driversherramientas.setEnabled(true);
+                                driversherramientas.setTextColor(Color.BLACK);
                                 videotutoriales.setEnabled(true);
+                                videotutoriales.setTextColor(Color.BLACK);
                                 herramientasROM.setEnabled(true);
-
+                                herramientasROM.setTextColor(Color.BLACK);
                                 if (!"JIAYU".equals(fabricante.toUpperCase().trim()) && !"PIPO".equals(fabricante.toUpperCase().trim())) {
                                     t3.setTextColor(Color.parseColor("#449def"));
                                     t3.setTextColor(Color.RED);
@@ -269,20 +315,26 @@ public class App extends Activity implements AsyncResponse{
                                 t3.setClickable(true);
                                 t3.setVisibility(View.VISIBLE);
                                 descargas.setEnabled(false);
+                                descargas.setTextColor(Color.parseColor("#BDBDBD"));
                                 driversherramientas.setEnabled(false);
+                                driversherramientas.setTextColor(Color.parseColor("#BDBDBD"));
                                 herramientasROM.setEnabled(false);
+                                herramientasROM.setTextColor(Color.parseColor("#BDBDBD"));
                             }
                             tmodelo.setText(res.getString(R.string.msgModelo) + modelo+"\n"+res.getString(R.string.msgCompilacion) + compilacion);
 
 
                             if("T1".equals(modelo) || "T2".equals(modelo)){
                                 herramientasROM.setEnabled(false);
+                                herramientasROM.setTextColor(Color.parseColor("#BDBDBD"));
                             }
                 if (modelo.length() < 10 && ("JIAYU".equals(fabricante.toUpperCase().trim()) || "PIPO".equals(fabricante.toUpperCase().trim()))) {
                     String externalStorageState = Environment.getExternalStorageState();
                     if (!"mounted".equals(externalStorageState.toLowerCase())) {
                         driversherramientas.setEnabled(false);
+                        driversherramientas.setTextColor(Color.parseColor("#BDBDBD"));
                         descargas.setEnabled(false);
+                        descargas.setTextColor(Color.parseColor("#BDBDBD"));
                         //herramientasROM.setEnabled(false);
                     /*if(t5.getVisibility()==View.INVISIBLE){
                         t5.setVisibility(View.VISIBLE);
@@ -299,7 +351,9 @@ public class App extends Activity implements AsyncResponse{
                     }*/
                     } else {
                         driversherramientas.setEnabled(true);
+                        driversherramientas.setTextColor(Color.BLACK);
                         descargas.setEnabled(true);
+                        descargas.setTextColor(Color.BLACK);
                         t3.setTextColor(Color.BLACK);
                         t3.setText(res.getString(R.string.bienvenida));
                         t3.setClickable(false);
@@ -829,7 +883,7 @@ public class App extends Activity implements AsyncResponse{
     public void addListenerOnButton() {
         try {
 
-            imageButton = (ImageButton) findViewById(R.id.imageButton1);
+            /*imageButton = (ImageButton) findViewById(R.id.imageButton1);
             imageButton.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
@@ -843,7 +897,7 @@ public class App extends Activity implements AsyncResponse{
                     }
                 }
 
-            });
+            });*/
             descargas = (Button) findViewById(R.id.button1);
             descargas.setOnClickListener(new View.OnClickListener() {
 

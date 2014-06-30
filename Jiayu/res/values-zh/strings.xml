@@ -92,7 +92,7 @@
     <string name="descargasBtn">"下载"</string>
     <string name="accesoriosBtn">"饰品"</string>
     <string name="videosBtn">"视频教程"</string>
-    <string name="tiendaBtn">"              Shop"</string>
+    <string name="tiendaBtn">"Shop"</string>
     <string name="herramientasBtn">"驱动工具"</string>
     <string name="herramientasROMBtn">"工具光盘"</string>
     <string name="flashRecoveryBtn">"安装恢复"</string>
@@ -109,7 +109,7 @@
     <string name="fileExplorerBtn">"打开档案总管"</string>
     <string name="visitarWebBtn">"访问网站"</string>
     <string name="enviarEmailBtn">"发送电​​子邮件"</string>
-    <string name="foroBtn">"          论坛"</string>
+    <string name="foroBtn">"论坛"</string>
     <string name="aboutBtn">"关于我们......"</string>
     <string name="cwmChk">"我已经安装了CWM恢复"</string>
     <string name="notificacionChkUpd">"显示更新实施"</string>

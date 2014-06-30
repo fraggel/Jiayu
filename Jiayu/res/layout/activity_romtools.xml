@@ -1,14 +1,16 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:scrollbars="horizontal">
+            android:scrollbars="horizontal"
+            >
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:background="#ffffff">
-        <ImageButton
+        android:background="@drawable/fondo02"
+        >
+        <!--<ImageButton
             android:id="@+id/imageButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -21,15 +23,25 @@
             android:background="@android:color/transparent"
             android:layout_weight="0.11"
             android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"/>
+            android:paddingTop="@dimen/activity_horizontal_margin"/>-->
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/herramientasUsuTxt"
+            android:layout_gravity="left|center_vertical"
+            android:layout_marginLeft="30dp"
+            android:id="@+id/scText"
+            style="@style/LabelTextBlackLeft"/>
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/herramientasUsuTxt"
             android:id="@+id/herramientasUsuTxt"
             style="@style/LabelTextBlack"
-            android:background="@drawable/bt01"/>
+            android:background="@drawable/btn_secherramientas"
+            />
         <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,7 +95,7 @@
             android:text="@string/copiasSegTxt"
             android:id="@+id/copiasSegTxt"
             style="@style/LabelTextBlack"
-            android:background="@drawable/bt01"/>
+            android:background="@drawable/btn_secherramientasback"/>
         <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -119,7 +131,7 @@
             android:text="@string/herramientasROMTxt"
             android:id="@+id/herramientasROMTxt"
             style="@style/LabelTextBlack"
-            android:background="@drawable/bt01"/>
+            android:background="@drawable/btn_secherramientasdev"/>
         <!--<TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -163,7 +175,7 @@
             android:text="@string/downloadedAPKTxt"
             android:id="@+id/apkTexto"
             style="@style/LabelTextBlack"
-            android:background="@drawable/bt01"/>
+            android:background="@drawable/btn_secapk"/>
 
         <!--<TextView
                 android:layout_width="wrap_content"
@@ -192,5 +204,6 @@
                 style="@style/ButtonTextGreen"
                 android:background="@drawable/btn_green"/>
                 -->
+
     </TableLayout>
 </ScrollView>

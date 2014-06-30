@@ -7,8 +7,11 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -27,7 +30,7 @@ public class SCApkInstall extends Activity implements View.OnClickListener {
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
         ajustes = getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
@@ -37,7 +40,18 @@ public class SCApkInstall extends Activity implements View.OnClickListener {
                 startActivity(intent);
             }
 
-        });
+        });*/
+        TextView scText=(TextView) findViewById(R.id.apkTexto);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 120);
+        }else if(dpi==480) {
+            llp.setMargins(80, 350, 0, 176);
+        }
+        scText.setLayoutParams((llp));
     }
 
     @Override

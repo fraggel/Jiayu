@@ -98,8 +98,8 @@
     <!--Botones-->
     <string name="descargasBtn">Descargas</string>
     <string name="accesoriosBtn">Accesorios</string>
-    <string name="videosBtn">"              Videos"</string>
-    <string name="tiendaBtn">"              Tienda"</string>
+    <string name="videosBtn">"Videos"</string>
+    <string name="tiendaBtn">"Tienda"</string>
     <string name="herramientasBtn">Drivers-Herramientas</string>
     <string name="herramientasROMBtn">Herramientas ROMs</string>
     <string name="flashRecoveryBtn">Instalar Recovery</string>
@@ -116,7 +116,7 @@
     <string name="fileExplorerBtn">Abrir Explorador de Archivos</string>
     <string name="visitarWebBtn">Visitar Web</string>
     <string name="enviarEmailBtn">Enviar email</string>
-    <string name="foroBtn">"          Foro"</string>
+    <string name="foroBtn">"Foro"</string>
     <string name="aboutBtn">Sobre nosotros...</string>
     <string name="cwmChk">Tengo instalado el CWM Recovery</string>
     <string name="notificacionChkUpd">Mostrar actualizaciones de aplicación</string>

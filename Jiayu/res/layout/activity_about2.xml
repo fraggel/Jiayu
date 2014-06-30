@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/about1"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/LabelTextBlack"/>
+                style="@style/LabelTextBlackLeft"/>
 
         <ImageButton
                 android:layout_width="297dp"

@@ -94,7 +94,7 @@
     <string name="descargasBtn">"Download"</string>
     <string name="accesoriosBtn">"Accessori"</string>
     <string name="videosBtn">"Videotutorial"</string>
-    <string name="tiendaBtn">"              Shop"</string>
+    <string name="tiendaBtn">"Shop"</string>
     <string name="herramientasBtn">"Driver-Tools"</string>
     <string name="herramientasROMBtn">"Strumenti ROM"</string>
     <string name="flashRecoveryBtn">"Installare Recovery"</string>
@@ -111,7 +111,7 @@
     <string name="fileExplorerBtn">"Aprire Esplora file"</string>
     <string name="visitarWebBtn">"Visita Web"</string>
     <string name="enviarEmailBtn">"Invia e-mail"</string>
-    <string name="foroBtn">"          Forum"</string>
+    <string name="foroBtn">"Forum"</string>
     <string name="aboutBtn">"Chi siamo ..."</string>
     <string name="cwmChk">"Ho installato la Recovery CWM"</string>
     <string name="notificacionChkUpd">"Mostra implementazione Aggiornamenti"</string>

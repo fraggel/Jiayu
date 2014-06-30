@@ -1,14 +1,15 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:scrollbars="horizontal">
+    android:scrollbars="horizontal"
+    >
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:background="#ffffff">
-        <ImageButton
+        android:background="@drawable/fondo03">
+        <!--<ImageButton
             android:id="@+id/imageButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
             android:background="@android:color/transparent"
             android:layout_weight="0.11"
             android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"/>
+            android:paddingTop="@dimen/activity_horizontal_margin"/>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -30,25 +31,37 @@
             android:text="@string/herramientasROMTxt"
             android:id="@+id/herramientasROMTxt"
             android:layout_gravity="left|center_vertical"
-            style="@style/LabelTextBlack"/>
+            style="@style/LabelTextBlackLeft"/>
 
-
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sup"/>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/flashRecoveryBtn"
+            android:id="@+id/recoveryBtn"
+            style="@style/LabelTextBlack"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/btn_ter1"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/menuflashRomBtn"
             android:id="@+id/romBtn"
+            style="@style/LabelTextBlack"
             android:layout_gravity="left|center_vertical"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
+            android:background="@drawable/btn_ter4"/>
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/rebootRecoveryBtn"
+            style="@style/LabelTextBlack"
             android:id="@+id/rebootRecoveryBtn"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
-
+            android:background="@drawable/btn_ter3"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dott"/>
     </TableLayout>
 </ScrollView>

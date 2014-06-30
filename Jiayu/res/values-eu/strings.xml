@@ -176,7 +176,7 @@
 <string name="accesoriosBtn">"Osagarri"</string>
 
 <string name="videosBtn">"Bideo tutoretzak"</string>
-    <string name="tiendaBtn">"              Shop"</string>
+    <string name="tiendaBtn">"Shop"</string>
 
 <string name="herramientasBtn">"Gidariek-tresnak"</string>
 
@@ -210,7 +210,7 @@
 
 <string name="enviarEmailBtn">"Bidali email"</string>
 
-<string name="foroBtn">"          Foroa"</string>
+<string name="foroBtn">"Foroa"</string>
 
 <string name="aboutBtn">"Guri buruz ..."</string>
 

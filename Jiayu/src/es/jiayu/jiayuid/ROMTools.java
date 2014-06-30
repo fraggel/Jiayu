@@ -47,12 +47,10 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
     Button recoveryBtn = null;
     Button imeiBtn = null;
     Button romBtn = null;
-    Button ingenieroBtn = null;
-    Button abrirExploradorBtn = null;
     Button rebootRecoveryBtn = null;
-    Button bootAnimationBtn=null;
+
     Button backupBtn=null;
-    Button toolsAndroidBtn=null;
+
     String modelo=null;
     String apkseleccionada = null;
     ArrayList<String> listaAppsUrl = new ArrayList<String>();
@@ -94,24 +92,19 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         recoveryBtn = (Button) findViewById(R.id.recoveryBtn);
         imeiBtn = (Button) findViewById(R.id.imeiBtn);
         romBtn = (Button) findViewById(R.id.romBtn);
-        abrirExploradorBtn = (Button) findViewById(R.id.filesBtn);
-        bootAnimationBtn=(Button) findViewById(R.id.bootAnimationBtn);
+
         backupBtn=(Button) findViewById(R.id.backupBtn);
         String externalStorageState = Environment.getExternalStorageState();
         if(!"mounted".equals(externalStorageState.toLowerCase())){
             recoveryBtn.setEnabled(false);
             imeiBtn.setEnabled(false);
-            abrirExploradorBtn.setEnabled(false);
-            bootAnimationBtn.setEnabled(false);
             backupBtn.setEnabled(false);
             apkSpn.setEnabled(false);
             apkBtn.setEnabled(false);
             romBtn.setEnabled(false);
         }
-        ingenieroBtn = (Button) findViewById(R.id.ingenieroBtn);
         rebootRecoveryBtn = (Button) findViewById(R.id.rebootRecoveryBtn);
 
-        toolsAndroidBtn=(Button)findViewById(R.id.toolsAndroidBtn);
         if (!isRoot) {
             recoveryBtn.setEnabled(false);
             //recoveryBtn.setVisibility(View.INVISIBLE);
@@ -119,11 +112,9 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
             //rebootRecoveryBtn.setVisibility(View.INVISIBLE);
             imeiBtn.setEnabled(false);
             //imeiBtn.setVisibility(View.INVISIBLE);
-            bootAnimationBtn.setEnabled(false);
             //bootAnimationBtn.setVisibility(View.INVISIBLE);
             backupBtn.setEnabled(false);
             //backupBtn.setVisibility(View.INVISIBLE);
-            toolsAndroidBtn.setEnabled(false);
             //toolsAndroidBtn.setVisibility(View.INVISIBLE);
         }
 
@@ -133,13 +124,12 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
         recoveryBtn.setOnClickListener(this);
         romBtn.setOnClickListener(this);
         imeiBtn.setOnClickListener(this);
-        ingenieroBtn.setOnClickListener(this);
+
         apkBtn.setOnClickListener(this);
-        abrirExploradorBtn.setOnClickListener(this);
+
         rebootRecoveryBtn.setOnClickListener(this);
-        bootAnimationBtn.setOnClickListener(this);
         backupBtn.setOnClickListener(this);
-        toolsAndroidBtn.setOnClickListener(this);
+
         //bootAnimationBtn.setEnabled(false);
         if(isRoot){
             if("mounted".equals(externalStorageState.toLowerCase())) {
@@ -247,37 +237,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 }
             }
 
-        } else if (button.getId() == R.id.filesBtn) {
-            String application_name = "";
-            try {
-
-                application_name = "com.mediatek.filemanager.FileManagerOperationActivity";
-                Intent intent = new Intent("android.intent.action.MAIN");
-                List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
-                boolean existe = false;
-                for (ResolveInfo info : resolveinfo_list) {
-                    if (info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.filemanager")) {
-                        if (info.activityInfo.name.equalsIgnoreCase(application_name)) {
-                            Intent launch_intent = new Intent("android.intent.action.MAIN");
-                            launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
-                            launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            this.startActivity(launch_intent);
-                            existe = true;
-                            break;
-                        }
-                    }
-                }
-                if (!existe) {
-                    //TODO
-                    //abrir el selector de explorador
-                    Intent intent2 = new Intent(Intent.ACTION_GET_CONTENT);
-                    intent2.setType("file/*");
-                    this.startActivity(intent2);
-                    //Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste), Toast.LENGTH_SHORT).show();
-                }
-            } catch (ActivityNotFoundException e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError) + application_name+" 164", Toast.LENGTH_SHORT).show();
-            }
         } else if (button.getId() == R.id.romBtn) {
             try {
                 Intent intent = new Intent(this, RomScreen.class);
@@ -287,41 +246,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 165", Toast.LENGTH_SHORT).show();
             }
 
-        }else if(button.getId()==R.id.ingenieroBtn){
-            String application_name="";
-            try{
-
-                application_name="com.mediatek.engineermode.EngineerMode";
-                Intent intent = new Intent("android.intent.action.MAIN");
-                List<ResolveInfo> resolveinfo_list = getPackageManager().queryIntentActivities(intent, 0);
-                boolean existe=false;
-                for(ResolveInfo info:resolveinfo_list){
-                    if(info.activityInfo.packageName.equalsIgnoreCase("com.mediatek.engineermode")){
-                        if(info.activityInfo.name.equalsIgnoreCase(application_name)){
-                            Intent launch_intent = new Intent("android.intent.action.MAIN");
-                            launch_intent.setComponent(new ComponentName(info.activityInfo.packageName, info.activityInfo.name));
-                            launch_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            this.startActivity(launch_intent);
-                            existe=true;
-                            break;
-                        }
-                    }
-                }
-                if(!existe){
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIngenieroNoExiste),Toast.LENGTH_SHORT).show();
-                }
-            }catch (ActivityNotFoundException e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+application_name+" 166",Toast.LENGTH_SHORT).show();
-            }
-        }else if(button.getId()==R.id.bootAnimationBtn){
-            try {
-                Intent intent = new Intent(this, BootAnimation.class);
-                intent.putExtra("modelo",modelo);
-                intent.putExtra("tipo","bootanimation");
-                startActivity(intent);
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 167", Toast.LENGTH_SHORT).show();
-            }
         }else if(button.getId()==R.id.backupBtn){
             try {
                 Intent intent = new Intent(this, BackupRestore.class);
@@ -331,14 +255,6 @@ public class ROMTools extends Activity implements AdapterView.OnItemSelectedList
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
             }
 
-        }else if(button.getId()==R.id.toolsAndroidBtn){
-            try {
-                Intent intent = new Intent(this, ToolsAndroid.class);
-                intent.putExtra("modelo",modelo);
-                startActivity(intent);
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
-            }
         }
 
     }

@@ -92,7 +92,7 @@
     <string name="descargasBtn">"ダウンロード"</string>
     <string name="accesoriosBtn">"アクセサリー"</string>
     <string name="videosBtn">"ビデオチュートリアル"</string>
-    <string name="tiendaBtn">"              Shop"</string>
+    <string name="tiendaBtn">"Shop"</string>
     <string name="herramientasBtn">"ドライバ·ツール"</string>
     <string name="herramientasROMBtn">"ツールROMの"</string>
     <string name="flashRecoveryBtn">"Recoveryをインストール"</string>
@@ -109,7 +109,7 @@
     <string name="fileExplorerBtn">"ファイルエクスプローラを開く"</string>
     <string name="visitarWebBtn">"ウェブにアクセスしてください"</string>
     <string name="enviarEmailBtn">"メールを送信"</string>
-    <string name="foroBtn">"          フォーラム"</string>
+    <string name="foroBtn">"フォーラム"</string>
     <string name="aboutBtn">"私達について..."</string>
     <string name="cwmChk">"私はCWMリカバリーをインストールしている"</string>
     <string name="notificacionChkUpd">"アップデート実装を表示"</string>

@@ -7,16 +7,24 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.util.List;
+
+import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 /**
  * Created by Fraggel on 26/06/2014.
@@ -29,6 +37,8 @@ public class SecondScreen extends Activity implements View.OnClickListener {
     Button herramBack;
     Button herramDisp;
     Button apks;
+    boolean isRoot=false;
+
     protected void onResume() {
         super.onResume();
     }
@@ -42,11 +52,31 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         herramBack=(Button)findViewById(R.id.copiasSegTxt);
         herramDisp=(Button)findViewById(R.id.herramientasROMTxt);
         apks=(Button)findViewById(R.id.apkTexto);
+        TextView scText=(TextView) findViewById(R.id.scText);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 120);
+        }else if(dpi==480) {
+            llp.setMargins(80, 350, 0, 176);
+        }
+        scText.setLayoutParams((llp));
 
         herram.setOnClickListener(this);
         herramBack.setOnClickListener(this);
         herramDisp.setOnClickListener(this);
         apks.setOnClickListener(this);
+        if (!controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
+            isRoot = true;
+        }else{
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
+        }
+        if(!isRoot){
+            herramBack.setEnabled(false);
+            herramBack.setTextColor(Color.parseColor("#BDBDBD"));
+        }
     }
 
     @Override

@@ -93,7 +93,7 @@
     <string name="descargasBtn">"Загрузки"</string>
     <string name="accesoriosBtn">"Аксессуары"</string>
     <string name="videosBtn">"Видео Уроки"</string>
-    <string name="tiendaBtn">"              Shop"</string>
+    <string name="tiendaBtn">"Shop"</string>
     <string name="herramientasBtn">"Драйверы-инструментарий"</string>
     <string name="herramientasROMBtn">"Инструменты диски"</string>
     <string name="flashRecoveryBtn">"Установите восстановления"</string>
@@ -110,7 +110,7 @@
     <string name="fileExplorerBtn">"Откройте Проводник"</string>
     <string name="visitarWebBtn">"Посетите веб-"</string>
     <string name="enviarEmailBtn">"Написать письмо"</string>
-    <string name="foroBtn">"          Форум"</string>
+    <string name="foroBtn">"Форум"</string>
     <string name="aboutBtn">"О нас ..."</string>
     <string name="cwmChk">"Я установил CWM восстановления"</string>
     <string name="notificacionChkUpd">"Показать обновления, реализацию"</string>

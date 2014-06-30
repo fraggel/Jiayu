@@ -1,14 +1,15 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:scrollbars="horizontal">
+    android:scrollbars="horizontal"
+    >
 
     <TableLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:baselineAligned="false"
-        android:background="#ffffff">
-        <ImageButton
+        android:background="@drawable/fondo03">
+        <!--<ImageButton
             android:id="@+id/imageButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
             android:background="@android:color/transparent"
             android:layout_weight="0.11"
             android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"/>
+            android:paddingTop="@dimen/activity_horizontal_margin"/>-->
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,24 +30,27 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/herramientasUsuTxt"
             android:id="@+id/herramientasUsuTxt"
-            android:layout_gravity="left|center_vertical"
-            style="@style/LabelTextBlack"/>
+            android:layout_marginLeft="40dp"
+            style="@style/LabelTextBlackLeft"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sup"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ingenieroBtn"
             android:id="@+id/ingenieroBtn"
             android:layout_gravity="left|center_vertical"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
+            style="@style/LabelTextBlack"
+            android:background="@drawable/btn_ter2"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/filesBtn"
             android:layout_gravity="left|center_vertical"
             android:text="@string/fileExplorerBtn"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
+            style="@style/LabelTextBlack"
+            android:background="@drawable/btn_ter5"/>
 
         <Button
             android:layout_width="match_parent"
@@ -54,15 +58,18 @@
             android:text="@string/bootanimationBtn"
             android:id="@+id/bootAnimationBtn"
             android:layout_gravity="left|center_vertical"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
+            style="@style/LabelTextBlack"
+            android:background="@drawable/btn_ter6"/>
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/toolsAndroidBtn"
             android:id="@+id/toolsAndroidBtn"
             android:layout_gravity="left|center_vertical"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"/>
+            style="@style/LabelTextBlack"
+            android:background="@drawable/btn_ter1"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dott"/>
     </TableLayout>
 </ScrollView>

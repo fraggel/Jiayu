@@ -93,7 +93,7 @@
     <string name="descargasBtn">"Descàrregues"</string>
     <string name="accesoriosBtn">"Accessoris"</string>
     <string name="videosBtn">"Videotutorials"</string>
-    <string name="tiendaBtn">"              Shop"</string>
+    <string name="tiendaBtn">"Shop"</string>
     <string name="herramientasBtn">"Drivers-Eines"</string>
     <string name="herramientasROMBtn">"Eines ROM"</string>
     <string name="flashRecoveryBtn">"Instal · lar Recovery"</string>
@@ -110,7 +110,7 @@
     <string name="fileExplorerBtn">"Obrir Explorador d'arxius"</string>
     <string name="visitarWebBtn">"Visitar web"</string>
     <string name="enviarEmailBtn">"Enviar email"</string>
-    <string name="foroBtn">"          Fòrum"</string>
+    <string name="foroBtn">"Fòrum"</string>
     <string name="aboutBtn">"Sobre nosaltres ..."</string>
     <string name="cwmChk">"Tinc instal · lat el Cwm Recovery"</string>
     <string name="notificacionChkUpd">"Mostra actualitzacions d'aplicació"</string>
