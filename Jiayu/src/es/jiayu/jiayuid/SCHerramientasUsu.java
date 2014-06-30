@@ -37,6 +37,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
     boolean isRoot = false;
 
     protected void onResume() {
+
         super.onResume();
     }
     public void onCreate(Bundle savedInstanceState) {

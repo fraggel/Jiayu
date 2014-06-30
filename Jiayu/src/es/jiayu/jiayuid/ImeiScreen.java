@@ -8,11 +8,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.PowerManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -20,6 +22,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
@@ -59,7 +63,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                 instalarBusyBox();
             }
         }
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
@@ -69,28 +73,46 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                 startActivity(intent);
             }
 
-        });
+        });*/
         imeiBBtn = (Button) findViewById(R.id.imeiBBtn);
         imeiRBtn = (Button) findViewById(R.id.imeiRBtn);
         imeiSEBtn = (Button) findViewById(R.id.imeiSEBtn);
         if (!isRoot) {
             imeiBBtn.setEnabled(false);
+            imeiBBtn.setTextColor(Color.parseColor("#BDBDBD"));
             imeiRBtn.setEnabled(false);
+            imeiRBtn.setTextColor(Color.parseColor("#BDBDBD"));
             imeiSEBtn.setEnabled(false);
+            imeiSEBtn.setTextColor(Color.parseColor("#BDBDBD"));
         }else{
             imeiBBtn.setEnabled(true);
+            imeiBBtn.setTextColor(Color.BLACK);
             imeiRBtn.setEnabled(true);
+            imeiRBtn.setTextColor(Color.BLACK);
             File ff=new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak");
             if(ff.exists()){
                 imeiSEBtn.setEnabled(true);
+                imeiSEBtn.setTextColor(Color.BLACK);
             }else{
                 imeiSEBtn.setEnabled(false);
+                imeiSEBtn.setTextColor(Color.parseColor("#BDBDBD"));
             }
         }
 
         imeiBBtn.setOnClickListener(this);
         imeiRBtn.setOnClickListener(this);
         imeiSEBtn.setOnClickListener(this);
+        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 120);
+        }else if(dpi==480) {
+            llp.setMargins(80, 360, 0, 176);
+        }
+        scText.setLayoutParams((llp));
     }
 
     @Override
@@ -206,6 +228,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                     bos.close();
                                     Toast.makeText(getApplicationContext(), "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                     imeiSEBtn.setEnabled(true);
+                                    imeiSEBtn.setTextColor(Color.BLACK);
                                 } catch (Exception e) {
                                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 139", Toast.LENGTH_SHORT).show();
                                 }
@@ -242,6 +265,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                         bos.close();
                                         Toast.makeText(getApplicationContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                         imeiSEBtn.setEnabled(true);
+                                        imeiSEBtn.setTextColor(Color.BLACK);
                                     } catch (Exception e) {
                                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 140", Toast.LENGTH_SHORT).show();
                                     }

@@ -54,10 +54,6 @@
                 android:label="@string/app_name"
                 android:configChanges="orientation|screenSize">
         </activity>
-        <activity
-                android:name="es.jiayu.jiayuid.ROMTools"
-                android:label="@string/title_activity_romtool"
-            android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.ImeiScreen" android:label="@string/title_activity_imeiscreen" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.RomScreen" android:label="@string/title_activity_romscreen" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.RecoveryScreen" android:label="@string/title_activity_recoveryscreen" android:configChanges="orientation|screenSize"/>

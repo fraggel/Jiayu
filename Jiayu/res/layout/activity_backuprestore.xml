@@ -1,13 +1,15 @@
 ﻿<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:scrollbars="horizontal">
+    android:scrollbars="horizontal"
+    >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ImageButton
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:background="@drawable/fondo03">
+        <!--<ImageButton
             android:id="@+id/imageButton"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -21,30 +23,48 @@
             android:layout_weight="0.11"
             android:layout_gravity="center"
             android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"/>
+            android:paddingTop="@dimen/activity_horizontal_margin"/>-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/herramientasROMTxt"
+            android:id="@+id/herramientasROMTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTextBlackLeft"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sup"/>
         <CheckBox
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/cwmChk"
             android:id="@+id/cwmChk"
             android:checked="false"
-            style="@style/LabelTextBlack"/>
+            style="@style/LabelTextBlack"
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/d00"/>
     <RadioGroup
     	android:id="@+id/grptipobck"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/txtbckRdb" >
+        android:text="@string/txtbckRdb" android:background="@drawable/d00">
 	    <RadioButton
 	        android:id="@+id/rdbbackup"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/backupRdb" />
+	        android:text="@string/backupRdb"
+            style="@style/LabelTextBlack"
+        />
 	
 	    <RadioButton
 	        android:id="@+id/rdbrestore"
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="@string/restoreRdb" />
+	        android:text="@string/restoreRdb"
+            style="@style/LabelTextBlack"
+            android:layout_gravity="left|center_vertical"
+            />
         </RadioGroup>
 	   <!-- <RadioButton
 	        android:id="@+id/advbackup"
@@ -66,8 +86,10 @@
 	        android:text="@string/makebackuprestoreBtn"
 	        android:onClick="makeBackupRestore"
             android:layout_gravity="left|center_vertical"
-            android:background="@drawable/btn_green"
-            style="@style/ButtonTextGreen"/>
-
-    </LinearLayout>
+            android:background="@drawable/d00"
+            style="@style/LabelTextBlack"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dott"/>
+    </TableLayout>
 </ScrollView>

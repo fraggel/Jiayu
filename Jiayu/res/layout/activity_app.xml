@@ -4,6 +4,7 @@
             android:layout_height="fill_parent"
             android:scrollbars="horizontal"
             >
+
      <!--<LinearLayout
             android:id="@+id/LinearLayout1"
             android:layout_width="match_parent"
@@ -23,12 +24,11 @@
         android:baselineAligned="false"
         android:background="@drawable/fondo01"
         >
-        <!--<ImageButton
+        <ImageButton
             android:id="@+id/imageButton1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:scaleType="centerCrop"
-            android:src="@drawable/jiayulogoic"
             android:contentDescription="Jiayu.es"
             android:clickable="false"
             android:focusable="false"
