@@ -276,7 +276,6 @@ public class App extends Activity implements AsyncResponse{
                                 videotutoriales.setTextColor(Color.BLACK);
 
                             }
-
                             if (modelo.length() < 10) {
                                 Calendar cal=Calendar.getInstance();
                                 editorAjustes = ajustes.edit();

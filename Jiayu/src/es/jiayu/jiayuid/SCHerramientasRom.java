@@ -49,7 +49,7 @@ public class SCHerramientasRom extends Activity implements View.OnClickListener 
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 120);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 176);
+            llp.setMargins(80, 360, 0, 176);
         }
         scText.setLayoutParams((llp));
     }

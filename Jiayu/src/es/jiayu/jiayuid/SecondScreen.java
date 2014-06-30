@@ -68,7 +68,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         herramBack.setOnClickListener(this);
         herramDisp.setOnClickListener(this);
         apks.setOnClickListener(this);
-        if (!controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
+        if (controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
             isRoot = true;
         }else{
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();

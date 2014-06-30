@@ -45,7 +45,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
         ajustes = getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
-        if (!controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
+        if (controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
             isRoot = true;
         }else{
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
@@ -90,7 +90,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 120);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 176);
+            llp.setMargins(80, 360, 0, 176);
         }
         scText.setLayoutParams((llp));
     }
