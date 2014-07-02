@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -21,6 +22,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
@@ -69,6 +72,17 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_romscreen);
+        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 360, 0, 176);
+        }
+        scText.setLayoutParams((llp));
         modelo = getIntent().getExtras().getString("modelo");
         ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         firmarChk=ajustes.getBoolean("firmarChk",false);
@@ -96,7 +110,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         if (controlRoot(getApplicationContext(),getResources(),"Rom1")) {
             isRoot = true;
         }
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
@@ -106,7 +120,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 startActivity(intent);
             }
 
-        });
+        });*/
 
         romSpn = (Spinner) findViewById(R.id.romSpn);
         romBtn = (Button) findViewById(R.id.romBtn);
@@ -121,15 +135,19 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             chkCWM.setTextColor(Color.GRAY);
             //chkCWM.setVisibility(View.INVISIBLE);
             dataCacheDalvikBtn.setEnabled(false);
+            dataCacheDalvikBtn.setTextColor(Color.parseColor("#BDBDBD"));
             //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
             if (chkCWM.isChecked()) {
                 romSpn.setEnabled(false);
                 //romSpn.setVisibility(View.INVISIBLE);
                 romBtn.setEnabled(false);
+                romBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 //romBtn.setVisibility(View.INVISIBLE);
                 findViewById(R.id.romTxt).setEnabled(false);
+
                 //findViewById(R.id.romTxt).setVisibility(View.INVISIBLE);
                 dataCacheDalvikBtn.setEnabled(false);
+                dataCacheDalvikBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
             }
         }
@@ -137,9 +155,12 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         //zipSpn.setVisibility(View.INVISIBLE);
         //findViewById(R.id.zipTxt).setVisibility(View.INVISIBLE);
         dataCacheDalvikBtn.setEnabled(false);
+        dataCacheDalvikBtn.setTextColor(Color.parseColor("#BDBDBD"));
         //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
         zipBtn.setEnabled(false);
+        zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
         romBtn.setEnabled(false);
+        romBtn.setTextColor(Color.parseColor("#BDBDBD"));
         romSpn.setOnItemSelectedListener(this);
         romBtn.setOnClickListener(this);
         chkCWM.setOnCheckedChangeListener(this);
@@ -151,7 +172,9 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         if(!"mounted".equals(externalStorageState.toLowerCase())){
             romSpn.setEnabled(false);
             romBtn.setEnabled(false);
+            romBtn.setTextColor(Color.parseColor("#BDBDBD"));
             zipBtn.setEnabled(false);
+            zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
             zipSpn.setEnabled(false);
             findViewById(R.id.zipTxt).setEnabled(false);
         }
@@ -196,13 +219,16 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 String romselec = listaRomsUrl.get(i);
                 if (!"".equals(romselec.trim())) {
                     romBtn.setEnabled(true);
+                    romBtn.setTextColor(Color.BLACK);
                     this.romseleccionada = romselec;
                     zipSpn.setSelection(0);
                     zipBtn.setEnabled(false);
+                    zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
                     this.zipseleccionada="";
                 } else {
                     romSpn.setSelection(0);
                     romBtn.setEnabled(false);
+                    romBtn.setTextColor(Color.parseColor("#BDBDBD"));
                     this.romseleccionada = "";
                 }
 
@@ -214,13 +240,16 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 String zipselec=listaZipsUrl.get(i);
                 if(!"".equals(zipselec.trim())){
                     zipBtn.setEnabled(true);
+                    zipBtn.setTextColor(Color.BLACK);
                     this.zipseleccionada=zipselec;
                     romBtn.setEnabled(false);
+                    romBtn.setTextColor(Color.parseColor("#BDBDBD"));
                     romSpn.setSelection(0);
                     this.romseleccionada="";
                 }else{
                     zipSpn.setSelection(0);
                     zipBtn.setEnabled(false);
+                    zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
                     this.zipseleccionada="";
                 }
             }
@@ -773,19 +802,25 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         if(compoundButton.isChecked()){
             if(!isRoot){
                 romSpn.setEnabled(true);
+
                 //romSpn.setVisibility(View.INVISIBLE);
                 if(romSpn.getSelectedItemPosition()==0){
                     romBtn.setEnabled(false);
+                    romBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 }else{
                     romBtn.setEnabled(true);
+                    romBtn.setTextColor(Color.BLACK);
                 }
                 //romBtn.setVisibility(View.INVISIBLE);
                 dataCacheDalvikBtn.setEnabled(false);
+                dataCacheDalvikBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
                 if(zipSpn.getSelectedItemPosition()==0){
                     zipBtn.setEnabled(false);
+                    zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 }else{
                     zipBtn.setEnabled(true);
+                    zipBtn.setTextColor(Color.BLACK);
                 }
                 //zipSpn.setVisibility(View.INVISIBLE);
 
@@ -795,18 +830,23 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 //romSpn.setVisibility(View.INVISIBLE);
                 if(romSpn.getSelectedItemPosition()==0){
                     romBtn.setEnabled(false);
+                    romBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 }else{
                     romBtn.setEnabled(true);
+                    romBtn.setTextColor(Color.BLACK);
                 }
                 //romBtn.setVisibility(View.INVISIBLE);
                 dataCacheDalvikBtn.setEnabled(true);
+                dataCacheDalvikBtn.setTextColor(Color.BLACK);
                 //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
                 zipSpn.setEnabled(true);
                 //zipSpn.setVisibility(View.INVISIBLE);
                 if(zipSpn.getSelectedItemPosition()==0){
                     zipBtn.setEnabled(false);
+                    zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 }else{
                     zipBtn.setEnabled(true);
+                    zipBtn.setTextColor(Color.BLACK);
                 }
                 //zipBtn.setVisibility(View.INVISIBLE);
             }
@@ -816,18 +856,23 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             //romSpn.setVisibility(View.INVISIBLE);
             if(romSpn.getSelectedItemPosition()==0){
                 romBtn.setEnabled(false);
+                romBtn.setTextColor(Color.parseColor("#BDBDBD"));
             }else{
                 romBtn.setEnabled(true);
+                romBtn.setTextColor(Color.BLACK);
             }
             //romBtn.setVisibility(View.INVISIBLE);
             dataCacheDalvikBtn.setEnabled(false);
+            dataCacheDalvikBtn.setTextColor(Color.BLACK);
             //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
             zipSpn.setEnabled(true);
             //zipSpn.setVisibility(View.INVISIBLE);
             if(zipSpn.getSelectedItemPosition()==0){
                 zipBtn.setEnabled(false);
+                zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
             }else{
                 zipBtn.setEnabled(true);
+                zipBtn.setTextColor(Color.BLACK);
             }
             //zipBtn.setVisibility(View.INVISIBLE);
 
@@ -837,7 +882,9 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         if(!"mounted".equals(externalStorageState.toLowerCase())){
             romSpn.setEnabled(false);
             romBtn.setEnabled(false);
+            romBtn.setTextColor(Color.parseColor("#BDBDBD"));
             zipBtn.setEnabled(false);
+            zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
             zipSpn.setEnabled(false);
             findViewById(R.id.zipTxt).setEnabled(false);
         }

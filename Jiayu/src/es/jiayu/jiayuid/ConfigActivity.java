@@ -6,9 +6,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -16,6 +18,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Locale;
@@ -49,7 +53,9 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
             editorAjustes=ajustes.edit();
             editorAjustes.putBoolean("firstUse",false);
             editorAjustes.commit();
-            imageButton = (ImageButton) findViewById(R.id.imageButton1);
+
+            modificarMargins();
+            /*imageButton = (ImageButton) findViewById(R.id.imageButton1);
             imageButton.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
@@ -59,7 +65,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
                     startActivity(intent);
                 }
 
-            });
+            });*/
             md5Btn=(Button)findViewById(R.id.downloadMD5Btn);
             md5Btn.setOnClickListener(new View.OnClickListener() {
 
@@ -101,9 +107,11 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
             if(firmaChk){
                 firmarChk.setChecked(true);
                 md5Btn.setEnabled(true);
+                md5Btn.setTextColor(Color.BLACK);
             }else{
                 firmarChk.setChecked(false);
                 md5Btn.setEnabled(false);
+                md5Btn.setTextColor(Color.parseColor("#BDBDBD"));
             }
             if(recChk){
                 recoveryChk.setChecked(true);
@@ -111,6 +119,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
                 recoveryChk.setChecked(false);
             }
         }catch(Exception e){}
+
     }
 
     @Override
@@ -132,10 +141,12 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
             if(buttonView.isChecked()){
                 editorAjustes.putBoolean("firmarChk",true);
                 md5Btn.setEnabled(true);
+                md5Btn.setTextColor(Color.BLACK);
                 Toast.makeText(getApplicationContext(),R.string.msgMD5Jiayu,Toast.LENGTH_LONG).show();
             }else{
                 editorAjustes.putBoolean("firmarChk",false);
                 md5Btn.setEnabled(false);
+                md5Btn.setTextColor(Color.parseColor("#BDBDBD"));
             }
         }else if(buttonView.getId()==R.id.recoveryChk){
             if(buttonView.isChecked()){
@@ -184,6 +195,47 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
 
         if("firmaok".equals(output)){
             Toast.makeText(getApplicationContext(),R.string.msgMmd5Updated, Toast.LENGTH_SHORT).show();
+        }
+
+    }
+    private void modificarMargins() {
+        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 360, 0, 176);
+        }
+        scText.setLayoutParams((llp));
+
+        int orientation = getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                scText.setPadding(15, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                scText.setPadding(40, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                scText.setPadding(100, 0, 0, 0);
+
+            }else{
+                scText.setPadding(100, 0, 0, 0);
+
+            }
         }
 
     }

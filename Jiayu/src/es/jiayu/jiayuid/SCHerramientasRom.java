@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -62,7 +63,7 @@ public class SCHerramientasRom extends Activity implements View.OnClickListener 
         if(dpi==240) {
             llp.setMargins(40, 175, 0, 86);
         }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 120);
+            llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
             llp.setMargins(80, 360, 0, 176);
         }
@@ -80,15 +81,18 @@ public class SCHerramientasRom extends Activity implements View.OnClickListener 
         String externalStorageState = Environment.getExternalStorageState();
         if(!"mounted".equals(externalStorageState.toLowerCase())){
             recoveryBtn.setEnabled(false);
-
+            recoveryBtn.setTextColor(Color.parseColor("#BDBDBD"));
             romBtn.setEnabled(false);
+            romBtn.setTextColor(Color.parseColor("#BDBDBD"));
         }
         rebootRecoveryBtn = (Button) findViewById(R.id.rebootRecoveryBtn);
 
         if (!isRoot) {
             recoveryBtn.setEnabled(false);
+            recoveryBtn.setTextColor(Color.parseColor("#BDBDBD"));
             //recoveryBtn.setVisibility(View.INVISIBLE);
             rebootRecoveryBtn.setEnabled(false);
+            rebootRecoveryBtn.setTextColor(Color.parseColor("#BDBDBD"));
             //rebootRecoveryBtn.setVisibility(View.INVISIBLE);
 
             //imeiBtn.setVisibility(View.INVISIBLE);

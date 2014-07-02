@@ -56,7 +56,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            style="@style/LabelTextBlack480"
+            style="@style/LabelTextBlack1480"
             android:background="@android:color/white"
             android:autoText="false"/>
 
@@ -83,7 +83,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/descargasBtn"
-            style="@style/LabelTextBlack480"
+            style="@style/LabelTextBlack1480"
             android:background="@drawable/btn_donwload"/>
 
         <Button
@@ -91,7 +91,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/herramientasBtn"
-            style="@style/LabelTextBlack480"
+            style="@style/LabelTextBlack1480"
             android:background="@drawable/btn_driversherramientas"/>
 
         <Button
@@ -99,7 +99,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="@string/herramientasROMBtn"
-            style="@style/LabelTextBlack480"
+            style="@style/LabelTextBlack1480"
             android:background="@drawable/btn_herramroms"/>
 
         <TableRow android:layout_width="match_parent"
@@ -149,7 +149,7 @@
         android:layout_height="wrap_content"
         android:text="@string/aboutBtn"
         android:background="@drawable/btn_sobre"
-        style="@style/LabelTextBlack480"
+        style="@style/LabelTextBlack1480"
         android:layout_weight="1"/>
 
     <!--<Button
@@ -165,7 +165,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/msgConfiguracion"
-        style="@style/LabelTextBlack480"
+        style="@style/LabelTextBlack1480"
         android:background="@drawable/btn_configuracion"
         android:layout_weight="1"
         />
@@ -187,7 +187,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        style="@style/LabelTextBlack480"/>
+        style="@style/LabelTextBlackMain"/>
 
     </TableLayout>
 </ScrollView>

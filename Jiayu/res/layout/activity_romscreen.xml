@@ -1,44 +1,56 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal"
+    >
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:background="@drawable/fondo03">
+        <!--<ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:scrollbars="horizontal">
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jiayulogoic"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"/>-->
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
-
-        <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/jiayulogoic"
-                android:contentDescription="Jiayu.es"
-                android:clickable="false"
-                android:focusable="false"
-                android:adjustViewBounds="false"
-                android:background="@android:color/transparent"
-                android:layout_weight="0.11"
-                android:layout_gravity="center"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_horizontal_margin"/>
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/menuflashRomBtn"
+            android:id="@+id/herramientasROMTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTextBlackLeft"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sup"/>
         <CheckBox
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/cwmChk"
                 android:id="@+id/cwmChk"
                 android:checked="false"
-                style="@style/LabelTextBlack"/>
+            android:background="@drawable/btn_ter1"
+            style="@style/LabelTextBlack"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/dataCacheDalvikBtn"
                 android:id="@+id/dataCacheDalvikBtn"
                 android:layout_gravity="left|center_vertical"
-                android:background="@drawable/btn_green"
-                style="@style/ButtonTextGreen"/>
+                android:background="@drawable/btn_ter2"
+                style="@style/LabelTextBlack"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -47,15 +59,16 @@
                 android:text="@string/downloadedRomTxt"
                 android:id="@+id/romTxt"
                 android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlack"/>
+                style="@style/LabelTextBlackLeft"
+                android:background="@drawable/d00"/>
 
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/romSpn"
                 android:layout_gravity="left|center_vertical"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
+            android:background="@drawable/btn_ter3"
+            style="@style/LabelTextBlack"/>
 
         <Button
                 android:layout_width="match_parent"
@@ -63,8 +76,8 @@
                 android:text="@string/flashRomBtn"
                 android:id="@+id/romBtn"
                 android:layout_gravity="left|center_vertical"
-                android:background="@drawable/btn_green"
-                style="@style/ButtonTextGreen"/>
+                android:background="@drawable/btn_ter4"
+                style="@style/LabelTextBlack"/>
 
         <TextView
                 android:layout_width="wrap_content"
@@ -73,15 +86,16 @@
                 android:text="@string/downloadedFlashZipTxt"
                 android:id="@+id/zipTxt"
                 android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlack"/>
+                style="@style/LabelTextBlackLeft"
+            android:background="@drawable/d00"/>
 
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/zipSpn"
                 android:layout_gravity="left|center_vertical"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
+                android:background="@drawable/btn_ter5"
+                style="@style/LabelTextBlack"/>
 
         <Button
                 android:layout_width="match_parent"
@@ -89,8 +103,10 @@
                 android:text="@string/flashZipBtn"
                 android:id="@+id/zipBtn"
                 android:layout_gravity="left|center_vertical"
-                android:background="@drawable/btn_green"
-                style="@style/ButtonTextGreen"/>
-
-    </LinearLayout>
+                android:background="@drawable/btn_ter6"
+                style="@style/LabelTextBlack"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dott"/>
+    </TableLayout>
 </ScrollView>

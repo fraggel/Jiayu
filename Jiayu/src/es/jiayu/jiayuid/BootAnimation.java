@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.Movie;
 import android.graphics.drawable.AnimationDrawable;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +23,8 @@ import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -81,7 +85,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 isBusy = true;
             }
         }
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
@@ -91,13 +95,25 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                 startActivity(intent);
             }
 
-        });
-        CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
-        chk.setVisibility(View.INVISIBLE);
+        });*/
+        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 360, 0, 176);
+        }
+        scText.setLayoutParams((llp));
+        /*CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
+        chk.setVisibility(View.INVISIBLE);*/
         bootDescargaBtn=(Button) findViewById(R.id.bootDescargaBtn);
         bootBtn=(Button) findViewById(R.id.bootInstallBtn);
         bootSpn = (Spinner) findViewById(R.id.bootSpn);
         bootBtn.setEnabled(false);
+        bootBtn.setTextColor(Color.parseColor("#BDBDBD"));
         bootBtn.setOnClickListener(this);
         bootDescargaBtn.setOnClickListener(this);
         bootSpn.setOnItemSelectedListener(this);
@@ -145,12 +161,12 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             try {
 
                 String bootAnimSelec=null;
-                CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);
-                if(chk.isChecked()){
+                /*CheckBox chk= (CheckBox) findViewById(R.id.ajustaBootChk);*/
+                /*if(chk.isChecked()){
                     bootAnimSelec=reconstruirZipBootAnimation(this.bootSeleccionada);
-                }else{
+                }else{*/
                     bootAnimSelec=this.bootSeleccionada;
-                }
+               /* }*/
                 if(bootAnimSelec!=null && !"".equals(bootAnimSelec)){
                     Runtime rt = Runtime.getRuntime();
                     java.lang.Process p = rt.exec("su");
@@ -237,9 +253,11 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                     if (!"".equals(bootselect.trim())) {
                         if(isBusy){
                             bootBtn.setEnabled(true);
+                            bootBtn.setTextColor(Color.BLACK);
                             this.bootSeleccionada = bootselect;
                         }else{
                             bootBtn.setEnabled(false);
+                            bootBtn.setTextColor(Color.parseColor("#BDBDBD"));
                             this.bootSeleccionada = null;
                         }
                         //unZip(bootSeleccionada);
@@ -252,6 +270,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                         myWebView.loadUrl("file:///"+bootselect.substring(0,bootselect.length()-4)+".gif");
                     } else {
                         bootBtn.setEnabled(false);
+                        bootBtn.setTextColor(Color.parseColor("#BDBDBD"));
                         this.bootSeleccionada = "";
                         WebView myWebView = (WebView) findViewById(R.id.gifAnimadoImg);
                         myWebView.setVisibility(View.INVISIBLE);

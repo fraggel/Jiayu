@@ -6,15 +6,19 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedInputStream;
@@ -59,7 +63,17 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recoveryscreen);
-
+        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 360, 0, 176);
+        }
+        scText.setLayoutParams((llp));
         ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         firmarChk=ajustes.getBoolean("firmarChk",false);
         if(firmarChk){
@@ -87,7 +101,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
         if (controlRoot(getApplicationContext(),getResources(),"Recovery")) {
             isRoot = true;
         }
-        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View arg0) {
@@ -97,7 +111,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 startActivity(intent);
             }
 
-        });
+        });*/
         recoverySpn = (Spinner) findViewById(R.id.recoverySpn);
 
         recoveryBtn = (Button) findViewById(R.id.recoveryBtn);
@@ -106,11 +120,11 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
         if (!isRoot) {
             recoverySpn.setVisibility(View.INVISIBLE);
             recoveryBtn.setVisibility(View.INVISIBLE);
-            findViewById(R.id.recoveryTxt).setVisibility(View.INVISIBLE);
             rebootRcoveryBtn.setVisibility(View.INVISIBLE);
         }
 
         recoveryBtn.setEnabled(false);
+        recoveryBtn.setTextColor(Color.parseColor("#BDBDBD"));
         recoverySpn.setOnItemSelectedListener(this);
         recoveryBtn.setOnClickListener(this);
         rebootRcoveryBtn.setOnClickListener(this);
@@ -125,9 +139,11 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                 String recoveryselec = listaRecoUrl.get(i);
                 if (!"".equals(recoveryselec.trim())) {
                     recoveryBtn.setEnabled(true);
+                    recoveryBtn.setTextColor(Color.BLACK);
                     this.recoveryseleccionado = recoveryselec;
                 } else {
                     recoveryBtn.setEnabled(false);
+                    recoveryBtn.setTextColor(Color.parseColor("#BDBDBD"));
                     this.recoveryseleccionado = "";
                 }
             }

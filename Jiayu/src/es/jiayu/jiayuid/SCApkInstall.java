@@ -64,7 +64,7 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
         if(dpi==240) {
             llp.setMargins(40, 175, 0, 86);
         }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 120);
+            llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
             llp.setMargins(80, 360, 0, 176);
         }
@@ -94,6 +94,7 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
             this.apkseleccionada = "";
             this.apkSpn.setSelection(0);
             apkBtn.setEnabled(false);
+            apkBtn.setTextColor(Color.parseColor("#BDBDBD"));
         }
     }
     public void refreshCombos() {

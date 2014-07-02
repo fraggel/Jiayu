@@ -1,91 +1,111 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:scrollbars="horizontal">
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:scrollbars="horizontal"
+            >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:id="@+id/imageButton1"
+        <TableLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:scaleType="fitCenter"
-            android:src="@drawable/jiayulogoic"
-            android:contentDescription="Jiayu.es"
-            android:clickable="false"
-            android:focusable="false"
-            android:adjustViewBounds="false"
-            android:background="@android:color/transparent"
-            android:layout_weight="0.11"
-            android:layout_gravity="center"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"/>
-
-        <TextView
-                android:id="@+id/textView3"
+            android:baselineAligned="false"
+            android:background="@drawable/fondo03">
+            <!--<ImageButton
+                android:id="@+id/imageButton"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/activity_vertical_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:scaleType="centerCrop"
+                android:src="@drawable/jiayulogoic"
+                android:contentDescription="Jiayu.es"
+                android:clickable="false"
+                android:focusable="false"
+                android:adjustViewBounds="false"
+                android:background="@android:color/transparent"
+                android:layout_weight="0.11"
+                android:paddingBottom="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"/>-->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/msgConfiguracion"
-                style="@style/LabelTextWhite"
-                android:background="@drawable/btn_black"
-                android:visibility="visible"/>
+                android:id="@+id/herramientasROMTxt"
+                android:layout_gravity="left|center_vertical"
+                style="@style/LabelTextBlackLeft"/>
 
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/languageSpn"
-            android:layout_gravity="center_vertical|left"
-            style="@style/ButtonTextGreen"
-            android:background="@drawable/btn_green"
-            android:textAlignment="center"
-            android:visibility="visible" />
-
-        <CheckBox
+            <ImageView  android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sup"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/languageSpn"
+                android:layout_gravity="center_vertical|left"
+                android:background="@drawable/btn_ter1"
+                style="@style/LabelTextBlack"
+                android:textAlignment="center"
+                android:visibility="visible" />
+            <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/notificacionChkNews"
                 android:id="@+id/notificacionChkNews"
                 android:checked="true"
+                android:background="@drawable/btn_ter2"
                 style="@style/LabelTextBlack"
-            android:enabled="true" />
-        <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/notificacionChkUpd"
-        android:id="@+id/notificacionChkUpd"
-        android:checked="true"
-        style="@style/LabelTextBlack"
-        android:enabled="true" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/recoveryChk"
-            android:id="@+id/recoveryChk"
-            android:checked="true"
-            style="@style/LabelTextBlack"
-            android:enabled="true" />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/firmarChk"
-            android:id="@+id/firmarChk"
-            android:checked="true"
-            style="@style/LabelTextBlack"
-            android:enabled="true" />
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/downloadMD5Btn"
-            android:id="@+id/downloadMD5Btn"
-            android:layout_gravity="left|center_vertical"
-            android:background="@drawable/btn_green"
-            style="@style/ButtonTextGreen"
-            android:enabled="false"/>
-    </LinearLayout>
+                android:enabled="true"
+                android:paddingRight="40dp"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/notificacionChkUpd"
+                android:id="@+id/notificacionChkUpd"
+                android:checked="true"
+                android:background="@drawable/btn_ter3"
+                style="@style/LabelTextBlack"
+                android:enabled="true"
+                android:paddingRight="40dp"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/recoveryChk"
+                android:id="@+id/recoveryChk"
+                android:checked="true"
+                android:background="@drawable/btn_ter4"
+                style="@style/LabelTextBlack"
+                android:enabled="true"
+                android:paddingRight="40dp"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/firmarChk"
+                android:id="@+id/firmarChk"
+                android:checked="true"
+                android:background="@drawable/btn_ter5"
+                style="@style/LabelTextBlack"
+                android:enabled="true"
+                android:paddingRight="40dp"
+                android:button="@null"
+                android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/downloadMD5Btn"
+                android:id="@+id/downloadMD5Btn"
+                android:layout_gravity="left|center_vertical"
+                android:background="@drawable/btn_ter6"
+                style="@style/LabelTextBlack"
+                android:enabled="false"/>
 
-</ScrollView>
+            <ImageView  android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/dott"/>
+        </TableLayout>
+
+        </ScrollView>

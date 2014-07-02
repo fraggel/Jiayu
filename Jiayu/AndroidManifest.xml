@@ -52,7 +52,7 @@
         <activity
                 android:name="es.jiayu.jiayuid.App"
                 android:label="@string/app_name"
-                android:configChanges="orientation|screenSize">
+                >
         </activity>
         <activity android:name="es.jiayu.jiayuid.ImeiScreen" android:label="@string/title_activity_imeiscreen" android:configChanges="orientation|screenSize"/>
         <activity android:name="es.jiayu.jiayuid.RomScreen" android:label="@string/title_activity_romscreen" android:configChanges="orientation|screenSize"/>

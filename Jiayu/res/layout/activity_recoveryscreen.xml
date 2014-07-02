@@ -1,45 +1,47 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal"
+    >
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:background="@drawable/fondo03">
+        <!--<ImageButton
+            android:id="@+id/imageButton"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:scrollbars="horizontal">
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
-
-        <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/jiayulogoic"
-                android:contentDescription="Jiayu.es"
-                android:clickable="false"
-                android:focusable="false"
-                android:adjustViewBounds="false"
-                android:background="@android:color/transparent"
-                android:layout_weight="0.11"
-                android:layout_gravity="center"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_horizontal_margin"/>
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            android:src="@drawable/jiayulogoic"
+            android:contentDescription="Jiayu.es"
+            android:clickable="false"
+            android:focusable="false"
+            android:adjustViewBounds="false"
+            android:background="@android:color/transparent"
+            android:layout_weight="0.11"
+            android:paddingBottom="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_horizontal_margin"/>-->
 
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/downloadedRecoveryTxt"
-                android:id="@+id/recoveryTxt"
-                android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlack"/>
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/downloadedRecoveryTxt"
+            android:id="@+id/herramientasROMTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTextBlackLeft"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sup"/>
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recoverySpn"
                 android:layout_gravity="left|center_vertical"
-                style="@style/ButtonTextGreen"
-                android:background="@drawable/btn_green"/>
+            android:background="@drawable/btn_ter1"
+            style="@style/LabelTextBlack"/>
 
         <Button
                 android:layout_width="match_parent"
@@ -47,8 +49,10 @@
                 android:text="@string/flashRecoveryBtn"
                 android:id="@+id/recoveryBtn"
                 android:layout_gravity="left|center_vertical"
-                android:background="@drawable/btn_green"
-                style="@style/ButtonTextGreen"/>
-
-    </LinearLayout>
+            android:background="@drawable/btn_ter6"
+            style="@style/LabelTextBlack"/>
+        <ImageView  android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dott"/>
+    </TableLayout>
 </ScrollView>

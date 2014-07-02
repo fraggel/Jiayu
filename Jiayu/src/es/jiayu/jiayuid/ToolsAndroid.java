@@ -3,7 +3,10 @@ package es.jiayu.jiayuid;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
@@ -23,6 +26,17 @@ public class ToolsAndroid extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_toolsandroid);
         softkeysBtn=(Button) findViewById(R.id.softkeysBtn);
         softkeysBtn.setOnClickListener(this);
+        TextView scText=(TextView) findViewById(R.id.herramientasUsuTxt);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 360, 0, 176);
+        }
+        scText.setLayoutParams((llp));
     }
 
     @Override

@@ -57,7 +57,7 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
         if(dpi==240) {
             llp.setMargins(40, 175, 0, 86);
         }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 120);
+            llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
             llp.setMargins(80, 360, 0, 176);
         }
@@ -107,9 +107,11 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
                 if (detectRecovery) {
                     if ("cwm".equals(recoveryDetectado)) {
                         backupBtn.setEnabled(true);
+                        backupBtn.setTextColor(Color.parseColor("#BDBDBD"));
                         //chkCWM.setVisibility(View.INVISIBLE);
                     } else if ("ori".equals(recoveryDetectado)) {
                         backupBtn.setEnabled(false);
+                        backupBtn.setTextColor(Color.BLACK);
                         //chkCWM.setVisibility(View.INVISIBLE);
                     }
                 }

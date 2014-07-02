@@ -107,7 +107,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
         if(dpi==240) {
             llp.setMargins(40, 175, 0, 86);
         }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 120);
+            llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
             llp.setMargins(80, 360, 0, 176);
         }

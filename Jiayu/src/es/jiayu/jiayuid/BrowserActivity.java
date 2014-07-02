@@ -85,6 +85,15 @@ public class BrowserActivity extends Activity {
             descargas.getSettings().setLoadWithOverviewMode(true);
             descargas.getSettings().setUseWideViewPort(true);
             descargas.loadUrl("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos");
+        }else if("shop".equals(tipo)){
+            descargas.getSettings().setSupportZoom(true);
+            descargas.getSettings().setBuiltInZoomControls(true);
+            descargas.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+            descargas.getSettings().setUserAgentString("Android");
+            descargas.getSettings().setJavaScriptEnabled(true);
+            descargas.getSettings().setLoadWithOverviewMode(true);
+            descargas.getSettings().setUseWideViewPort(true);
+            descargas.loadUrl("http://www.jiayu.es/3-jiayu-moviles");
         }
 
     }
@@ -251,7 +260,8 @@ public class BrowserActivity extends Activity {
                 || descargas.getUrl().equals("http://www.jiayu.es/soporte/appabout.php")
                 || descargas.getUrl().equals("http://www.jiayu.es/soporte/appboots.php")
                 || descargas.getUrl().equals("http://www.jiayu.es/soporte/apptools.php")
-                || (descargas.getUrl().lastIndexOf("http://www.jiayu.es/soporte/appsoft.php?jiayu=")!=-1)){
+                || (descargas.getUrl().lastIndexOf("http://www.jiayu.es/soporte/appsoft.php?jiayu=")!=-1)
+                || (descargas.getUrl().equals("http://www.jiayu.es/3-jiayu-moviles"))){
             super.onBackPressed();
         }else{
             descargas.goBack();
