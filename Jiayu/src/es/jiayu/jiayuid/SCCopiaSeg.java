@@ -17,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import static es.jiayu.jiayuid.Utilidades.comprobarRecovery;
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 /**
  * Created by Fraggel on 26/06/2014.
@@ -62,7 +61,7 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
             llp.setMargins(80, 360, 0, 176);
         }
         scText.setLayoutParams((llp));
-        if (controlRoot(getApplicationContext(),getResources(),"RomTools")) {
+        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"RomTools")) {
             isRoot = true;
         }else{
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();

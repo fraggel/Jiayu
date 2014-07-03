@@ -72,6 +72,19 @@ public class Utilidades {
         }
         return rootB;
     }
+    public static boolean controlRootSinExec(Context context,Resources res,String origen) {
+        boolean rootB = false;
+        File f = new File("/system/bin/su");
+        if (!f.exists()) {
+            f = new File("/system/xbin/su");
+            if (f.exists()) {
+                rootB = true;
+            }
+        } else {
+            rootB = true;
+        }
+        return rootB;
+    }
     public static boolean checkFileMD5(File filePath) {
         boolean iguales=false;
         try {
@@ -173,5 +186,15 @@ public class Utilidades {
             recovery="";
         }
         return recovery;
+    }
+    public static int[] descomponerFecha(String fechaPasada) {
+        int day=Integer.parseInt(fechaPasada.trim().split("/")[0]);
+        int month=Integer.parseInt(fechaPasada.trim().split("/")[1])-1;
+        int year=Integer.parseInt(fechaPasada.trim().split("/")[2]);
+        int fecha[]=new int[3];
+        fecha[0]=day;
+        fecha[1]=month;
+        fecha[2]=year;
+        return fecha;
     }
 }

@@ -33,7 +33,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static es.jiayu.jiayuid.Utilidades.comprobarRecovery;
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 
 public class RomScreen extends Activity implements AdapterView.OnItemSelectedListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener{
@@ -107,7 +106,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 dialog.show();
             }
         }
-        if (controlRoot(getApplicationContext(),getResources(),"Rom1")) {
+        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Rom1")) {
             isRoot = true;
         }
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);
@@ -386,7 +385,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 CheckBox chkCWM = (CheckBox) findViewById(R.id.cwmChk);
                 if (chkCWM.isChecked()) {
 
-                    if (controlRoot(getApplicationContext(),getResources(),"Rom Flash")) {
+                    if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Rom Flash")) {
                         if(firmarChk){
                             if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
                                 writeCWMInstall();
@@ -863,7 +862,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             }
             //romBtn.setVisibility(View.INVISIBLE);
             dataCacheDalvikBtn.setEnabled(false);
-            dataCacheDalvikBtn.setTextColor(Color.BLACK);
+            dataCacheDalvikBtn.setTextColor(Color.parseColor("#BDBDBD"));
             //dataCacheDalvikBtn.setVisibility(View.INVISIBLE);
             zipSpn.setEnabled(true);
             //zipSpn.setVisibility(View.INVISIBLE);

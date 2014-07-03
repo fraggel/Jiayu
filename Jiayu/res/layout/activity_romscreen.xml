@@ -42,7 +42,10 @@
                 android:id="@+id/cwmChk"
                 android:checked="false"
             android:background="@drawable/btn_ter1"
-            style="@style/LabelTextBlack"/>
+            style="@style/LabelTextBlack"
+            android:paddingRight="40dp"
+            android:button="@null"
+            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -45,7 +45,6 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 /**
  * Created by Fraggel on 25/08/13.
@@ -76,7 +75,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         setContentView(R.layout.activity_bootanimation);
         modelo = getIntent().getExtras().getString("modelo");
         tipo = getIntent().getExtras().getString("tipo");
-        if (controlRoot(getApplicationContext(),getResources(),"BootAnimation")) {
+        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"BootAnimation")) {
             isRoot = true;
             if (!controlBusybox()) {
                 isBusy = false;

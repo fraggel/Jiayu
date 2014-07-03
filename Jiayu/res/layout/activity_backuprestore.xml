@@ -43,7 +43,10 @@
             android:checked="false"
             style="@style/LabelTextBlack"
             android:layout_gravity="left|center_vertical"
-            android:background="@drawable/d00"/>
+            android:background="@drawable/d00"
+            android:paddingRight="40dp"
+            android:button="@null"
+            android:drawableRight="?android:attr/listChoiceIndicatorMultiple"/>
     <RadioGroup
     	android:id="@+id/grptipobck"
         android:layout_width="fill_parent"
