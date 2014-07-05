@@ -199,7 +199,7 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
 
     }
     private void modificarMargins() {
-        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
+        TextView scText=(TextView) findViewById(R.id.scText);
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {

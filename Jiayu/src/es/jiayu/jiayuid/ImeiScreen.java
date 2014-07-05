@@ -102,17 +102,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         imeiBBtn.setOnClickListener(this);
         imeiRBtn.setOnClickListener(this);
         imeiSEBtn.setOnClickListener(this);
-        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
-        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int dpi=getResources().getDisplayMetrics().densityDpi;
-        if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
-        }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 130);
-        }else if(dpi==480) {
-            llp.setMargins(80, 360, 0, 176);
-        }
-        scText.setLayoutParams((llp));
+        modificarMargins();
     }
 
     @Override
@@ -349,6 +339,47 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                     }
                 });
         dialog.show();
+
+    }
+    private void modificarMargins() {
+        TextView scText=(TextView) findViewById(R.id.scText);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 360, 0, 176);
+        }
+        scText.setLayoutParams((llp));
+
+        int orientation = getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                scText.setPadding(15, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                scText.setPadding(40, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                scText.setPadding(100, 0, 0, 0);
+
+            }else{
+                scText.setPadding(100, 0, 0, 0);
+
+            }
+        }
 
     }
 }
