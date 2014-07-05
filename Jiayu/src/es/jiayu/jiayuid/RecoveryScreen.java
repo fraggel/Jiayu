@@ -31,7 +31,6 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 /**
  * Created by u028952 on 24/07/13.
@@ -98,7 +97,7 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
             }
         }
         modelo = getIntent().getExtras().getString("modelo");
-        if (controlRoot(getApplicationContext(),getResources(),"Recovery")) {
+        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Recovery")) {
             isRoot = true;
         }
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);

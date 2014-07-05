@@ -21,7 +21,6 @@ import android.widget.Toast;
 
 import java.util.List;
 
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 /**
  * Created by Fraggel on 26/06/2014.
@@ -46,7 +45,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
         ajustes = getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
-        if (controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
+        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
             isRoot = true;
         }else{
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();

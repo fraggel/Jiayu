@@ -37,6 +37,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
@@ -78,7 +79,8 @@ public class App extends Activity implements AsyncResponse{
 
     //Button envioNoExisteBtn;
     Button btnInfo;
-    public static boolean noInternet=false;
+    static boolean noInternet=true;
+
     String newversion = "";
     public static boolean updatemostrado=false;
     String listaIdiomas[]=null;
@@ -131,11 +133,22 @@ public class App extends Activity implements AsyncResponse{
                 setContentView(R.layout.activity_app);
                 modificarMargins();
                 Intent intent = getIntent();
-                modelo = intent.getExtras().getString("modelo");
-                version = intent.getExtras().getString("version");
-                fabricante = intent.getExtras().getString("fabricante");
-                nversion =  intent.getExtras().getString("nversion");
-                compilacion =  intent.getExtras().getString("compilacion");
+                modelo = intent.getExtras().getString("modelo","");
+                version = intent.getExtras().getString("version","");
+                fabricante = intent.getExtras().getString("fabricante","");
+                nversion = intent.getExtras().getString("nversion","");
+                compilacion = intent.getExtras().getString("compilacion","");
+                noInternet = intent.getExtras().getBoolean("noInternet",true);
+                noInternet=comprobarConexion();
+                if (noInternet){
+                    WebView wv = (WebView) findViewById(R.id.webView);
+                    wv.setVisibility(View.INVISIBLE);
+                }else{
+                    WebView wv = (WebView) findViewById(R.id.webView);
+                    wv.setVisibility(View.VISIBLE);
+                    wv.loadUrl("http://www.jiayu.es/soporte/appbanner.php");
+                }
+
                 /*WebView wvv=(WebView) findViewById(R.id.webView);
                 TableLayout.LayoutParams llp2 = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 int dpi2=getResources().getDisplayMetrics().densityDpi;
@@ -164,8 +177,7 @@ public class App extends Activity implements AsyncResponse{
                             editorAjustes.putString("fechaUltimoAccesoDescargas", asignaFecha());
                             editorAjustes.commit();
                         }
-                        App.noInternet=comprobarConexion();
-                        comprobarVersionInicio(version);
+
 
 
 
@@ -327,12 +339,12 @@ public class App extends Activity implements AsyncResponse{
                     //config.setBackgroundDrawable(res.getDrawable(R.drawable.bt08));
 
                 /*}*/
-
+                TextView imgg=(TextView)findViewById(R.id.textView3);
+                imgg.requestFocus();
             } catch (Exception e) {
 
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 101", Toast.LENGTH_SHORT).show();
             }
-
     }
 
 
@@ -347,14 +359,20 @@ public class App extends Activity implements AsyncResponse{
         }
     }
 
-    private void comprobarVersionInicio(String version2) {
-        try {
-            VersionThread asyncTask = new VersionThread();
-            asyncTask.delegate = this;
-            asyncTask.execute(version2, "inicio");
-        } catch (Exception e) {
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
+    private boolean comprobarConexion() {
+        boolean nohayinternet=false;
+        ConnectivityManager cn=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nf=cn.getActiveNetworkInfo();
+        if(nf != null && nf.isConnected()==true )
+        {
+            nohayinternet=false;
+
         }
+        else
+        {
+            nohayinternet=true;
+        }
+        return nohayinternet;
     }
 
 
@@ -568,16 +586,7 @@ public class App extends Activity implements AsyncResponse{
         fecha_mod=(day+"/"+month+"/"+year);
         return fecha_mod;
     }
-    private int[] descomponerFecha(String fechaPasada) {
-        int day=Integer.parseInt(fechaPasada.trim().split("/")[0]);
-        int month=Integer.parseInt(fechaPasada.trim().split("/")[1])-1;
-        int year=Integer.parseInt(fechaPasada.trim().split("/")[2]);
-        int fecha[]=new int[3];
-        fecha[0]=day;
-        fecha[1]=month;
-        fecha[2]=year;
-        return fecha;
-    }
+
 
     public void openBrowser(View v, String tipo) {
         try {
@@ -605,118 +614,7 @@ public class App extends Activity implements AsyncResponse{
 
 
     @Override
-    public void processFinish(String output) {
-        try {
-            if (output != null && !"TIMEOUT----".equals(output) && (!"firmaok".equals(output) && !"firmanok".equals(output))) {
-                if(!updatemostrado){
-                String inicio = output.split("-;-")[0];
-                output = output.split("-;-")[1];
-                String[] split = output.split("----");
-                newversion = split[0].split(" ")[1];
-                urlActualizacion = split[1];
-                if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
-                    updatemostrado=true;
-                    Resources res = this.getResources();
-                    AlertDialog dialog = new AlertDialog.Builder(this).create();
-                    dialog.setMessage(res.getString(R.string.msgComprobarVersion) + " " + nversion + "->" + newversion + " " + res.getString(R.string.msgPreguntaVersion));
-                    dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
-                            res.getString(R.string.cancelarBtn),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int witch) {
-                                    App.updatemostrado=false;
-                                }
-                            });
-                    dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                            res.getString(R.string.aceptarBtn),
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int witch) {
-                                    try {
-                                        App.updatemostrado=false;
-                                        ActualizarVersion();
-                                    } catch (Exception e) {
-                                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
-                    dialog.show();
-                } else {
-                    if ("".equals(inicio)) {
-                        Resources res = this.getResources();
-                        AlertDialog dialog = new AlertDialog.Builder(this).create();
-                        dialog.setMessage(res.getString(R.string.msgLastVersion));
-                        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
-                                res.getString(R.string.aceptarBtn),
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int witch) {
-                                    }
-                                });
-                        dialog.show();
-                    }
-                    if((split.length-2)>0){
-                        String fecha=null;
-                        String model=null;
-                        boolean modeloEncontrado=false;
-                        for (int x =2;x<split.length-1;x++){
-                            model=split[x].split("->")[0];
-                            fecha=split[x].split("->")[1];
-                            if(modelo.equals(model)){
-                                modeloEncontrado=true;
-                                break;
-                            }
-                        }
-                        if(modeloEncontrado){
-                            String fechaAcceso=ajustes.getString("fechaUltimoAccesoDescargas",fecha);
 
-                            int[] ints = descomponerFecha(fechaAcceso);
-                            Calendar calAcceso=Calendar.getInstance();
-                            calAcceso.set(Calendar.DAY_OF_MONTH,ints[0]);
-                            calAcceso.set(Calendar.MONTH,ints[1]);
-                            calAcceso.set(Calendar.YEAR,ints[2]);
-                            calAcceso.set(Calendar.HOUR,0);
-                            calAcceso.set(Calendar.MINUTE,0);
-                            calAcceso.set(Calendar.SECOND,0);
-                            calAcceso.set(Calendar.MILLISECOND,0);
-                            int[] ints1 = descomponerFecha(fecha);
-                            Calendar calModificacion=Calendar.getInstance();
-                            calModificacion.set(Calendar.DAY_OF_MONTH,ints1[0]);
-                            calModificacion.set(Calendar.MONTH,ints1[1]);
-                            calModificacion.set(Calendar.YEAR,ints1[2]);
-                            calModificacion.set(Calendar.HOUR,0);
-                            calModificacion.set(Calendar.MINUTE,0);
-                            calModificacion.set(Calendar.SECOND,0);
-                            calModificacion.set(Calendar.MILLISECOND,0);
-                            if(calModificacion.after(calAcceso)){
-                                mNotificationManagerNews = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-                                final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getApplicationContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
-                                CharSequence contentTitle = getApplicationContext().getResources().getString(R.string.ntfTituloTxt);
-                                CharSequence contentText = getApplicationContext().getResources().getString(R.string.ntfDetallesTxt);
-                                Intent launch_intent = new Intent();
-                                launch_intent.setComponent(new ComponentName("es.jiayu.jiayuid", "es.jiayu.jiayuid.BrowserActivity"));
-                                launch_intent.putExtra("modelo", modelo);
-                                launch_intent.putExtra("tipo", "downloads");
-                                PendingIntent intent2;
-                                intent2 = PendingIntent.getActivity(getApplicationContext(), 0,
-                                        launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                                notifyDetails.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, intent2);
-                                mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
-                            }
-
-                        }
-                    }
-                }
-            }
-            }
-            noInternet=false;
-            WebView wv = (WebView) findViewById(R.id.webView);
-            wv.loadUrl("http://www.jiayu.es/soporte/appbanner.php");
-            wv.setVisibility(View.VISIBLE);
-        } catch (Exception e) {
-            noInternet=true;
-            WebView wv = (WebView) findViewById(R.id.webView);
-            wv.setVisibility(View.INVISIBLE);
-        }
-    }
 
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -759,26 +657,122 @@ public class App extends Activity implements AsyncResponse{
 
         }
     }
+    public void processFinish(String output) {
+        try {
+            if (output != null && !"TIMEOUT----".equals(output) && (!"firmaok".equals(output) && !"firmanok".equals(output))) {
+                if(!updatemostrado){
+                    String inicio = output.split("-;-")[0];
+                    output = output.split("-;-")[1];
+                    String[] split = output.split("----");
+                    newversion = split[0].split(" ")[1];
+                    urlActualizacion = split[1];
+                    if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
+                        updatemostrado=true;
+                        Resources res = this.getResources();
+                        AlertDialog dialog = new AlertDialog.Builder(this).create();
+                        dialog.setMessage(res.getString(R.string.msgComprobarVersion) + " " + nversion + "->" + newversion + " " + res.getString(R.string.msgPreguntaVersion));
+                        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                                res.getString(R.string.cancelarBtn),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int witch) {
+                                        App.updatemostrado=false;
+                                    }
+                                });
+                        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                                res.getString(R.string.aceptarBtn),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int witch) {
+                                        try {
+                                            App.updatemostrado=false;
+                                            ActualizarVersion();
+                                        } catch (Exception e) {
+                                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                        dialog.show();
+                    } else {
+                        if ("".equals(inicio)) {
+                            Resources res = this.getResources();
+                            AlertDialog dialog = new AlertDialog.Builder(this).create();
+                            dialog.setMessage(res.getString(R.string.msgLastVersion));
+                            dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                                    res.getString(R.string.aceptarBtn),
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int witch) {
+                                        }
+                                    });
+                            dialog.show();
+                        }
+                        if((split.length-2)>0){
+                            String fecha=null;
+                            String model=null;
+                            boolean modeloEncontrado=false;
+                            for (int x =2;x<split.length-1;x++){
+                                model=split[x].split("->")[0];
+                                fecha=split[x].split("->")[1];
+                                if(modelo.equals(model)){
+                                    modeloEncontrado=true;
+                                    break;
+                                }
+                            }
+                            if(modeloEncontrado){
+                                String fechaAcceso=ajustes.getString("fechaUltimoAccesoDescargas",fecha);
 
+                                int[] ints = Utilidades.descomponerFecha(fechaAcceso);
+                                Calendar calAcceso=Calendar.getInstance();
+                                calAcceso.set(Calendar.DAY_OF_MONTH,ints[0]);
+                                calAcceso.set(Calendar.MONTH,ints[1]);
+                                calAcceso.set(Calendar.YEAR,ints[2]);
+                                calAcceso.set(Calendar.HOUR,0);
+                                calAcceso.set(Calendar.MINUTE,0);
+                                calAcceso.set(Calendar.SECOND,0);
+                                calAcceso.set(Calendar.MILLISECOND,0);
+                                int[] ints1 = Utilidades.descomponerFecha(fecha);
+                                Calendar calModificacion=Calendar.getInstance();
+                                calModificacion.set(Calendar.DAY_OF_MONTH,ints1[0]);
+                                calModificacion.set(Calendar.MONTH,ints1[1]);
+                                calModificacion.set(Calendar.YEAR,ints1[2]);
+                                calModificacion.set(Calendar.HOUR,0);
+                                calModificacion.set(Calendar.MINUTE,0);
+                                calModificacion.set(Calendar.SECOND,0);
+                                calModificacion.set(Calendar.MILLISECOND,0);
+                                if(calModificacion.after(calAcceso)){
+                                    mNotificationManagerNews = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                                    final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getApplicationContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
+                                    CharSequence contentTitle = getApplicationContext().getResources().getString(R.string.ntfTituloTxt);
+                                    CharSequence contentText = getApplicationContext().getResources().getString(R.string.ntfDetallesTxt);
+                                    Intent launch_intent = new Intent();
+                                    launch_intent.setComponent(new ComponentName("es.jiayu.jiayuid", "es.jiayu.jiayuid.BrowserActivity"));
+                                    launch_intent.putExtra("modelo", modelo);
+                                    launch_intent.putExtra("tipo", "downloads");
+                                    PendingIntent intent2;
+                                    intent2 = PendingIntent.getActivity(getApplicationContext(), 0,
+                                            launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                    notifyDetails.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, intent2);
+                                    mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            noInternet=false;
+            WebView wv = (WebView) findViewById(R.id.webView);
+            wv.loadUrl("http://www.jiayu.es/soporte/appbanner.php");
+            wv.setVisibility(View.VISIBLE);
+        } catch (Exception e) {
+            noInternet=true;
+            WebView wv = (WebView) findViewById(R.id.webView);
+            wv.setVisibility(View.INVISIBLE);
+        }
+    }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-    }
-    private boolean comprobarConexion() {
-        boolean nohayinternet=false;
-        ConnectivityManager cn=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo nf=cn.getActiveNetworkInfo();
-        if(nf != null && nf.isConnected()==true )
-        {
-            nohayinternet=false;
-
-        }
-        else
-        {
-            nohayinternet=true;
-        }
-        return nohayinternet;
     }
     private void modificarMargins() {
         TextView scText=(TextView) findViewById(R.id.textView3);

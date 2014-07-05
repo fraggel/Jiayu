@@ -37,7 +37,6 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 /**
  * Created by u028952 on 24/07/13.
@@ -57,7 +56,7 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
 
-        if (controlRoot(getApplicationContext(),getResources(),"Imei")) {
+        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Imei")) {
             isRoot = true;
             if (!controlBusybox()) {
                 instalarBusyBox();

@@ -12,6 +12,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
+import java.util.Calendar;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
 
@@ -65,10 +66,42 @@ public class Utilidades {
         if (rootB) {
             try {
                 Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
+                java.lang.Process p = rt.exec("su");
+                BufferedOutputStream bos = new BufferedOutputStream(
+                        p.getOutputStream());
+                Calendar instance = Calendar.getInstance();
+                String fecha=String.valueOf(instance.get(Calendar.DAY_OF_MONTH))+
+                String.valueOf((instance.get(Calendar.MONTH)+1))+
+                String.valueOf(instance.get(Calendar.YEAR))+
+                String.valueOf(instance.get(Calendar.HOUR))+
+                String.valueOf(instance.get(Calendar.MINUTE))+
+                String.valueOf(instance.get(Calendar.SECOND))+
+                String.valueOf(instance.get(Calendar.MILLISECOND));
+                bos.write(("echo " + fecha + " > /data/jiayu.txt").getBytes());
+                bos.flush();
+                bos.close();
+
+                File fr=new File("/data/jiayu.txt");
+                FileInputStream fis=new FileInputStream(fr);
+                byte[] asd=new byte[10];
+                fis.read(asd);
+                Toast.makeText(context,new String(asd), Toast.LENGTH_SHORT).show();
             } catch (Exception e) {
                 Toast.makeText(context, res.getString(R.string.msgGenericError) +" "+ origen, Toast.LENGTH_SHORT).show();
             }
+        }
+        return rootB;
+    }
+    public static boolean controlRootSinExec(Context context,Resources res,String origen) {
+        boolean rootB = false;
+        File f = new File("/system/bin/su");
+        if (!f.exists()) {
+            f = new File("/system/xbin/su");
+            if (f.exists()) {
+                rootB = true;
+            }
+        } else {
+            rootB = true;
         }
         return rootB;
     }
@@ -173,5 +206,15 @@ public class Utilidades {
             recovery="";
         }
         return recovery;
+    }
+    public static int[] descomponerFecha(String fechaPasada) {
+        int day=Integer.parseInt(fechaPasada.trim().split("/")[0]);
+        int month=Integer.parseInt(fechaPasada.trim().split("/")[1])-1;
+        int year=Integer.parseInt(fechaPasada.trim().split("/")[2]);
+        int fecha[]=new int[3];
+        fecha[0]=day;
+        fecha[1]=month;
+        fecha[2]=year;
+        return fecha;
     }
 }

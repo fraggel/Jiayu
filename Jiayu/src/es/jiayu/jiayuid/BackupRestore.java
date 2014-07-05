@@ -32,7 +32,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import static es.jiayu.jiayuid.Utilidades.comprobarRecovery;
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
 
 public class BackupRestore extends Activity implements OnItemSelectedListener,
         AdapterView.OnItemClickListener,DialogInterface.OnClickListener, View.OnClickListener, CompoundButton.OnCheckedChangeListener {
@@ -64,7 +63,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
         ejecutarBtn= (Button) findViewById(R.id.executeBtn);
         chkCWM = (CheckBox) findViewById(R.id.cwmChk);
         chkCWM.setOnCheckedChangeListener(this);
-        if (controlRoot(getApplicationContext(),getResources(),"Backup/Restore")) {
+        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Backup/Restore")) {
             isRoot = true;
             if(isRoot){
                 if(ajustes.getBoolean("recoveryChk",false)){

@@ -5,8 +5,12 @@ import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
+import android.app.Notification;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.bluetooth.BluetoothAdapter;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,6 +20,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +30,8 @@ import android.os.StatFs;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Patterns;
+import android.view.View;
+import android.webkit.WebView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -42,14 +49,20 @@ public class Inicio extends Activity implements AsyncResponse{
     String version = "";
     String modelo = "";
     String model = "";
-
+    static long downloadREF = -1;
     String fabricante = "";
     String compilacion = "";
     String modelBuild="";
-
+    String newversion = "";
+    public static boolean updatemostrado=false;
     String chip = "";
+    String urlActualizacion = "";
+    static NotificationManager mNotificationManagerUpdate=null;
+    static NotificationManager mNotificationManagerNews=null;
+    private int SIMPLE_NOTFICATION_UPDATE=8888;
+    private int SIMPLE_NOTFICATION_NEWS=8889;
 
-
+    public static boolean noInternet=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +85,9 @@ public class Inicio extends Activity implements AsyncResponse{
         }
 
         editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo));
+        noInternet=comprobarConexion();
 
+        comprobarVersionInicio(version);
 
         calcularMod();
         modelo=model;
@@ -113,6 +128,7 @@ public class Inicio extends Activity implements AsyncResponse{
                 i3.putExtra("fabricante",fabricante);
                 i3.putExtra("nversion",nversion);
                 i3.putExtra("compilacion",compilacion);
+                i3.putExtra("nointernet",noInternet);
                 startActivity(i3);
             }
         }, 500);
@@ -127,11 +143,6 @@ public class Inicio extends Activity implements AsyncResponse{
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
         }
-    }
-
-    @Override
-    public void processFinish(String output) {
-
     }
     private void calcularMod() {
         try {
@@ -792,6 +803,160 @@ public class Inicio extends Activity implements AsyncResponse{
         }
         return load;
     }
+    private boolean comprobarConexion() {
+        boolean nohayinternet=false;
+        ConnectivityManager cn=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo nf=cn.getActiveNetworkInfo();
+        if(nf != null && nf.isConnected()==true )
+        {
+            nohayinternet=false;
 
+        }
+        else
+        {
+            nohayinternet=true;
+        }
+        return nohayinternet;
+    }
+    private void comprobarVersionInicio(String version2) {
+        try {
+            VersionThread asyncTask = new VersionThread();
+            asyncTask.delegate = this;
+            asyncTask.execute(version2, "inicio");
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void processFinish(String output) {
+        try {
+            if (output != null && !"TIMEOUT----".equals(output) && (!"firmaok".equals(output) && !"firmanok".equals(output))) {
+                if(!updatemostrado){
+                    String inicio = output.split("-;-")[0];
+                    output = output.split("-;-")[1];
+                    String[] split = output.split("----");
+                    newversion = split[0].split(" ")[1];
+                    urlActualizacion = split[1];
+                    if (!"".equals(urlActualizacion) && !nversion.equals(newversion) && (Float.parseFloat(nversion.replaceAll("Jiayu.es ", "")) < Float.parseFloat(newversion.replaceAll("Jiayu.es ", "")))) {
+                        updatemostrado=true;
+                        Resources res = this.getResources();
+                        AlertDialog dialog = new AlertDialog.Builder(this).create();
+                        dialog.setMessage(res.getString(R.string.msgComprobarVersion) + " " + nversion + "->" + newversion + " " + res.getString(R.string.msgPreguntaVersion));
+                        dialog.setButton(AlertDialog.BUTTON_NEGATIVE,
+                                res.getString(R.string.cancelarBtn),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int witch) {
+                                        App.updatemostrado=false;
+                                    }
+                                });
+                        dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                                res.getString(R.string.aceptarBtn),
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int witch) {
+                                        try {
+                                            App.updatemostrado=false;
+                                            ActualizarVersion();
+                                        } catch (Exception e) {
+                                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 118", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                        dialog.show();
+                    } else {
+                        if ("".equals(inicio)) {
+                            Resources res = this.getResources();
+                            AlertDialog dialog = new AlertDialog.Builder(this).create();
+                            dialog.setMessage(res.getString(R.string.msgLastVersion));
+                            dialog.setButton(AlertDialog.BUTTON_POSITIVE,
+                                    res.getString(R.string.aceptarBtn),
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int witch) {
+                                        }
+                                    });
+                            dialog.show();
+                        }
+                        if((split.length-2)>0){
+                            String fecha=null;
+                            String model=null;
+                            boolean modeloEncontrado=false;
+                            for (int x =2;x<split.length-1;x++){
+                                model=split[x].split("->")[0];
+                                fecha=split[x].split("->")[1];
+                                if(modelo.equals(model)){
+                                    modeloEncontrado=true;
+                                    break;
+                                }
+                            }
+                            if(modeloEncontrado){
+                                String fechaAcceso=ajustes.getString("fechaUltimoAccesoDescargas",fecha);
 
+                                int[] ints = Utilidades.descomponerFecha(fechaAcceso);
+                                Calendar calAcceso=Calendar.getInstance();
+                                calAcceso.set(Calendar.DAY_OF_MONTH,ints[0]);
+                                calAcceso.set(Calendar.MONTH,ints[1]);
+                                calAcceso.set(Calendar.YEAR,ints[2]);
+                                calAcceso.set(Calendar.HOUR,0);
+                                calAcceso.set(Calendar.MINUTE,0);
+                                calAcceso.set(Calendar.SECOND,0);
+                                calAcceso.set(Calendar.MILLISECOND,0);
+                                int[] ints1 = Utilidades.descomponerFecha(fecha);
+                                Calendar calModificacion=Calendar.getInstance();
+                                calModificacion.set(Calendar.DAY_OF_MONTH,ints1[0]);
+                                calModificacion.set(Calendar.MONTH,ints1[1]);
+                                calModificacion.set(Calendar.YEAR,ints1[2]);
+                                calModificacion.set(Calendar.HOUR,0);
+                                calModificacion.set(Calendar.MINUTE,0);
+                                calModificacion.set(Calendar.SECOND,0);
+                                calModificacion.set(Calendar.MILLISECOND,0);
+                                if(calModificacion.after(calAcceso)){
+                                    mNotificationManagerNews = (NotificationManager)getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+                                    final Notification notifyDetails = new Notification(R.drawable.ic_launcher,getApplicationContext().getResources().getString(R.string.ntfMinTxt),System.currentTimeMillis());
+                                    CharSequence contentTitle = getApplicationContext().getResources().getString(R.string.ntfTituloTxt);
+                                    CharSequence contentText = getApplicationContext().getResources().getString(R.string.ntfDetallesTxt);
+                                    Intent launch_intent = new Intent();
+                                    launch_intent.setComponent(new ComponentName("es.jiayu.jiayuid", "es.jiayu.jiayuid.BrowserActivity"));
+                                    launch_intent.putExtra("modelo", modelo);
+                                    launch_intent.putExtra("tipo", "downloads");
+                                    PendingIntent intent2;
+                                    intent2 = PendingIntent.getActivity(getApplicationContext(), 0,
+                                            launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+
+                                    notifyDetails.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, intent2);
+                                    mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);
+                                }
+
+                            }
+                        }
+                    }
+                }
+            }
+            noInternet=false;
+        } catch (Exception e) {
+            noInternet=true;
+        }
+    }
+    private void ActualizarVersion() {
+        try {
+            String nombreFichero = "";
+            nombreFichero = urlActualizacion.split("/")[urlActualizacion.split("/").length - 1];
+            DownloadManager.Request request = new DownloadManager.Request(Uri.parse(urlActualizacion));
+            request.setDescription(nombreFichero);
+            request.setTitle(nombreFichero);
+            if (Build.VERSION.SDK_INT >= 11) {
+                request.allowScanningByMediaScanner();
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                if (".apk".equals(nombreFichero.substring(nombreFichero.length() - 4, nombreFichero.length()).toLowerCase())) {
+                    request.setMimeType("application/vnd.android.package-archive");
+                    new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/Jiayu.apk").delete();
+                }
+
+            }
+            request.setDestinationInExternalPublicDir("/JIAYUES/APP/", nombreFichero);
+
+            DownloadManager manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgIniciandoDescarga) + " " + nombreFichero, Toast.LENGTH_SHORT).show();
+            downloadREF = manager.enqueue(request);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 104", Toast.LENGTH_SHORT).show();
+        }
+    }
 }
