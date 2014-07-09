@@ -370,8 +370,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                bos.write(("echo 'format(\"/data\");\n' >> /cache/recovery/extendedcommand").getBytes());
                bos.write(("echo 'format(\"/cache\");\n' >> /cache/recovery/extendedcommand").getBytes());
                bos.write(("echo 'ui_print(\"Wipe data/cache completado...\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+               bos.write(("exit").getBytes());
                bos.flush();
                bos.close();
+               p.waitFor();
                rebootRecoveryQuestionFlashear();
 
            }catch(Exception e){
@@ -508,7 +510,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         bos.write(("rm /cache/recovery/command\n")
                 .getBytes());
         String fileCWM = "";
-        if("G4A".equals(modelo) || "S1".equals(modelo) || "G5A".equals(modelo)){
+        if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo) || "G6A".equals(modelo)){
             fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
             bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
             bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -518,8 +520,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             bos.write(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
         }
         bos.write(("echo 'install_zip(\"" + fileCWM + "\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+        bos.write(("exit").getBytes());
         bos.flush();
         bos.close();
+        p.waitFor();
         rebootRecoveryQuestionFlashear();
     }
     public void writeORIInstall(String fichero) throws Exception{
@@ -542,8 +546,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             bos.write(("echo '--update_package="+fichero.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(),"/sdcard2")+"' >> /cache/recovery/command\n").getBytes());
             bos.write(("echo '--locale=es_ES' >> /cache/recovery/command\n").getBytes());
         }
+        bos.write(("exit").getBytes());
         bos.flush();
         bos.close();
+        p.waitFor();
         rebootRecoveryQuestionFlashear();
     }
     public void flashZip(){
@@ -560,7 +566,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         bos.write(("rm /cache/recovery/extendedcommand\n")
                                 .getBytes());
                         String fileCWM="";
-                        if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)){
+                        if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo)|| "G6A".equals(modelo)){
                             fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
                             bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
                             bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -571,8 +577,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         }
 
                         bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+                        bos.write(("exit").getBytes());
                         bos.flush();
                         bos.close();
+                        p.waitFor();
                         rebootRecoveryQuestionFlashear();
                     }else{
                         Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgErrorMD5),Toast.LENGTH_LONG).show();
@@ -587,7 +595,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     bos.write(("rm /cache/recovery/extendedcommand\n")
                             .getBytes());
                     String fileCWM="";
-                    if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)){
+                    if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo) || "G6A".equals(modelo)){
                         fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
                         bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
                         bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -598,8 +606,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     }
 
                     bos.write(("echo 'install_zip(\""+ fileCWM +"\");\n' >> /cache/recovery/extendedcommand\n").getBytes());
+                    bos.write(("exit").getBytes());
                     bos.flush();
                     bos.close();
+                    p.waitFor();
                     rebootRecoveryQuestionFlashear();
                 }
             }
@@ -736,8 +746,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             BufferedOutputStream bos = new BufferedOutputStream(
                                     p.getOutputStream());
                             bos.write(("reboot recovery\n").getBytes());
+                            bos.write(("exit").getBytes());
                             bos.flush();
                             bos.close();
+                            p.waitFor();
                             //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 158", Toast.LENGTH_SHORT).show();

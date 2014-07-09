@@ -75,8 +75,10 @@ public class ToolsAndroid extends Activity implements View.OnClickListener {
 				cambiarFileGeneric(false);
             }
             bos.write(("busybox pkill zygote\n").getBytes());
+            bos.write(("exit").getBytes());
             bos.flush();
             bos.close();
+            p.waitFor();
         }
         }catch(Exception e){
 

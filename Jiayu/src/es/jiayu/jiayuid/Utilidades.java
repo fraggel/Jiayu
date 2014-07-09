@@ -78,9 +78,10 @@ public class Utilidades {
                 String.valueOf(instance.get(Calendar.SECOND))+
                 String.valueOf(instance.get(Calendar.MILLISECOND));
                 bos.write(("echo " + fecha + " > /data/jiayu.txt").getBytes());
+                bos.write(("exit").getBytes());
                 bos.flush();
                 bos.close();
-
+                p.waitFor();
                 File fr=new File("/data/jiayu.txt");
                 FileInputStream fis=new FileInputStream(fr);
                 byte[] asd=new byte[10];
@@ -168,6 +169,7 @@ public class Utilidades {
     }
     public static String comprobarRecovery(Context context,Resources res,String origen) {
         String cwm="cwm";
+        String carl="crl";
         String ori="ori";
         String recovery="";
         try {
@@ -183,6 +185,7 @@ public class Utilidades {
                     .getBytes());
             bos.write(("cp /cache/recovery/last_log " + Environment.getExternalStorageDirectory() + "/JIAYUES/last_log" + "\n")
                     .getBytes());
+            bos.write(("exit").getBytes());
             bos.flush();
             bos.close();
             p.waitFor();
@@ -194,6 +197,8 @@ public class Utilidades {
                 String str=new String(bb);
                 if(str.toUpperCase().lastIndexOf("CWM")!=-1){
                     recovery=cwm;
+                }else if(str.toUpperCase().lastIndexOf("CARLIV")!=-1){
+                    recovery=carl;
                 }else{
                     recovery=ori;
                 }

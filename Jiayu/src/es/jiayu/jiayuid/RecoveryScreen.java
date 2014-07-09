@@ -243,9 +243,11 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                         ficheroRecovery = files[x].getAbsolutePath();
                     }
                 }
-                bos.write(("dd if=" + ficheroRecovery + " of=/dev/recovery bs=6291456c count=1\n").getBytes());
+                bos.write(("dd if=" + ficheroRecovery + " of=/dev/recovery\n").getBytes());
+                bos.write(("exit").getBytes());
                 bos.flush();
                 bos.close();
+                p.waitFor();
                 AlertDialog dialog = new AlertDialog.Builder(this).create();
                 String recoveryInstall="";
                 if(ajustes.getBoolean("recoveryChk",false)){
@@ -270,8 +272,10 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                                     BufferedOutputStream bos = new BufferedOutputStream(
                                             p.getOutputStream());
                                     bos.write(("reboot recovery\n").getBytes());
+                                    bos.write(("exit").getBytes());
                                     bos.flush();
                                     bos.close();
+                                    p.waitFor();
                                     //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                                 } catch (Exception e) {
                                     Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 146", Toast.LENGTH_SHORT).show();
@@ -304,8 +308,10 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
                             BufferedOutputStream bos = new BufferedOutputStream(
                                     p.getOutputStream());
                             bos.write(("reboot recovery\n").getBytes());
+                            bos.write(("exit").getBytes());
                             bos.flush();
                             bos.close();
+                            p.waitFor();
                             //((PowerManager) getSystemService(getApplicationContext().POWER_SERVICE)).reboot("recovery");
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 148", Toast.LENGTH_SHORT).show();

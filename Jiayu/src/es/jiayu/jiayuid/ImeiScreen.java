@@ -223,8 +223,10 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                     bos.write(("busybox cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
                                     //calcular md5 de la copia, comparar y si es correcto mostrar aviso de ok, en caso contrario decir que no OK y eliminar el IMEI.bak
                                     //Poner md5 en la cabecera del fichero si se puede
+                                    bos.write(("exit").getBytes());
                                     bos.flush();
                                     bos.close();
+                                    p.waitFor();
                                     Toast.makeText(getApplicationContext(), "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                     imeiSEBtn.setEnabled(true);
                                     imeiSEBtn.setTextColor(Color.BLACK);
@@ -260,8 +262,10 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                         bos.write(("busybox cp /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001 "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak\n").getBytes());
                                         //calcular md5 de la copia, comparar y si es correcto mostrar aviso de ok, en caso contrario decir que no OK y eliminar el IMEI.bak
                                         //Poner md5 en la cabecera del fichero si se puede
+                                        bos.write(("exit").getBytes());
                                         bos.flush();
                                         bos.close();
+                                        p.waitFor();
                                         Toast.makeText(getApplicationContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeihecho), Toast.LENGTH_SHORT).show();
                                         imeiSEBtn.setEnabled(true);
                                         imeiSEBtn.setTextColor(Color.BLACK);
@@ -306,8 +310,10 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
                                 //Si no lo es no copiar....
                                 bos.write(("busybox cp "+Environment.getExternalStorageDirectory() + "/JIAYUES/IMEI/IMEI"+modelo+".bak /data/nvram/md/NVRAM/NVD_IMEI/MP0B_001\n").getBytes());
 
+                                bos.write(("exit").getBytes());
                                 bos.flush();
                                 bos.close();
+                                p.waitFor();
                                 Toast.makeText(getApplicationContext(),  "IMEI"+modelo+".bak "+getResources().getString(R.string.msgImeirestored), Toast.LENGTH_SHORT).show();
                                 rebootQuestion();
                             } catch (Exception e) {

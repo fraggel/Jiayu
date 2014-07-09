@@ -125,6 +125,9 @@ public class SCHerramientasRom extends Activity implements View.OnClickListener 
                     if ("cwm".equals(recoveryDetectado)) {
 
                         //chkCWM.setVisibility(View.INVISIBLE);
+                    } else  if ("crl".equals(recoveryDetectado)) {
+
+                        //chkCWM.setVisibility(View.INVISIBLE);
                     } else if ("ori".equals(recoveryDetectado)) {
 
                         //chkCWM.setVisibility(View.INVISIBLE);
@@ -188,8 +191,10 @@ public class SCHerramientasRom extends Activity implements View.OnClickListener 
                             BufferedOutputStream bos = new BufferedOutputStream(
                                     p.getOutputStream());
                             bos.write(("reboot recovery\n").getBytes());
+                            bos.write(("exit").getBytes());
                             bos.flush();
                             bos.close();
+                            p.waitFor();
                         } catch (Exception e) {
                             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 168", Toast.LENGTH_SHORT).show();
                         }

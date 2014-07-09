@@ -31,7 +31,7 @@
             android:text="@string/menuflashRomBtn"
             android:id="@+id/herramientasROMTxt"
             android:layout_gravity="left|center_vertical"
-            style="@style/LabelTextBlackLeft"/>
+            style="@style/LabelTextBlack"/>
         <ImageView  android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/sup"/>
@@ -62,7 +62,7 @@
                 android:text="@string/downloadedRomTxt"
                 android:id="@+id/romTxt"
                 android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlackLeft"
+                style="@style/LabelTextBlack"
                 android:background="@drawable/d00"/>
 
         <Spinner
@@ -89,7 +89,7 @@
                 android:text="@string/downloadedFlashZipTxt"
                 android:id="@+id/zipTxt"
                 android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlackLeft"
+                style="@style/LabelTextBlack"
             android:background="@drawable/d00"/>
 
         <Spinner

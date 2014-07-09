@@ -108,6 +108,10 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
                         backupBtn.setEnabled(true);
                         backupBtn.setTextColor(Color.parseColor("#BDBDBD"));
                         //chkCWM.setVisibility(View.INVISIBLE);
+                    } else if ("crl".equals(recoveryDetectado)) {
+                        backupBtn.setEnabled(true);
+                        backupBtn.setTextColor(Color.parseColor("#BDBDBD"));
+                        //chkCWM.setVisibility(View.INVISIBLE);
                     } else if ("ori".equals(recoveryDetectado)) {
                         backupBtn.setEnabled(false);
                         backupBtn.setTextColor(Color.BLACK);

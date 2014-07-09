@@ -175,8 +175,10 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
                     bos.write(("mv /system/media/bootanimation.zip /system/media/bootanimationORI.zip\n").getBytes());
                     bos.write(("busybox cp "+bootAnimSelec+" /system/media/bootanimation.zip\n").getBytes());
                     bos.write(("chmod 777 /system/media/bootanimation.zip\n").getBytes());
+                    bos.write(("exit").getBytes());
                     bos.flush();
                     bos.close();
+                    p.waitFor();
                 }
                 /*if(chk.isChecked()){
                     File ff=new File(bootSeleccionada.substring(0, bootSeleccionada.length() - 4)+"2.zip");
