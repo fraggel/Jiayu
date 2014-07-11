@@ -45,9 +45,10 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
         ajustes = getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
-        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
+        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
             isRoot = true;
         }else{
+            isRoot=false;
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
         }
         abrirExploradorBtn = (Button) findViewById(R.id.filesBtn);

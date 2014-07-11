@@ -56,11 +56,13 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
 
-        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Imei")) {
+        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Imei")) {
             isRoot = true;
             if (!controlBusybox()) {
                 instalarBusyBox();
             }
+        }else{
+            isRoot=false;
         }
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {

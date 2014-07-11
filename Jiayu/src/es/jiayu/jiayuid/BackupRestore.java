@@ -63,7 +63,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
         ejecutarBtn= (Button) findViewById(R.id.executeBtn);
         chkCWM = (CheckBox) findViewById(R.id.cwmChk);
         chkCWM.setOnCheckedChangeListener(this);
-        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Backup/Restore")) {
+        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Backup/Restore")) {
             isRoot = true;
             if(isRoot){
                 if(ajustes.getBoolean("recoveryChk",false)){
@@ -111,6 +111,8 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                 restoreRdb.setVisibility(View.INVISIBLE);
                 ejecutarBtn.setVisibility(View.INVISIBLE);
             }
+        }else{
+            isRoot=false;
         }
         TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);

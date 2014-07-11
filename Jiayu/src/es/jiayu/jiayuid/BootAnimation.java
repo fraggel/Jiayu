@@ -75,7 +75,7 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
         setContentView(R.layout.activity_bootanimation);
         modelo = getIntent().getExtras().getString("modelo");
         tipo = getIntent().getExtras().getString("tipo");
-        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"BootAnimation")) {
+        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"BootAnimation")) {
             isRoot = true;
             if (!controlBusybox()) {
                 isBusy = false;
@@ -83,6 +83,8 @@ public class BootAnimation extends Activity implements View.OnClickListener, Ada
             }else{
                 isBusy = true;
             }
+        }else{
+            isRoot=false;
         }
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {

@@ -106,8 +106,10 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 dialog.show();
             }
         }
-        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Rom1")) {
+        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Rom1")) {
             isRoot = true;
+        }else{
+            isRoot=false;
         }
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -387,7 +389,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 CheckBox chkCWM = (CheckBox) findViewById(R.id.cwmChk);
                 if (chkCWM.isChecked()) {
 
-                    if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Rom Flash")) {
+                    if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Rom Flash")) {
                         if(firmarChk){
                             if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
                                 writeCWMInstall();

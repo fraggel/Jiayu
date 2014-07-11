@@ -97,8 +97,10 @@ public class RecoveryScreen extends Activity implements AdapterView.OnItemSelect
             }
         }
         modelo = getIntent().getExtras().getString("modelo");
-        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"Recovery")) {
+        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Recovery")) {
             isRoot = true;
+        }else{
+            isRoot=false;
         }
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {

@@ -62,11 +62,15 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         if (controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
             isRoot = true;
         }else{
+            isRoot=false;
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
         }
         if(!isRoot){
             herramBack.setEnabled(false);
             herramBack.setTextColor(Color.parseColor("#BDBDBD"));
+        }else{
+            herramBack.setEnabled(true);
+            herramBack.setTextColor(Color.BLACK);
         }
     }
 

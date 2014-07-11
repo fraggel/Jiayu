@@ -61,9 +61,10 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
             llp.setMargins(80, 360, 0, 176);
         }
         scText.setLayoutParams((llp));
-        if (Utilidades.controlRootSinExec(getApplicationContext(),getResources(),"RomTools")) {
+        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"RomTools")) {
             isRoot = true;
         }else{
+            isRoot=false;
             Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
         }
         backupBtn=(Button) findViewById(R.id.backupBtn);

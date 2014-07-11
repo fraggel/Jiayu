@@ -82,13 +82,34 @@ public class Utilidades {
                 bos.flush();
                 bos.close();
                 p.waitFor();
-                File fr=new File("/data/jiayu.txt");
-                FileInputStream fis=new FileInputStream(fr);
-                byte[] asd=new byte[10];
-                fis.read(asd);
-                Toast.makeText(context,new String(asd), Toast.LENGTH_SHORT).show();
+                Runtime rt2 = Runtime.getRuntime();
+                java.lang.Process p2 = rt.exec("su");
+                StreamGobbler errorGobbler = new StreamGobbler(p2.getErrorStream(),
+                        "ERR");
+                StreamGobbler outputGobbler = new StreamGobbler(p2.getInputStream(),
+                        "OUT");
+                errorGobbler.start();
+                outputGobbler.start();
+
+                BufferedOutputStream bos2 = new BufferedOutputStream(
+                        p2.getOutputStream());
+
+                bos2.write(("rm /data/jiayu.txt").getBytes());
+
+                bos2.write(("exit").getBytes());
+
+                bos2.flush();
+
+                bos2.close();
+
+                int ret=p2.waitFor();
+                if(ret==0){
+                    rootB=true;
+                }else{
+                    rootB=false;
+                }
             } catch (Exception e) {
-                Toast.makeText(context, res.getString(R.string.msgGenericError) +" "+ origen, Toast.LENGTH_SHORT).show();
+                rootB=false;
             }
         }
         return rootB;
