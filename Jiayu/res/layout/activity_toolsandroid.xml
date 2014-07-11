@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/toolsAndroidBtn"
-            android:id="@+id/herramientasUsuTxt"
+            android:id="@+id/scText"
             android:layout_gravity="left|center_vertical"
             style="@style/LabelTextBlackLeft"/>
         <ImageView  android:layout_width="match_parent"

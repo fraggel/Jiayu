@@ -175,7 +175,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
                 b3.setPadding(570, 0, 0, 0);
                 b4.setPadding(570, 0, 0, 0);
             }else{
-                scText.setPadding(100, 0, 0, 0);
+                scText.setPadding(20, 0, 0, 0);
                 b1.setPadding(350, 0, 0, 0);
                 b2.setPadding(350, 0, 0, 0);
                 b3.setPadding(350, 0, 0, 0);
