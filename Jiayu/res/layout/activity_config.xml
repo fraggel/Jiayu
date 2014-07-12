@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/msgConfiguracion"
-                android:id="@+id/herramientasROMTxt"
+                android:id="@+id/scText"
                 android:layout_gravity="left|center_vertical"
                 style="@style/LabelTextBlackLeft"/>
 

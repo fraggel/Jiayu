@@ -71,17 +71,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_romscreen);
-        TextView scText=(TextView) findViewById(R.id.herramientasROMTxt);
-        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int dpi=getResources().getDisplayMetrics().densityDpi;
-        if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
-        }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 130);
-        }else if(dpi==480) {
-            llp.setMargins(80, 360, 0, 176);
-        }
-        scText.setLayoutParams((llp));
+        modificarMargins();
         modelo = getIntent().getExtras().getString("modelo");
         ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         firmarChk=ajustes.getBoolean("firmarChk",false);
@@ -901,5 +891,54 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             zipSpn.setEnabled(false);
             findViewById(R.id.zipTxt).setEnabled(false);
         }
+    }
+    private void modificarMargins() {
+        TextView scText=(TextView) findViewById(R.id.scText);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 350, 0, 176);
+        }
+        scText.setLayoutParams((llp));
+
+
+        Button b1=(Button) findViewById(R.id.dataCacheDalvikBtn);
+        int orientation = getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                scText.setPadding(15, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(140, 0, 0, 0);
+
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                scText.setPadding(40, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(200, 0, 0, 0);
+
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                scText.setPadding(100, 0, 0, 0);
+                b1.setPadding(570, 0, 0, 0);
+
+            }else{
+                scText.setPadding(20, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+
+            }
+        }
+
     }
 }

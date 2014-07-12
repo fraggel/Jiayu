@@ -58,17 +58,7 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
             }
 
         });*/
-        TextView scText=(TextView) findViewById(R.id.apkTexto);
-        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int dpi=getResources().getDisplayMetrics().densityDpi;
-        if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
-        }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 130);
-        }else if(dpi==480) {
-            llp.setMargins(80, 360, 0, 176);
-        }
-        scText.setLayoutParams((llp));
+
         apkSpn = (Spinner) findViewById(R.id.apkSpn);
         apkBtn = (Button) findViewById(R.id.apkBtn);
         String externalStorageState = Environment.getExternalStorageState();
@@ -81,6 +71,7 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
         apkSpn.setOnItemSelectedListener(this);
         apkBtn.setOnClickListener(this);
         refreshCombos();
+        modificarMargins();
     }
 
     @Override
@@ -146,6 +137,55 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
         Spinner spinner = (Spinner) adapterView;
         if (spinner.getId() == R.id.apkSpn) {
             this.apkseleccionada = null;
+        }
+
+    }
+    private void modificarMargins() {
+        TextView scText=(TextView) findViewById(R.id.scText);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 350, 0, 176);
+        }
+        scText.setLayoutParams((llp));
+
+
+        Button b1=(Button) findViewById(R.id.apkBtn);
+        int orientation = getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                scText.setPadding(15, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(140, 0, 0, 0);
+
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                scText.setPadding(40, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(200, 0, 0, 0);
+
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                scText.setPadding(100, 0, 0, 0);
+                b1.setPadding(570, 0, 0, 0);
+
+            }else{
+                scText.setPadding(20, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+
+            }
         }
 
     }
