@@ -73,12 +73,7 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
 
         });*/
 
-        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"RomTools")) {
-            isRoot = true;
-        }else{
-            isRoot=false;
-            Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
-        }
+        isRoot=getIntent().getExtras().getBoolean("root");
         backupBtn=(Button) findViewById(R.id.backupBtn);
         imeiBtn = (Button) findViewById(R.id.imeiBtn);
         String externalStorageState = Environment.getExternalStorageState();
@@ -143,6 +138,7 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
             try {
                 Intent intent = new Intent(this, BackupRestore.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
@@ -152,6 +148,7 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
             try {
                 Intent intent = new Intent(this, ImeiScreen.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 161", Toast.LENGTH_SHORT).show();
@@ -163,11 +160,11 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
+            llp.setMargins(40, 175, 0, 94);
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 176);
+            llp.setMargins(80, 350, 0, 190);
         }
         scText.setLayoutParams((llp));
 

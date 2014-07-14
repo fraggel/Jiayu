@@ -80,15 +80,11 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         setContentView(R.layout.activity_imeiscreen);
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
-
-        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Imei")) {
-            isRoot = true;
+        isRoot=intent.getExtras().getBoolean("root");
             if (!controlBusybox()) {
                 instalarBusyBox();
             }
-        }else{
-            isRoot=false;
-        }
+
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
@@ -378,12 +374,13 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
+            llp.setMargins(40, 175, 0, 94);
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 360, 0, 176);
+            llp.setMargins(80, 360, 0, 190);
         }
+
         scText.setLayoutParams((llp));
          Button b1=(Button) findViewById(R.id.imeiBBtn);
         Button b2=(Button) findViewById(R.id.imeiRBtn);

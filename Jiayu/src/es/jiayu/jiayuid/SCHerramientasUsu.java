@@ -65,12 +65,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
         ajustes = getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
-        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
-            isRoot = true;
-        }else{
-            isRoot=false;
-            Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
-        }
+        isRoot=getIntent().getExtras().getBoolean("root");
         abrirExploradorBtn = (Button) findViewById(R.id.filesBtn);
         bootAnimationBtn=(Button) findViewById(R.id.bootAnimationBtn);
         String externalStorageState = Environment.getExternalStorageState();
@@ -171,6 +166,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
                 Intent intent = new Intent(this, BootAnimation.class);
                 intent.putExtra("modelo",modelo);
                 intent.putExtra("tipo","bootanimation");
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 167", Toast.LENGTH_SHORT).show();
@@ -179,6 +175,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
             try {
                 Intent intent = new Intent(this, ToolsAndroid.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" FRAGGEL", Toast.LENGTH_SHORT).show();
@@ -190,11 +187,11 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
+            llp.setMargins(40, 175, 0, 94);
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 176);
+            llp.setMargins(80, 350, 0, 190);
         }
         scText.setLayoutParams((llp));
 

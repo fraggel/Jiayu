@@ -94,7 +94,7 @@
     <string name="descargasBtn">"Downloads"</string>
     <string name="accesoriosBtn">"Zubehör"</string>
     <string name="videosBtn">"Video Tutorials"</string>
-    <string name="tiendaBtn">"Shop"</string>
+    <string name="tiendaBtn">"Geschäft"</string>
     <string name="herramientasBtn">"Treiber-Werkzeuge"</string>
     <string name="herramientasROMBtn">"Werkzeuge ROMs"</string>
     <string name="flashRecoveryBtn">"Installieren Sie Recovery-"</string>
@@ -167,7 +167,7 @@
     <string name="msgRamProblem">,aber es scheint, dass es ein Problem mit dem RAM-Menge, das heißt</string>
     <string name="msgRamProblem2">und sollte 1 GB oder 2 GB, bitte die neueste Flash-ROM mit SPFLASHTOOL, um dieses Problem zu lösen</string>
     <string name="msgIdentificadoParcial">Identifiziert wird, nicht genau, wie</string>
-    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
+    <string name="msgRomSpFlash">Das ROM, die Sie herunterladen NUR SPFLASHTOOL mit diesem ROM installieren können mit dieser App Jiayu installiert werden</string>
 
 
 </resources>

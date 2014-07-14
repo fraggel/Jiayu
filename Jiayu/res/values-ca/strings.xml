@@ -8,7 +8,7 @@
     <string name="title_activity_about">"Sobre nosaltres ..."</string>
     <string name="title_activity_romtool">"Eines ROM"</string>
     <string name="title_activity_inicio">"Inici"</string>
-    <string name="title_activity_video">"Videotutorials"</string>
+    <string name="title_activity_video">"Video"</string>
     <string name="title_activity_romscreen">"Operacions ROM"</string>
     <string name="title_activity_recoveryscreen">"Operacions Recovery"</string>
     <string name="title_activity_imeiscreen">"Operacions IMEI"</string>
@@ -92,8 +92,8 @@
     <!--Botones-->
     <string name="descargasBtn">"Descàrregues"</string>
     <string name="accesoriosBtn">"Accessoris"</string>
-    <string name="videosBtn">"Videotutorials"</string>
-    <string name="tiendaBtn">"Shop"</string>
+    <string name="videosBtn">"Video"</string>
+    <string name="tiendaBtn">"Botiga"</string>
     <string name="herramientasBtn">"Drivers-Eines"</string>
     <string name="herramientasROMBtn">"Eines ROM"</string>
     <string name="flashRecoveryBtn">"Instal · lar Recovery"</string>
@@ -162,6 +162,6 @@
     <string name="msgRamProblem">", però sembla que hi ha un problema amb la quantitat de RAM que s'ha detectat, es va detectar"</string>
     <string name="msgRamProblem2">i hauria de ser de 1GB o 2GB, si us plau instal · la la ultima ROM per SPFLASHTOOL per resoldre aquest problema</string>
     <string name="msgIdentificadoParcial">Identificat, no de manera exacta, com</string>
-    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
+    <string name="msgRomSpFlash">"La ROM que estàs descarregant és NOMÉS per instal · lar amb SPFLASHTOOL, aquesta ROM no pot instal · lar amb aquesta App Jiayu"</string>
 
 </resources>

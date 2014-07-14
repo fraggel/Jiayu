@@ -20,6 +20,7 @@ public class NoInternet extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nointernet);
+        modificarMargins();
     }
     protected void onResume() {
         super.onResume();
@@ -50,41 +51,47 @@ public class NoInternet extends Activity {
         TextView scText=(TextView) findViewById(R.id.textView1);
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
-                /*if(dpi==240) {
-                    llp.setMargins(0, 180, 0, 2);
-                }else if(dpi==320) {
-                    llp.setMargins(0, 250, 0, 2);
-                }else if(dpi==480) {
-                    llp.setMargins(0, 350, 0, 2);
-                }*/
         if(dpi==240) {
-            llp.setMargins(0, 175, 0, 2);
+            llp.setMargins(40, 175, 0, 94);
         }else if(dpi==320) {
-            llp.setMargins(0, 230, 0, 2);
+            llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(0, 350, 0, 2);
+            llp.setMargins(80, 350, 0, 190);
         }
-
         scText.setLayoutParams((llp));
-        Button b1=(Button) findViewById(R.id.button1);
+
+
+        Button b1=(Button) findViewById(R.id.volverBtn);
         int orientation = getResources().getConfiguration().orientation;
         if(dpi==240) {
             if(orientation==2) {
-                b1.setPadding(240, 0, 0, 0);
+                scText.setPadding(15, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+
             }else{
-                b1.setPadding(120, 0, 0, 0);
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(140, 0, 0, 0);
+
             }
         }else if(dpi==320) {
             if(orientation==2) {
-                b1.setPadding(270, 0, 0, 0);
+                scText.setPadding(40, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+
             }else{
+                scText.setPadding(10, 0, 0, 0);
                 b1.setPadding(200, 0, 0, 0);
+
             }
         }else if(dpi==480) {
             if(orientation==2) {
-                b1.setPadding(550, 0, 0, 0);
+                scText.setPadding(100, 0, 0, 0);
+                b1.setPadding(570, 0, 0, 0);
+
             }else{
-                b1.setPadding(290, 0, 0, 0);
+                scText.setPadding(20, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+
             }
         }
 

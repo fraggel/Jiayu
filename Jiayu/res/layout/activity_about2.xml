@@ -1,79 +1,58 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:scrollbars="horizontal">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal"
+    >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                  android:orientation="vertical"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content">
-        <ImageButton
-                android:id="@+id/imageButton1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:scaleType="fitCenter"
-                android:src="@drawable/jiayulogoic"
-                android:contentDescription="Jiayu.es"
-                android:clickable="false"
-                android:focusable="false"
-                android:adjustViewBounds="false"
-                android:background="@android:color/transparent"
-                android:layout_weight="0.11"
-                android:paddingBottom="@dimen/activity_horizontal_margin"
-                android:paddingTop="@dimen/activity_horizontal_margin"/>
-
-        <TextView
-                android:id="@+id/scText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/about1"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                style="@style/LabelTextBlackLeft"/>
-
-        <ImageButton
-                android:layout_width="297dp"
-                android:layout_height="261dp"
-                android:id="@+id/imageButton2"
-                android:src="@drawable/maps"
-            android:adjustViewBounds="false"
-            android:scaleType="fitXY"
-            android:layout_gravity="center" />
-
-        <TextView
-                android:id="@+id/textView6"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/about6"
-            style="@style/LabelTextBlackMainLeft"
-            android:padding="10dp" />
-
-        <TextView
-                android:id="@+id/textView7"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/about7"
-                android:background="@drawable/btn_green"
-                style="@style/ButtonTextGreen"
-                android:password="false"
-                android:autoLink="phone"
-                android:singleLine="false"
-            android:textColor="#ffffff"
-            android:textColorHighlight="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textColorLink="#ffffff" />
-
-        <TextView
-                android:id="@+id/textView2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/about2"
-                android:background="@drawable/btn_green"
-                style="@style/ButtonTextGreen"
-                android:autoLink="email"
-            android:textColorLink="#ffffff"
-            android:textColorHint="#ffffff"
-            android:textColorHighlight="#ffffff"
-            android:textColor="#ffffff" />
-
-    </LinearLayout>
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:background="@drawable/fondo02"
+        >
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/about1"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="30dp"
+        android:id="@+id/scText"
+        style="@style/LabelTextBlackLeft"/>
+    <!--android:layout_width="297dp"
+            android:layout_height="261dp"-->
+    <ImageButton
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:id="@+id/imageButton2"
+        android:src="@drawable/maps"
+        android:layout_width="297dp"
+        android:layout_height="261dp"
+        android:adjustViewBounds="false"
+        android:scaleType="fitXY"
+        android:layout_gravity="center" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about6"
+        style="@style/LabelTextBlack"
+        android:background="@drawable/c00"/>
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about7"
+        android:autoLink="phone"
+        style="@style/LabelTextBlack"
+        android:background="@drawable/c00"/>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about2"
+        android:autoLink="email"
+        style="@style/LabelTextBlack"
+        android:background="@drawable/c00"/>
+    </TableLayout>
 </ScrollView>

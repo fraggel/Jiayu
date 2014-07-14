@@ -9,7 +9,7 @@
     <string name="title_activity_about">Sobre nosotros...</string>
     <string name="title_activity_romtool">Herramientas ROMs</string>
     <string name="title_activity_inicio">Inicio</string>
-    <string name="title_activity_video">Videotutoriales</string>
+    <string name="title_activity_video">Video</string>
     <string name="title_activity_romscreen">Operaciones ROM</string>
     <string name="title_activity_recoveryscreen">Operaciones Recovery</string>
     <string name="title_activity_imeiscreen">Operaciones IMEI</string>

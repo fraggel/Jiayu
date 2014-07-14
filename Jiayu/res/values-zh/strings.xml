@@ -92,7 +92,7 @@
     <string name="descargasBtn">"下载"</string>
     <string name="accesoriosBtn">"饰品"</string>
     <string name="videosBtn">"视频教程"</string>
-    <string name="tiendaBtn">"Shop"</string>
+    <string name="tiendaBtn">"店"</string>
     <string name="herramientasBtn">"驱动工具"</string>
     <string name="herramientasROMBtn">"工具光盘"</string>
     <string name="flashRecoveryBtn">"安装恢复"</string>
@@ -166,6 +166,6 @@
     <string name="msgRamProblem">, 但似乎有一个与RAM数量的一个问题，那就是</string>
     <string name="msgRamProblem2">并应1GB或2GB，请刷新最新的ROM SPFLASHTOOL来解决这个问题</string>
     <string name="msgIdentificadoParcial">经鉴定，不完全是，因为</string>
-    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
+    <string name="msgRomSpFlash">您正在下载的ROM是唯一SPFLASHTOOL安装与这个ROM不能用这个程序安装嘉鱼</string>
 
 </resources>

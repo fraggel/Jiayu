@@ -67,11 +67,11 @@ public class SelectNameBck extends Activity{
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
+            llp.setMargins(40, 175, 0, 94);
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 176);
+            llp.setMargins(80, 350, 0, 190);
         }
         scText.setLayoutParams((llp));
 

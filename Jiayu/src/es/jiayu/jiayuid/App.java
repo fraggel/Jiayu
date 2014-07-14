@@ -90,7 +90,7 @@ public class App extends Activity implements AsyncResponse{
     private int SIMPLE_NOTFICATION_NEWS=8889;
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
-
+    public static boolean isRoot=false;
     @Override
     protected void onResume() {
         super.onResume();
@@ -118,7 +118,7 @@ public class App extends Activity implements AsyncResponse{
         fabricante = intent.getExtras().getString("fabricante");
         nversion =  intent.getExtras().getString("nversion");
         compilacion =  intent.getExtras().getString("compilacion");
-
+        isRoot =intent.getExtras().getBoolean("root");
     }
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,6 +138,7 @@ public class App extends Activity implements AsyncResponse{
                 fabricante = intent.getExtras().getString("fabricante","");
                 nversion = intent.getExtras().getString("nversion","");
                 compilacion = intent.getExtras().getString("compilacion","");
+                isRoot =intent.getExtras().getBoolean("root");
                 noInternet = intent.getExtras().getBoolean("noInternet",true);
                 noInternet=comprobarConexion();
                 if (noInternet){
@@ -531,6 +532,7 @@ public class App extends Activity implements AsyncResponse{
                     try {
                         Intent intent = new Intent(getApplicationContext(), SecondScreen.class);
                         intent.putExtra("modelo",modelo);
+                        intent.putExtra("root",isRoot);
                         startActivity(intent);
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();

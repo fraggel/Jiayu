@@ -8,7 +8,7 @@
     <string name="title_activity_about">"私達について..."</string>
     <string name="title_activity_romtool">"ツールROMの"</string>
     <string name="title_activity_inicio">"開始"</string>
-    <string name="title_activity_video">"ビデオチュートリアル"</string>
+    <string name="title_activity_video">"ビデオ"</string>
     <string name="title_activity_romscreen">"オペレーションROM"</string>
     <string name="title_activity_recoveryscreen">"回収作業"</string>
     <string name="title_activity_imeiscreen">"IMEI操作"</string>
@@ -91,8 +91,8 @@
     <!--Botones-->
     <string name="descargasBtn">"ダウンロード"</string>
     <string name="accesoriosBtn">"アクセサリー"</string>
-    <string name="videosBtn">"ビデオチュートリアル"</string>
-    <string name="tiendaBtn">"Shop"</string>
+    <string name="videosBtn">"ビデオ"</string>
+    <string name="tiendaBtn">"ショップ"</string>
     <string name="herramientasBtn">"ドライバ·ツール"</string>
     <string name="herramientasROMBtn">"ツールROMの"</string>
     <string name="flashRecoveryBtn">"Recoveryをインストール"</string>
@@ -168,6 +168,6 @@
     <string name="msgRamProblem">, それはRAM量に問題があると思われる、すなわち</string>
     <string name="msgRamProblem2">および1ギガバイトまたは2ギガバイトである必要があり、この問題を解決するためにSPFLASHTOOLを最新のフラッシュROMください</string>
     <string name="msgIdentificadoParcial">特定され、正確ではない、として</string>
-    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
+    <string name="msgRomSpFlash">あなたがダウンロードしているROMはSPFLASHTOOLでのみインストール可能ですが、このROMはこのJiayuアプリでインストールすることはできません</string>
 
 </resources>

@@ -62,8 +62,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         getApplicationContext().getResources().updateConfiguration(config,
                 getApplicationContext().getResources().getDisplayMetrics());
         onCreate(null);
-        Utilidades.modificarMargins1(this);
-        //modificarMargins();
+        modificarMargins();
 
     }
     public void onCreate(Bundle savedInstanceState) {
@@ -76,19 +75,13 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         herramBack=(Button)findViewById(R.id.copiasSegTxt);
         herramDisp=(Button)findViewById(R.id.herramientasROMTxt);
         apks=(Button)findViewById(R.id.apkTexto);
+        isRoot=intent.getExtras().getBoolean("root");
         modificarMargins();
-
 
         herram.setOnClickListener(this);
         herramBack.setOnClickListener(this);
         herramDisp.setOnClickListener(this);
         apks.setOnClickListener(this);
-        if (controlRootConExec(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
-            isRoot = true;
-        }else{
-            isRoot=false;
-            Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
-        }
         if(!isRoot){
             herramBack.setEnabled(false);
             herramBack.setTextColor(Color.parseColor("#BDBDBD"));
@@ -105,6 +98,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             try {
                 Intent intent = new Intent(getApplicationContext(), SCHerramientasUsu.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
@@ -113,6 +107,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             try {
                 Intent intent = new Intent(getApplicationContext(), SCCopiaSeg.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
@@ -121,6 +116,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             try {
                 Intent intent = new Intent(getApplicationContext(), SCHerramientasRom.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
@@ -130,6 +126,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             try {
                 Intent intent = new Intent(getApplicationContext(), SCApkInstall.class);
                 intent.putExtra("modelo",modelo);
+                intent.putExtra("root",isRoot);
                 startActivity(intent);
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
@@ -149,14 +146,13 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
+            llp.setMargins(40, 175, 0, 84);
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 176);
+            llp.setMargins(80, 350, 0, 190);
         }
         scText.setLayoutParams((llp));
-
 
         Button b1=(Button) findViewById(R.id.herramientasUsuTxt);
         Button b2=(Button) findViewById(R.id.copiasSegTxt);

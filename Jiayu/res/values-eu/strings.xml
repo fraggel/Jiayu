@@ -176,7 +176,8 @@
 <string name="accesoriosBtn">"Osagarri"</string>
 
 <string name="videosBtn">"Bideo tutoretzak"</string>
-    <string name="tiendaBtn">"Shop"</string>
+
+<string name="tiendaBtn">"Denda"</string>
 
 <string name="herramientasBtn">"Gidariek-tresnak"</string>
 
@@ -294,6 +295,6 @@
     <string name="msgRamProblem">, gogo RAM zenbatekoa detektatu da arazo bat izan nahi du, detektatu zen</string>
     <string name="msgRamProblem2">eta 1GB edo 2GB izan behar du, mesedez instalatu SPFLASHTOOL azken ROM arazo hau konpontzeko</string>
     <string name="msgIdentificadoParcial">Identifikatu, ez zehazki, gisa</string>
-    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
+    <string name="msgRomSpFlash">"ROM deskargatzean, baliteke da ROM honekin instalatu ONLY SPFLASHTOOL ezin da aplikazio hau Jiayu instalatutako"</string>
 
 </resources>

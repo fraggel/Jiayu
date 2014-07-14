@@ -92,6 +92,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         setContentView(R.layout.activity_romscreen);
 
         modelo = getIntent().getExtras().getString("modelo");
+        isRoot=getIntent().getExtras().getBoolean("root");
         ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
         firmarChk=ajustes.getBoolean("firmarChk",false);
         if(firmarChk){
@@ -115,11 +116,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 dialog.show();
             }
         }
-        if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Rom1")) {
-            isRoot = true;
-        }else{
-            isRoot=false;
-        }
+
         /*imageButton = (ImageButton) findViewById(R.id.imageButton);
         imageButton.setOnClickListener(new View.OnClickListener() {
 
@@ -399,7 +396,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 CheckBox chkCWM = (CheckBox) findViewById(R.id.cwmChk);
                 if (chkCWM.isChecked()) {
 
-                    if (Utilidades.controlRoot(getApplicationContext(),getResources(),"Rom Flash")) {
+                    if (isRoot) {
                         if(firmarChk){
                             if(Utilidades.checkFileMD5(new File(this.romseleccionada))){
                                 writeCWMInstall();
@@ -917,11 +914,11 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 86);
+            llp.setMargins(40, 175, 0, 94);
         }else if(dpi==320) {
             llp.setMargins(50, 230, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 176);
+            llp.setMargins(80, 350, 0, 190);
         }
         scText.setLayoutParams((llp));
 

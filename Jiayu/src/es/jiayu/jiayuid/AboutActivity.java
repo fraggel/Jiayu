@@ -6,8 +6,11 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AboutActivity extends Activity {
@@ -23,22 +26,11 @@ public class AboutActivity extends Activity {
         addListenerOnButton();
         contacto = (Button) findViewById(R.id.button1);
         visit = (Button) findViewById(R.id.button2);
+        modificarMargins();
     }
 
     public void addListenerOnButton() {
         try {
-
-            imageButton = (ImageButton) findViewById(R.id.imageButton1);
-            imageButton.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View arg0) {
-
-                    Uri uri = Uri.parse("http://www.jiayu.es");
-                    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                    startActivity(intent);
-                }
-
-            });
             mapsButton = (ImageButton) findViewById(R.id.imageButton2);
             mapsButton.setOnClickListener(new View.OnClickListener() {
 
@@ -50,43 +42,65 @@ public class AboutActivity extends Activity {
 
             });
 
-            /*visit = (Button) findViewById(R.id.button2);
-            visit.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View arg0) {
-                    try {
-                        Uri uri = Uri.parse("http://www.jiayu.es/");
-                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-                        startActivity(intent);
-                    } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 122", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-            });*/
-            /*contacto = (Button) findViewById(R.id.button1);
-            contacto.setOnClickListener(new View.OnClickListener() {
-
-                public void onClick(View arg0) {
-                    Resources res2 = getResources();
-                    Intent i = new Intent(Intent.ACTION_SEND);
-                    i.setType("message/rfc822");
-                    i.putExtra(Intent.EXTRA_EMAIL,
-                            new String[]{"info@jiayu.es"});
-                    i.putExtra(Intent.EXTRA_SUBJECT, res2.getString(R.string.msgSubjectInfo));
-                    i.putExtra(Intent.EXTRA_TEXT, "");
-                    try {
-
-                        startActivity(Intent.createChooser(i,
-                                res2.getString(R.string.enviarEmailBtn)));
-                    } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 123", Toast.LENGTH_SHORT).show();
-                    }
-                }
-
-            });*/
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 124", Toast.LENGTH_SHORT).show();
         }
+    }
+    private void modificarMargins() {
+        TextView scText=(TextView) findViewById(R.id.scText);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 185, 0, 84);
+        }else if(dpi==320) {
+            llp.setMargins(50, 255, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 375, 0, 190);
+        }
+        scText.setLayoutParams((llp));
+
+
+        TextView b1=(TextView) findViewById(R.id.textView6);
+        TextView b2=(TextView) findViewById(R.id.textView7);
+        TextView b3=(TextView) findViewById(R.id.textView2);
+        int orientation = getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                scText.setPadding(15, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+                b2.setPadding(250, 0, 0, 0);
+                b3.setPadding(250, 0, 0, 0);
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(140, 0, 0, 0);
+                b2.setPadding(140, 0, 0, 0);
+                b3.setPadding(140, 0, 0, 0);
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                scText.setPadding(40, 0, 0, 0);
+                b1.setPadding(400, 0, 0, 0);
+                b2.setPadding(400, 0, 0, 0);
+                b3.setPadding(400, 0, 0, 0);
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+                b2.setPadding(250, 0, 0, 0);
+                b3.setPadding(250, 0, 0, 0);
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                scText.setPadding(100, 0, 0, 0);
+                b1.setPadding(570, 0, 0, 0);
+                b2.setPadding(570, 0, 0, 0);
+                b3.setPadding(570, 0, 0, 0);
+            }else{
+                scText.setPadding(20, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+                b2.setPadding(350, 0, 0, 0);
+                b3.setPadding(350, 0, 0, 0);
+            }
+        }
+
     }
 }

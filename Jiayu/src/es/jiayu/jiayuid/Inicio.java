@@ -42,6 +42,8 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import static es.jiayu.jiayuid.Utilidades.controlRootConExec;
+
 public class Inicio extends Activity implements AsyncResponse{
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
@@ -61,7 +63,7 @@ public class Inicio extends Activity implements AsyncResponse{
     static NotificationManager mNotificationManagerNews=null;
     private int SIMPLE_NOTFICATION_UPDATE=8888;
     private int SIMPLE_NOTFICATION_NEWS=8889;
-
+    public boolean isRoot=false;
     public static boolean noInternet=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +93,12 @@ public class Inicio extends Activity implements AsyncResponse{
 
         calcularMod();
         modelo=model;
+        if (controlRootConExec(getApplicationContext(),getResources(),"Inicio")) {
+            isRoot = true;
+        }else{
+            isRoot=false;
+            Toast.makeText(getApplicationContext(),getResources().getString(R.string.msgOptDisabled),Toast.LENGTH_LONG).show();
+        }
         /*Intent intent = new Intent(getApplicationContext(), App.class);
         intent.putExtra("modelo",modelo);
         intent.putExtra("version",version);
@@ -129,6 +137,7 @@ public class Inicio extends Activity implements AsyncResponse{
                 i3.putExtra("nversion",nversion);
                 i3.putExtra("compilacion",compilacion);
                 i3.putExtra("nointernet",noInternet);
+                i3.putExtra("root",isRoot);
                 startActivity(i3);
             }
         }, 500);

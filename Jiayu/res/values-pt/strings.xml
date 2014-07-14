@@ -8,7 +8,7 @@
     <string name="title_activity_about">"Sobre nós ..."</string>
     <string name="title_activity_romtool">"Ferramentas ROMs"</string>
     <string name="title_activity_inicio">"Iniciação"</string>
-    <string name="title_activity_video">"Videotutoriales"</string>
+    <string name="title_activity_video">"Video"</string>
     <string name="title_activity_romscreen">"Operações ROM"</string>
     <string name="title_activity_recoveryscreen">"Operações de Recuperação"</string>
     <string name="title_activity_imeiscreen">"Operações IMEI"</string>
@@ -92,8 +92,8 @@
     <!--Botones-->
     <string name="descargasBtn">"Transferências"</string>
     <string name="accesoriosBtn">"Acessórios"</string>
-    <string name="videosBtn">"Videotutoriales"</string>
-    <string name="tiendaBtn">"Shop"</string>
+    <string name="videosBtn">"Video"</string>
+    <string name="tiendaBtn">"Loja"</string>
     <string name="herramientasBtn">"Drivers-Tools"</string>
     <string name="herramientasROMBtn">"Ferramentas ROMs"</string>
     <string name="flashRecoveryBtn">"Instale Recuperação"</string>
@@ -166,6 +166,6 @@
     <string name="msgRamProblem">,mas parece que existe um problema com a quantidade de RAM, que é</string>
     <string name="msgRamProblem2">e deve ser de 1 GB ou 2 GB, por favor piscar a última ROM com SPFLASHTOOL para resolver este problema</string>
     <string name="msgIdentificadoParcial">Identificado, não exatamente, como</string>
-    <string name="msgRomSpFlash">The Rom you are downloading is ONLY flasheable with SPFLASHTOOL, this ROM can´t be installed with this Jiayu APP</string>
+    <string name="msgRomSpFlash">A ROM que você está baixando é SOMENTE SPFLASHTOOL de instalar com esta ROM não pode ser instalado com este aplicativo Jiayu</string>
 
 </resources>

@@ -17,6 +17,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.MessageDigest;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.zip.Deflater;
 import java.util.zip.Inflater;
@@ -248,7 +249,7 @@ public class Utilidades {
         fecha[2]=year;
         return fecha;
     }
-    public static void modificarMargins1(Activity act) {
+    /*public static void modificarMargins1(Activity act) {
         TextView scText=(TextView) act.findViewById(R.id.scText);
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=act.getResources().getDisplayMetrics().densityDpi;
@@ -304,7 +305,8 @@ public class Utilidades {
         }
 
     }
-    public static void modificarMargins2(Activity act) {
+    public static void modificarMargins2(Activity act,Context context) {
+
         TextView scText=(TextView) act.findViewById(R.id.scText);
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=act.getResources().getDisplayMetrics().densityDpi;
@@ -359,5 +361,5 @@ public class Utilidades {
             }
         }
 
-    }
+    }*/
 }
