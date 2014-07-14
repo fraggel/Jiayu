@@ -801,7 +801,7 @@ public class App extends Activity implements AsyncResponse{
         Button b7=(Button) findViewById(R.id.button2);
         Button b8=(Button) findViewById(R.id.button5);
         int orientation = getResources().getConfiguration().orientation;
-        if(dpi==240) {
+        if(dpi>=240 && dpi<320) {
             if(orientation==2) {
                 t1.setPadding(300, 0, 0, 0);
                 b1.setPadding(240, 0, 0, 0);
@@ -823,7 +823,7 @@ public class App extends Activity implements AsyncResponse{
                 b7.setPadding(100, 0, 0, 0);
                 b8.setPadding(80, 0, 0, 0);
             }
-        }else if(dpi==320) {
+        }else if(dpi>=320 && dpi<480) {
             if(orientation==2) {
                 t1.setPadding(500, 0, 0, 0);
                 b1.setPadding(270, 0, 0, 0);
@@ -845,7 +845,7 @@ public class App extends Activity implements AsyncResponse{
                 b7.setPadding(140, 0, 0, 0);
                 b8.setPadding(125, 0, 0, 0);
             }
-        }else if(dpi==480) {
+        }else if(dpi>=480 && dpi<1000) {
             if(orientation==2) {
                 t1.setPadding(550, 0, 0, 0);
                 b1.setPadding(550, 0, 0, 0);

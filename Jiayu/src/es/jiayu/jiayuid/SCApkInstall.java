@@ -111,7 +111,7 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
     public void refreshCombos() {
         listaApps.clear();
         listaAppsUrl.clear();
-        listaApps.add(getResources().getString(R.string.seleccionaValue));
+        listaApps.add(getResources().getString(R.string.downloadedAPKTxt));
         listaAppsUrl.add("");
         File f1 = new File(Environment.getExternalStorageDirectory() + "/JIAYUES/APP/");
 
@@ -165,11 +165,11 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 94);
+            llp.setMargins(40, 0, 0, 94);
         }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 130);
+            llp.setMargins(50, 0, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 190);
+            llp.setMargins(80, 0, 0, 190);
         }
         scText.setLayoutParams((llp));
 

@@ -25,6 +25,19 @@
             android:layout_gravity="center"
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_horizontal_margin"/>-->
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Jiayu.es"
+            android:scaleType="center"
+            android:clickable="false"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:adjustViewBounds="false"
+            android:src="@drawable/jiayulogoic"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="@dimen/activity_horizontal_marginTop"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

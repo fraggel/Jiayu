@@ -143,18 +143,17 @@ public class SecondScreen extends Activity implements View.OnClickListener {
     }
     private void modificarMargins() {
         int dpi=getResources().getDisplayMetrics().densityDpi;
-        /*TextView scText=(TextView) findViewById(R.id.scText);
+        TextView scText=(TextView) findViewById(R.id.scText);
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 84);
+            llp.setMargins(40, 0, 0, 84);
         }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 130);
+            llp.setMargins(50, 0, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 190);
+            llp.setMargins(80, 0, 0, 190);
         }
-        scText.setLayoutParams((llp));*/
-        TextView scText=(TextView) findViewById(R.id.scText);
+        scText.setLayoutParams((llp));
         Button b1=(Button) findViewById(R.id.herramientasUsuTxt);
         Button b2=(Button) findViewById(R.id.copiasSegTxt);
         Button b3=(Button) findViewById(R.id.herramientasROMTxt);

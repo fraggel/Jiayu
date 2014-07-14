@@ -150,7 +150,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 romBtn.setEnabled(false);
                 romBtn.setTextColor(Color.parseColor("#BDBDBD"));
                 //romBtn.setVisibility(View.INVISIBLE);
-                findViewById(R.id.romTxt).setEnabled(false);
+                //findViewById(R.id.romTxt).setEnabled(false);
 
                 //findViewById(R.id.romTxt).setVisibility(View.INVISIBLE);
                 dataCacheDalvikBtn.setEnabled(false);
@@ -183,7 +183,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             zipBtn.setEnabled(false);
             zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
             zipSpn.setEnabled(false);
-            findViewById(R.id.zipTxt).setEnabled(false);
+            //findViewById(R.id.zipTxt).setEnabled(false);
         }
         if(isRoot){
             if(ajustes.getBoolean("recoveryChk",false)){
@@ -774,8 +774,8 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         listaRomsUrl.clear();
         listaZipsUrl.clear();
 
-        listaRo.add(getResources().getString(R.string.seleccionaValue));
-        listaZip.add(getResources().getString(R.string.seleccionaValue));
+        listaRo.add(getResources().getString(R.string.downloadedRomTxt));
+        listaZip.add(getResources().getString(R.string.downloadedFlashZipTxt));
 
         listaRomsUrl.add("");
         listaZipsUrl.add("");
@@ -906,7 +906,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
             zipBtn.setEnabled(false);
             zipBtn.setTextColor(Color.parseColor("#BDBDBD"));
             zipSpn.setEnabled(false);
-            findViewById(R.id.zipTxt).setEnabled(false);
+            //findViewById(R.id.zipTxt).setEnabled(false);
         }
     }
     private void modificarMargins() {
@@ -914,11 +914,11 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 175, 0, 94);
+            llp.setMargins(40, 0, 0, 94);
         }else if(dpi==320) {
-            llp.setMargins(50, 230, 0, 130);
+            llp.setMargins(50, 0, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 350, 0, 190);
+            llp.setMargins(80, 0, 0, 190);
         }
         scText.setLayoutParams((llp));
 

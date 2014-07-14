@@ -23,7 +23,19 @@
             android:layout_weight="0.11"
             android:paddingBottom="@dimen/activity_horizontal_margin"
             android:paddingTop="@dimen/activity_horizontal_margin"/>-->
-
+        <ImageButton
+            android:id="@+id/imageButton1"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Jiayu.es"
+            android:scaleType="center"
+            android:clickable="false"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:adjustViewBounds="false"
+            android:src="@drawable/jiayulogoic"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="@dimen/activity_horizontal_marginTop"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -54,15 +66,6 @@
                 android:layout_gravity="left|center_vertical"
                 android:background="@drawable/btn_ter2"
                 style="@style/LabelTextBlack"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/downloadedRomTxt"
-            android:id="@+id/romTxt"
-            android:layout_gravity="left|center_vertical"
-            style="@style/LabelTitle"
-            android:background="@drawable/d00i"/>
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -79,15 +82,6 @@
                 android:layout_gravity="left|center_vertical"
                 android:background="@drawable/btn_ter4"
                 style="@style/LabelTextBlack"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/downloadedFlashZipTxt"
-            android:id="@+id/zipTxt"
-            android:layout_gravity="left|center_vertical"
-            style="@style/LabelTitle"
-            android:background="@drawable/d00i"/>
 
         <Spinner
                 android:layout_width="match_parent"

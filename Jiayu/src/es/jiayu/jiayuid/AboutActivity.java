@@ -51,11 +51,11 @@ public class AboutActivity extends Activity {
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
-            llp.setMargins(40, 185, 0, 84);
+            llp.setMargins(40, 0, 0, 84);
         }else if(dpi==320) {
-            llp.setMargins(50, 255, 0, 130);
+            llp.setMargins(50, 0, 0, 130);
         }else if(dpi==480) {
-            llp.setMargins(80, 375, 0, 190);
+            llp.setMargins(80, 0, 0, 190);
         }
         scText.setLayoutParams((llp));
 
