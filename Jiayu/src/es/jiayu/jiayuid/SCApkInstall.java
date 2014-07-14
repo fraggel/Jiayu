@@ -175,6 +175,8 @@ public class SCApkInstall extends Activity implements AdapterView.OnItemSelected
 
 
         Button b1=(Button) findViewById(R.id.apkBtn);
+        ImageButton b2=(ImageButton) findViewById(R.id.imageButton1);
+
         int orientation = getResources().getConfiguration().orientation;
         if(dpi==240) {
             if(orientation==2) {

@@ -33,7 +33,7 @@
             android:layout_height="match_parent"
             android:contentDescription="Jiayu.es"
             android:clickable="false"
-            android:scaleType="center"
+            android:scaleType="fitCenter"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:adjustViewBounds="false"
