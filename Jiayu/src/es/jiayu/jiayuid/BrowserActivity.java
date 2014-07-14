@@ -38,6 +38,7 @@ public class BrowserActivity extends Activity {
     SharedPreferences ajustes=null;
     SharedPreferences.Editor editorAjustes=null;
     WebView descargas=null;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);

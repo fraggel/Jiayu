@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">"Jiayu.es"</string>
-    <string name="bienvenida">"Jiayu.esアプリケーションへようこそ。このアプリケーションは、命名www.jiayu.esと正確なモデルを見つける表示されます。"</string>
+    <string name="bienvenida">"Jiayuの正式な実装へようこそ。このアプリケーションは、命名www.jiayu.esと正確なモデルを見つける表示されます。"</string>
 
     <!--Activity Titulos-->
     <string name="title_activity_browser">"ダウンロードJiayu.es"</string>

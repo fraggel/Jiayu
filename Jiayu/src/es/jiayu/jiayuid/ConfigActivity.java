@@ -42,7 +42,28 @@ public class ConfigActivity extends Activity implements CompoundButton.OnChecked
     Spinner languageSpn=null;
     String listaIdiomas[]=null;
     Button md5Btn=null;
+    protected void onResume() {
+        super.onResume();
+        String listaIdiomas[]=getResources().getStringArray(R.array.languages_values);
+        SharedPreferences ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+        int i=ajustes.getInt("language",0);
+        Locale locale =null;
+        if(i==0){
+            locale=getResources().getConfiguration().locale;
+        }else{
+            locale = new Locale(listaIdiomas[i]);
+        }
 
+
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getApplicationContext().getResources().updateConfiguration(config,
+                getApplicationContext().getResources().getDisplayMetrics());
+        onCreate(null);
+        modificarMargins();
+
+    }
     public void onCreate(Bundle savedInstanceState) {
 
         try {

@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">"Jiayu.es"</string>
-    <string name="bienvenida">"欢迎应用Jiayu.es。此应用程序将显示的确切型号命名www.jiayu.es发现。"</string>
+    <string name="bienvenida">"欢迎佳域正式实施。此应用程序将显示的确切型号命名www.jiayu.es发现。"</string>
 
     <!--Activity Titulos-->
     <string name="title_activity_browser">"下载Jiayu.es"</string>

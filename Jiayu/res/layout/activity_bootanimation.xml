@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/downloadedRecoveryTxt"
+            android:text="@string/bootanimationBtn"
             android:id="@+id/scText"
             android:layout_gravity="left|center_vertical"
             style="@style/LabelTextBlackLeft"/>
@@ -51,8 +51,8 @@
                 android:text="@string/downloadedBootTxt"
                 android:id="@+id/romTxt"
                 android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlackLeft"
-            android:background="@drawable/d00"/>
+                style="@style/LabelTitle"
+            android:background="@drawable/d00i"/>
 
         <Spinner
                 android:layout_width="match_parent"

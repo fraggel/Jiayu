@@ -1,6 +1,9 @@
 package es.jiayu.jiayuid;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +18,35 @@ import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.Locale;
 
 /**
  * Created by Fraggel on 28/09/13.
  */
 public class ToolsAndroid extends Activity implements View.OnClickListener {
     Button softkeysBtn=null;
+    protected void onResume() {
+        super.onResume();
+        String listaIdiomas[]=getResources().getStringArray(R.array.languages_values);
+        SharedPreferences ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+        int i=ajustes.getInt("language",0);
+        Locale locale =null;
+        if(i==0){
+            locale=getResources().getConfiguration().locale;
+        }else{
+            locale = new Locale(listaIdiomas[i]);
+        }
+
+
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getApplicationContext().getResources().updateConfiguration(config,
+                getApplicationContext().getResources().getDisplayMetrics());
+        onCreate(null);
+        modificarMargins();
+
+    }
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_toolsandroid);

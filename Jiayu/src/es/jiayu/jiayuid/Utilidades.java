@@ -1,8 +1,13 @@
 package es.jiayu.jiayuid;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Environment;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedOutputStream;
@@ -52,7 +57,7 @@ public class Utilidades {
         }
         return returnVal;
     }
-    public static boolean controlRoot(Context context,Resources res,String origen) {
+    public static boolean controlRootConExec(Context context,Resources res,String origen) {
         boolean rootB = false;
         File f = new File("/system/bin/su");
         if (!f.exists()) {
@@ -114,7 +119,7 @@ public class Utilidades {
         }
         return rootB;
     }
-    public static boolean controlRootSinExec(Context context,Resources res,String origen) {
+    public static boolean controlRoot(Context context,Resources res,String origen) {
         boolean rootB = false;
         File f = new File("/system/bin/su");
         if (!f.exists()) {
@@ -242,5 +247,117 @@ public class Utilidades {
         fecha[1]=month;
         fecha[2]=year;
         return fecha;
+    }
+    public static void modificarMargins1(Activity act) {
+        TextView scText=(TextView) act.findViewById(R.id.scText);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=act.getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 350, 0, 176);
+        }
+        scText.setLayoutParams((llp));
+
+        Button b1=(Button) act.findViewById(R.id.dataCacheDalvikBtn);
+        Button b2=(Button) act.findViewById(R.id.romBtn);
+        Button b3=(Button) act.findViewById(R.id.zipBtn);
+        int orientation = act.getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                scText.setPadding(15, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+                b2.setPadding(250, 0, 0, 0);
+                b3.setPadding(250, 0, 0, 0);
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(140, 0, 0, 0);
+                b2.setPadding(140, 0, 0, 0);
+                b3.setPadding(140, 0, 0, 0);
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                scText.setPadding(40, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+                b2.setPadding(350, 0, 0, 0);
+                b3.setPadding(350, 0, 0, 0);
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(200, 0, 0, 0);
+                b2.setPadding(200, 0, 0, 0);
+                b3.setPadding(200, 0, 0, 0);
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                scText.setPadding(100, 0, 0, 0);
+                b1.setPadding(570, 0, 0, 0);
+                b2.setPadding(570, 0, 0, 0);
+                b3.setPadding(570, 0, 0, 0);
+            }else{
+                scText.setPadding(20, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+                b2.setPadding(350, 0, 0, 0);
+                b3.setPadding(350, 0, 0, 0);
+            }
+        }
+
+    }
+    public static void modificarMargins2(Activity act) {
+        TextView scText=(TextView) act.findViewById(R.id.scText);
+        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=act.getResources().getDisplayMetrics().densityDpi;
+        if(dpi==240) {
+            llp.setMargins(40, 175, 0, 86);
+        }else if(dpi==320) {
+            llp.setMargins(50, 230, 0, 130);
+        }else if(dpi==480) {
+            llp.setMargins(80, 350, 0, 176);
+        }
+        scText.setLayoutParams((llp));
+
+        Button b1=(Button) act.findViewById(R.id.dataCacheDalvikBtn);
+        Button b2=(Button) act.findViewById(R.id.romBtn);
+        Button b3=(Button) act.findViewById(R.id.zipBtn);
+        int orientation = act.getResources().getConfiguration().orientation;
+        if(dpi==240) {
+            if(orientation==2) {
+                scText.setPadding(15, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+                b2.setPadding(250, 0, 0, 0);
+                b3.setPadding(250, 0, 0, 0);
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(140, 0, 0, 0);
+                b2.setPadding(140, 0, 0, 0);
+                b3.setPadding(140, 0, 0, 0);
+            }
+        }else if(dpi==320) {
+            if(orientation==2) {
+                scText.setPadding(40, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+                b2.setPadding(350, 0, 0, 0);
+                b3.setPadding(350, 0, 0, 0);
+            }else{
+                scText.setPadding(10, 0, 0, 0);
+                b1.setPadding(200, 0, 0, 0);
+                b2.setPadding(200, 0, 0, 0);
+                b3.setPadding(200, 0, 0, 0);
+            }
+        }else if(dpi==480) {
+            if(orientation==2) {
+                scText.setPadding(100, 0, 0, 0);
+                b1.setPadding(570, 0, 0, 0);
+                b2.setPadding(570, 0, 0, 0);
+                b3.setPadding(570, 0, 0, 0);
+            }else{
+                scText.setPadding(20, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+                b2.setPadding(350, 0, 0, 0);
+                b3.setPadding(350, 0, 0, 0);
+            }
+        }
+
     }
 }

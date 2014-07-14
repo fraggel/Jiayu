@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,9 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static es.jiayu.jiayuid.Utilidades.controlRoot;
+import static es.jiayu.jiayuid.Utilidades.controlRootConExec;
 
 /**
  * Created by Fraggel on 26/06/2014.
@@ -41,6 +45,26 @@ public class SecondScreen extends Activity implements View.OnClickListener {
 
     protected void onResume() {
         super.onResume();
+        String listaIdiomas[]=getResources().getStringArray(R.array.languages_values);
+        ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+        int i=ajustes.getInt("language",0);
+        Locale locale =null;
+        if(i==0){
+            locale=getResources().getConfiguration().locale;
+        }else{
+            locale = new Locale(listaIdiomas[i]);
+        }
+
+
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getApplicationContext().getResources().updateConfiguration(config,
+                getApplicationContext().getResources().getDisplayMetrics());
+        onCreate(null);
+        Utilidades.modificarMargins1(this);
+        //modificarMargins();
+
     }
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +83,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         herramBack.setOnClickListener(this);
         herramDisp.setOnClickListener(this);
         apks.setOnClickListener(this);
-        if (controlRoot(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
+        if (controlRootConExec(getApplicationContext(),getResources(),"SCHerramientasUsu")) {
             isRoot = true;
         }else{
             isRoot=false;
@@ -110,7 +134,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
             }
-        }else if(button.getId()==R.id.imageButton){
+        }/*else if(button.getId()==R.id.imageButton){
             try {
                 Uri uri = Uri.parse("http://www.jiayu.es");
                 Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -118,7 +142,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 110", Toast.LENGTH_SHORT).show();
             }
-        }
+        }*/
     }
     private void modificarMargins() {
         TextView scText=(TextView) findViewById(R.id.scText);

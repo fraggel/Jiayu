@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ResolveInfo;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
@@ -34,6 +37,7 @@ import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
+import java.util.Locale;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 
@@ -49,7 +53,28 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
     String modelo=null;
     String path = "";
     ImageButton imageButton;
+    protected void onResume() {
+        super.onResume();
+        String listaIdiomas[]=getResources().getStringArray(R.array.languages_values);
+        SharedPreferences ajustes=getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
+        int i=ajustes.getInt("language",0);
+        Locale locale =null;
+        if(i==0){
+            locale=getResources().getConfiguration().locale;
+        }else{
+            locale = new Locale(listaIdiomas[i]);
+        }
 
+
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getApplicationContext().getResources().updateConfiguration(config,
+                getApplicationContext().getResources().getDisplayMetrics());
+        onCreate(null);
+        modificarMargins();
+
+    }
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_imeiscreen);
@@ -360,31 +385,45 @@ public class ImeiScreen extends Activity implements View.OnClickListener {
             llp.setMargins(80, 360, 0, 176);
         }
         scText.setLayoutParams((llp));
-
+         Button b1=(Button) findViewById(R.id.imeiBBtn);
+        Button b2=(Button) findViewById(R.id.imeiRBtn);
+        Button b3=(Button) findViewById(R.id.imeiSEBtn);
         int orientation = getResources().getConfiguration().orientation;
         if(dpi==240) {
             if(orientation==2) {
                 scText.setPadding(15, 0, 0, 0);
-
+                b1.setPadding(250, 0, 0, 0);
+                b2.setPadding(250, 0, 0, 0);
+                b3.setPadding(250, 0, 0, 0);
             }else{
                 scText.setPadding(10, 0, 0, 0);
-
+                b1.setPadding(140, 0, 0, 0);
+                b2.setPadding(140, 0, 0, 0);
+                b3.setPadding(140, 0, 0, 0);
             }
         }else if(dpi==320) {
             if(orientation==2) {
                 scText.setPadding(40, 0, 0, 0);
-
+                b1.setPadding(350, 0, 0, 0);
+                b2.setPadding(350, 0, 0, 0);
+                b3.setPadding(350, 0, 0, 0);
             }else{
                 scText.setPadding(10, 0, 0, 0);
-
+                b1.setPadding(200, 0, 0, 0);
+                b2.setPadding(200, 0, 0, 0);
+                b3.setPadding(200, 0, 0, 0);
             }
         }else if(dpi==480) {
             if(orientation==2) {
                 scText.setPadding(100, 0, 0, 0);
-
+                b1.setPadding(570, 0, 0, 0);
+                b2.setPadding(570, 0, 0, 0);
+                b3.setPadding(570, 0, 0, 0);
             }else{
-                scText.setPadding(100, 0, 0, 0);
-
+                scText.setPadding(20, 0, 0, 0);
+                b1.setPadding(350, 0, 0, 0);
+                b2.setPadding(350, 0, 0, 0);
+                b3.setPadding(350, 0, 0, 0);
             }
         }
 

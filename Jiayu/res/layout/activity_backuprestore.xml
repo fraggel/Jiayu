@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/herramientasROMTxt"
+            android:text="@string/backupBtn"
             android:id="@+id/scText"
             android:layout_gravity="left|center_vertical"
             style="@style/LabelTextBlackLeft"/>
@@ -58,6 +58,9 @@
 	        android:layout_height="wrap_content"
 	        android:text="@string/backupRdb"
             style="@style/LabelTextBlack"
+            android:paddingRight="40dp"
+            android:button="@null"
+            android:drawableLeft="?android:attr/listChoiceIndicatorSingle"
         />
 	
 	    <RadioButton
@@ -66,7 +69,9 @@
 	        android:layout_height="wrap_content"
 	        android:text="@string/restoreRdb"
             style="@style/LabelTextBlack"
-            android:layout_gravity="left|center_vertical"
+            android:paddingRight="40dp"
+            android:button="@null"
+            android:drawableLeft="?android:attr/listChoiceIndicatorSingle"
             />
         </RadioGroup>
 	   <!-- <RadioButton
@@ -89,7 +94,7 @@
 	        android:text="@string/makebackuprestoreBtn"
 	        android:onClick="makeBackupRestore"
             android:layout_gravity="left|center_vertical"
-            android:background="@drawable/d00"
+            android:background="@drawable/btn_ter3"
             style="@style/LabelTextBlack"/>
         <ImageView  android:layout_width="match_parent"
             android:layout_height="wrap_content"

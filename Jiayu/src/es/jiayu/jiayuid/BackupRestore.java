@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Build;
@@ -30,6 +31,7 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Locale;
 
 import static es.jiayu.jiayuid.Utilidades.comprobarRecovery;
 
@@ -50,6 +52,28 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
     boolean detectRecovery=false;
     String recoveryDetectado="ori";
     SharedPreferences ajustes=null;
+    protected void onResume() {
+        super.onResume();
+        String listaIdiomas[]=getResources().getStringArray(R.array.languages_values);
+        SharedPreferences ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
+        int i=ajustes.getInt("language",0);
+        Locale locale =null;
+        if(i==0){
+            locale=getResources().getConfiguration().locale;
+        }else{
+            locale = new Locale(listaIdiomas[i]);
+        }
+
+
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getApplicationContext().getResources().updateConfiguration(config,
+                getApplicationContext().getResources().getDisplayMetrics());
+        onCreate(null);
+        modificarMargins();
+
+    }
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		res = this.getResources();
@@ -105,11 +129,13 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
             if (chkCWM.isChecked()) {
                 backupRdb.setVisibility(View.VISIBLE);
                 restoreRdb.setVisibility(View.VISIBLE);
-                ejecutarBtn.setVisibility(View.VISIBLE);
+                ejecutarBtn.setEnabled(true);
+                ejecutarBtn.setTextColor(Color.BLACK);
             }else{
                 backupRdb.setVisibility(View.INVISIBLE);
                 restoreRdb.setVisibility(View.INVISIBLE);
-                ejecutarBtn.setVisibility(View.INVISIBLE);
+                ejecutarBtn.setEnabled(false);
+                ejecutarBtn.setTextColor(Color.parseColor("#BDBDBD"));
             }
         }else{
             isRoot=false;
@@ -400,17 +426,21 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
             if(!isRoot){
                 backupRdb.setVisibility(View.INVISIBLE);
                 restoreRdb.setVisibility(View.INVISIBLE);
-                ejecutarBtn.setVisibility(View.INVISIBLE);
+                ejecutarBtn.setEnabled(false);
+                ejecutarBtn.setTextColor(Color.parseColor("#BDBDBD"));
+
             }else{
                 backupRdb.setVisibility(View.VISIBLE);
                 restoreRdb.setVisibility(View.VISIBLE);
-                ejecutarBtn.setVisibility(View.VISIBLE);
+                ejecutarBtn.setEnabled(true);
+                ejecutarBtn.setTextColor(Color.BLACK);
             }
 
         }else{
             backupRdb.setVisibility(View.INVISIBLE);
             restoreRdb.setVisibility(View.INVISIBLE);
-            ejecutarBtn.setVisibility(View.INVISIBLE);
+            ejecutarBtn.setEnabled(false);
+            ejecutarBtn.setTextColor(Color.parseColor("#BDBDBD"));
         }
     }
     @Override

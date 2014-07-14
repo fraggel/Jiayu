@@ -1,7 +1,7 @@
 <resources>
 
     <string name="app_name">"Jiayu.es"</string>
-    <string name="bienvenida">"Bienvenue sur demande Jiayu.es. Cette application affiche le modèle exact avec les www.jiayu.es nomenclature trouver."</string>
+    <string name="bienvenida">"Bienvenue à la mise en œuvre officielle de Jiayu. Cette application affiche le modèle exact avec les www.jiayu.es nomenclature trouver."</string>
 
     <!--Activity Titulos-->
     <string name="title_activity_browser">"Téléchargements Jiayu.es"</string>

@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Jiayu.es</string>
-   <string name="bienvenida">Bienvenido a la aplicación Jiayu.es. Esta aplicación mostrará el modelo exacto con la nomenclatura que encontrarás en www.jiayu.es.</string>
+   <string name="bienvenida">Bienvenido a la aplicación oficial de Jiayu. Esta aplicación mostrará el modelo exacto con la nomenclatura que encontrarás en www.jiayu.es.</string>
 
     <!--Activity Titulos-->
     <string name="title_activity_browser">Descargas Jiayu.es</string>

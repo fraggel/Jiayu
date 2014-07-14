@@ -31,7 +31,7 @@
             android:text="@string/menuflashRomBtn"
             android:id="@+id/scText"
             android:layout_gravity="left|center_vertical"
-            style="@style/LabelTextBlack"/>
+            style="@style/LabelTextBlackLeft"/>
         <ImageView  android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/sup"/>
@@ -54,17 +54,15 @@
                 android:layout_gravity="left|center_vertical"
                 android:background="@drawable/btn_ter2"
                 style="@style/LabelTextBlack"/>
-
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/downloadedRomTxt"
-                android:id="@+id/romTxt"
-                android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlack"
-                android:background="@drawable/d00"/>
-
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/downloadedRomTxt"
+            android:id="@+id/romTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTitle"
+            android:background="@drawable/d00i"/>
         <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,16 +79,15 @@
                 android:layout_gravity="left|center_vertical"
                 android:background="@drawable/btn_ter4"
                 style="@style/LabelTextBlack"/>
-
         <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="@string/downloadedFlashZipTxt"
-                android:id="@+id/zipTxt"
-                android:layout_gravity="left|center_vertical"
-                style="@style/LabelTextBlack"
-            android:background="@drawable/d00"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/downloadedRomTxt"
+            android:id="@+id/zipTxt"
+            android:layout_gravity="left|center_vertical"
+            style="@style/LabelTitle"
+            android:background="@drawable/d00i"/>
 
         <Spinner
                 android:layout_width="match_parent"
