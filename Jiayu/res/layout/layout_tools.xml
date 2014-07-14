@@ -9,20 +9,20 @@
         android:layout_height="wrap_content"
         android:baselineAligned="false"
         android:background="@drawable/fondo03">
-        <!--<ImageButton
-            android:id="@+id/imageButton"
+        <ImageButton
+            android:id="@+id/imageButton1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            android:src="@drawable/jiayulogoic"
+            android:layout_height="match_parent"
             android:contentDescription="Jiayu.es"
+            android:scaleType="center"
             android:clickable="false"
-            android:focusable="false"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
             android:adjustViewBounds="false"
+            android:src="@drawable/jiayulogoic"
             android:background="@android:color/transparent"
-            android:layout_weight="0.11"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"/>-->
+            android:layout_marginTop="@dimen/activity_horizontal_marginTop"
+/>
 
         <TextView
             android:layout_width="wrap_content"

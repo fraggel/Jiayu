@@ -83,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/downloadedRomTxt"
+            android:text="@string/downloadedFlashZipTxt"
             android:id="@+id/zipTxt"
             android:layout_gravity="left|center_vertical"
             style="@style/LabelTitle"

@@ -184,8 +184,9 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
     }
     private void modificarMargins() {
         TextView scText=(TextView) findViewById(R.id.scText);
-        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
+        /*TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
         if(dpi==240) {
             llp.setMargins(40, 175, 0, 94);
         }else if(dpi==320) {
@@ -193,7 +194,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         }else if(dpi==480) {
             llp.setMargins(80, 350, 0, 190);
         }
-        scText.setLayoutParams((llp));
+        scText.setLayoutParams((llp));*/
 
 
         Button b1=(Button) findViewById(R.id.ingenieroBtn);

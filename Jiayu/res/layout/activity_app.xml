@@ -1,65 +1,85 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:scrollbars="horizontal"
-            >
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:scrollbars="horizontal"
+    >
+    <!--<LinearLayout
+           android:id="@+id/LinearLayout1"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           tools:context=".Inicio2"
+       android:layout_alignParentLeft="true"
+       android:layout_marginLeft="0dp"
+       android:layout_alignParentTop="true"
+       android:layout_marginTop="0dp">
 
-     <!--<LinearLayout
-            android:id="@+id/LinearLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:context=".Inicio2"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp">
 
+    </LinearLayout>-->
 
-     </LinearLayout>-->
     <TableLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:baselineAligned="false"
-        android:background="@drawable/fondo01"
+
         >
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
         <ImageButton
             android:id="@+id/imageButton1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
+            android:layout_height="match_parent"
             android:contentDescription="Jiayu.es"
             android:clickable="false"
+            android:scaleType="center"
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:adjustViewBounds="false"
+            android:src="@drawable/jiayulogoic"
             android:background="@android:color/transparent"
-            android:layout_weight="0.11"
-            android:paddingBottom="@dimen/activity_horizontal_margin"
-            android:paddingTop="@dimen/activity_horizontal_margin"/>
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/activity_vertical_margin"
-            android:paddingRight="@dimen/activity_horizontal_margin"
-            android:text="@string/bienvenida"
-            style="@style/LabelTextWhite"
-            android:background="@drawable/aviso"
-            android:visibility="visible"
-            android:password="false"
-            />
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            style="@style/LabelTextBlack1480"
-            android:background="@android:color/white"
-            android:autoText="false"/>
+            android:layout_weight="3"
+            android:layout_span="3"
+            android:layout_marginTop="@dimen/activity_horizontal_marginTop"
+/>
+            <!--            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_marginTop="@dimen/activity_horizontal_marginTop"
+            android:layout_marginBottom="@dimen/activity_horizontal_margin"-->
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:paddingLeft="@dimen/activity_vertical_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:text="@string/bienvenida"
+                style="@style/LabelTextWhite"
+                android:layout_weight="3"
+                android:layout_span="3"
+                android:background="@drawable/aviso"
+                android:visibility="visible"
+                android:password="false"
+                />
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                style="@style/LabelTextBlack1480"
+                android:layout_weight="3"
+                android:layout_span="3"
+                android:background="@android:color/white"
+                android:autoText="false"/>
+        </TableRow>
 
         <!--<Button
             style="@style/ButtonTextGreen"
@@ -78,58 +98,72 @@
                 android:background="@drawable/btn_white_border"
                 android:autoText="false"
                 style="@style/LabelTextRed"/>-->
-
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/descargasBtn"
-            style="@style/LabelTextBlack1480"
-            android:background="@drawable/btn_donwload"/>
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/herramientasBtn"
-            style="@style/LabelTextBlack1480"
-            android:background="@drawable/btn_driversherramientas"/>
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/herramientasROMBtn"
-            style="@style/LabelTextBlack1480"
-            android:background="@drawable/btn_herramroms"/>
-
         <TableRow android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:weightSum="2">
+            android:layout_height="match_parent"
+            android:weightSum="3">
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:text="@string/descargasBtn"
+                style="@style/LabelTextBlack1480"
+                android:layout_weight="3"
+                android:layout_span="3"
+                android:background="@drawable/btn_donwload"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+            <Button
+                android:id="@+id/button9"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:text="@string/herramientasBtn"
+                style="@style/LabelTextBlack1480"
+                android:layout_weight="3"
+                android:layout_span="3"
+                android:background="@drawable/btn_driversherramientas"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+            <Button
+                android:id="@+id/button10"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:text="@string/herramientasROMBtn"
+                style="@style/LabelTextBlack1480"
+                android:layout_weight="3"
+                android:layout_span="3"
+                android:background="@drawable/btn_herramroms"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
 
-        <Button
-            android:id="@+id/button11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tiendaBtn"
-            android:background="@drawable/btn_tienda"
-            android:layout_weight="1"
-            style="@style/LabelTextBlackRight"
-            />
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/tiendaBtn"
+                android:background="@drawable/btn_tienda"
+                android:layout_weight="1"
+                style="@style/LabelTextBlackRight"
+                />
 
-        <Button
-            android:id="@+id/button4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/foroBtn"
-            android:background="@drawable/btn_foro"
-            style="@style/LabelTextBlackRight"
-            android:layout_weight="1"
-            />
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/foroBtn"
+                android:background="@drawable/btn_foro"
+                style="@style/LabelTextBlackRight"
+                android:layout_weight="1"
+                />
             <Button
                 android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:text="@string/videosBtn"
                 android:background="@drawable/btn_videos"
                 style="@style/LabelTextBlackRight"
@@ -138,61 +172,72 @@
 
         </TableRow>
 
-    <!-- <TableLayout
-     android:layout_width="fill_parent"
-     android:layout_height="wrap_content"
-     android:baselineAligned="false"
-     android:background="#ffffff">-->
-     <TableRow android:layout_width="match_parent"
+        <!-- <TableLayout
+         android:layout_width="fill_parent"
          android:layout_height="wrap_content"
-         android:weightSum="2">
+         android:baselineAligned="false"
+         android:background="#ffffff">-->
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="1">
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/aboutBtn"
-        android:background="@drawable/btn_sobre"
-        style="@style/LabelTextBlack1480"
-        android:layout_weight="1"/>
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/aboutBtn"
+                android:background="@drawable/btn_sobre"
+                style="@style/LabelTextBlack1480"
+                android:layout_weight=".5"
+                />
 
-    <!--<Button
-        android:id="@+id/btnInfo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="13dp"
-        android:background="@drawable/btn_green"
-        android:visibility="gone"/>-->
-    <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/msgConfiguracion"
-        style="@style/LabelTextBlack1480"
-        android:background="@drawable/btn_configuracion"
-        android:layout_weight="1"
-        />
+            <!--<Button
+                android:id="@+id/btnInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="13dp"
+                android:background="@drawable/btn_green"
+                android:visibility="gone"/>-->
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:text="@string/msgConfiguracion"
+                style="@style/LabelTextBlack1480"
+                android:background="@drawable/btn_configuracion"
+                android:layout_weight=".5"
+                />
 
-    </TableRow>
-
-    <WebView
-        android:id="@+id/webView"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="0dp"
-        android:padding="0dp"
-        android:paddingLeft="0dp"
-        android:paddingRight="0dp"
-        android:paddingTop="0dp"/>
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        style="@style/LabelTextBlackMain"/>
-
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+            <WebView
+                android:id="@+id/webView"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingRight="0dp"
+                android:paddingTop="0dp"
+                android:layout_span="3"
+                android:layout_weight="3"/>
+        </TableRow>
+        <TableRow android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="3">
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                style="@style/LabelTextBlackMain"
+                android:layout_span="3"
+                android:layout_weight="3"/>
+        </TableRow>
     </TableLayout>
 </ScrollView>

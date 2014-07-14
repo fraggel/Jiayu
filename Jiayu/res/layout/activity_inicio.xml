@@ -7,9 +7,20 @@
                 android:paddingLeft="@dimen/activity_horizontal_margin"
                 android:paddingRight="@dimen/activity_horizontal_margin"
                 android:paddingTop="@dimen/activity_vertical_margin"
-                tools:context=".Inicio"
-                android:background="@drawable/fondo01">
-
+                tools:context=".Inicio">
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Jiayu.es"
+        android:scaleType="center"
+        android:clickable="false"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:adjustViewBounds="false"
+        android:src="@drawable/jiayulogoic"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="@dimen/activity_horizontal_marginTop"/>
     <ProgressBar
             android:id="@+id/progressBar1"
             style="?android:attr/progressBarStyleLarge"

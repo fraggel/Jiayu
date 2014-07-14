@@ -41,6 +41,7 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -777,16 +778,10 @@ public class App extends Activity implements AsyncResponse{
         super.onDestroy();
     }
     private void modificarMargins() {
-        TextView scText=(TextView) findViewById(R.id.textView3);
-        TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int dpi=getResources().getDisplayMetrics().densityDpi;
-                /*if(dpi==240) {
-                    llp.setMargins(0, 180, 0, 2);
-                }else if(dpi==320) {
-                    llp.setMargins(0, 250, 0, 2);
-                }else if(dpi==480) {
-                    llp.setMargins(0, 350, 0, 2);
-                }*/
+       /* TextView scText=(TextView) findViewById(R.id.textView3);
+        TableRow.LayoutParams llp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        int dpi=getResources().getDisplayMetrics().densityDpi;
         if(dpi==240) {
             llp.setMargins(0, 175, 0, 2);
         }else if(dpi==320) {
@@ -795,7 +790,7 @@ public class App extends Activity implements AsyncResponse{
             llp.setMargins(0, 350, 0, 2);
         }
 
-        scText.setLayoutParams((llp));
+        scText.setLayoutParams((llp));*/
         TextView t1=(TextView) findViewById(R.id.textView1);
         Button b1=(Button) findViewById(R.id.button1);
         Button b2=(Button) findViewById(R.id.button9);
@@ -812,9 +807,9 @@ public class App extends Activity implements AsyncResponse{
                 b1.setPadding(240, 0, 0, 0);
                 b2.setPadding(240, 0, 0, 0);
                 b3.setPadding(240, 0, 0, 0);
-                b4.setPadding(180, 0, 0, 0);
+                b4.setPadding(160, 0, 0, 0);
                 b5.setPadding(150, 0, 0, 0);
-                b6.setPadding(90, 0, 0, 0);
+                b6.setPadding(130, 0, 0, 0);
                 b7.setPadding(160, 0, 0, 0);
                 b8.setPadding(130, 0, 0, 0);
             }else{
@@ -823,8 +818,8 @@ public class App extends Activity implements AsyncResponse{
                 b2.setPadding(120, 0, 0, 0);
                 b3.setPadding(120, 0, 0, 0);
                 b4.setPadding(90, 0, 0, 0);
-                b5.setPadding(80, 0, 0, 0);
-                b6.setPadding(90, 0, 0, 0);
+                b5.setPadding(90, 0, 0, 0);
+                b6.setPadding(80, 0, 0, 0);
                 b7.setPadding(100, 0, 0, 0);
                 b8.setPadding(80, 0, 0, 0);
             }
@@ -834,9 +829,9 @@ public class App extends Activity implements AsyncResponse{
                 b1.setPadding(270, 0, 0, 0);
                 b2.setPadding(270, 0, 0, 0);
                 b3.setPadding(270, 0, 0, 0);
-                b4.setPadding(300, 0, 0, 0);
-                b5.setPadding(250, 0, 0, 0);
-                b6.setPadding(115, 0, 0, 0);
+                b4.setPadding(250, 0, 0, 0);
+                b5.setPadding(220, 0, 0, 0);
+                b6.setPadding(200, 0, 0, 0);
                 b7.setPadding(250, 0, 0, 0);
                 b8.setPadding(205, 0, 0, 0);
             }else{
@@ -856,9 +851,9 @@ public class App extends Activity implements AsyncResponse{
                 b1.setPadding(550, 0, 0, 0);
                 b2.setPadding(550, 0, 0, 0);
                 b3.setPadding(550, 0, 0, 0);
-                b4.setPadding(455, 0, 0, 0);
-                b5.setPadding(360, 0, 0, 0);
-                b6.setPadding(170, 0, 0, 0);
+                b4.setPadding(390, 0, 0, 0);
+                b5.setPadding(350, 0, 0, 0);
+                b6.setPadding(300, 0, 0, 0);
                 b7.setPadding(390, 0, 0, 0);
                 b8.setPadding(290, 0, 0, 0);
             }else{
