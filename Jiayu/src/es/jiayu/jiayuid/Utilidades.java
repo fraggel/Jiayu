@@ -362,4 +362,19 @@ public class Utilidades {
         }
 
     }*/
+    public static boolean compExtendedSDcard(String modelo){
+     boolean extendedMemory=false;
+        if("G4A".equals(modelo)||
+                "G5A".equals(modelo)||
+                "S1".equals(modelo)||
+                "S2A".equals(modelo)||
+                "G4S".equals(modelo)||
+                "G5S".equals(modelo)||
+                "G6A".equals(modelo)){
+            extendedMemory=true;
+        }else{
+            extendedMemory=false;
+        }
+        return extendedMemory;
+    }
 }

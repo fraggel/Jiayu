@@ -519,7 +519,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
         bos.write(("rm /cache/recovery/command\n")
                 .getBytes());
         String fileCWM = "";
-        if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo) || "G6A".equals(modelo)){
+        if(Utilidades.compExtendedSDcard(modelo)){
             fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
             bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
             bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -575,7 +575,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                         bos.write(("rm /cache/recovery/extendedcommand\n")
                                 .getBytes());
                         String fileCWM="";
-                        if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo)|| "G6A".equals(modelo)){
+                        if(Utilidades.compExtendedSDcard(modelo)){
                             fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
                             bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
                             bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -604,7 +604,7 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     bos.write(("rm /cache/recovery/extendedcommand\n")
                             .getBytes());
                     String fileCWM="";
-                    if("G4A".equals(modelo) || "S1".equals(modelo)||"G5A".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo) || "G6A".equals(modelo)){
+                    if(Utilidades.compExtendedSDcard(modelo)){
                         fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
                         bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
                         bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());

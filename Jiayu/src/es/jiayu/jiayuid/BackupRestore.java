@@ -110,12 +110,6 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                         chkCWM.setTextColor(Color.BLUE);
                         chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" CARLIV RECOVERY");
                         //chkCWM.setVisibility(View.INVISIBLE);
-                    }else if("crl".equals(recoveryDetectado)){
-                        chkCWM.setChecked(true);
-                        chkCWM.setEnabled(false);
-                        chkCWM.setTextColor(Color.BLUE);
-                        chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" CARLIV RECOVERY");
-                        //chkCWM.setVisibility(View.INVISIBLE);
                     }else if("ori".equals(recoveryDetectado)){
                         chkCWM.setChecked(false);
                         chkCWM.setEnabled(false);
@@ -391,7 +385,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
     private String prepPartitionsJIAYU(
             String cad) {
         try {
-            if("G4A".equals(modelo) || "G5A".equals(modelo) || "S1".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo)|| "G6A".equals(modelo)){
+            if(Utilidades.compExtendedSDcard(modelo)){
                 cad=(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n"));
                 cad=cad+(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n"));
             }else{
@@ -409,10 +403,10 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
         String rutCWM="";
         String fabricante=Build.BRAND;
         String procesador=Build.HARDWARE;
-        if("G4A".equals(modelo) || "G5A".equals(modelo) ||"S1".equals(modelo)|| "S2A".equals(modelo)|| "G4S".equals(modelo)|| "G6A".equals(modelo)){
-            fichero=fichero.replaceFirst("/storage/sdcard0/", "/emmc/");
+        if(Utilidades.compExtendedSDcard(modelo)){
+            fichero=fichero.replaceFirst("/storage/sdcard0/", "/emmc/").replaceFirst("/mnt/sdcard","emmc");
         }else{
-            fichero=fichero.replaceFirst("/storage/sdcard0/", "/sdcard/");
+            fichero=fichero.replaceFirst("/storage/sdcard0/", "/sdcard/").replaceFirst("/mnt/sdcard","sdcard");
         }
         rutCWM=fichero;
         return rutCWM;

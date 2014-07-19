@@ -46,6 +46,8 @@
             android:layout_gravity="left|center_vertical"
             android:onClick="volver"
             android:background="@drawable/btn_secherramientasdev"
+            android:drawablePadding="20dp"
+            android:drawableLeft="@drawable/ic_menu_backup"
             style="@style/LabelTextBlack"/>
     </TableLayout>
 </ScrollView>

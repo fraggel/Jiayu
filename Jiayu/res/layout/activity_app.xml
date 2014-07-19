@@ -109,6 +109,7 @@
                 style="@style/LabelTextBlack1480"
                 android:layout_weight="3"
                 android:layout_span="3"
+                android:drawableLeft="@drawable/ic_menu_database"
                 android:background="@drawable/btn_donwload"/>
 
 
@@ -124,6 +125,7 @@
                 style="@style/LabelTextBlack1480"
                 android:layout_weight="3"
                 android:layout_span="3"
+                android:drawableLeft="@drawable/ic_menu_encrypt"
                 android:background="@drawable/btn_driversherramientas"/>
         </TableRow>
         <TableRow android:layout_width="match_parent"
@@ -137,6 +139,7 @@
                 style="@style/LabelTextBlack1480"
                 android:layout_weight="3"
                 android:layout_span="3"
+                android:drawableLeft="@drawable/ic_menu_smalltiles"
                 android:background="@drawable/btn_herramroms"/>
         </TableRow>
         <TableRow android:layout_width="match_parent"
@@ -150,6 +153,7 @@
                 android:text="@string/tiendaBtn"
                 android:background="@drawable/btn_tienda"
                 android:layout_weight="1"
+                android:drawableLeft="@drawable/ic_menu_shopping"
                 style="@style/LabelTextBlackRight"
                 />
 
@@ -160,6 +164,7 @@
                 android:text="@string/foroBtn"
                 android:background="@drawable/btn_foro"
                 style="@style/LabelTextBlackRight"
+                android:drawableLeft="@drawable/ic_menu_feed"
                 android:layout_weight="1"
                 />
             <Button
@@ -169,6 +174,7 @@
                 android:text="@string/videosBtn"
                 android:background="@drawable/btn_videos"
                 style="@style/LabelTextBlackRight"
+                android:drawableLeft="@drawable/ic_menu_movie"
                 android:layout_weight="1"
                 />
 
@@ -190,6 +196,8 @@
                 android:text="@string/aboutBtn"
                 android:background="@drawable/btn_sobre"
                 style="@style/LabelTextBlack1480"
+                android:drawablePadding="20dp"
+                android:drawableLeft="@drawable/ic_menu_location"
                 android:layout_weight=".5"
                 />
 
@@ -208,6 +216,8 @@
                 android:text="@string/msgConfiguracion"
                 style="@style/LabelTextBlack1480"
                 android:background="@drawable/btn_configuracion"
+                android:drawablePadding="20dp"
+                android:drawableLeft="@drawable/ic_menu_gear"
                 android:layout_weight=".5"
                 />
 

@@ -826,24 +826,50 @@ public class App extends Activity implements AsyncResponse{
         }else if(dpi>=320 && dpi<480) {
             if(orientation==2) {
                 t1.setPadding(500, 0, 0, 0);
-                b1.setPadding(270, 0, 0, 0);
-                b2.setPadding(270, 0, 0, 0);
-                b3.setPadding(270, 0, 0, 0);
-                b4.setPadding(250, 0, 0, 0);
+                b1.setPadding(170, 0, 0, 0);
+                b1.setCompoundDrawablePadding(200);
+                b2.setPadding(170, 0, 0, 0);
+                b2.setCompoundDrawablePadding(200);
+                b3.setPadding(170, 0, 0, 0);
+                b3.setCompoundDrawablePadding(200);
+                b4.setPadding(30, 0, 0, 0);
+                b4.setCompoundDrawablePadding(15);
+                b5.setPadding(30, 0, 0, 0);
+                b5.setCompoundDrawablePadding(15);
+                b6.setPadding(30, 0, 0, 0);
+                b6.setCompoundDrawablePadding(15);
+                b7.setPadding(30, 0, 0, 0);
+                b7.setCompoundDrawablePadding(15);
+                b8.setPadding(30, 0, 0, 0);
+                b8.setCompoundDrawablePadding(15);
+                /*b4.setPadding(250, 0, 0, 0);
                 b5.setPadding(220, 0, 0, 0);
                 b6.setPadding(200, 0, 0, 0);
                 b7.setPadding(250, 0, 0, 0);
-                b8.setPadding(205, 0, 0, 0);
+                b8.setPadding(205, 0, 0, 0);*/
             }else{
                 t1.setPadding(200, 0, 0, 0);
-                b1.setPadding(200, 0, 0, 0);
-                b2.setPadding(200, 0, 0, 0);
-                b3.setPadding(200, 0, 0, 0);
-                b4.setPadding(135, 0, 0, 0);
-                b5.setPadding(120, 0, 0, 0);
-                b6.setPadding(115, 0, 0, 0);
-                b7.setPadding(140, 0, 0, 0);
-                b8.setPadding(125, 0, 0, 0);
+                b1.setPadding(100, 0, 0, 0);
+                b1.setCompoundDrawablePadding(100);
+                b2.setPadding(100, 0, 0, 0);
+                b2.setCompoundDrawablePadding(100);
+                b3.setPadding(100, 0, 0, 0);
+                b3.setCompoundDrawablePadding(100);
+                b4.setPadding(30, 0, 0, 0);
+                b4.setCompoundDrawablePadding(15);
+                b5.setPadding(30, 0, 0, 0);
+                b5.setCompoundDrawablePadding(15);
+                b6.setPadding(30, 0, 0, 0);
+                b6.setCompoundDrawablePadding(15);
+                b7.setPadding(30, 0, 0, 0);
+                b7.setCompoundDrawablePadding(15);
+                b8.setPadding(30, 0, 0, 0);
+                b8.setCompoundDrawablePadding(15);
+                //b5.setPadding(120, 0, 0, 0);
+                //b6.setPadding(115, 0, 0, 0);
+                //b7.setPadding(140, 0, 0, 0);
+                //b8.setPadding(125, 0, 0, 0);
+
             }
         }else if(dpi>=480 && dpi<1000) {
             if(orientation==2) {
