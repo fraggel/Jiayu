@@ -110,7 +110,7 @@
     <string name="fileExplorerBtn">"Open File Explorer"</string>
     <string name="visitarWebBtn">"Visit Web"</string>
     <string name="enviarEmailBtn">"Send email"</string>
-    <string name="foroBtn">"        Forum"</string>
+    <string name="foroBtn">"Forum"</string>
     <string name="aboutBtn">"About us ..."</string>
     <string name="cwmChk">"I have installed the CWM Recovery"</string>
     <string name="notificacionChkUpd">"Show Updates implementation"</string>

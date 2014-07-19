@@ -255,18 +255,23 @@ public class BrowserActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        if(descargas.getUrl().equals("http://foro.jiayu.es/")
-                || descargas.getUrl().equals("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")
-                || descargas.getUrl().equals("http://m.youtube.com/#/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")
-                || descargas.getUrl().equals("http://www.jiayu.es/soporte/appabout.php")
-                || descargas.getUrl().equals("http://www.jiayu.es/soporte/appboots.php")
-                || descargas.getUrl().equals("http://www.jiayu.es/soporte/apptools.php")
-                || (descargas.getUrl().lastIndexOf("http://www.jiayu.es/soporte/appsoft.php?jiayu=")!=-1)
-                || (descargas.getUrl().equals("http://www.jiayu.es/3-jiayu-moviles"))){
+        try {
+            if(descargas.getUrl().equals("http://foro.jiayu.es/")
+                    || descargas.getUrl().equals("http://www.youtube.com/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")
+                    || descargas.getUrl().equals("http://m.youtube.com/#/channel/UCL1i90sCYqJhehj45dM2Qhg/videos")
+                    || descargas.getUrl().equals("http://www.jiayu.es/soporte/appabout.php")
+                    || descargas.getUrl().equals("http://www.jiayu.es/soporte/appboots.php")
+                    || descargas.getUrl().equals("http://www.jiayu.es/soporte/apptools.php")
+                    || (descargas.getUrl().lastIndexOf("http://www.jiayu.es/soporte/appsoft.php?jiayu=")!=-1)
+                    || (descargas.getUrl().equals("http://www.jiayu.es/3-jiayu-moviles"))){
+                super.onBackPressed();
+            }else{
+                descargas.goBack();
+            }
+        }catch(Exception e){
             super.onBackPressed();
-        }else{
-            descargas.goBack();
         }
+
     }
     public void volver(View view) {
         super.onBackPressed();

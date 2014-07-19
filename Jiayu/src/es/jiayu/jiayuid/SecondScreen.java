@@ -1,34 +1,21 @@
 package es.jiayu.jiayuid;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ResolveInfo;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Locale;
-
-import static es.jiayu.jiayuid.Utilidades.controlRoot;
-import static es.jiayu.jiayuid.Utilidades.controlRootConExec;
 
 /**
  * Created by Fraggel on 26/06/2014.
@@ -67,7 +54,7 @@ public class SecondScreen extends Activity implements View.OnClickListener {
     }
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_romtools);
+        setContentView(R.layout.activity_secondscreen);
         Intent intent = getIntent();
         modelo = intent.getExtras().getString("modelo");
         ajustes = getSharedPreferences("JiayuesAjustes", Context.MODE_PRIVATE);
@@ -162,44 +149,68 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         if(dpi==240) {
             if(orientation==2) {
                 scText.setPadding(15, 0, 0, 0);
-                b1.setPadding(250, 0, 0, 0);
-                b2.setPadding(250, 0, 0, 0);
-                b3.setPadding(250, 0, 0, 0);
-                b4.setPadding(250, 0, 0, 0);
+                b1.setPadding(175, 0, 0, 0);
+                b1.setCompoundDrawablePadding(100);
+                b2.setPadding(175, 0, 0, 0);
+                b2.setCompoundDrawablePadding(100);
+                b3.setPadding(175, 0, 0, 0);
+                b3.setCompoundDrawablePadding(100);
+                b4.setPadding(175, 0, 0, 0);
+                b4.setCompoundDrawablePadding(100);
             }else{
                 scText.setPadding(10, 0, 0, 0);
-                b1.setPadding(140, 0, 0, 0);
-                b2.setPadding(140, 0, 0, 0);
-                b3.setPadding(140, 0, 0, 0);
-                b4.setPadding(140, 0, 0, 0);
+                b1.setPadding(100, 0, 0, 0);
+                b1.setCompoundDrawablePadding(60);
+                b2.setPadding(100, 0, 0, 0);
+                b2.setCompoundDrawablePadding(60);
+                b3.setPadding(100, 0, 0, 0);
+                b3.setCompoundDrawablePadding(60);
+                b4.setPadding(100, 0, 0, 0);
+                b4.setCompoundDrawablePadding(60);
             }
         }else if(dpi==320) {
             if(orientation==2) {
                 scText.setPadding(40, 0, 0, 0);
-                b1.setPadding(400, 0, 0, 0);
-                b2.setPadding(400, 0, 0, 0);
-                b3.setPadding(400, 0, 0, 0);
-                b4.setPadding(400, 0, 0, 0);
+                b1.setPadding(250, 0, 0, 0);
+                b1.setCompoundDrawablePadding(200);
+                b2.setPadding(250, 0, 0, 0);
+                b2.setCompoundDrawablePadding(200);
+                b3.setPadding(250, 0, 0, 0);
+                b3.setCompoundDrawablePadding(200);
+                b4.setPadding(250, 0, 0, 0);
+                b4.setCompoundDrawablePadding(200);
             }else{
                 scText.setPadding(10, 0, 0, 0);
-                b1.setPadding(250, 0, 0, 0);
-                b2.setPadding(250, 0, 0, 0);
-                b3.setPadding(250, 0, 0, 0);
-                b4.setPadding(250, 0, 0, 0);
+                b1.setPadding(150, 0, 0, 0);
+                b1.setCompoundDrawablePadding(100);
+                b2.setPadding(150, 0, 0, 0);
+                b2.setCompoundDrawablePadding(100);
+                b3.setPadding(150, 0, 0, 0);
+                b3.setCompoundDrawablePadding(100);
+                b4.setPadding(150, 0, 0, 0);
+                b4.setCompoundDrawablePadding(100);
             }
         }else if(dpi==480) {
             if(orientation==2) {
                 scText.setPadding(100, 0, 0, 0);
-                b1.setPadding(570, 0, 0, 0);
-                b2.setPadding(570, 0, 0, 0);
-                b3.setPadding(570, 0, 0, 0);
-                b4.setPadding(570, 0, 0, 0);
+                b1.setPadding(400, 0, 0, 0);
+                b1.setCompoundDrawablePadding(250);
+                b2.setPadding(400, 0, 0, 0);
+                b2.setCompoundDrawablePadding(250);
+                b3.setPadding(400, 0, 0, 0);
+                b3.setCompoundDrawablePadding(250);
+                b4.setPadding(400, 0, 0, 0);
+                b4.setCompoundDrawablePadding(250);
             }else{
                 scText.setPadding(20, 0, 0, 0);
-                b1.setPadding(350, 0, 0, 0);
-                b2.setPadding(350, 0, 0, 0);
-                b3.setPadding(350, 0, 0, 0);
-                b4.setPadding(350, 0, 0, 0);
+                b1.setPadding(200, 0, 0, 0);
+                b1.setCompoundDrawablePadding(120);
+                b2.setPadding(200, 0, 0, 0);
+                b2.setCompoundDrawablePadding(120);
+                b3.setPadding(200, 0, 0, 0);
+                b3.setCompoundDrawablePadding(120);
+                b4.setPadding(200, 0, 0, 0);
+                b4.setCompoundDrawablePadding(120);
             }
         }
 

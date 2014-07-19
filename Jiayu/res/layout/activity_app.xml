@@ -217,7 +217,7 @@
                 style="@style/LabelTextBlack1480"
                 android:background="@drawable/btn_configuracion"
                 android:drawablePadding="20dp"
-                android:drawableLeft="@drawable/ic_menu_gear"
+                android:drawableLeft="@drawable/ic_menu_settings"
                 android:layout_weight=".5"
                 />
 
