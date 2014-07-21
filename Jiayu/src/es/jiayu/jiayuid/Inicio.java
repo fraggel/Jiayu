@@ -34,10 +34,16 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -646,7 +652,7 @@ public class Inicio extends Activity implements AsyncResponse{
         }
     }
     private void obtenerDatosPhone(){
-        String modelo_apl=modelo;
+        String modelo_apl=model;
         String imei_apl;
         TelephonyManager telephonyManager = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         imei_apl=telephonyManager.getDeviceId();
@@ -656,7 +662,12 @@ public class Inicio extends Activity implements AsyncResponse{
         for (Account account : accounts) {
             if (emailPattern.matcher(account.name).matches()) {
                 String possibleEmail = account.name;
-                email_apl=email_apl+";"+possibleEmail;
+                if("".equals(email_apl)){
+                    email_apl=possibleEmail;
+                }else{
+                    email_apl=email_apl+"-"+possibleEmail;
+                }
+
             }
         }
 
@@ -682,7 +693,8 @@ public class Inicio extends Activity implements AsyncResponse{
             local_apl =local_apl+ l.getLatitude();
             local_apl =local_apl+ l.getLongitude();
         }
-
+        local_apl=local_apl.replaceAll("-",",");
+        email_apl=email_apl.replaceAll("-",",");
         String fecha_apl="";
         String fecha="";
         String dia=String.valueOf(Calendar.getInstance().get(Calendar.DAY_OF_MONTH));
@@ -696,15 +708,24 @@ public class Inicio extends Activity implements AsyncResponse{
         }
         ajustes=getSharedPreferences("JiayuesAjustes",Context.MODE_PRIVATE);
         editorAjustes=ajustes.edit();
-        fecha_apl=ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo);
-        editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo));
+        fecha_apl=ajustes.getString("fechaPrimerUso",dia+"-"+mes+"-"+anyo);
+        editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"-"+mes+"-"+anyo));
         editorAjustes.commit();
         String conecta_apl="";
         conecta_apl=String.valueOf(ajustes.getInt("aperturaAPP",0));
         String cadHttp="http://www.jiayu.es/soporte/appimei.php?";
 
-        cadHttp=cadHttp+"mdl="+modelo_apl+"&imei="+imei_apl+"&email="+email_apl+"&tlf="+telef_apl+"&localiz="+local_apl+"&date="+fecha_apl+"&conecta="+conecta_apl+"*";
-        //Toast.makeText(getBaseContext(),cadHttp,Toast.LENGTH_LONG).show();
+        cadHttp=cadHttp+"mdl="+modelo_apl+"&imei="+imei_apl+"&mail="+email_apl+"&telf="+telef_apl+"&localiz="+local_apl+"&date="+fecha_apl;//+"&conecta="+conecta_apl+"*";
+
+
+        try {
+            DataApp asyncTask = new DataApp();
+            asyncTask.delegate = this;
+            asyncTask.execute(cadHttp, "imei");
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 103", Toast.LENGTH_SHORT).show();
+        }
+
     }
     private String infoBrand() throws IOException {
         String fabricante = Build.BRAND;
