@@ -34,10 +34,16 @@ import android.view.View;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -703,8 +709,15 @@ public class Inicio extends Activity implements AsyncResponse{
         conecta_apl=String.valueOf(ajustes.getInt("aperturaAPP",0));
         String cadHttp="http://www.jiayu.es/soporte/appimei.php?";
 
-        cadHttp=cadHttp+"mdl="+modelo_apl+"&imei="+imei_apl+"&email="+email_apl+"&tlf="+telef_apl+"&localiz="+local_apl+"&date="+fecha_apl+"&conecta="+conecta_apl+"*";
-        //Toast.makeText(getBaseContext(),cadHttp,Toast.LENGTH_LONG).show();
+        cadHttp=cadHttp+"mdl="+modelo_apl+"&imei="+imei_apl+"&mail="+email_apl+"&telf="+telef_apl+"&localiz="+local_apl+"&date="+fecha_apl+"&conecta="+conecta_apl+"*";
+
+       try {
+           URL url=new URL(cadHttp);
+           URLConnection urlConnection = url.openConnection();
+           Toast.makeText(getApplicationContext(),"Intertado",Toast.LENGTH_SHORT).show();
+       }catch(Exception e){
+       }
+
     }
     private String infoBrand() throws IOException {
         String fabricante = Build.BRAND;
