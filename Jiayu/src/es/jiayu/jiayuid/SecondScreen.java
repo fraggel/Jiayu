@@ -133,11 +133,12 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         TextView scText=(TextView) findViewById(R.id.scText);
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        if(dpi==240) {
+        if(dpi>=160 && dpi<240){
+        }else if(dpi>=240 && dpi<320) {
             llp.setMargins(40, 0, 0, 84);
-        }else if(dpi==320) {
+        }else if(dpi>=320 && dpi<480) {
             llp.setMargins(50, 0, 0, 130);
-        }else if(dpi==480) {
+        }else if(dpi>=480 && dpi<680) {
             llp.setMargins(80, 0, 0, 190);
         }
         scText.setLayoutParams((llp));
@@ -146,7 +147,8 @@ public class SecondScreen extends Activity implements View.OnClickListener {
         Button b3=(Button) findViewById(R.id.herramientasROMTxt);
         Button b4=(Button) findViewById(R.id.apkTexto);
         int orientation = getResources().getConfiguration().orientation;
-        if(dpi==240) {
+        if(dpi>=160 && dpi<240){
+        }else if(dpi>=240 && dpi<320) {
             if(orientation==2) {
                 scText.setPadding(15, 0, 0, 0);
                 b1.setPadding(175, 0, 0, 0);
@@ -160,15 +162,15 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             }else{
                 scText.setPadding(10, 0, 0, 0);
                 b1.setPadding(100, 0, 0, 0);
-                b1.setCompoundDrawablePadding(60);
+                b1.setCompoundDrawablePadding(40);
                 b2.setPadding(100, 0, 0, 0);
-                b2.setCompoundDrawablePadding(60);
+                b2.setCompoundDrawablePadding(40);
                 b3.setPadding(100, 0, 0, 0);
-                b3.setCompoundDrawablePadding(60);
+                b3.setCompoundDrawablePadding(40);
                 b4.setPadding(100, 0, 0, 0);
-                b4.setCompoundDrawablePadding(60);
+                b4.setCompoundDrawablePadding(40);
             }
-        }else if(dpi==320) {
+        }else if(dpi>=320 && dpi<480) {
             if(orientation==2) {
                 scText.setPadding(40, 0, 0, 0);
                 b1.setPadding(250, 0, 0, 0);
@@ -182,15 +184,15 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             }else{
                 scText.setPadding(10, 0, 0, 0);
                 b1.setPadding(150, 0, 0, 0);
-                b1.setCompoundDrawablePadding(100);
+                b1.setCompoundDrawablePadding(80);
                 b2.setPadding(150, 0, 0, 0);
-                b2.setCompoundDrawablePadding(100);
+                b2.setCompoundDrawablePadding(80);
                 b3.setPadding(150, 0, 0, 0);
-                b3.setCompoundDrawablePadding(100);
+                b3.setCompoundDrawablePadding(80);
                 b4.setPadding(150, 0, 0, 0);
-                b4.setCompoundDrawablePadding(100);
+                b4.setCompoundDrawablePadding(80);
             }
-        }else if(dpi==480) {
+        }else if(dpi>=480 && dpi<680) {
             if(orientation==2) {
                 scText.setPadding(100, 0, 0, 0);
                 b1.setPadding(400, 0, 0, 0);

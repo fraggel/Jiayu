@@ -187,11 +187,12 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         int dpi=getResources().getDisplayMetrics().densityDpi;
         TableLayout.LayoutParams llp = new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-        if(dpi==240) {
+        if(dpi>=160 && dpi<240){
+        }else if(dpi>=240 && dpi<320) {
             llp.setMargins(40, 0, 0, 94);
-        }else if(dpi==320) {
+        }else if(dpi>=320 && dpi<480) {
             llp.setMargins(50, 0, 0, 130);
-        }else if(dpi==480) {
+        }else if(dpi>=480 && dpi<680) {
             llp.setMargins(80, 0, 0, 190);
         }
         scText.setLayoutParams((llp));
@@ -202,7 +203,8 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
         Button b3=(Button) findViewById(R.id.bootAnimationBtn);
         Button b4=(Button) findViewById(R.id.toolsAndroidBtn);
         int orientation = getResources().getConfiguration().orientation;
-        if(dpi==240) {
+        if(dpi>=160 && dpi<240){
+        }else if(dpi>=240 && dpi<320) {
             if(orientation==2) {
                 scText.setPadding(15, 0, 0, 0);
                 b1.setPadding(250, 0, 0, 0);
@@ -216,7 +218,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
                 b3.setPadding(140, 0, 0, 0);
                 b4.setPadding(140, 0, 0, 0);
             }
-        }else if(dpi==320) {
+        }else if(dpi>=320 && dpi<480) {
             if(orientation==2) {
                 scText.setPadding(40, 0, 0, 0);
                 b1.setPadding(350, 0, 0, 0);
@@ -230,7 +232,7 @@ public class SCHerramientasUsu extends Activity implements View.OnClickListener 
                 b3.setPadding(200, 0, 0, 0);
                 b4.setPadding(200, 0, 0, 0);
             }
-        }else if(dpi==480) {
+        }else if(dpi>=480 && dpi<680) {
             if(orientation==2) {
                 scText.setPadding(100, 0, 0, 0);
                 b1.setPadding(570, 0, 0, 0);

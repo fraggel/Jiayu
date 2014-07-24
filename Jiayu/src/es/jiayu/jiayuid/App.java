@@ -779,18 +779,7 @@ public class App extends Activity implements AsyncResponse{
     }
     private void modificarMargins() {
         int dpi=getResources().getDisplayMetrics().densityDpi;
-       /* TextView scText=(TextView) findViewById(R.id.textView3);
-        TableRow.LayoutParams llp = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int dpi=getResources().getDisplayMetrics().densityDpi;
-        if(dpi==240) {
-            llp.setMargins(0, 175, 0, 2);
-        }else if(dpi==320) {
-            llp.setMargins(0, 230, 0, 2);
-        }else if(dpi==480) {
-            llp.setMargins(0, 350, 0, 2);
-        }
 
-        scText.setLayoutParams((llp));*/
         TextView t1=(TextView) findViewById(R.id.textView1);
         Button b1=(Button) findViewById(R.id.button1);
         Button b2=(Button) findViewById(R.id.button9);
@@ -801,7 +790,8 @@ public class App extends Activity implements AsyncResponse{
         Button b7=(Button) findViewById(R.id.button2);
         Button b8=(Button) findViewById(R.id.button5);
         int orientation = getResources().getConfiguration().orientation;
-        if(dpi>=240 && dpi<320) {
+        if(dpi>=160 && dpi<240){
+        }else if(dpi>=240 && dpi<320) {
             if(orientation==2) {
                 t1.setPadding(300, 0, 0, 0);
                 b1.setPadding(150, 0, 0, 0);
@@ -822,12 +812,12 @@ public class App extends Activity implements AsyncResponse{
                 b8.setCompoundDrawablePadding(10);
             }else{
                 t1.setPadding(120, 0, 0, 0);
-                b1.setPadding(100, 0, 0, 0);
-                b1.setCompoundDrawablePadding(60);
-                b2.setPadding(100, 0, 0, 0);
-                b2.setCompoundDrawablePadding(60);
-                b3.setPadding(100, 0, 0, 0);
-                b3.setCompoundDrawablePadding(60);
+                b1.setPadding(90, 0, 0, 0);
+                b1.setCompoundDrawablePadding(50);
+                b2.setPadding(90, 0, 0, 0);
+                b2.setCompoundDrawablePadding(50);
+                b3.setPadding(90, 0, 0, 0);
+                b3.setCompoundDrawablePadding(50);
                 b4.setPadding(30, 0, 0, 0);
                 b4.setCompoundDrawablePadding(10);
                 b5.setPadding(20, 0, 0, 0);
@@ -866,11 +856,11 @@ public class App extends Activity implements AsyncResponse{
             }else{
                 t1.setPadding(200, 0, 0, 0);
                 b1.setPadding(100, 0, 0, 0);
-                b1.setCompoundDrawablePadding(100);
+                b1.setCompoundDrawablePadding(70);
                 b2.setPadding(100, 0, 0, 0);
-                b2.setCompoundDrawablePadding(100);
+                b2.setCompoundDrawablePadding(70);
                 b3.setPadding(100, 0, 0, 0);
-                b3.setCompoundDrawablePadding(100);
+                b3.setCompoundDrawablePadding(70);
                 b4.setPadding(40, 0, 0, 0);
                 b4.setCompoundDrawablePadding(15);
                 b5.setPadding(30, 0, 0, 0);
@@ -887,7 +877,7 @@ public class App extends Activity implements AsyncResponse{
                 //b8.setPadding(125, 0, 0, 0);
 
             }
-        }else if(dpi>=480 && dpi<1000) {
+        }else if(dpi>=480 && dpi<680) {
             if(orientation==2) {
                 t1.setPadding(550, 0, 0, 0);
                 b1.setPadding(350, 0, 0, 0);
