@@ -102,32 +102,6 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
         }
         backupBtn.setOnClickListener(this);
         imeiBtn.setOnClickListener(this);
-        if(isRoot){
-            if("mounted".equals(externalStorageState.toLowerCase())) {
-                if (ajustes.getBoolean("recoveryChk", false)) {
-                    detectRecovery = true;
-                    recoveryDetectado = comprobarRecovery(getApplicationContext(), getResources(), "RomTools");
-
-                } else {
-                    detectRecovery = false;
-                }
-                if (detectRecovery) {
-                    if ("cwm".equals(recoveryDetectado)) {
-                        backupBtn.setEnabled(true);
-                        backupBtn.setTextColor(Color.BLACK);
-                        //chkCWM.setVisibility(View.INVISIBLE);
-                    } else if ("crl".equals(recoveryDetectado)) {
-                        backupBtn.setEnabled(true);
-                        backupBtn.setTextColor(Color.BLACK);
-                        //chkCWM.setVisibility(View.INVISIBLE);
-                    } else if ("ori".equals(recoveryDetectado)) {
-                        backupBtn.setEnabled(false);
-                        backupBtn.setTextColor(Color.parseColor("#BDBDBD"));
-                        //chkCWM.setVisibility(View.INVISIBLE);
-                    }
-                }
-            }
-        }
         modificarMargins();
     }
 

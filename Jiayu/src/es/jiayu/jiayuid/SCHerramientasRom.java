@@ -96,52 +96,13 @@ public class SCHerramientasRom extends Activity implements View.OnClickListener 
         if (!isRoot) {
             recoveryBtn.setEnabled(false);
             recoveryBtn.setTextColor(Color.parseColor("#BDBDBD"));
-            //recoveryBtn.setVisibility(View.INVISIBLE);
             rebootRecoveryBtn.setEnabled(false);
             rebootRecoveryBtn.setTextColor(Color.parseColor("#BDBDBD"));
-            //rebootRecoveryBtn.setVisibility(View.INVISIBLE);
-
-            //imeiBtn.setVisibility(View.INVISIBLE);
-            //bootAnimationBtn.setVisibility(View.INVISIBLE);
-            //backupBtn.setVisibility(View.INVISIBLE);
-            //toolsAndroidBtn.setVisibility(View.INVISIBLE);
         }
-
-
-
         recoveryBtn.setOnClickListener(this);
         romBtn.setOnClickListener(this);
-
-
-
-
         rebootRecoveryBtn.setOnClickListener(this);
 
-
-        //bootAnimationBtn.setEnabled(false);
-        if(isRoot){
-            if("mounted".equals(externalStorageState.toLowerCase())) {
-                if (ajustes.getBoolean("recoveryChk", false)) {
-                    detectRecovery = true;
-                    recoveryDetectado = comprobarRecovery(getApplicationContext(), getResources(), "RomTools");
-
-                } else {
-                    detectRecovery = false;
-                }
-                if (detectRecovery) {
-                    if ("cwm".equals(recoveryDetectado)) {
-
-                        //chkCWM.setVisibility(View.INVISIBLE);
-                    } else  if ("crl".equals(recoveryDetectado)) {
-
-                        //chkCWM.setVisibility(View.INVISIBLE);
-                    } else if ("ori".equals(recoveryDetectado)) {
-
-                        //chkCWM.setVisibility(View.INVISIBLE);
-                    }
-                }
-            }
-        }
         modificarMargins();
     }
 

@@ -110,6 +110,12 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                         chkCWM.setTextColor(Color.BLUE);
                         chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" CARLIV RECOVERY");
                         //chkCWM.setVisibility(View.INVISIBLE);
+                    }else if("twrp".equals(recoveryDetectado)){
+                        chkCWM.setChecked(true);
+                        chkCWM.setEnabled(false);
+                        chkCWM.setTextColor(Color.BLUE);
+                        chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" TWRP RECOVERY");
+                        //chkCWM.setVisibility(View.INVISIBLE);
                     }else if("ori".equals(recoveryDetectado)){
                         chkCWM.setChecked(false);
                         chkCWM.setEnabled(false);

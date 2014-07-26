@@ -197,6 +197,7 @@ public class Utilidades {
     public static String comprobarRecovery(Context context,Resources res,String origen) {
         String cwm="cwm";
         String carl="crl";
+        String twrp="twrp";
         String ori="ori";
         String recovery="";
         try {
@@ -217,6 +218,7 @@ public class Utilidades {
             bos.close();
             p.waitFor();
             f=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/last_log");
+            f.delete();
             if(f.exists()){
                 FileInputStream fis=new FileInputStream(f);
                 byte bb[]=new byte[1024];
@@ -224,8 +226,10 @@ public class Utilidades {
                 String str=new String(bb);
                 if(str.toUpperCase().lastIndexOf("CWM")!=-1){
                     recovery=cwm;
-                }else if(str.toUpperCase().lastIndexOf("CARLIV")!=-1){
-                    recovery=carl;
+                }else if(str.toUpperCase().lastIndexOf("CARLIV")!=-1) {
+                    recovery = carl;
+                }else if(str.toUpperCase().lastIndexOf("TWRP")!=-1){
+                        recovery=twrp;
                 }else{
                     recovery=ori;
                 }

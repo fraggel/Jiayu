@@ -201,16 +201,24 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                     chkCWM.setTextColor(Color.BLUE);
                     chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" CWM RECOVERY");
                     //chkCWM.setVisibility(View.INVISIBLE);
+                }else if("crl".equals(recoveryDetectado)){
+                    chkCWM.setChecked(true);
+                    chkCWM.setEnabled(false);
+                    chkCWM.setTextColor(Color.BLUE);
+                    chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" CARLIV RECOVERY");
+                    //chkCWM.setVisibility(View.INVISIBLE);
+                }else if("twrp".equals(recoveryDetectado)){
+                    chkCWM.setChecked(true);
+                    chkCWM.setEnabled(false);
+                    chkCWM.setTextColor(Color.BLUE);
+                    chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" TWRP RECOVERY");
+                    //chkCWM.setVisibility(View.INVISIBLE);
                 }else if("ori".equals(recoveryDetectado)){
                     chkCWM.setChecked(false);
                     chkCWM.setEnabled(false);
-                    chkCWM.setTextColor(Color.BLUE);
+                    chkCWM.setTextColor(Color.RED);
                     chkCWM.setText(getResources().getString(R.string.msgRecoveryDetectado)+" ORIGINAL RECOVERY");
                     //chkCWM.setVisibility(View.INVISIBLE);
-                }else{
-                    chkCWM.setChecked(false);
-                    chkCWM.setEnabled(true);
-                    chkCWM.setVisibility(View.VISIBLE);
                 }
             }
         }
