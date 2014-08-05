@@ -218,7 +218,6 @@ public class Utilidades {
             bos.close();
             p.waitFor();
             f=new File(Environment.getExternalStorageDirectory()+"/JIAYUES/last_log");
-            f.delete();
             if(f.exists()){
                 FileInputStream fis=new FileInputStream(f);
                 byte bb[]=new byte[1024];

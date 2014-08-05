@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -73,6 +74,18 @@ public class SecondScreen extends Activity implements View.OnClickListener {
             herramBack.setEnabled(false);
             herramBack.setTextColor(Color.parseColor("#BDBDBD"));
         }else{
+            herramBack.setEnabled(true);
+            herramBack.setTextColor(Color.BLACK);
+        }
+        String externalStorageState = Environment.getExternalStorageState();
+        if(!"mounted".equals(externalStorageState.toLowerCase())){
+            apks.setEnabled(false);
+            apks.setTextColor(Color.parseColor("#BDBDBD"));
+            herramBack.setEnabled(false);
+            herramBack.setTextColor(Color.parseColor("#BDBDBD"));
+        }else{
+            apks.setEnabled(true);
+            apks.setTextColor(Color.BLACK);
             herramBack.setEnabled(true);
             herramBack.setTextColor(Color.BLACK);
         }

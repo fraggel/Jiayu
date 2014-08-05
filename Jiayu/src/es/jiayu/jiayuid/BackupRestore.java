@@ -294,11 +294,9 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                             try {
                                 Runtime rt=Runtime.getRuntime();
                                 Process exec = rt.exec("su");
-                                BufferedOutputStream bos=null;
-                                bos= new BufferedOutputStream(exec.getOutputStream());
+                                BufferedOutputStream bos= new BufferedOutputStream(exec.getOutputStream());
                                 bos.write(cadena.getBytes());
                                 bos.write(("reboot recovery").getBytes());
-                                bos.write(("exit").getBytes());
                                 bos.flush();
                                 bos.close();
                                 exec.waitFor();
@@ -362,7 +360,6 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
                                     bos= new BufferedOutputStream(exec.getOutputStream());
                                     bos.write(cadena.getBytes());
                                     bos.write(("reboot recovery").getBytes());
-                                    bos.write(("exit").getBytes());
                                     bos.flush();
                                     bos.close();
                                     exec.waitFor();

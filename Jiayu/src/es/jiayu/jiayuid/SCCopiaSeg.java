@@ -77,7 +77,7 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
         backupBtn=(Button) findViewById(R.id.backupBtn);
         imeiBtn = (Button) findViewById(R.id.imeiBtn);
         String externalStorageState = Environment.getExternalStorageState();
-        if(!"mounted".equals(externalStorageState.toLowerCase())){
+        if (!isRoot) {
             backupBtn.setEnabled(false);
             backupBtn.setTextColor(Color.parseColor("#BDBDBD"));
             imeiBtn.setEnabled(false);
@@ -88,8 +88,7 @@ public class SCCopiaSeg extends Activity implements View.OnClickListener {
             imeiBtn.setEnabled(true);
             imeiBtn.setTextColor(Color.BLACK);
         }
-
-        if (!isRoot) {
+        if(!"mounted".equals(externalStorageState.toLowerCase())){
             backupBtn.setEnabled(false);
             backupBtn.setTextColor(Color.parseColor("#BDBDBD"));
             imeiBtn.setEnabled(false);
