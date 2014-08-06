@@ -119,7 +119,7 @@
     <string name="imeiSEBtn">"发送电​​子邮件IMEI"</string>
     <string name="salirBtn">"离开"</string>
     <string name="bootanimationBtn">"更改bootanimation"</string>
-    <string name="dataCacheDalvikBtn">"擦除数据/缓存/达尔维克"</string>
+    <string name="dataCacheDalvikBtn">"恢复出厂设置"</string>
     <string name="installBootBtn">"安装bootanimation"</string>
     <string name="bootDescargaBtn">"下载bootanimation"</string>
     <string name="backupBtn">"备份/恢复系统"</string>

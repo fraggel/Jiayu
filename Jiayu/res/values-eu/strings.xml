@@ -231,7 +231,7 @@
 
 <string name="bootanimationBtn">"Aldatu bootanimation"</string>
 
-<string name="dataCacheDalvikBtn">"Ekortu data / cache / dalvik"</string>
+<string name="dataCacheDalvikBtn">"Fabrika berrezarri"</string>
 
 <string name="installBootBtn">"Instalatu bootanimation"</string>
 

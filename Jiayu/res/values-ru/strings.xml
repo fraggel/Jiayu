@@ -120,7 +120,7 @@
     <string name="imeiSEBtn">"Отправить e-mail IMEI"</string>
     <string name="salirBtn">"Оставлять"</string>
     <string name="bootanimationBtn">"Изменение bootanimation"</string>
-    <string name="dataCacheDalvikBtn">"Протрите данных / кэша / Dalvik"</string>
+    <string name="dataCacheDalvikBtn">"Восстановление заводских настроек"</string>
     <string name="installBootBtn">"Установка bootanimation"</string>
     <string name="bootDescargaBtn">"Скачать bootanimation"</string>
     <string name="backupBtn">"Резервное копирование / восстановление системы"</string>

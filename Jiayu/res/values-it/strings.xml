@@ -121,7 +121,7 @@
     <string name="imeiSEBtn">"Invia Email IMEI"</string>
     <string name="salirBtn">"Lasciare"</string>
     <string name="bootanimationBtn">"Cambia bootanimation"</string>
-    <string name="dataCacheDalvikBtn">"Wipe data / cache / Dalvik"</string>
+    <string name="dataCacheDalvikBtn">"Ripristino di fabbrica"</string>
     <string name="installBootBtn">"Installa bootanimation"</string>
     <string name="bootDescargaBtn">"Scarica bootanimation"</string>
     <string name="backupBtn">"Backup / Ripristino configurazione di sistema"</string>

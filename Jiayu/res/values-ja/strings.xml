@@ -119,7 +119,7 @@
     <string name="imeiSEBtn">"メールIMEIを送信"</string>
     <string name="salirBtn">"去る"</string>
     <string name="bootanimationBtn">"変更bootanimation"</string>
-    <string name="dataCacheDalvikBtn">"データ/キャッシュ/のDalvikを拭き"</string>
+    <string name="dataCacheDalvikBtn">"工場出荷時設定へのリセット"</string>
     <string name="installBootBtn">"インストールbootanimation"</string>
     <string name="bootDescargaBtn">"ダウンロードbootanimation"</string>
     <string name="backupBtn">"システムをバックアップ/復元する"</string>
