@@ -2,6 +2,7 @@ package es.jiayu.jiayuid;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Environment;
 import android.view.ViewGroup;
@@ -10,12 +11,14 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.security.MessageDigest;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -266,5 +269,207 @@ public class Utilidades {
             extendedMemory=false;
         }
         return extendedMemory;
+    }
+    public static String[] comprobarSD(Context ctx,Resources res) {
+        String[] listaMems=null;
+        String a0="";
+        String a1="";
+        try {
+
+            BufferedInputStream bis=new BufferedInputStream(new FileInputStream("//proc/mounts"));
+            byte[] a=new byte[4096];
+            bis.read(a);
+            String asd=new String(a);
+            String dev0="";
+            String mount0="";
+            String formato0="";
+            String dev1="";
+            String mount1="";
+            String formato1="";
+            String mmcblk0="";
+            String mmcblk1="";
+            if(asd.indexOf("sdcard0")!=-1){
+                //Hay al menos una memoria
+                BufferedReader reader = new BufferedReader(new StringReader(asd));
+                String load ="";
+                load = reader.readLine();
+                while(load!=null){
+                    if(load.indexOf("sdcard0")!=-1){
+                        String[] split = load.split(" ");
+                        if(split[0].indexOf("tmpfs")==-1 && split[0].indexOf("vold")!=-1) {
+                            dev0 =  split[0].split("/")[4];
+                            mount0 = split[1];
+                            formato0 = split[2];
+                        }
+                        if(split[0].indexOf("fuse")!=-1) {
+                            mount0 = split[1];
+                        }
+                    }
+                    load = reader.readLine();
+                }
+                BufferedInputStream bis2=new BufferedInputStream(new FileInputStream("//proc/partitions"));
+                byte[] a2=new byte[4096];
+                bis2.read(a2);
+                String asd2=new String(a2);
+                BufferedReader reader2 = new BufferedReader(new StringReader(asd2));
+                String load2="";
+                load2=reader2.readLine();
+
+                while(load2!=null){
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("  "," ");
+                    load2=load2.replaceAll("\t"," ");
+                    load2=load2.replaceAll("\t"," ");
+                    load2=load2.replaceAll("\t"," ");
+                    load2=load2.replaceAll("\t"," ");
+                    load2=load2.replaceAll("\t"," ");
+                    load2=load2.replaceAll("\t"," ");
+                    load2=load2.replaceAll("\t"," ");
+                    load2=load2.replaceAll(" ",":");
+                    if(load2.indexOf(dev0)!=-1){
+                        mmcblk0=load2.split(":")[4];
+                    }
+
+                    load2=reader2.readLine();
+                }
+
+
+                if(asd.indexOf("sdcard1")!=-1){
+                    //Hay dos memorias
+                    reader = new BufferedReader(new StringReader(asd));
+                    load ="";
+                    load = reader.readLine();
+                    while(load!=null){
+                        if(load.indexOf("sdcard1")!=-1){
+                            String[] split = load.split(" ");
+                            if(split[0].indexOf("tmpfs")==-1 && (split[0].indexOf("vold")!=-1)) {
+                                dev1 = split[0].split("/")[4];
+                                mount1 = split[1];
+                                formato1 = split[2];
+                            }
+                            if(split[0].indexOf("fuse")!=-1){
+                                mount1 = split[1];
+                            }
+                        }
+
+                        load = reader.readLine();
+                    }
+                    bis2=new BufferedInputStream(new FileInputStream("//proc/partitions"));
+                    a2=new byte[4096];
+                    bis2.read(a2);
+                    asd2=new String(a2);
+                    reader2 = new BufferedReader(new StringReader(asd2));
+                    load2="";
+                    load2=reader2.readLine();
+
+                    while(load2!=null){
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("  "," ");
+                        load2=load2.replaceAll("\t"," ");
+                        load2=load2.replaceAll("\t"," ");
+                        load2=load2.replaceAll("\t"," ");
+                        load2=load2.replaceAll("\t"," ");
+                        load2=load2.replaceAll("\t"," ");
+                        load2=load2.replaceAll("\t"," ");
+                        load2=load2.replaceAll("\t"," ");
+                        load2=load2.replaceAll(" ",":");
+                        if(load2.indexOf(dev1)!=-1){
+                            mmcblk1=load2.split(":")[4];
+                        }
+                        load2=reader2.readLine();
+                    }
+
+                }
+
+                if(mmcblk0.indexOf("mmcblk0")!=-1) {
+                    a0=res.getString(R.string.memoriaInterna)+":"+mount0;
+                }else if(mmcblk0.indexOf("mmcblk1")!=-1) {
+                    a0=res.getString(R.string.memoriaExterna)+":"+mount0;
+                }
+                if(mmcblk1.indexOf("mmcblk1")!=-1){
+                    a1=res.getString(R.string.memoriaExterna)+":"+mount1;
+                }else if(mmcblk1.indexOf("mmcblk0")!=-1){
+                    a1=res.getString(R.string.memoriaInterna)+":"+mount1;
+                }
+
+            }/*else if(sdcard) {
+                //Aquí sería para android 4.0.4 por ejemplo....
+
+            }*/else{
+            }
+            if(!"".equals(a0) && !"".equals(a1)){
+                listaMems= new String[3];
+                listaMems[0] =res.getString(R.string.selectDefaultMemory)+": ";
+                listaMems[1]=a0;
+                listaMems[2]=a1;
+            }else if(!"".equals(a0) && "".equals(a1)){
+                listaMems= new String[2];
+                listaMems[0] =res.getString(R.string.selectDefaultMemory)+": ";
+                listaMems[1]=a0;
+            }else if("".equals(a0) && !"".equals(a1)) {
+                listaMems = new String[2];
+                listaMems[0] =res.getString(R.string.selectDefaultMemory)+": ";
+                listaMems[1] = a1;
+            }
+        }catch(Exception e){
+            Toast.makeText(ctx, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+        return listaMems;
+    }
+    public static String[] comprobarSDText(Context ctx,Resources res){
+        String[] tmp=comprobarSD(ctx,res);
+        String[] tmp2=new String[tmp.length];
+        for(int x=0;x<tmp.length;x++){
+            tmp2[x]= tmp[x].split(":")[0];
+        }
+        return tmp2;
+    }
+
+    public static void crearDirectorios(Context ctx,Resources res,SharedPreferences ajustes) {
+        String[] stringsCompletos = Utilidades.comprobarSD(ctx, res);
+        String[] soloMountPoint = new String[stringsCompletos.length];
+        for (int x = 0; x < stringsCompletos.length; x++) {
+            soloMountPoint[x] = stringsCompletos[x].split(":")[1];
+        }
+        ajustes.edit().putString("selectedMemory", soloMountPoint[ajustes.getInt("defaultMem", 1)]);
+        ajustes.edit().commit();
+        if (soloMountPoint.length > 1) {
+            File f1 = new File(soloMountPoint[ajustes.getInt("defaultMem", 1)] + "/JIAYUES/APP/");
+            if (!f1.exists()) {
+                f1.mkdirs();
+            }
+            File f2 = new File(soloMountPoint[ajustes.getInt("defaultMem", 1)] + "/JIAYUES/ROMS/");
+            if (!f2.exists()) {
+                f2.mkdirs();
+            }
+            File f3 = new File(soloMountPoint[ajustes.getInt("defaultMem", 1)] + "/JIAYUES/RECOVERY/");
+            if (!f3.exists()) {
+                f3.mkdirs();
+            }
+            File f4 = new File(soloMountPoint[ajustes.getInt("defaultMem", 1)] + "/JIAYUES/DOWNLOADS/");
+            if (!f4.exists()) {
+                f4.mkdirs();
+            }
+            File f5 = new File(soloMountPoint[ajustes.getInt("defaultMem", 1)] + "/JIAYUES/IMEI/");
+            if (!f5.exists()) {
+                f5.mkdirs();
+            }
+            File f6 = new File(soloMountPoint[ajustes.getInt("defaultMem", 1)] + "/JIAYUES/BOOTANIMATION/");
+            if (!f6.exists()) {
+                f6.mkdirs();
+            }
+        }
     }
 }
