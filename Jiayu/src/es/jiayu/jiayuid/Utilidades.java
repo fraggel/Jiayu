@@ -273,4 +273,15 @@ public class Utilidades {
         }
         return extendedMemory;
     }
+    public static boolean compExtendedSDcard444(String modelo){
+        boolean extendedMemory=false;
+        if("S3B".equals(modelo)||
+                "S3A".equals(modelo)
+                ){
+            extendedMemory=true;
+        }else{
+            extendedMemory=false;
+        }
+        return extendedMemory;
+    }
 }

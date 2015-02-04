@@ -528,9 +528,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                 .getBytes());
         String fileCWM = "";
         if(Utilidades.compExtendedSDcard(modelo)){
-            fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
-            bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
-            bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+            if(Utilidades.compExtendedSDcard444(modelo)) {
+                fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                bos.write(("echo 'run_program(\"/sbin/umount\",\"/data\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                bos.write(("echo 'run_program(\"/sbin/mount\",\"/data\");' >> /cache/recovery/extendedcommand\n").getBytes());
+            }else{
+                fileCWM = this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+            }
         }else{
             fileCWM =this.romseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
             bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -584,9 +590,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                                 .getBytes());
                         String fileCWM="";
                         if(Utilidades.compExtendedSDcard(modelo)){
-                            fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
-                            bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
-                            bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                            if(Utilidades.compExtendedSDcard444(modelo)) {
+                                fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                                bos.write(("echo 'run_program(\"/sbin/umount\",\"/data\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                                bos.write(("echo 'run_program(\"/sbin/mount\",\"/data\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                            }else{
+                                fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                                bos.write(("echo 'run_program(\"/sbin/umount\",\"/storage/legacy/0\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                                bos.write(("echo 'run_program(\"/sbin/mount\",\"/storage/legacy/0\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                            }
                         }else{
                             fileCWM =this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
                             bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());
@@ -613,9 +625,15 @@ public class RomScreen extends Activity implements AdapterView.OnItemSelectedLis
                             .getBytes());
                     String fileCWM="";
                     if(Utilidades.compExtendedSDcard(modelo)){
-                        fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
-                        bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
-                        bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                        if(Utilidades.compExtendedSDcard444(modelo)) {
+                            fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                            bos.write(("echo 'run_program(\"/sbin/umount\",\"/data\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                            bos.write(("echo 'run_program(\"/sbin/mount\",\"/data\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                        }else {
+                            fileCWM = this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/emmc");
+                            bos.write(("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                            bos.write(("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n").getBytes());
+                        }
                     }else{
                         fileCWM =this.zipseleccionada.replaceAll(Environment.getExternalStorageDirectory().getAbsolutePath(), "/sdcard");
                         bos.write(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n").getBytes());

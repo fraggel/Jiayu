@@ -55,7 +55,7 @@
                 android:layout_gravity="center_vertical|left"
                 android:background="@drawable/btn_ter1"
                 style="@style/LabelTextBlack"
-                android:textAlignment="center"
+
                 android:visibility="visible" />
             <CheckBox
                 android:layout_width="wrap_content"
