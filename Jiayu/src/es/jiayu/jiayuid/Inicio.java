@@ -235,6 +235,8 @@ public class Inicio extends Activity implements AsyncResponse{
                     ram = "1GB";
                 } else if (ramInt <= 2100 && ramInt >= 1700) {
                     ram = "2GB";
+                } else if (ramInt <= 3100 && ramInt >= 2700) {
+                    ram = "3GB";
                 }
                 if(width==1080 || (orientation==2 && height==1080)){
                     if ("qctapq8064mtp".equals(procesador.toLowerCase())) {
@@ -261,6 +263,14 @@ public class Inicio extends Activity implements AsyncResponse{
                             } else {
                                 model = "";
                             }
+                        }
+                    }
+                    if ("mt6752".equals(procesador.toLowerCase())) {
+                        if ("2GB".equals(ram)) {
+                            model = "S3B";
+
+                        } else if ("3GB".equals(ram)) {
+                           model="S3A";
                         }
                     }
                 }else if (width == 720 || (orientation == 2 && height == 720)) {
@@ -412,6 +422,13 @@ public class Inicio extends Activity implements AsyncResponse{
                             }
                         } else
                             model = "";
+                    }else  if ("mt6752".equals(procesador.toLowerCase())) {
+                        if ("2GB".equals(ram)) {
+                            model = "S4";
+
+                        } else if ("3GB".equals(ram)) {
+                            model="S4A";
+                        }
                     }
 
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
