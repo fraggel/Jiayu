@@ -263,7 +263,10 @@ public class Utilidades {
                 "S2A".equals(modelo)||
                 "G4S".equals(modelo)||
                 "G5S".equals(modelo)||
-                "G6A".equals(modelo)){
+                "G6A".equals(modelo)||
+                "S3B".equals(modelo)||
+                "S3A".equals(modelo)
+                ){
             extendedMemory=true;
         }else{
             extendedMemory=false;
