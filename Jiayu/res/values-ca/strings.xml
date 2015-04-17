@@ -112,7 +112,7 @@
     <string name="enviarEmailBtn">"Enviar email"</string>
     <string name="foroBtn">"Fòrum"</string>
     <string name="aboutBtn">"Sobre nosaltres ..."</string>
-    <string name="cwmChk">"Tinc instal · lat el Cwm Recovery"</string>
+    <string name="cwmChk">"Tinc instal · lat el CUSTOM Recovery"</string>
     <string name="notificacionChkUpd">"Mostra actualitzacions d'aplicació"</string>
     <string name="notificacionChkNews">"Mostra novetats per a la teva dispositiu"</string>
     <string name="ajustaBootChk">"Intentar reescalar bootAnimation per a la resolució de pantalla"</string>

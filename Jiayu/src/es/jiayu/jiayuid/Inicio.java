@@ -30,20 +30,16 @@ import android.os.StatFs;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Patterns;
-import android.view.View;
-import android.webkit.WebView;
 import android.widget.Toast;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
-import java.net.URL;
-import java.net.URLConnection;
+import java.nio.charset.Charset;
 import java.util.Calendar;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -71,6 +67,11 @@ public class Inicio extends Activity implements AsyncResponse{
     private int SIMPLE_NOTFICATION_NEWS=8889;
     public boolean isRoot=false;
     public static boolean noInternet=false;
+    private InputStream inputStream;
+    private BufferedReader bufferedReader;
+    boolean isRunning=false;
+    Thread thread=null;
+    String linea=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -146,7 +147,7 @@ public class Inicio extends Activity implements AsyncResponse{
                 i3.putExtra("root",isRoot);
                 startActivity(i3);
             }
-        }, 500);
+        }, 1000);
     }
 
 
@@ -213,14 +214,24 @@ public class Inicio extends Activity implements AsyncResponse{
             int width = 0;
             String procesador = "";
             String ram = "";
-
-
-
             try {
+                open(Runtime.getRuntime().exec("wm size").getInputStream());
+                String[] split = linea.split(": ");
+                String[] xes = split[1].split("x");
+                width=Integer.parseInt(xes[0]);
+                height=Integer.parseInt(xes[1]);
+            }catch(Exception e){
                 DisplayMetrics dm = new DisplayMetrics();
                 getWindowManager().getDefaultDisplay().getMetrics(dm);
                 height = dm.heightPixels;
                 width = dm.widthPixels;
+
+            }
+
+
+
+            try {
+
                 //procesador=Build.HARDWARE;
                 procesador = getInfoCPU();
                 int orientation = getResources().getConfiguration().orientation;
@@ -1005,5 +1016,60 @@ public class Inicio extends Activity implements AsyncResponse{
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 104", Toast.LENGTH_SHORT).show();
         }
+    }
+    public void open (InputStream inputStream) {
+        this.inputStream = inputStream;
+        this.bufferedReader = new BufferedReader(new InputStreamReader(inputStream, Charset.defaultCharset()));
+        isRunning = true;;
+
+        thread=new Thread();
+        if(thread!=null){
+            thread = new Thread();{
+                while(isRunning) {
+                    String line = null;
+                    try {
+                        line = readLine();
+                    } catch (IOException e) {
+                        isRunning = false;
+                    }
+                    if(line == null) {
+                        try {
+                            Thread.sleep(150);
+                        } catch (InterruptedException ie) {
+                            isRunning=false;
+                            Thread.currentThread().interrupt();
+                        }
+                    } else {
+                        linea=line;
+                        Thread.currentThread().interrupt();
+                        break;
+                    }
+                }
+            };
+        } else throw new IllegalStateException("The logger is already running");
+        thread.start();
+    }
+
+    public void close() throws InterruptedException {
+        if(thread!=null){
+            thread.interrupt();
+            thread.join();
+            thread = null;
+
+        } else throw new IllegalStateException("The logger is not running");         }
+
+    private String readLine() throws IOException {
+        if(inputStream.available()>0) { // <--------- THIS IS IT
+            int kar = bufferedReader.read();
+            if (kar != -1) {
+                StringBuilder buffer = new StringBuilder(30);
+                while (kar != -1 && kar != (int) '\n') {
+                    buffer.append((char) kar);
+                    kar = bufferedReader.read();
+                }
+                return buffer.toString();
+            }
+        }
+        return null;
     }
 }

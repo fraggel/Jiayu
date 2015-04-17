@@ -112,7 +112,7 @@
     <string name="enviarEmailBtn">"Написать письмо"</string>
     <string name="foroBtn">"Форум"</string>
     <string name="aboutBtn">"О нас ..."</string>
-    <string name="cwmChk">"Я установил CWM восстановления"</string>
+    <string name="cwmChk">"Я установил CUSTOM восстановления"</string>
     <string name="notificacionChkUpd">"Показать обновления, реализацию"</string>
     <string name="notificacionChkNews">"Показывать новости для вашего устройства"</string>
     <string name="ajustaBootChk">"Попытка провести масштабирование разрешения экрана bootanimation"</string>

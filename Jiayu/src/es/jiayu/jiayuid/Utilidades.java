@@ -1,34 +1,25 @@
 package es.jiayu.jiayuid;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Environment;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.TableLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
+import java.io.OutputStream;
 import java.security.MessageDigest;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.zip.Deflater;
-import java.util.zip.Inflater;
 
 /**
  * Created by Fraggel on 1/10/13.
  */
 public class Utilidades {
+    static boolean rootB = false;
     private static String fileToMD5(File filePath) {
         InputStream inputStream = null;
         try {
@@ -62,7 +53,7 @@ public class Utilidades {
         return returnVal;
     }
     public static boolean controlRootConExec(Context context,Resources res,String origen) {
-        boolean rootB = false;
+
         File f = new File("/system/bin/su");
         if (!f.exists()) {
             f = new File("/system/xbin/su");
@@ -74,49 +65,60 @@ public class Utilidades {
         }
         if (rootB) {
             try {
-                Runtime rt = Runtime.getRuntime();
-                java.lang.Process p = rt.exec("su");
-                BufferedOutputStream bos = new BufferedOutputStream(
-                        p.getOutputStream());
-                Calendar instance = Calendar.getInstance();
-                String fecha=String.valueOf(instance.get(Calendar.DAY_OF_MONTH))+
-                String.valueOf((instance.get(Calendar.MONTH)+1))+
-                String.valueOf(instance.get(Calendar.YEAR))+
-                String.valueOf(instance.get(Calendar.HOUR))+
-                String.valueOf(instance.get(Calendar.MINUTE))+
-                String.valueOf(instance.get(Calendar.SECOND))+
-                String.valueOf(instance.get(Calendar.MILLISECOND));
-                bos.write(("echo " + fecha + " > /data/jiayu.txt").getBytes());
-                bos.write(("exit").getBytes());
-                bos.flush();
-                bos.close();
-                p.waitFor();
-                Runtime rt2 = Runtime.getRuntime();
-                java.lang.Process p2 = rt.exec("su");
-                StreamGobbler errorGobbler = new StreamGobbler(p2.getErrorStream(),
-                        "ERR");
-                StreamGobbler outputGobbler = new StreamGobbler(p2.getInputStream(),
-                        "OUT");
-                errorGobbler.start();
-                outputGobbler.start();
+                Thread t= new Thread(new Runnable(){
+                @Override
+                public void run(){
+                    try {
+                    Runtime rt = Runtime.getRuntime();
+                    java.lang.Process p = rt.exec("su");
+                    BufferedOutputStream bos = new BufferedOutputStream(
+                            p.getOutputStream());
+                    Calendar instance = Calendar.getInstance();
+                    String fecha=String.valueOf(instance.get(Calendar.DAY_OF_MONTH))+
+                            String.valueOf((instance.get(Calendar.MONTH)+1))+
+                            String.valueOf(instance.get(Calendar.YEAR))+
+                            String.valueOf(instance.get(Calendar.HOUR))+
+                            String.valueOf(instance.get(Calendar.MINUTE))+
+                            String.valueOf(instance.get(Calendar.SECOND))+
+                            String.valueOf(instance.get(Calendar.MILLISECOND));
+                    bos.write(("echo " + fecha + " > /data/jiayu.txt").getBytes());
+                    bos.write(("exit").getBytes());
+                    bos.flush();
+                    bos.close();
+                    p.waitFor();
+                    Runtime rt2 = Runtime.getRuntime();
+                    java.lang.Process p2 = rt.exec("su");
+                    StreamGobbler errorGobbler = new StreamGobbler(p2.getErrorStream(),
+                            "ERR");
+                    StreamGobbler outputGobbler = new StreamGobbler(p2.getInputStream(),
+                            "OUT");
+                    errorGobbler.start();
+                    outputGobbler.start();
 
-                BufferedOutputStream bos2 = new BufferedOutputStream(
-                        p2.getOutputStream());
+                    BufferedOutputStream bos2 = new BufferedOutputStream(
+                            p2.getOutputStream());
 
-                bos2.write(("rm /data/jiayu.txt").getBytes());
+                    bos2.write(("rm /data/jiayu.txt").getBytes());
 
-                bos2.write(("exit").getBytes());
+                    bos2.write(("exit").getBytes());
 
-                bos2.flush();
+                    bos2.flush();
 
-                bos2.close();
+                    bos2.close();
 
-                int ret=p2.waitFor();
-                if(ret==0){
-                    rootB=true;
-                }else{
-                    rootB=false;
-                }
+                    int ret=p2.waitFor();
+                    if(ret==0){
+                        rootB=true;
+                    }else{
+                        rootB=false;
+                    }
+                } catch (Exception e) {
+                        rootB=false;
+                    }
+                }});
+                t.start();
+                t.join();
+
             } catch (Exception e) {
                 rootB=false;
             }
@@ -283,5 +285,42 @@ public class Utilidades {
             extendedMemory=false;
         }
         return extendedMemory;
+    }
+    public static void rebootRecovery(){
+        try {
+            Runtime rt = Runtime.getRuntime();
+            java.lang.Process p = rt.exec("su");
+            BufferedOutputStream bos = new BufferedOutputStream(
+                    p.getOutputStream());
+            bos.write(("reboot recovery\n").getBytes());
+            bos.write(("exit").getBytes());
+            bos.flush();
+            bos.close();
+            p.waitFor();
+        } catch (Exception e) {
+        }
+    }
+    Context mContext=null;
+    public void reboot(String reboot){
+        try {
+            Toast.makeText(mContext,"recibido el reboot: " +reboot,Toast.LENGTH_SHORT).show();
+            Process su = Runtime.getRuntime().exec("su");
+            OutputStream outputStream = su.getOutputStream();
+            outputStream.write(("reboot "+reboot+"\n").getBytes());
+            outputStream.flush();
+            outputStream.close();
+        }catch(Exception e){
+
+        }
+
+    }
+    public int changeMode(int mode){
+        int modd=-1;
+        if(mode==2){
+            modd=9;
+        }else{
+            modd=mode;
+        }
+        return modd;
     }
 }

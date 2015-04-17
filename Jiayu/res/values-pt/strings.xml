@@ -112,7 +112,7 @@
     <string name="enviarEmailBtn">"Enviar e-mail"</string>
     <string name="foroBtn">"Fórum"</string>
     <string name="aboutBtn">"Sobre nós ..."</string>
-    <string name="cwmChk">"Eu tenho instalado o CWM Recovery"</string>
+    <string name="cwmChk">"Eu tenho instalado o CUSTOM Recovery"</string>
     <string name="notificacionChkUpd">"Mostrar implementação Updates"</string>
     <string name="notificacionChkNews">"Mostrar notícias para o seu dispositivo"</string>
     <string name="ajustaBootChk">"A tentativa de resolução da tela rescale bootanimation"</string>

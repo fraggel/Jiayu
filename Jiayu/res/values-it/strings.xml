@@ -98,7 +98,7 @@
     <string name="enviarEmailBtn">Invia email</string>
     <string name="foroBtn">Forum</string>
     <string name="aboutBtn">Info su...</string>
-    <string name="cwmChk">Recovery CWM installata</string>
+    <string name="cwmChk">Recovery CUSTOM installata</string>
     <string name="notificacionChkUpd">Visualizza impostazioni aggiornamenti</string>
     <string name="notificacionChkNews">Visualizza notizie per questo dispositivo</string>
     <string name="ajustaBootChk">Ridimensionamento risoluzione schermo animazione boot</string>

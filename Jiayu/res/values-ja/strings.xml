@@ -111,7 +111,7 @@
     <string name="enviarEmailBtn">"メールを送信"</string>
     <string name="foroBtn">"フォーラム"</string>
     <string name="aboutBtn">"私達について..."</string>
-    <string name="cwmChk">"私はCWMリカバリーをインストールしている"</string>
+    <string name="cwmChk">"私はCUSTOMリカバリーをインストールしている"</string>
     <string name="notificacionChkUpd">"アップデート実装を表示"</string>
     <string name="notificacionChkNews">"あなたのデバイスのためのニュースを表示"</string>
     <string name="ajustaBootChk">"再スケーリングbootanimation画面解像度にしようとすると、"</string>

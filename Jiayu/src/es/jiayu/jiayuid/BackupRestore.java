@@ -389,13 +389,10 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
             String cad) {
         try {
             if(Utilidades.compExtendedSDcard(modelo)){
-                if(Utilidades.compExtendedSDcard444(modelo)) {
-                    cad = (("echo 'run_program(\"/sbin/umount\",\"/data\");' >> /cache/recovery/extendedcommand\n"));
-                    cad = cad + (("echo 'run_program(\"/sbin/mount\",\"/data\");' >> /cache/recovery/extendedcommand\n"));
-                }else {
+
                     cad = (("echo 'run_program(\"/sbin/umount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n"));
                     cad = cad + (("echo 'run_program(\"/sbin/mount\",\"/emmc\");' >> /cache/recovery/extendedcommand\n"));
-                }
+
             }else{
                 cad=(("echo 'run_program(\"/sbin/umount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n"));
                 cad=cad+(("echo 'run_program(\"/sbin/mount\",\"/sdcard\");' >> /cache/recovery/extendedcommand\n"));
@@ -412,11 +409,7 @@ public class BackupRestore extends Activity implements OnItemSelectedListener,
         String fabricante=Build.BRAND;
         String procesador=Build.HARDWARE;
         if(Utilidades.compExtendedSDcard(modelo)){
-            if(Utilidades.compExtendedSDcard444(modelo)) {
-                fichero = fichero.replaceFirst("/storage/sdcard0/", "/data/media/0/").replaceFirst("/mnt/sdcard", "/data/media/0/");
-            }else{
                 fichero = fichero.replaceFirst("/storage/sdcard0/", "/emmc/").replaceFirst("/mnt/sdcard", "emmc");
-            }
         }else{
             fichero=fichero.replaceFirst("/storage/sdcard0/", "/sdcard/").replaceFirst("/mnt/sdcard","sdcard");
         }
