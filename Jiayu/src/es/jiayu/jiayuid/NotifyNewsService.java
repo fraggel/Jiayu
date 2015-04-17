@@ -8,9 +8,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.IBinder;
-import android.widget.Toast;
 
 import java.io.FileOutputStream;
 import java.util.Calendar;
@@ -158,7 +156,7 @@ public class NotifyNewsService extends Service implements AsyncResponse {
                                     launch_intent.putExtra("tipo", "downloads");
                                     PendingIntent intent2;
                                     intent2 = PendingIntent.getActivity(getApplicationContext(), 0,
-                                    launch_intent, Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    launch_intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
                                     notifyDetails.setLatestEventInfo(getApplicationContext(), contentTitle, contentText, intent2);
                                     mNotificationManagerNews.notify(SIMPLE_NOTFICATION_NEWS, notifyDetails);

@@ -30,6 +30,8 @@ import android.os.StatFs;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 import android.util.Patterns;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -51,10 +53,10 @@ public class Inicio extends Activity implements AsyncResponse{
     SharedPreferences.Editor editorAjustes=null;
     String nversion = "";
     String version = "";
-    String modelo = "";
+    static String modelo = "";
     String model = "";
     static long downloadREF = -1;
-    String fabricante = "";
+    static String fabricante = "";
     String compilacion = "";
     String modelBuild="";
     String newversion = "";
@@ -95,8 +97,6 @@ public class Inicio extends Activity implements AsyncResponse{
 
         editorAjustes.putString("fechaPrimerUso",ajustes.getString("fechaPrimerUso",dia+"/"+mes+"/"+anyo));
         noInternet=comprobarConexion();
-
-        comprobarVersionInicio(version);
 
         calcularMod();
         modelo=model;
@@ -147,7 +147,7 @@ public class Inicio extends Activity implements AsyncResponse{
                 i3.putExtra("root",isRoot);
                 startActivity(i3);
             }
-        }, 1000);
+        }, 500);
     }
 
 
@@ -529,66 +529,6 @@ public class Inicio extends Activity implements AsyncResponse{
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
         }
-        /*
-					}
-				});
-		dialog.show();*/
-        /*BufferedInputStream kernel;
-        BufferedInputStream recovery;
-        BufferedInputStream uboot;
-        ByteArrayOutputStream kernelBAOS=new ByteArrayOutputStream();
-        ByteArrayOutputStream recoveryBAOS=new ByteArrayOutputStream();
-        ByteArrayOutputStream ubootBAOS=new ByteArrayOutputStream();
-        try {
-            java.lang.Process p=null;
-            java.lang.Process p2=null;
-            java.lang.Process p3=null;
-            java.lang.Process p4=null;
-            try {
-                Runtime rt = Runtime.getRuntime();
-                rt.exec("su");
-                p = rt.exec("dd if=/dev/bootimg of=/sdcard/JIAYUES/kernel.img bs=512\n");
-                p2 = rt.exec("dd if=/dev/recovery of=/sdcard/JIAYUES/recovery.img bs=512\n");
-                p3 = rt.exec("dd if=/dev/uboot of=/sdcard/JIAYUES/uboot.img bs=512\n");
-                p4 = rt.exec("chmod -R 777 /sdcard/JIAYUES/\n");
-            } catch (Exception e) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 137", Toast.LENGTH_SHORT).show();
-            }
-
-            byte[] temp=new byte[1024];
-            kernel=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/kernel.img")));
-            recovery=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/recovery.img")));
-            uboot=new BufferedInputStream(new FileInputStream(new File("/sdcard/JIAYUES/uboot.img")));
-
-            while(kernel.read(temp)!=-1){
-                kernelBAOS.write(temp);
-                kernelBAOS.flush();
-            }
-            kernelBAOS.close();
-            temp=new byte[1024];
-            while(recovery.read(temp)!=-1){
-                recoveryBAOS.write(temp);
-                recoveryBAOS.flush();
-            }
-            recoveryBAOS.close();
-            temp=new byte[1024];
-            while(uboot.read(temp)!=-1){
-                ubootBAOS.write(temp);
-                ubootBAOS.flush();
-            }
-            ubootBAOS.close();
-            byte[] kernelBytes = kernelBAOS.toByteArray();
-            byte[] recoveryBytes = recoveryBAOS.toByteArray();
-            byte[] ubootBytes = ubootBAOS.toByteArray();
-
-            String s = kernelBAOS.toString();
-
-            String s1 = recoveryBAOS.toString();
-            String s2 = ubootBAOS.toString();
-            System.out.println("FIN CALC");
-        }catch(Exception e){
-            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 105", Toast.LENGTH_SHORT).show();
-        }*/
     }
     private boolean levantarBlueTooth() {
         BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
