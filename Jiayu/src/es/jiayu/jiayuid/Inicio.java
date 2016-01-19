@@ -284,6 +284,14 @@ public class Inicio extends Activity implements AsyncResponse{
                            model="S3A";
                         }
                     }
+                    if ("mt6753".equals(procesador.toLowerCase())) {
+                        if ("2GB".equals(ram)) {
+                            model = "S3plus";
+
+                        } else if ("3GB".equals(ram)) {
+                            model="S3plus";
+                        }
+                    }
                 }else if (width == 720 || (orientation == 2 && height == 720)) {
                     if ("mt6577".equals(procesador.toLowerCase())) {
                         comprobarMT();
@@ -411,7 +419,9 @@ public class Inicio extends Activity implements AsyncResponse{
                             }else if(compilacion.indexOf("G2")!=-1|| modelBuild.indexOf("G2")!=-1){
                                 model="G2F";
                             }
-                        } else {
+                        } else if ("2GB".equals(ram)) {
+                            model="F2";
+                        }else{
                             model = "";
                         }
                     } else if ("mt6592".equals(procesador.toLowerCase()) || "mt6592m".equals(procesador.toLowerCase())) {
@@ -440,6 +450,13 @@ public class Inicio extends Activity implements AsyncResponse{
                         } else if ("3GB".equals(ram)) {
                             model="S4A";
                         }
+                    }else if ("mt6753".equals(procesador.toLowerCase())) {
+                        if ("2GB".equals(ram)) {
+                            model = "S3plus";
+
+                        } else if ("3GB".equals(ram)) {
+                            model="S3plus";
+                        }
                     }
 
                 } else if (width == 540 || (orientation == 2 && height == 540)) {
@@ -452,8 +469,12 @@ public class Inicio extends Activity implements AsyncResponse{
                     if ("mt6575".equals(procesador.toLowerCase())) {
                         if ((Build.DISPLAY.toUpperCase()).indexOf("G16B") != -1) {
                             model = "G2SCN";
-                        } else {
+                        }else{
                             model = "G2SC";
+                        }
+                    }else   if ("sc7731".equals(procesador.toLowerCase())) {
+                        if ("512MB".equals(ram)) {
+                            model = "F1PLUS";
                         }
                     } else if ("mt6577".equals(procesador.toLowerCase())) {
                         //FALTA EL Jiayu G2TD
@@ -492,8 +513,14 @@ public class Inicio extends Activity implements AsyncResponse{
                             if (compilacion.indexOf("G2") != -1 || modelBuild.indexOf("G2") != -1) {
                                 model = "G2F";
                             }
+                        } else if ("2GB".equals(ram)) {
+                            model="F2";
                         }
-                    } else {
+                    } else if ("sc7731".equals(procesador.toLowerCase())) {
+                        if ("512MB".equals(ram)) {
+                                model = "F1PLUS";
+                        }
+                    }else {
                         model = "";
                     }
                 } else if (width == 320 || (orientation == 2 && height == 320)) {
@@ -861,6 +888,7 @@ public class Inicio extends Activity implements AsyncResponse{
                         dialog.show();
                     } else {
                         if ("".equals(inicio)) {
+
                             Resources res = this.getResources();
                             AlertDialog dialog = new AlertDialog.Builder(this).create();
                             dialog.setMessage(res.getString(R.string.msgLastVersion));

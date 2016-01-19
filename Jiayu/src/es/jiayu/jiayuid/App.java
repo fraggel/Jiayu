@@ -145,7 +145,7 @@ public class App extends Activity implements AsyncResponse{
                 }catch(Exception e){
 
                 }
-                comprobarVersion(nversion);
+                comprobarVersionInicio(nversion);
                 noInternet=comprobarConexion();
                 if (noInternet){
                     WebView wv = (WebView) findViewById(R.id.webView);
@@ -363,6 +363,15 @@ public class App extends Activity implements AsyncResponse{
             VersionThread asyncTask = new VersionThread();
             asyncTask.delegate = this;
             asyncTask.execute(version2);
+        } catch (Exception e) {
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 102", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void comprobarVersionInicio(String version2) {
+        try {
+            VersionThread asyncTask = new VersionThread();
+            asyncTask.delegate = this;
+            asyncTask.execute(version2,"inicio");
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.msgGenericError)+" 102", Toast.LENGTH_SHORT).show();
         }
